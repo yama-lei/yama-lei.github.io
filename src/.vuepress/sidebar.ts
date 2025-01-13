@@ -4,21 +4,17 @@ export default sidebar({
   "/": [
     "",
     {
-      text: "如何使用",
-      icon: "laptop-code",
-      prefix: "demo/",
-      link: "demo/",
-      children: "structure",
-      collapsible: true,// 可折叠
-    },
-    {
       text: "文章",
       icon: "book",
       prefix: "posts/",
       children: "structure",
       collapsible: true,// 可折叠
     },
-    "intro",
+    {
+      text: "个人简介",
+      icon: "/assets/icon/intro.svg",
+      link:"intro",
+    },
     {
       text: "幻灯片",
       icon: "person-chalkboard",
@@ -33,3 +29,5 @@ export default sidebar({
     }
   ],
 });
+
+//这里修改的是侧边栏中“Links”的部分，要想修改其他部分，需要到themme.ts中修改

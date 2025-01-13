@@ -18,8 +18,13 @@ export default hopeTheme({
   docsDir: "src",
 
   // 导航栏
+  //参考https://theme-hope.vuejs.press/zh/guide/layout/navbar.html#%E5%A4%96%E8%A7%82%E5%BC%B9%E7%AA%97
   navbar,
-
+  navbarLayout: {
+    start: ["Brand","Outlook"],
+    center: ["Links", "Search"],
+    end: ["Language", "Repo", "Outlook"],
+  },
   // 侧边栏
   sidebar,
 
