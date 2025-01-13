@@ -2,7 +2,13 @@ import { navbar } from "vuepress-theme-hope";
 
 export default navbar([
   "/",
-  "/demo/",
+  "/demo/",//点这里进入demo文件夹的路径；
+  {
+    text:"人生感悟",
+    icon: "/assets/icon/thinking.svg",
+    link: "/thinking/",
+  },
+
   {
     text: "博文",
     icon: "pen-to-square",

@@ -28,7 +28,7 @@ export default sidebar({
     {
       text: "game",
       icon: "/assets/icon/game.svg",
-      link: "#",
+      link: "game/",
       collapsible: true,// 可折叠
     }
   ],
