@@ -1,6 +1,7 @@
 ---
 title: 布局与功能禁用
 icon: gears
+article: false
 order: 4
 category:
   - 使用指南
@@ -19,7 +20,7 @@ prev: false
 next: false
 comment: false
 footer: false
-
+timeline: false
 backtotop: false
 ---
 

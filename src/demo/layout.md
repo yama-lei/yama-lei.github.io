@@ -1,11 +1,13 @@
 ---
 title: 布局
 icon: object-group
+article: false
 order: 2
 category:
-  - 指南
+  - 使用指南
 tag:
   - 布局
+timeline: false
 ---
 
 布局包括:

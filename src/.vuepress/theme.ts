@@ -5,18 +5,17 @@ import sidebar from "./sidebar.js";
 
 export default hopeTheme({
   hostname: "https://github.com/yama-lei/yama-lei.github.io",
-
   author: {
     name: "Yama-lei",
     url: "/underbuilding.html",
   },
-
+  
   logo: "/assets/icon/yamasun.svg",
 
-  repo: "vuepress-theme-hope/vuepress-theme-hope",
+  repo: "https://github.com/yama-lei/yama-lei.github.io",
 
   docsDir: "src",
-
+  
   // 导航栏
   //参考https://theme-hope.vuejs.press/zh/guide/layout/navbar.html#%E5%A4%96%E8%A7%82%E5%BC%B9%E7%AA%97
   navbar,
@@ -29,7 +28,7 @@ export default hopeTheme({
   sidebar,
 
   // 页脚
-  footer: "默认页脚",
+  footer: "",
   displayFooter: true,
 
   // 博客相关
@@ -113,12 +112,12 @@ export default hopeTheme({
     // },
 
     // 如果你需要幻灯片，安装 @vuepress/plugin-revealjs 并取消下方注释
-    // revealjs: {
-    //   plugins: ["highlight", "math", "search", "notes", "zoom"],
-    // },
+    revealjs: {
+      plugins: ["highlight", "math", "search", "notes", "zoom"],
+    },
 
     // 在启用之前安装 chart.js
-    // chartjs: true,
+    chartjs: true,
 
     // insert component easily
 

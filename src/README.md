@@ -3,30 +3,38 @@ home: true
 layout: BlogHome
 icon: home
 title: 博客主页
-heroImage: https://theme-hope-assets.vuejs.press/logo.svg
+heroImage: /assets/icon/logo.svg
 heroText: Yama's Blog
-heroFullScreen: true
+heroFullScreen: false
+article: false
+bgImage: /assets/images/bk1.jpg
+bgImageDark: /assets/images/bk-night1.jpg
+
+lastUpdated: true
+
+sidebar: true
+
 tagline: Welcome to My Blog!
 projects:
   - icon: project
     name: 小项目
     desc: 小项目合集
-    link: https://你的项目链接
+    link: /underbuilding
 
   - icon: friend
     name: 友链
     desc: 欢迎互换友链！
-    link: https://你的伙伴链接
+    link: /underbuilding
 
-#   - icon: link
-#     name: 链接名称
-#     desc: 链接详细描述
-#     link: https://链接地址
+  - icon: /assets/icon/game.svg
+    name: Game
+    desc: 为了让这个博客不太无聊才加的
+    link: /game/
 
-#   - icon: book
-#     name: 书籍名称
-#     desc: 书籍详细描述
-#     link: https://你的书籍链接
+  - icon: book
+    name: 凑数专用
+    desc: 当你不知道这里应该放些什么的时候，你可以再加一个来凑数
+    link: /underbuilding
 
 #   - icon: article
 #     name: 文章名称
@@ -41,6 +49,6 @@ projects:
 
 footer: Thanks for watching!
 ---
-
+<!--配置这些东西参考：https://theme-hope.vuejs.press/zh/config/frontmatter/layout.html#sidebar-->
 Feel free to contact me!
 
