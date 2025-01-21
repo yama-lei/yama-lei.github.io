@@ -21,6 +21,11 @@ export default navbar([
         text: "cpp高程/算法",
         icon: "pen-to-square",
         link: "算法/",
+      },      
+      {
+        text: "前端开发",
+        icon: "pen-to-square",
+        link: "前端开发/",
       },
     ],
   },

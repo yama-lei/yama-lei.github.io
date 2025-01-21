@@ -1,3 +1,9 @@
+---
+date: 2025-01-10
+star: true
+sticky: 1
+---
+
 # List
 
 ## Linked list 例题

@@ -1,117 +1,149 @@
 ---
-icon: pen-to-square
 date: 2025-01-13
+star: true
+sticky: 1
+
 ---
 
 
 
+# git基本使用Quick Start
+ ![](https://www.runoob.com/wp-content/uploads/2015/02/git-command.jpg)
 
-![](https://www.runoob.com/wp-content/uploads/2015/02/git-process.png)
+ ### 安装与初始化
+ 从官网下载git，之后从终端中输入下面两条指令，设置名字和邮箱
+ ```
+ git config --global "name"
+ git config --global "email"
+ ```
+ **注意: name 和 Email 是用英文双引号包裹起来的**
+### 初始化一个仓库
+1.从零开始：在你想要创建项目的地方打开终端，输入git init
+```
+git init //从头开始
 
-# git基本使用指南
-
-## git操作命令行：
-
-1.   git clone + github仓库网址, 
-
-```cmd
- git clone https://github.com/username/repo.git 
 ```
 
-2.   git init : 初始化一个新的仓库
-
-```cmd
-git init
+2.直接clone别人的仓库：在目标文件夹打开终端，使用git clone +仓库名
 ```
-
-
-3. git add
-
-```cmd
-git add filename
+git clone https://github.com/yama-lei/yama-lei.github.io.git  `
 ```
+这里的url可以直接点开仓库右上角的绿色“code”按钮，下面可以直接复制
 
-4. git add . 修改全部文件
+### 连接远程仓库
+命令行中输入：
+```
+git remote add origin https://github.com/yama-lei/yama-lei.github.io.git
+```
+第一次连接需要配置SSH key
+```
+ssh-keygen -t rsa -b 4096 -C "github 注册账号"
+```
+接下来按照提示，保存SSH key，设置密码（也可以不设置）。
+依次执行：
+```
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
+cat ~/.ssh/id_rsa.pub
+```
+就会在终端中输出ssh-rsa开头的SSH key,复制这段输出。
+github->点开头像->出现的侧边栏中间有个setting->点开后会进入到设置，找到"SSH and GPG keys"->在SSH key右侧有个绿色按钮“Add SSh ey”
 
-```cmd
+### 如何更新远程的仓库？
+在本地修改了文件后，可以直接“一键三连”
+```
 git add .
-```
-
-## 修改文件如何上传？
-
-### 1. **修改本地文件**
-
-首先，在你的本地计算机上进行修改。例如，编辑 Markdown 文件、添加新内容、修改博客页面等。
-
-### 2. **检查文件状态**
-
-在命令行中运行以下命令查看哪些文件被修改或添加了：
-
-```bash
-git status
-```
-
-### 3. **添加修改的文件**
-
-将你修改或新增的文件添加到暂存区：
-
-```bash
-git add <文件名>
-```
-
-如果你想添加所有更改的文件，可以使用：
-
-```bash
-git add .
-```
-
-### 4. **提交修改**
-
-提交这些修改到本地 Git 仓库：
-
-```bash
-git commit -m "描述你的修改"
-```
-
-例如：
-
-```bash
-git commit -m "更新了首页内容和添加了新的博客文章"
-```
-
-### 5. **推送到 GitHub**
-
-将本地的更改推送到 GitHub 上的 `main` 分支（或者你选择的其他分支）：
-
-```bash
+git commit
 git push origin main
 ```
+在这里三个指令分别代表了三个操作：
+#### 1. 将文件添加到暂存区(staging area)
+如果只修改/添加某个文件，可以使用
+```
+git add filename
+```
+指定那个名叫‘filename’的文件
+如果嫌麻烦，直接
+```
+git add .
+```
+但是请注意！！！ add后面有个点' . '
+#### 2. 将暂存区的文件提交到本地仓库
+使用指令：
+```
+git commit
+```
+如果想要在提交的时候，备注上更新什么内容，可以用下面这个
+```
+git commit -m "本次更新解决了提出bug的用户"
+```
+加上这个备注 ，有助于清晰地了解各个版本修改的内容，如果出现了什么问题，可以回溯之前的版本，提高了是错成本，避免因为某处错误而导致整个项目崩溃。
+#### 3. 将本地仓库的文件提交到远程仓库（即上文中连接的github仓库）
+将本地仓库里的内容push到远程仓库的xx分支（如果没有特殊改变分支，一般是main分支）
+```
+git push origin branchname
+```
+### 如何回溯过往版本？
+#### 1.查询提交记录
+使用git log来获取到提交记录,下面是我某一次博客的部分修改日志
+输入
+```
+git log
+```
+输出：
+```
+commit adf721c24faa3f355468ae5400fd63f6f193a942 (HEAD -> main, origin/main)
+Author: yama-lei <1908777046@qq.com>
+Date:   Thu Jan 16 10:39:33 2025 +0800
 
-### 6. **GitHub Actions 部署**
+    add a new game: 2048
 
-如果你已经配置了 GitHub Actions（比如在 `.github/workflows` 下的 `deploy-docs.yml`），每次推送代码后，GitHub Actions 会自动构建和部署你的博客到 GitHub Pages。
+commit 7933b8b303b170ab0cf360ce4d5e3f8de37b972d
+Author: yama-lei <1908777046@qq.com>
+Date:   Wed Jan 15 15:41:58 2025 +0800
 
-### 7. **查看更新**
+    add mores blogs and created some new demos
+```
+可以看到，日志的内容呈现倒叙：最后提交的内容在最上面。
+每一次的提交都会有commit、Author、Date
+commit是这一次提交的唯一标识。
+Author是前文设置的name和email，date为日期。
 
-访问你的 GitHub Pages URL（例如：`https://yama-lei.github.io`），你可以看到你刚刚推送的更新。
+#### 2.切换到历史提交记录
+运行
+```
+git checkout commit
+```
+可以回到原先某一次（由对应commit决定）的状态。
+再把commit换成main即可回到原先的main分支
+```
+git checkout main
+```
+#### 3. 恢复历史记录
+将某次历史记录保存在暂存区：
+```
+git reset --soft commit
+```
+将历史记录彻底覆盖
+```
+git reset --hard commit
+```
+> 这里的commit说的都是前文提到过的唯一标识
 
-### 小提示：
-
--   **分支管理：** 如果你正在进行较大的更改，建议在创建新功能或大更新之前创建一个新的分支，这样可以保证 `main` 分支始终保持稳定。
-
-    创建新分支并切换到该分支：
-
-    ```bash
-    git checkout -b new-feature
-    ```
-
-    提交更改后，再将其合并回 `main` 分支：
-
-    ```bash
-    git checkout main
-    git merge new-feature
-    ```
--   **定期提交：** 避免一次性提交大量修改，尽量保持每次提交都包含较小的功能更新，这样更易于管理和追踪项目的历史。
-
-
-
+#### 4.切换分支
+列出所有的分支
+```
+git branch
+```
+创建并进入某个新分支
+```
+git checkout -b branchname
+```
+合并分支(将名为'branchname'的分支合并到main分支)
+```
+git merge branchname
+```
+删除分支
+```
+git branch -d branchname
+```

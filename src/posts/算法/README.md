@@ -1,6 +1,6 @@
 ---
-title: Algorithm Learning
+title: cpp算法学习
 article: false
 ---
 
-I have to write something here to prove this is not an empty page;
+这里将放一些学习cpp算法相关的内容，
