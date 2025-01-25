@@ -14,19 +14,31 @@ export default navbar([
     children: [
       {
         text: "python",
-        icon: "/assets/icon/book.svg",
         link: "python学习/",
       },
       {
         text: "cpp高程/算法",
-        icon: "pen-to-square",
         link: "算法/",
       },      
       {
         text: "前端开发",
-        icon: "pen-to-square",
         link: "前端开发/",
       },
     ],
   },
+
+  {
+    text:"前端开发",
+    icon: "pen-to-square",
+    link: "/posts/前端开发/"
+  },
+
+
+  {
+    text:"算法学习",
+    icon: "pen-to-square",
+    link: "/posts/算法/"
+  },
+  
+  
 ]);

@@ -152,7 +152,7 @@ export default hopeTheme({
     //   serverURL: "https://waline-comment.vuejs.press",
     // },
     components: {
-      components: ["Badge", "VPCard"],
+      components: ["Badge", "VPCard","PDF","BiliBili"],
     },
 
     icon: {

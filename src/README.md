@@ -24,7 +24,7 @@ projects:
   - icon: friend
     name: 友链
     desc: 欢迎互换友链！
-    link: /underbuilding
+    link: /friendsLink/
 
   - icon: /assets/icon/game.svg
     name: Game
