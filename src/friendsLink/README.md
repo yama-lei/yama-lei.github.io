@@ -11,5 +11,5 @@
     title="HappyNewYear!"
     logo="/assets/friendsHead/WangYuQin.jpg"
     desc="Have a nice Spring Festivel and have fun!"
-    link="/New/index.html"
+    link="/happy/index.html"
 />
