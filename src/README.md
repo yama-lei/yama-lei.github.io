@@ -32,10 +32,9 @@ projects:
     link: /game/
 
   - icon: book
-    name: 凑数专用
-    desc: 当你不知道这里应该放些什么的时候，你可以再加一个来凑数
-    link: /underbuilding
-
+    name: 小说
+    desc: 完全虚构
+    link: /story/
 #   - icon: article
 #     name: 文章名称
 #     desc: 文章详细描述
