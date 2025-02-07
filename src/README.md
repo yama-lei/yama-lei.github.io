@@ -17,9 +17,9 @@ sidebar: true
 tagline: Welcome to My Blog!
 projects:
   - icon: project
-    name: 小项目
-    desc: 小项目合集
-    link: /underbuilding
+    name: 好玩的东西
+    desc: 好玩的东西合集
+    link: /fun/
 
   - icon: friend
     name: 友链
