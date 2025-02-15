@@ -23,6 +23,10 @@ export default navbar([
       {
         text: "前端开发",
         link: "前端开发/",
+      }, 
+      {
+        text: "科研启蒙",
+        link: "科研启蒙/",
       },
     ],
   },

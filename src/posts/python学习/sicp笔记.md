@@ -1,7 +1,5 @@
 ---
 date: 2025-01-18
-star: true
-sticky: 1
 ---
 
 # sicp笔记

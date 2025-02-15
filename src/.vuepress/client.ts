@@ -2,6 +2,7 @@ import { defineClientConfig } from "vuepress/client";
 import MyCard from "./components/myCard.vue";
 import MyLetter from "./components/myLetter.vue";
 import MapChart from "./components/MapChart.vue"
+import CourseShow from "./components/CourseShow.vue";
 
 
 export default defineClientConfig({
