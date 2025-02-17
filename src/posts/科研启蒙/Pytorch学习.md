@@ -589,9 +589,7 @@ PyTorch 中，一个模型(`torch.nn.Module`)的可学习参数(也就是权重�
 
 >   Adapted from Zhihu
 
-### **. 预测时加载和保存模型**
-
-### **加载/保存状态字典(推荐做法)**
+#### **加载/保存状态字典**
 
 保存的代码：
 
@@ -615,3 +613,169 @@ model.eval()
 
 1.  在进行预测之前，必须调用 `model.eval()` 方法来将 `dropout` 和 `batch normalization` 层设置为验证模型。否则，只会生成前后不一致的预测结果。
 2.  `load_state_dict()` 方法必须传入一个字典对象，而不是对象的保存路径，也就是说必须先反序列化字典对象，然后再调用该方法，也是例子中先采用 `torch.load()` ，而不是直接 `model.load_state_dict(PATH)`
+
+
+
+## 项目实战：判断一个点在第几个象限（多分类）
+
+```py
+import torch
+import torch.nn as nn
+import torch.optim as optim
+import numpy as np
+class SorterNet(nn.Module):
+    def __init__(self):
+        super(SorterNet,self).__init__()
+        self.fc1=nn.Linear(2,128)
+        self.fc2=nn.Linear(128,128)
+        self.fc3=nn.Linear(128,4)# 最终映射得到四个数字，代表四个象限
+        self.relu=nn.ReLU()
+    def forward(self,x):
+        x=self.fc1(x)
+        x=self.relu(x)
+        x=self.fc2(x)
+        x=self.relu(x)
+        x=self.fc3(x)
+        return x
+sorter=SorterNet()
+
+optimizer=optim.Adam(sorter.parameters(),lr=0.01)
+criterion=nn.CrossEntropyLoss()
+scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.1)  # Reduce LR every 10 epochs by a factor of 0.1
+
+from torch.utils.data import Dataset,DataLoader
+
+class myDataset(Dataset):
+    def __init__(self,size=1000):
+        self.data=[]
+        self.label=[]
+        self.size=size
+        for _ in range(self.size):
+            tempArray=np.random.random_sample((2,))*1000-500
+            self.data.append(tempArray)
+            if(tempArray[0]>0 and tempArray[1]>0):
+                self.label.append(0)
+            elif(tempArray[0]<0 and tempArray[1]>0):
+                self.label.append(1)
+            elif(tempArray[0]<0 and tempArray[1]<0):
+                self.label.append(2)
+            else:
+                self.label.append(3)
+        self.label=torch.tensor(self.label,dtype=torch.long)
+        self.data=torch.tensor(self.data,dtype=torch.float32)
+    def __len__(self):
+        return self.size
+    def __getitem__(self,idx):
+        return self.data[idx],self.label[idx] #return both the data and the expected result(label)
+dataset=myDataset(500)
+
+dataloader=DataLoader(dataset,batch_size=128,shuffle=True)
+
+for epoch in range(100):
+    loss_sum=0
+    for inputs,labels in dataloader:
+        results=sorter(inputs)
+        loss=criterion(results,labels)
+        optimizer.zero_grad()
+        loss.backward()
+        torch.nn.utils.clip_grad_norm_(sorter.parameters(), max_norm=1.0)  # Clip gradients to avoid exploding gradients
+        optimizer.step()
+        scheduler.step()
+        loss_sum+=loss.item()
+    if epoch%100==99:
+        print(f"Epoch[{epoch}/1000] loss: {loss_sum}")
+
+```
+
+测试代码：
+
+```py
+import numpy as np
+import torch
+
+def test_model(model, x, y, label):
+    # Convert (x, y) into a tensor and reshape it for the model input
+    input_tensor = torch.tensor([x, y], dtype=torch.float32).unsqueeze(0)  # Shape (1, 2)
+    
+    # Pass input through the model
+    output = model(input_tensor)
+    
+    # Get predicted class (index with highest probability)
+    _, predicted_class = torch.max(output, 1)
+    
+    # If prediction matches the true label, return the updated count
+    if (x >= 0 and y >= 0 and label == predicted_class.item()) or \
+       (x < 0 and y > 0 and label == predicted_class.item()) or \
+       (x < 0 and y < 0 and label == predicted_class.item()) or \
+       (x > 0 and y < 0 and label == predicted_class.item()):
+        return 1  # Correct prediction
+    else:
+        return 0  # Incorrect prediction
+
+def test_function(model, test_num=1000):
+    test_input = [[np.random.random_sample(), np.random.random_sample()] for _ in range(test_num)]
+    test_label = []
+    for x, y in test_input:
+        if x >= 0 and y >= 0:
+            test_label.append(0)
+        elif x < 0 and y > 0:
+            test_label.append(1)
+        elif x < 0 and y < 0:
+            test_label.append(2)
+        else:
+            test_label.append(3)
+
+    correct_count = 0
+    test_count = 0
+    for idx, (x, y) in enumerate(test_input):
+        correct_count += test_model(model, x, y, test_label[idx])  # Count correct predictions
+        test_count += 1  # Total tests
+
+    correct_rate = correct_count / test_count  # Calculate accuracy
+    return test_count, correct_count, correct_rate
+
+# Test the function
+test_count_sum = 0
+test_correct_sum = 0
+for _ in range(10):
+    test_count, correct_count, correct_rate = test_function(sorter)
+    test_count_sum += test_count
+    test_correct_sum += correct_count
+
+# Calculate overall accuracy
+rate = test_correct_sum / test_count_sum
+print(f"Overall Accuracy: {rate:.4f}")
+```
+
+交互版本：
+
+```py
+def predict_quadrant(model):
+    # 获取用户输入的坐标
+    x = float(input("请输入x坐标: "))
+    y = float(input("请输入y坐标: "))
+    
+    # 将输入的坐标转换为 tensor
+    input_tensor = torch.tensor([x, y], dtype=torch.float32).unsqueeze(0)  # Shape (1, 2)
+    
+    # 使用模型进行预测
+    output = model(input_tensor)
+    
+    # 获取预测的类别
+    _, predicted_class = torch.max(output, 1)
+    
+    # 显示预测结果
+    if predicted_class.item() == 0:
+        print(f"坐标 ({x}, {y}) 位于第一象限 (x>0, y>0)")
+    elif predicted_class.item() == 1:
+        print(f"坐标 ({x}, {y}) 位于第二象限 (x<0, y>0)")
+    elif predicted_class.item() == 2:
+        print(f"坐标 ({x}, {y}) 位于第三象限 (x<0, y<0)")
+    else:
+        print(f"坐标 ({x}, {y}) 位于第四象限 (x>0, y<0)")
+
+# 使用示例
+while True:
+    predict_quadrant(sorter)  # 输入并预测某个坐标
+```
+

@@ -27,6 +27,10 @@ export default navbar([
       {
         text: "科研启蒙",
         link: "科研启蒙/",
+      }, 
+      {
+        text: "NJUCS",
+        link: "NJUCS/",
       },
     ],
   },
@@ -43,6 +47,10 @@ export default navbar([
     icon: "pen-to-square",
     link: "/posts/算法/"
   },
-  
+  {
+    text:"NJUCS南大计算机笔记",
+    icon: "/assets/icon/nju.svg",
+    link: "/posts/NJUCS/"
+  },
   
 ]);
