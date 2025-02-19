@@ -192,3 +192,38 @@ int main(){
 }
 ```
 
+## 构造函数、拷贝函数
+
+### 构造函数
+
+```cpp
+class animal{
+	public:
+        animal(string name);//不能这样写：animal(string:name)
+        string name;
+};
+animal::animal(string name): name(name){
+//初始化列表
+    cout<<"the animal is created!"<<endl;
+};
+```
+
+### 拷贝函数
+
+```c++
+class animal{
+	public:
+        animal(string name);//不能这样写：animal(string:name):name(name){}，如果这样的话，就不需要在class之外再
+    	animal(animal& animal)
+        string name;
+};
+animal::animal(string name): name(name){
+//初始化列表
+    cout<<"the animal is created!"<<endl;
+};
+
+//usage:
+
+```
+
+>   可以自定义一个“深度拷贝”的拷贝函数，如果没有拷贝函数，那么就会默认生成一个浅拷贝的拷贝函数
