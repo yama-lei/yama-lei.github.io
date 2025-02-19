@@ -15,11 +15,7 @@ export default navbar([
       {
         text: "python",
         link: "python学习/",
-      },
-      {
-        text: "cpp高程/算法",
-        link: "算法/",
-      },      
+      },    
       {
         text: "前端开发",
         link: "前端开发/",
@@ -31,6 +27,21 @@ export default navbar([
       {
         text: "NJUCS",
         link: "NJUCS/",
+        prefix: "NJUCS/",
+        children:[
+          {
+            text: "高级程序设计",
+            link:  "高级程序设计/",
+          },
+          {
+            text: "数字逻辑与计算机组成",
+            link:  "数字逻辑与计算机组成/",
+          },
+          {
+            text: "普通物理学（上）",
+            link:  "普通物理学（上）/",
+          }
+        ]
       },
     ],
   },
@@ -42,11 +53,6 @@ export default navbar([
   },
 
 
-  {
-    text:"算法学习",
-    icon: "pen-to-square",
-    link: "/posts/算法/"
-  },
   {
     text:"NJUCS南大计算机笔记",
     icon: "/assets/icon/nju.svg",
