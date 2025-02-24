@@ -26,4 +26,3 @@ article: false
 
 ![45663623487809d37f6e7c28160b460](./NewYearEve.assets/45663623487809d37f6e7c28160b460.jpg)
 
-</style>
