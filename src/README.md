@@ -34,6 +34,11 @@ projects:
   - icon: book
     name: 小说
     desc: 完全虚构
+    link: /fiction/
+  
+  - icon: book
+    name: MyLife
+    desc: Enjoy the jounery of life
     link: /story/
 #   - icon: article
 #     name: 文章名称

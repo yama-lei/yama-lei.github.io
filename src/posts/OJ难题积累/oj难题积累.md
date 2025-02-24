@@ -104,3 +104,55 @@ else:
 5. **输出结果**：输出结果的数量和所有有效组合，按字典序排列。
 
 这种方法通过递归和剪枝高效地生成所有可能的解，并按字典序输出，确保在合理时间内处理所有可能的情况。
+
+---
+
+# MetaXiao's solution
+
+```cpp
+#include<bits/stdc++.h>
+using namespace std;
+int n, cnt = 0, curr[10];
+vector<vector<int>> res;
+
+void dfs(int* curr, int idx, int s, int trg, int& cnt, vector<vector<int>>& res)
+{
+    if (idx == 10)
+    {
+        if (s == trg)
+        {
+            res.push_back(vector<int>(curr, curr + 10));
+            cnt++;
+        }
+        return;
+    }
+    if (s+(10-idx)>trg || s+(10-idx)*3<trg) return; 
+
+    for (int i = 1; i <= 3; i++)
+    {
+        curr[idx]=i;
+        dfs(curr, idx+1, s+i, trg, cnt, res);
+    }
+}
+
+int main()
+{
+    cin >> n;
+    if (n < 10 || n > 30)
+    {
+        cout << "0" << endl;
+        return 0;
+    }
+
+    dfs(curr, 0, 0, n, cnt, res);
+    cout << cnt << endl;
+    for (const auto& result : res)
+    {
+        for (size_t j = 0; j < result.size(); j++)
+            cout << result[j] << (j < 9 ? " " : "");
+        cout << endl;
+    }
+}
+
+```
+

@@ -61,7 +61,7 @@ export default hopeTheme({
       "/thinking/myOldDays.html":["********","password","请输入密码"],
       "/New/":["1234"],
       "/friendsLink":["1234"],
-      "/story/love":["1234"],
+      "/fiction/love":["1234"],
     },
   },
 

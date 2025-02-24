@@ -583,7 +583,7 @@ optimizer.step()#优化参数
 
 ### Save and load the state_dict
 
-#### **1. 什么是状态字典(state_dict)**
+#### ** 什么是状态字典(state_dict)**
 
 PyTorch 中，一个模型(`torch.nn.Module`)的可学习参数(也就是权重和偏置值)是包含在模型参数(`model.parameters()`)中的，一个状态字典就是一个简单的 Python 的字典，其键值对是每个网络层和其对应的参数张量。模型的状态字典只包含带有可学习参数的网络层（比如卷积层、全连接层等）和注册的缓存（`batchnorm`的 `running_mean`）。优化器对象(`torch.optim`)同样也是有一个状态字典，包含的优化器状态的信息以及使用的超参数。
 

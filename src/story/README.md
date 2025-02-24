@@ -1,15 +1,93 @@
 ---
-article: false
 sidebar: false
+article: false
+navbar: false
 ---
-这里是我的小说创作地。
+这一页还在测试当中，因此有很多的重复内容。
+> 其实是就写了框架，样式还要调整，还要补充很多的故事
+<TimeLinePage :stories="myStories"/>
 
-<div style="display: flex; flex-wrap: wrap;">
-  <VPCard
-      title="亚麻故事集--番外篇"
-      logo="/assets/friendsHead/WangYuQin.jpg"
-      desc="像是做了一场梦，醒了很久还是很感动"
-      link="/story/love.html"
-      style="flex: 1 1 30%; margin: 10px; box-sizing: border-box;"
-  />
-</div>
+<script setup>
+   const myStories = [
+    {
+      imageSrc: './images/1.jpg',
+      title: '嘉禾一中宣讲',
+      description: '去嘉禾一中宣讲，南京大学win麻了，宣讲就是win win win！',
+      link:'jhyz',
+      time:'2025-1-19',
+      comments:'comments',
+      showComments:false,
+      },    
+      {
+      imageSrc: './images/红山动物园.png',
+      title: '红山动物园玩去了',
+      description: '逛了一上午，真的看腻了',
+      link:'RedMountainZoo',
+      time:'2024-10-5',
+      comments:'comments',
+      showComments:false,
+      },      
+      {
+      imageSrc: './images/除夕.jpg',
+      title: '除夕随便写点',
+      description: '烟花只在除夕晚上好看，因为不用担心扰民',
+      link:'NewYearEve',
+      time:'2022-1-28',
+      comments:'comments',
+      showComments:false,
+      },    {
+      imageSrc: './images/1.jpg',
+      title: '嘉禾一中宣讲',
+      description: '去嘉禾一中宣讲，南京大学win麻了，宣讲就是win win win！',
+      link:'jhyz',
+      time:'2025-1-19',
+      comments:'comments',
+      showComments:false,
+      },    
+      {
+      imageSrc: './images/红山动物园.png',
+      title: '红山动物园玩去了',
+      description: '逛了一上午，真的看腻了',
+      link:'RedMountainZoo',
+      time:'2024-10-5',
+      comments:'comments',
+      showComments:false,
+      },      
+      {
+      imageSrc: './images/除夕.jpg',
+      title: '除夕随便写点',
+      description: '烟花只在除夕晚上好看，因为不用担心扰民',
+      link:'NewYearEve',
+      time:'2022-1-28',
+      comments:'comments',
+      showComments:false,
+      },    {
+      imageSrc: './images/1.jpg',
+      title: '嘉禾一中宣讲',
+      description: '去嘉禾一中宣讲，南京大学win麻了，宣讲就是win win win！',
+      link:'jhyz',
+      time:'2025-1-19',
+      comments:'comments',
+      showComments:false,
+      },    
+      {
+      imageSrc: './images/红山动物园.png',
+      title: '红山动物园玩去了',
+      description: '逛了一上午，真的看腻了',
+      link:'RedMountainZoo',
+      time:'2024-10-5',
+      comments:'comments',
+      showComments:false,
+      },      
+      {
+      imageSrc: './images/除夕.jpg',
+      title: '除夕随便写点',
+      description: '烟花只在除夕晚上好看，因为不用担心扰民',
+      link:'NewYearEve',
+      time:'2022-1-28',
+      comments:'comments',
+      showComments:false,
+      },
+    // Add more stories as needed
+  ]
+</script>

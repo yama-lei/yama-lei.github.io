@@ -210,3 +210,7 @@ But the difference lies in:
 #### CO-ATTENTION AND SELF-ATTENTION
 
 >   To get more about these attention machenism, read the raw paper.
+
+### External Knowledge
+
+Sometimes the model need more information to solve the problem,int that case, we need to give the model the capability to query an **External Knowledge Base** or **EKB**.
