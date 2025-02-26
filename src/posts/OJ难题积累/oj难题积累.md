@@ -56,9 +56,9 @@ title:OJ难题积累(luogu)
 
 
 
-# 我的尝试
+## 我的尝试
 
-# Deepseek 解答
+## Deepseek 解答
 
 为了解决这个问题，我们需要找到所有可能的10种调料的组合，每种调料的克数可以是1到3克，使得它们的总和等于给定的美味程度n。我们需要按字典序输出所有可能的组合，并在没有解的情况下输出0。
 
@@ -107,7 +107,7 @@ else:
 
 ---
 
-# MetaXiao's solution
+## MetaXiao's solution
 
 ```cpp
 #include<bits/stdc++.h>
@@ -156,3 +156,88 @@ int main()
 
 ```
 
+# P1044 [NOIP 2003 普及组] 栈
+
+[题解 P1044 【栈】 - 洛谷专栏](https://www.luogu.com.cn/article/vj5wm9da)
+
+## 题目背景
+
+栈是计算机中经典的数据结构，简单的说，栈就是限制在一端进行插入删除操作的线性表。
+
+栈有两种最重要的操作，即 pop（从栈顶弹出一个元素）和 push（将一个元素进栈）。
+
+栈的重要性不言自明，任何一门数据结构的课程都会介绍栈。宁宁同学在复习栈的基本概念时，想到了一个书上没有讲过的问题，而他自己无法给出答案，所以需要你的帮忙。
+
+## 题目描述
+
+![](https://cdn.luogu.com.cn/upload/image_hosting/5qxy9fz2.png)
+
+宁宁考虑的是这样一个问题：一个操作数序列，$1,2,\ldots ,n$（图示为 1 到 3 的情况），栈 A 的深度大于 $n$。
+
+现在可以进行两种操作，
+
+1. 将一个数，从操作数序列的头端移到栈的头端（对应数据结构栈的 push 操作）
+2. 将一个数，从栈的头端移到输出序列的尾端（对应数据结构栈的 pop 操作）
+
+使用这两种操作，由一个操作数序列就可以得到一系列的输出序列，下图所示为由 `1 2 3` 生成序列 `2 3 1` 的过程。
+
+![](https://cdn.luogu.com.cn/upload/image_hosting/8uwv2pa2.png)
+
+（原始状态如上图所示）
+
+你的程序将对给定的 $n$，计算并输出由操作数序列 $1,2,\ldots,n$ 经过操作可能得到的输出序列的总数。
+
+## 输入格式
+
+输入文件只含一个整数 $n$（$1 \leq n \leq 18$）。
+
+## 输出格式
+
+输出文件只有一行，即可能输出序列的总数目。
+
+## 输入输出样例 #1
+
+### 输入 #1
+
+```
+3
+```
+
+### 输出 #1
+
+```
+5
+```
+
+## 说明/提示
+
+**【题目来源】**
+
+NOIP 2003 普及组第三题
+
+## 我的尝试
+
+```cpp
+#include<bits/stdc++.h>
+using namespace std;
+int m;
+long long nums[19];
+long long getNum(int n){
+    if(n<0) return 0;
+    if(nums[n]!=0){
+        return nums[n];
+    }
+    for(int i=1;i<=n;i++){
+        nums[n]+=getNum(i-1)*getNum(n-i);
+    }
+    return nums[n];
+}
+int main(){
+    cin>>m;
+    nums[0]=1;
+    nums[1]=1;
+    nums[2]=2;
+    nums[3]=5;
+    cout<<getNum(m)<<endl;
+}
+```

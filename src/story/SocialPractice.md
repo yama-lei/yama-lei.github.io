@@ -1,3 +1,11 @@
+---
+sidebar: false
+navbar: false
+article: false
+---
+
+
+
 >   The following is the 总结 
 
 在报名截止日期那天，我满怀忐忑地向邵学长询问报名是否需要具备相关基础，担心自己是否能胜任实践任务。但在学长热情的鼓励下，我最终毫不犹豫地提交了报名申请。

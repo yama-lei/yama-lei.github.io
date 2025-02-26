@@ -342,9 +342,9 @@ int main(){
 
 但是在定义静态成员变量的时候也是可以采取`inline static int count=0;`的方法
 
-### Polymorphism 
+## Polymorphism 
 
-#### Virtual function
+### Virtual function
 
 1.   defined inside the class with a keyword `virtual`
 2.   can be **overriden** in the derived class
@@ -385,7 +385,7 @@ But the keyworfd `const` is **not mandatory** (We can define a virtual function 
 
  
 
-####  Dynamic cast
+###  Dynamic cast
 
 We konw that we can define a pointer of base class like this :
 
@@ -438,7 +438,7 @@ int main(){
 }
 ```
 
-### This pointer
+## This pointer
 
 ​	在 C++ 中，**this** 指针是一个特殊的指针，它指向当前对象的实例。在 C++ 中，每一个对象都能通过 **this** 指针来访问自己的地址。**this**是一个隐藏的指针，可以在类的成员函数中使用，它可以用来指向调用对象。
 
@@ -453,3 +453,52 @@ A* ptr=new A;
 //then ptr==this
 ```
 
+## 模态化设计
+
+We can depart the declaration and the implemtation.
+
+```cpp
+project/
+├── Vector.h    // Class declaration (header)
+├── Vector.cpp  // Class definition (implementation)
+└── main.cpp    // Usage (driver code)
+```
+
+>   An example from deepseek
+
+When we run the project, we have compiler each `.cpp` file respectly and link them together.
+
+### **4. Compilation & Linking**
+
+C++ requires compiling each `.cpp` file separately and then linking them together. Here’s how to do it:
+
+```bash
+g++ -c Vector.cpp -o Vector.o
+g++ -c main.cpp -o main.o
+g++ Vector.o main.o -o program        #Link both object files into an executable
+./program
+```
+
+Or we can take the following short cut:
+
+```bash
+g++ Vector.cpp main.cpp -o program    # Compile + link → "program" executable
+./program                             # Run it
+```
+
+The follwing are some place to pay attention to.
+
+>   1.  **Never compile `.h` files directly**:
+>
+>       -   Headers are included via `#include` in `.cpp` files.
+>       -   Example: `main.cpp` includes `Vector.h`, which is processed during compilation.
+>
+>   2.  **Common Errors**:
+>
+>       -   **Linker Error**: If you forget to compile `Vector.cpp`, you’ll see errors like:
+>
+>           ```
+>           undefined reference to `Vector::push_back(int)'
+>           ```
+>
+>       -   **Missing Header Guards**: If `Vector.h` is included multiple times, use `#pragma once` to avoid redefinition errors.
