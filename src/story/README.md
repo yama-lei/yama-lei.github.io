@@ -12,7 +12,7 @@ navbar: false
 <script setup>
    const myStories = [
     {
-      imageSrc: './images.assets/image1.jpg',
+      imageSrc: 'https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/202503011126097.jpg',
       title: '嘉禾一中宣讲',
       description: '去嘉禾一中宣讲，南京大学win麻了，宣讲就是win win win！',
       link:'jhyz',
@@ -21,7 +21,7 @@ navbar: false
       showComments:false,
       },    
       {
-      imageSrc: './images.assets/红山动物园.png',
+      imageSrc: 'https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/202503011126096.png',
       title: '红山动物园玩去了',
       description: '逛了一上午，真的看腻了',
       link:'RedMountainZoo',
@@ -30,7 +30,7 @@ navbar: false
       showComments:false,
       },      
       {
-      imageSrc: './images.assets/除夕.jpg',
+      imageSrc: 'https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/202503011147039.jpg',
       title: '除夕随便写点',
       description: '烟花只在除夕晚上好看，因为不用担心扰民',
       link:'NewYearEve',
@@ -39,7 +39,7 @@ navbar: false
       showComments:false,
       },   
       { 
-      imageSrc: './images.assets/除夕.jpg',
+      imageSrc: 'https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/202503011145059.png',
       title: '寒假社会实践结束了',
       description: '其实我觉得这次社会实践更像是面向ai编程范式的实践',
       link:'SocialPractice',

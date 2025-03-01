@@ -115,8 +115,6 @@ class XiaomiCar{
     }
     //友元类空访问所有的成员
 }
-
-
 ```
 
 ## Inheritance

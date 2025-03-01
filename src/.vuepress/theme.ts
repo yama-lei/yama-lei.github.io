@@ -60,7 +60,6 @@ export default hopeTheme({
       "/demo/encrypt.html": ["1234"],
       "/thinking/myOldDays.html":["********","password","请输入密码"],
       "/New/":["1234"],
-      "/friendsLink":["1234"],
       "/fiction/love":["1234"],
     },
   },

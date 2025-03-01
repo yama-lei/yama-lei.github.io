@@ -12,21 +12,14 @@ article: false
 ---
 <VPCard
     title="李樾老师--最后一课"
-    logo="/assets/images/bk1.png"
-    desc="为人师表"
+    desc="李樾老师在2024年秋季sicp课堂上的最后一课"
     link="/thinking/一位很优秀的老师说的话"
 />
 <VPCard
     title="哲思"
-    logo="/assets/images/bk1.png"
     desc="酒饱饭足之际"
     link="/thinking/beautifulSentence"
 />
-<VPCard
-    title="还没想好名字"
-    logo="/assets/images/bk1.png"
-    desc="还没想好描述"
-    link="/thinking/myOldDays"
-/>
+
 ---
 
