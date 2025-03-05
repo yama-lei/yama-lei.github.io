@@ -137,7 +137,7 @@ public变成protected
 
 >   **无论哪种继承方式，都只改变原来类的protected和public的properties与methods；而private始终不变**
 
-![image-20250126222042198](./class.assets/image-20250126222042198.png)
+![image-20250126222042198](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250126222042198.png)
 
 ## 操作符重载
 

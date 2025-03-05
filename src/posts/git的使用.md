@@ -1,12 +1,12 @@
 ---
 date: 2025-01-13
 star: true
-
+title: github入门--the missing class for cs learner
 ---
 
 
 
-# git基本使用Quick Start
+## git基本使用Quick Start
  ![](https://www.runoob.com/wp-content/uploads/2015/02/git-command.jpg)
 
  ### 安装与初始化
@@ -146,3 +146,34 @@ git merge branchname
 ```
 git branch -d branchname
 ```
+
+### 5.如何merge代码？
+
+```bash
+git fetch origin //拉取
+git merge origin/main //将代码和本地的进行合并
+```
+
+<video width="320" height="240" controls>
+  <source src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/202503011711518.mp4" type="video/mp4">
+</video>
+
+
+
+### fork别的仓库
+
+下面是deepseek对于fork的描述：
+
+-   Fork 的仓库是你的独立副本，修改不会影响原仓库。
+
+-   Fork 的仓库**不会自动同步**原仓库的更新，需要手动同步。
+-   你可以通过命令行或网页端将原仓库的更新同步到你的 Fork 仓库。
+-   如果你想贡献代码，可以通过 Pull Request 提交更改。
+
+## github page
+
+github提供了部署静态网页相对简单的一个方案--github page
+
+## github action
+
+github action是一个工作流(workflow)
