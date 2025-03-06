@@ -48,13 +48,10 @@ const { loaded, data } = useGithubRepo(toRef(props, 'repo'))
   border: solid 1px var(--vp-c-divider);
   border-radius: 8px;
   transition: border-color var(--vp-t-color);
-  width: 38%;
   border: 1px solid rgb(220, 220, 220);
 }
 
-.vp-repo-card:hover {
-  border-color: var(--vp-c-brand-2);
-}
+
 
 .vp-repo-card p {
   margin: 0;
@@ -74,6 +71,7 @@ const { loaded, data } = useGithubRepo(toRef(props, 'repo'))
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  color:#0969DA;
 }
 
 .vp-repo-card .repo-name a {
@@ -142,6 +140,7 @@ const { loaded, data } = useGithubRepo(toRef(props, 'repo'))
   color: var(--vp-c-text-2);
   transition: color var(--vp-t-color);
   transform: translateY(2px);
+  margin-bottom: 10px;
 }
 
 .vpi-github-star {
