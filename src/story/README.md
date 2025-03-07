@@ -50,7 +50,7 @@ navbar: false
 	      imageSrc: 'https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/20250307201030.png',
       title: '程序设计OJ又没过',
       description: '很简单的题目，在机房死活过不去，回来重写一遍就过了。',
-      link:'‘,
+      link:'',
       time:'2025-3-7',
       comments:'comments',
       showComments:false,
