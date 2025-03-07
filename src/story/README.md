@@ -34,7 +34,7 @@ navbar: false
       title: '除夕随便写点',
       description: '烟花只在除夕晚上好看，因为不用担心扰民',
       link:'NewYearEve',
-      time:'2022-1-28',
+      time:'2025-1-28',
       comments:'comments',
       showComments:false,
       },   
@@ -43,10 +43,18 @@ navbar: false
       title: '寒假社会实践结束了',
       description: '其实我觉得这次社会实践更像是面向ai编程范式的实践',
       link:'SocialPractice',
-      time:'2022-1-28',
+      time:'2025-1-28',
       comments:'comments',
       showComments:false,
-      },
+      },{
+	      imageSrc: 'https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/20250307201030.png',
+      title: '程序设计OJ又没过',
+      description: '很简单的题目，在机房死活过不去，回来重写一遍就过了。',
+      link:'‘,
+      time:'2025-3-7',
+      comments:'comments',
+      showComments:false,
+      }
     // Add more stories as needed
   ]
 </script>
