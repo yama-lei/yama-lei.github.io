@@ -22,12 +22,15 @@
         </transition>
       </div>
     </div>
+
+
   </div>
 </template>
 
 <script setup>
 import { defineProps, computed } from 'vue' // 添加computed
 import StoryCard from './StoryCard.vue'
+import Paper from './Paper.vue'
 
 const props = defineProps({
   stories: Array

@@ -3,9 +3,8 @@ sidebar: false
 article: false
 navbar: false
 ---
-这一页还在测试当中，因此有很多的重复内容。
 
->   其实是就写了框架，样式还要调整，还要补充很多的故事  
+<br>
 
 <TimeLinePage :stories="myStories"/>
 
@@ -52,6 +51,14 @@ navbar: false
       description: '很简单的题目，在机房死活过不去，回来重写一遍就过了。',
       link:'',
       time:'2025-3-7',
+      comments:'comments',
+      showComments:false,
+      },{
+	      imageSrc: 'https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/a896b7a20c9d8a4cee12998faead9a9.jpg',
+      title: '记录一下这半年多来写过的信',
+      description: '和WJQ同学写信应该有5、6次了，希望ta能如愿快乐地去到自己喜欢的城市，读自己喜欢的专业',
+      link:'Letters',
+      time:'2025-3-8',
       comments:'comments',
       showComments:false,
       }

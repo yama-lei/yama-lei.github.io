@@ -127,7 +127,7 @@ function handleLike(){
     justify-content: center;
     gap: 5px;
     font-family: inherit;
-    font-size: 10px;
+    font-size: 15px;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.4px;
@@ -136,7 +136,7 @@ function handleLike(){
     border-style: solid;
     border-width: 2px 2px 2px 2px;
     border-color: rgba(255, 255, 255, 0.333);
-    border-radius: 40px 40px 40px 40px;
+    border-radius: 10px;
     padding: 8px 12px 8px 14px;
     transform: translate(0px, 0px) rotate(0deg);
     transition: 0.2s;

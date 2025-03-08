@@ -4,6 +4,7 @@ import TimeLinePage from './components/TimeLinePage.vue'
 import StoryCard from './components/StoryCard.vue'
 import storyShow from "./components/storyShow.vue";
 import RepoCard from './components/RepoCard.vue';
+import Paper from "./components/Paper.vue";
 export default defineClientConfig({
   enhance({ app }) {
     // 手动注册组件
@@ -12,6 +13,7 @@ export default defineClientConfig({
     app.component("StoryCard",StoryCard);
     app.component("storyShow",storyShow);
     app.component("RepoCard",RepoCard);
+    app.component("Paper",Paper);
   },
   layouts: {
     storyShow,
