@@ -56,7 +56,7 @@ navbar: false
       },{
 	      imageSrc: 'https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/a896b7a20c9d8a4cee12998faead9a9.jpg',
       title: '记录一下这半年多来写过的信',
-      description: '和WJQ同学写信应该有5、6次了，希望ta能如愿快乐地去到自己喜欢的城市，读自己喜欢的专业',
+      description: '和别人写信应该有5、6次了，想着这也是我思想的载体，好好保存',
       link:'Letters',
       time:'2025-3-8',
       comments:'comments',
