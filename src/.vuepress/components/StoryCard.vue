@@ -1,8 +1,8 @@
 <!-- StoryCard.vue -->
 <template>
   <div class="story-card">
-    <div class="image-container">
-      <a :href="link" target="_blank">
+    <div class="image-container" v-if="imageSrc">
+      <a :href="link" target="_blank" >
         <img :src="imageSrc" alt="Story image" />
       </a>
     </div>

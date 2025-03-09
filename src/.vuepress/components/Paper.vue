@@ -16,7 +16,7 @@
           {{ para }}
         </div>
         <div class="author">
-          {{ author }}
+          {{author}}
         </div>
         <div class="time">
           {{ time }}
@@ -52,6 +52,7 @@ const props = defineProps({
   author: String,
   imgUrls: Array,
 });
+console.log(props.author);
 </script>
 
 <style scoped>
@@ -144,11 +145,11 @@ body {
 }
 
 .card:hover:before {
-  transform: translatey(-4%) rotate(-8deg);
+  transform: translatey(-4%)  translateX(8%);
 }
 
 .card:hover:after {
-  transform: translatey(4%) rotate(8deg);
+  transform: translatey(4%) translateX(-8%);
 }
 
 .content {
@@ -170,8 +171,7 @@ body {
 .slogan {
   position: absolute;
   right: 10px;
-  bottom: 20px;
-  z-index: 1000;
+  bottom: 10px;
 }
 
 .slogan img,
