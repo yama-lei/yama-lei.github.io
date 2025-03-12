@@ -1,5 +1,5 @@
 ---
-
+date: 2025-03-09
 ---
 
 # STL算法
@@ -45,14 +45,43 @@ int main{
 
 ### lower_bound 和 upper_bound
 
-return第一个大于（或小于）目标值的元素的迭代器，如果没找到，那么返回尾迭代器：
+**lower_bound** return 第一个**大于或等于**目标元素的迭代器
 
-``` cpp
-vector<int>a={1,3,4,6,10};
-int x=lower_bound(a.begin(),a.end(),6)-a.begin();//x为第一个小于6的元素的迭代器；
-int y=upper_bound(a.begin(),a.end(),6)-a.begin();
-cout<<*x<<" "<<*y<<endl;
+**upper_bound** return 第一个**大于**目标元素的迭代器
+
+结合lower_bound和upper_bound我们可以找到任意一个排序好的数据的区间
+
+```cpp
+    int len=10;
+    int arr[len]={9,8,7,7,6,5,4,3,3,0};
+    mySort(arr,0,len-1);
+    cout<<"[3,7]"<<": ";
+    int left1=lower_bound(arr,arr+len,3)-arr;
+    int right1=upper_bound(arr,arr+len,7)-arr-1;
+    print(arr,left1,right1);
+    cout<<"[3,7)"<<": ";
+    int left2=lower_bound(arr,arr+len,3)-arr;
+    int right2=lower_bound(arr,arr+len,7)-arr-1;
+    print(arr,left2,right2);
+    cout<<"(3,7]"<<": ";
+    int left4=upper_bound(arr,arr+len,3)-arr;
+    int right4=upper_bound(arr,arr+len,7)-arr-1;
+    print(arr,left4,right4);
+    cout<<"(3,7)"<<": ";
+    int left3=upper_bound(arr,arr+len,3)-arr;
+    int right3=lower_bound(arr,arr+len,7)-arr-1;
+    print(arr,left3,right3);
+/*
+输出：
+[3,7]: 3 3 4 5 6 7 7 
+[3,7): 3 3 4 5 6
+(3,7]: 4 5 6 7 7
+(3,7): 4 5 6
+*/
+
 ```
+
+**注意**：使用lower_bound来查找元素的时候，要确定：1. 得到的不是尾迭代器 2. 迭代器所指的值正是需要找的！
 
 ### swap
 
@@ -73,5 +102,16 @@ reverse(a.begin(),a.end());
 
 **本质是得到下一个排序！！！**
 
+如果想要得到某个序列的全排列，需要先将序列按照某种规则**进行排序**,
 
+再将按照该规则的**升序序列** 不断运用`next_permutation`即可
+
+```cpp
+int arr[]={3,2,1};
+sort(arr,arr+3,cmp);
+while(next_permutaion(arr)){
+    print(arr,arr+3);
+}
+//会打印5种排序（最开始的第一中没有打印，因为打印前已经用了next_permutaion）
+```
 

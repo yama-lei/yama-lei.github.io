@@ -88,7 +88,6 @@ title: 页面标题
 
 <script setup>
 import { defineComponent, h, ref } from 'vue';
-
 const MyComponent = defineComponent({
   setup() {
     const input = ref('Hello world!');

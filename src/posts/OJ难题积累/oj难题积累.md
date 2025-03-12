@@ -156,7 +156,7 @@ int main()
 
 ```
 
-# P1044 [NOIP 2003 普及组] 栈
+# P1044 [NOIP 2003 普及组] 栈 | 递归
 
 [题解 P1044 【栈】 - 洛谷专栏](https://www.luogu.com.cn/article/vj5wm9da)
 
@@ -278,5 +278,375 @@ ACFUNFUNFUN
 
 对于 $100\%$ 的数据：解压后的字符串长度在 $20000$ 以内，最多只有十重压缩。保证只包含数字、大写字母、`[` 和 `]`。
 
+# P1102 A-B 数对 | 二分查找
 
+## 题目背景
+
+出题是一件痛苦的事情！
+
+相同的题目看多了也会有审美疲劳，于是我舍弃了大家所熟悉的 A+B Problem，改用 A-B 了哈哈！
+
+## 题目描述
+
+给出一串正整数数列以及一个正整数 $C$，要求计算出所有满足 $A - B = C$ 的数对的个数（不同位置的数字一样的数对算不同的数对）。
+
+## 输入格式
+
+输入共两行。
+
+第一行，两个正整数 $N,C$。
+
+第二行，$N$ 个正整数，作为要求处理的那串数。
+
+## 输出格式
+
+一行，表示该串正整数中包含的满足 $A - B = C$ 的数对的个数。
+
+## 输入输出样例 #1
+
+### 输入 #1
+
+```
+4 1
+1 1 2 3
+```
+
+### 输出 #1
+
+```
+3
+```
+
+## 说明/提示
+
+对于 $75\%$ 的数据，$1 \leq N \leq 2000$。
+
+对于 $100\%$ 的数据，$1 \leq N \leq 2 \times 10^5$，$0 \leq a_i <2^{30}$，$1 \leq C < 2^{30}$。
+
+2017/4/29 新添数据两组
+
+---
+
+我的尝试：
+
+```cpp
+#include<bits/stdc++.h>
+using namespace std;
+
+
+
+int main(){
+    long long int n,c;
+    cin>>n>>c;
+    vector<long long int> arr(n);
+    for(long long int i=0;i<n;i++){
+        scanf("%lld",&arr[i]);
+    }
+    sort(arr.begin(),arr.end());
+    long long int max=arr[n-1];
+    long long int pairs=0;
+    long long int lastIndex=0;
+    for(long long int i=0;i<n&&arr[i]+c<=max;i++){
+        long long int thisIndex=lower_bound(arr.begin()+lastIndex,arr.end(),c+arr[i])-arr.begin();
+        if(thisIndex!=n){
+            lastIndex=thisIndex;
+            if(arr[thisIndex]==arr[i]+c){
+                int nums=0;
+                while(thisIndex+nums<n&&arr[thisIndex+nums]==arr[thisIndex]){
+                    nums+=1;
+                }
+                pairs+=nums;
+            }
+        }
+    }
+    cout<<pairs;
+    return 0;
+}
+```
+
+**TLE**
+
+一个和我思路差不多，效率类似的算法
+
+```cpp
+#include<bits/stdc++.h>
+using namespace std;
+
+long long arr[200001];
+
+int main(){
+    int n,c;
+    cin>>n>>c;
+    for(int i=0;i<n;i++){
+        scanf("%lld",arr+i);
+    }
+    sort(arr,arr+n);
+    int pairs=0;
+    for(int i=0;i<n;i++){
+        pairs+=upper_bound(arr,arr+n,arr[i]+c)-lower_bound(arr,arr+n,arr[i]+c);
+    }
+    cout<<pairs;    
+    return 0;
+
+}
+```
+
+**WA**，也是测试点三
+
+>   测试点三 输入是10000个1 和10000个2
+
+**最后，把pairs从int改成了longlong之后就AC了**
+
+从题解里面看到的一个很神奇的算法：
+
+```
+#include<bits/stdc++.h>
+using namespace std;
+
+long long arr[200001];
+map<long long,long long> mp;
+int main(){
+    int n,c;
+    cin>>n>>c;
+    for(int i=0;i<n;i++){
+        scanf("%lld",arr+i);
+        mp[arr[i]]++;
+        arr[i]-=c;
+    }
+    sort(arr,arr+n);
+    long long ans=0;
+    for(int i=0;i<n;i++){
+        ans+=mp[arr[i]];
+    }
+    cout<<ans;
+    return 0;
+}
+```
+
+用两个map相互映射。
+
+# P1873 [COCI 2011/2012 #5] EKO / 砍树 | 二分查找
+
+## 题目描述
+
+伐木工人 Mirko 需要砍 $M$ 米长的木材。对 Mirko 来说这是很简单的工作，因为他有一个漂亮的新伐木机，可以如野火一般砍伐森林。不过，Mirko 只被允许砍伐一排树。
+
+Mirko 的伐木机工作流程如下：Mirko 设置一个高度参数 $H$（米），伐木机升起一个巨大的锯片到高度 $H$，并锯掉所有树比 $H$ 高的部分（当然，树木不高于 $H$ 米的部分保持不变）。Mirko 就得到树木被锯下的部分。例如，如果一排树的高度分别为 $20,15,10$ 和 $17$，Mirko 把锯片升到 $15$ 米的高度，切割后树木剩下的高度将是 $15,15,10$ 和 $15$，而 Mirko 将从第 $1$ 棵树得到 $5$ 米，从第 $4$ 棵树得到 $2$ 米，共得到 $7$ 米木材。
+
+Mirko 非常关注生态保护，所以他不会砍掉过多的木材。这也是他尽可能高地设定伐木机锯片的原因。请帮助 Mirko 找到伐木机锯片的最大的整数高度 $H$，使得他能得到的木材至少为 $M$ 米。换句话说，如果再升高 $1$ 米，他将得不到 $M$ 米木材。
+
+## 输入格式
+
+第 $1$ 行 $2$ 个整数 $N$ 和 $M$，$N$ 表示树木的数量，$M$ 表示需要的木材总长度。
+
+第 $2$ 行 $N$ 个整数表示每棵树的高度。
+
+## 输出格式
+
+$1$ 个整数，表示锯片的最高高度。
+
+## 输入输出样例 #1
+
+### 输入 #1
+
+```
+4 7
+20 15 10 17
+```
+
+### 输出 #1
+
+```
+15
+```
+
+## 输入输出样例 #2
+
+### 输入 #2
+
+```
+5 20
+4 42 40 26 46
+```
+
+### 输出 #2
+
+```
+36
+```
+
+## 说明/提示
+
+对于 $100\%$ 的测试数据，$1\le N\le10^6$，$1\le M\le2\times10^9$，树的高度 $\le 4\times 10^5$，所有树的高度总和 $>M$。
+
+**我的尝试一**
+
+```cpp
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long int LL;
+int trees[1000000];
+map<LL,LL> mp;
+
+int biggerNum=0;
+LL calculateCut(LL H,LL N){
+    if(mp[H]!=0){
+        return mp[H];
+    }
+    int index=upper_bound(trees,trees+N,H)-trees;
+    LL sum=0;
+    while(index!=N){
+        sum+=trees[index]-H;
+        index++;
+    }
+    biggerNum=N-index-1;
+    mp[H]=sum;
+    return sum;
+}
+int main(){
+    LL N,M,sum=0,avr,cut,H;
+    cin>>N>>M;
+    for(int i=0;i<N;i++){
+        scanf("%d",trees+i);
+        sum+=trees[i];
+    }
+    sort(trees,trees+N);
+    avr=sum/N;
+    H=avr;
+    while(!(calculateCut(H,N)>=M&&calculateCut(H-1,N)<M)){
+        if(mp[H]>M){
+            H+=((mp[H]-M)/biggerNum>1)?(mp[H]-M)/biggerNum:1;
+        }else if(mp[H]==M){
+            break;
+        }else{
+            H-=((M-mp[H])/biggerNum>1)?(M-mp[H])/biggerNum:1;
+        }
+    }
+    cout<<H;
+    return 0;
+}
+```
+
+>    结果：1AC，9TLE...
+
+看了qwen给的题解之后，我尝试用ta的方法：
+
+```cpp
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long LL;
+int main(){
+    LL N,M,H;
+    cin>>N>>M;
+    vector<LL> trees(N,0);
+    for(int i=0;i<N;i++){
+        scanf("%d",&trees[i]);
+    }
+    sort(trees.begin(),trees.end());
+    vector<LL>prefix_sum(N+1,0);
+    prefix_sum[0]=0;
+    for(int i=1;i<=N;i++){
+        prefix_sum[i]=prefix_sum[i-1]+trees[i-1];
+    }
+    LL left=0,right=trees[N-1];
+    LL mid=0;
+    while(left<right){
+        mid=(left+right)/2;
+        LL idx=(upper_bound(trees.begin(),trees.end(),mid)-trees.begin());
+        LL sum=prefix_sum[N]-prefix_sum[idx]-mid*(N-idx);
+        if(sum>M){
+            left=mid+1;
+        }else if(sum<M){
+            right=mid-1;
+        }else{
+            break;
+        }
+    }
+    cout<<mid;
+    return 0;
+}
+```
+
+>   结果 4AC，6WA
+
+再次经过qwen同学的指导：
+
+>   发现，如果while循环的停止条件不对
+
+```cpp
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long LL;
+int main(){
+    LL N,M,H;
+    cin>>N>>M;
+    vector<LL> trees(N,0);
+    for(int i=0;i<N;i++){
+        scanf("%d",&trees[i]);
+    }
+    sort(trees.begin(),trees.end());
+    vector<LL>prefix_sum(N+1,0);
+    prefix_sum[0]=0;
+    for(int i=1;i<=N;i++){
+        prefix_sum[i]=prefix_sum[i-1]+trees[i-1];
+    }
+    LL left=0,right=trees[N-1];
+    LL mid=0;
+    while(left<=right){
+        mid=(left+right)/2;
+        LL idx=(upper_bound(trees.begin(),trees.end(),mid)-trees.begin());
+        LL sum=prefix_sum[N]-prefix_sum[idx]-mid*(N-idx);
+        if(sum>M){
+            left=mid+1;
+        }else if(sum<M){
+            right=mid-1;
+        }else{
+            break;
+        }
+    }
+    mid=(left+right)/2;
+    cout<<mid;
+    return 0;
+}
+```
+
+其他的解答：
+
+```cpp
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long LL;
+LL trees[1000001];
+int main(){
+    LL N,M,H;    
+    cin>>N>>M;
+    LL max=0;
+    for(int i=0;i<N;i++){
+        scanf("%lld",trees+i);
+        if(trees[i]>max){
+            max=trees[i];
+        }
+    }
+    LL right=max,left=0;
+    LL mid=(right+left)/2;
+    while(left<=right){
+        mid=(right+left)/2;
+        LL sum=0;
+        for(int i=0;i<N;i++){
+            if(trees[i]>mid){
+                sum+=(trees[i]-mid);
+            }
+        }
+        if(sum<M){
+            right=mid-1;
+        }else if(sum>M){
+            left=mid+1;
+        }else{
+            break;
+        }
+    }
+    mid=(left+right)/2;
+    cout<<mid;
+}
+```
 

@@ -436,6 +436,10 @@ int main(){
 }
 ```
 
+>   base class的对象 不能赋值到derived class；但是derived class 的对象可以赋值给 base class；
+>
+>   derived class的指针可以赋值给base class的指针；反之不行，需要`dynamic cast`
+
 ## This pointer
 
 ​	在 C++ 中，**this** 指针是一个特殊的指针，它指向当前对象的实例。在 C++ 中，每一个对象都能通过 **this** 指针来访问自己的地址。**this**是一个隐藏的指针，可以在类的成员函数中使用，它可以用来指向调用对象。
@@ -500,3 +504,4 @@ The follwing are some place to pay attention to.
 >           ```
 >
 >       -   **Missing Header Guards**: If `Vector.h` is included multiple times, use `#pragma once` to avoid redefinition errors.
+

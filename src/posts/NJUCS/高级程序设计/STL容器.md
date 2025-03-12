@@ -1,7 +1,6 @@
 ---
 date: 2025-01-27
-author:  ChrisKim
-title: STL
+title: STL容器
 ---
 > 由于~~我实在懒~~ 不小心把自己写的文件给覆盖了，搞得我很不爽，不想再写了于是抄了一份别人的：https://github.com/ChrisKimZHT/Haotian-BiJi/blob/master/150~159/154%E3%80%90%E6%9D%82%E9%A1%B9%E3%80%91%E7%AE%97%E7%AB%9E%E5%B8%B8%E7%94%A8%20C%2B%2B%20STL%20%E7%94%A8%E6%B3%95.md
 
@@ -32,39 +31,39 @@ STL 作为一个封装良好，性能合格的 C++ 标准库，在算法竞赛�
 
 - 顺序容器
 
-  - [ ] **array**
+  -  **array**
 
-  - [x] **vector**
-  - [ ] **deque**
-  - [ ] forward_list
-  - [ ] **list**
+  -  **vector**
+  -  **deque**
+  -  forward_list
+  -  **list**
 - 关联容器
 
-  - [x] **set**
-  - [x] **map**
-  - [ ] **multiset**
-  - [ ] **multimap**
+  -  **set**
+  -  **map**
+  -  **multiset**
+  -  **multimap**
 - 无序关联容器
 
-  - [ ] **unordered_set**
-  - [ ] **unordered_map**
-  - [ ] **unordered_multiset**
-  - [ ] **unordered_multimap**
+  -  **unordered_set**
+  -  **unordered_map**
+  -  **unordered_multiset**
+  -  **unordered_multimap**
 - 容器适配器
 
-  - [x] **stack**
-  - [x] **queue**
-  - [x] **priority_queue**
-  - [ ] flat_set
-  - [ ] flat_map
-  - [ ] flat_multiset
-  - [ ] flat_multimap
+  -  **stack**
+  -  **queue**
+  -  **priority_queue**
+  -  flat_set
+  -  flat_map
+  -  flat_multiset
+  -  flat_multimap
 - 字符串
-  - [x] **string** (basic_string\<char\>)
+  -  **string** (basic_string\<char\>)
 
 - 对与元组
-  - [x] **pair**
-  - [ ] **tuple**
+  -  **pair**
+  -  **tuple**
 
 
 
@@ -846,38 +845,38 @@ for (auto it = a.begin(); it != a.end(); ++it)
 
 - 算法库 Algorithm
 
-  - [ ] `count()`
-  - [ ] `find()`
-  - [ ] `fill()`
-  - [x] [`swap()`](https://zh.cppreference.com/w/cpp/algorithm/swap)
-  - [x] [`reverse()`](https://zh.cppreference.com/w/cpp/algorithm/reverse)
-  - [ ] `shuffle()` C++11
-  - [x] [`unique()`](https://zh.cppreference.com/w/cpp/algorithm/unique)
-  - [x] [`sort()`](https://zh.cppreference.com/w/cpp/algorithm/sort)
-  - [x] [`lower_bound()`](https://zh.cppreference.com/w/cpp/algorithm/lower_bound) / [`upper_bound()`](https://zh.cppreference.com/w/cpp/algorithm/upper_bound)
-  - [x] [`max()`](https://zh.cppreference.com/w/cpp/algorithm/max) / [`min()`](https://zh.cppreference.com/w/cpp/algorithm/min)
-  - [ ] `max_element()` / `min_element()`
-  - [ ] `prev_permutation()` / `next_permutation()`
+  -  `count()`
+  -  `find()`
+  -  `fill()`
+  -  [`swap()`](https://zh.cppreference.com/w/cpp/algorithm/swap)
+  -  [`reverse()`](https://zh.cppreference.com/w/cpp/algorithm/reverse)
+  -  `shuffle()` C++11
+  -  [`unique()`](https://zh.cppreference.com/w/cpp/algorithm/unique)
+  -  [`sort()`](https://zh.cppreference.com/w/cpp/algorithm/sort)
+  -  [`lower_bound()`](https://zh.cppreference.com/w/cpp/algorithm/lower_bound) / [`upper_bound()`](https://zh.cppreference.com/w/cpp/algorithm/upper_bound)
+  -  [`max()`](https://zh.cppreference.com/w/cpp/algorithm/max) / [`min()`](https://zh.cppreference.com/w/cpp/algorithm/min)
+  -  `max_element()` / `min_element()`
+  -  `prev_permutation()` / `next_permutation()`
 - 数学函数 cmath
-  - [x] [`abs()`](https://zh.cppreference.com/w/cpp/numeric/math/fabs)
-  - [x] [`exp()`](https://zh.cppreference.com/w/cpp/numeric/math/exp)
-  - [x] [`log()`](https://zh.cppreference.com/w/cpp/numeric/math/log) / `log10()` / `log2()`
-  - [x] [`pow()`](https://zh.cppreference.com/w/cpp/numeric/math/pow)
-  - [x] [`sqrt()`](https://zh.cppreference.com/w/cpp/numeric/math/sqrt)
-  - [ ] `sin()` / `cos()` / `tan()`
-  - [ ] `asin()` / `acos()` / `atan()`
-  - [ ] `sinh()` / `cosh()` / `tanh()`
-  - [ ] `asinh()` / `acosh()` / `atanh()` C++11
-  - [x] [`ceil()`](https://zh.cppreference.com/w/cpp/numeric/math/ceil) / [`floor()`](https://zh.cppreference.com/w/cpp/numeric/math/floor)
-  - [x] [`round()`](https://zh.cppreference.com/w/cpp/numeric/math/round) C++11
+  -  [`abs()`](https://zh.cppreference.com/w/cpp/numeric/math/fabs)
+  -  [`exp()`](https://zh.cppreference.com/w/cpp/numeric/math/exp)
+  -  [`log()`](https://zh.cppreference.com/w/cpp/numeric/math/log) / `log10()` / `log2()`
+  -  [`pow()`](https://zh.cppreference.com/w/cpp/numeric/math/pow)
+  -  [`sqrt()`](https://zh.cppreference.com/w/cpp/numeric/math/sqrt)
+  -  `sin()` / `cos()` / `tan()`
+  -  `asin()` / `acos()` / `atan()`
+  -  `sinh()` / `cosh()` / `tanh()`
+  -  `asinh()` / `acosh()` / `atanh()` C++11
+  -  [`ceil()`](https://zh.cppreference.com/w/cpp/numeric/math/ceil) / [`floor()`](https://zh.cppreference.com/w/cpp/numeric/math/floor)
+  -  [`round()`](https://zh.cppreference.com/w/cpp/numeric/math/round) C++11
 - 数值算法 numeric
-  - [ ] `iota()` C++11
-  - [ ] `accumulate()`
-  - [x] [`gcd()`](https://zh.cppreference.com/w/cpp/numeric/gcd) C++17
-  - [x] [`lcm()`](https://zh.cppreference.com/w/cpp/numeric/lcm) C++17
+  -  `iota()` C++11
+  -  `accumulate()`
+  -  [`gcd()`](https://zh.cppreference.com/w/cpp/numeric/gcd) C++17
+  -  [`lcm()`](https://zh.cppreference.com/w/cpp/numeric/lcm) C++17
 - 伪随机数生成 random
-  - [ ] `mt19937`
-  - [ ] `random_device()`
+  -  `mt19937`
+  -  `random_device()`
 
 ## 4.2 `swap()`
 
@@ -993,6 +992,42 @@ idx = lower_bound(arr.begin(), arr.end(), 8) - arr.begin(); // 4
 idx = upper_bound(arr.begin(), arr.end(), 7) - arr.begin(); // 4
 idx = upper_bound(arr.begin(), arr.end(), 8) - arr.begin(); // 5
 ```
+
+**找出区间内的元素**
+
+```cpp
+int main(){
+    int len=10;
+    int arr[len]={9,8,7,7,6,5,4,3,3,0};
+    mySort(arr,0,len-1);
+    cout<<"[3,7]"<<": ";
+    int left1=lower_bound(arr,arr+len,3)-arr;
+    int right1=upper_bound(arr,arr+len,7)-arr-1;
+    print(arr,left1,right1);
+    cout<<"[3,7)"<<": ";
+    int left2=lower_bound(arr,arr+len,3)-arr;
+    int right2=lower_bound(arr,arr+len,7)-arr-1;
+    print(arr,left2,right2);
+    cout<<"(3,7]"<<": ";
+    int left4=upper_bound(arr,arr+len,3)-arr;
+    int right4=upper_bound(arr,arr+len,7)-arr-1;
+    print(arr,left4,right4);
+    cout<<"(3,7)"<<": ";
+    int left3=upper_bound(arr,arr+len,3)-arr;
+    int right3=lower_bound(arr,arr+len,7)-arr-1;
+    print(arr,left3,right3);
+    return 0;
+}
+//输出：
+/*
+[3,7]: 3 3 4 5 6 7 7 
+[3,7): 3 3 4 5 6
+(3,7]: 4 5 6 7 7
+(3,7): 4 5 6
+*/
+```
+
+
 
 ## 4.5 `reverse()`
 

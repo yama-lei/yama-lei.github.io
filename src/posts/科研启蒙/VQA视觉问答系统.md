@@ -214,3 +214,98 @@ But the difference lies in:
 ### External Knowledge
 
 Sometimes the model need more information to solve the problem,int that case, we need to give the model the capability to query an **External Knowledge Base** or **EKB**.
+
+---
+
+# 组会汇报
+
+#### **VQA算法**
+
+1.   **图像/问题表征方法**
+
+-    图像展示 | Image representation
+-    问题呈现 | Question representation
+
+2.   **多模态融合与回答生成算法** 
+
+-    将视觉信息和文字信息综合 | Fusion and/or Attention
+
+>   The interaction of the visual and textual domain in VQA is either done directly through multimodal fusion or indirectly through attention mechanisms.                                                                          	      --- *A Comprehensive Survey on Visual Question Answering Datasets and Algorithms*
+
+-    问题生成 | Answering
+
+```mermaid
+
+```
+
+
+
+#### 多模态融合
+
+“将不同模态的信息，形成一个联合的表示”
+
+>   We divide fusion in VQA into two types, vector operation and bilinear pooling.
+>
+>     --- *A Comprehensive Survey on Visual Question Answering Datasets and Algorithms*
+
+1.   向量操作 | Vector Operation
+
+通过向量操作（加法，内积，拼接），将图像特征和问题特征结合起来，生成一个联合的多模态表示。
+
+-   容易实现
+-   准确度低
+
+2.   双线性池化层 | Bilinear pooling
+
+通过将代表 视觉信息 和 文字信息 的 **向量做外积**，“比简单的向量操作（如加法、乘法或拼接）更有效地捕捉模态间的相关性。”
+
+#### 注意力机制 | Attention
+
+用于让模型**聚焦**输入数据中的重要部分，减少噪音的干扰
+
+-   注意力机制可以帮助模型动态地选择图像和文本中的重要区域或词汇
+
+注意力机制有很多种分类方式：
+
+**Soft and hard attention**
+
+按照与问题的相关程度，给图像中的对象赋值。
+
+区别在于**soft attention**机制不会将相关度低的对象给忽视，而**hard attention**则会舍弃相关度低的对象
+
+其他的注意力机制有
+
+-   Grid and objct based attention
+
+-   BOTTOM-UP AND TOP-DOWN ATTENTION
+-   SINGLE AND MULTI-STEP ATTENTION
+
+-   CO-ATTENTION AND SELF-ATTENTION
+
+#### 外部知识 | EXTERNAL KNOWLEDGE
+
+外部知识是指从预定义的知识库（如知识图谱、数据库）或预训练模型中引入的额外知识
+
+-   帮助模型更好地回答问题
+
+#### 组合式推理 | Compositional reasoning
+
+将问题拆分成多个子问题，来正确地推理复杂问题
+
+>   By composition, we refer to the ability to break a question down into individual reasoning steps which when done sequentially produces the correct answer. “组合"指的是将问题拆分成子问题的能力
+
+---
+
+上面的内容相当于是让模型“理解”了问题和图像，下面需要生成回答：
+
+#### 回答生成算法
+
+-   分类问题：
+
+    ​	将前面多模态融合得到的特征输入到全连接层，最后通过softmax函数得到答案的概率分布；
+
+    ​	适用于是非问题，答案是 yes or no类型
+
+-   生成任务
+
+    ​	生成自由的文本（和平时的大语言模型交互所生成的回答一样）
