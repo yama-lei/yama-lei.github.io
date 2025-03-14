@@ -219,7 +219,7 @@ Sometimes the model need more information to solve the problem,int that case, we
 
 # 组会汇报
 
-#### **VQA算法**
+### **VQA算法**
 
 1.   **图像/问题表征方法**
 
@@ -233,12 +233,6 @@ Sometimes the model need more information to solve the problem,int that case, we
 >   The interaction of the visual and textual domain in VQA is either done directly through multimodal fusion or indirectly through attention mechanisms.                                                                          	      --- *A Comprehensive Survey on Visual Question Answering Datasets and Algorithms*
 
 -    问题生成 | Answering
-
-```mermaid
-
-```
-
-
 
 #### 多模态融合
 
@@ -309,3 +303,26 @@ Sometimes the model need more information to solve the problem,int that case, we
 -   生成任务
 
     ​	生成自由的文本（和平时的大语言模型交互所生成的回答一样）
+
+---
+
+
+
+
+
+### 尝试
+
+我试着下载了一个hugging face上面的模型[BLIP](https://huggingface.co/Salesforce/blip-vqa-base)
+
+然后想看看效果是什么样的，然后在ai的帮助下，结合前端知识，写了一个对话的网页
+
+>    **我们到时候是不是也可以将最终的模型做一个网页的demo**
+
+<div style="display: grid; grid-template-columns: 1fr 1fr;">
+<img src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250313172815938.png"/>
+<img src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250313173022433.png"/>
+</div>
+
+
+### 有关vqa学习的疑惑
+

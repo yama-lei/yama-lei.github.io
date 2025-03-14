@@ -4,15 +4,33 @@ article: false
 navbar: false
 ---
 
-
 <TimeLinePage :stories="myStories"/>
 <br/>
+
 <center><strong>下面是qq空间</strong></center>
 <TimeLinePage :stories="qqSpace"/>
 
 
 <script setup>
    const myStories = [
+            {
+      imageSrc: 'https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/a975d6877e1351c1008927d00a2fa1d.jpg',
+      title: '来信',
+      description: '收到了好多礼物，好开心！ヾ(≧▽≦*)o',
+      link:'2025_3_13',
+      time:'2025-3-13',
+      comments:'',
+      showComments:false,
+      }, 
+        {
+      imageSrc: '',
+      title: '立一个flag',
+      description: '我要在暑假做一个说说平台，让不同的博客之间能够用一套平台，类似QQ空间一样',
+      link:'',
+      time:'2025-3-13',
+      comments:'反正也没说是哪个暑假',
+      showComments:true,
+      }, 
     {
       imageSrc: 'https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/202503011126097.jpg',
       title: '嘉禾一中宣讲',
