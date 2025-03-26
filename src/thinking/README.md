@@ -3,11 +3,7 @@ title: 人生感悟
 sidebar: false
 article: false
 ---
-这里是人生感悟的主页！
-哎， 我还没想要写些什么东西，未尝不是一种人生感悟！。
-写这个项目给我最大的感受就是：读了一堆文档，问了一圈ai，走了一路弯路，最后才选择了vuepress来开发。
-......
-以后就可以有成就感地看自己的网站力！
+这里是用来放一些对于人生的思考和感悟
 
 ---
 <VPCard
@@ -16,9 +12,21 @@ article: false
     link="/thinking/一位很优秀的老师说的话"
 />
 <VPCard
-    title="哲思"
-    desc="酒饱饭足之际"
-    link="/thinking/beautifulSentence"
+    title="有趣的句子与一点哲思"
+    desc="一些从网上找来的句子和文章"
+    link="/thinking/一位很优秀的老师说的话"
+/>
+<VPCard
+    logo="https://pic3.zhimg.com/v2-fade3cf8a4fa45a78376638db3ba71f9.webp?source=9963c322"
+    title="高考不公平的抨击"
+    desc="知乎好文系列"
+    link="/thinking/Zhihu1"
+/>
+<VPCard
+    logo="https://archive.bedtime.news/assets/bedtime-logo.png"
+    title="睡前消息"
+    desc="马督工的补档，睡前消息的文档网站"
+    link="https://archive.bedtime.news/"
 />
 
 ---

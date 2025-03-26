@@ -7,12 +7,10 @@ navbar: false
 <TimeLinePage :stories="myStories"/>
 <br/>
 
-<center><strong>下面是我的说说</strong></center>
 
-<TimeLinePage :stories="qqSpace"/>
 
 <script setup>
-   const myStories = [        {
+   const myStories = [{
       imageSrc: '',
       title: '',
       description: '我突然想到，初中的有一个女同学，在初二转学去了乡下中学，成绩一落千丈，那年疫情，她的父母都失业了，只能供她弟弟读珠泉中学。我忘记她的名字了。那年疫情我爸癌症晚期走了。那个时候还是梅菊教我们，两个班主任给她们家说凑1000块也没去，后来听说来嘉禾一中读了。我在嘉禾一中好像见过她，但是没打招呼，我不知道是不是她，她可能也不知道是不是我。但我想不起来她名字了。 好奇怪，很喜欢这种恍惚感。',
@@ -92,7 +90,7 @@ navbar: false
       showComments:false,
       },
       {
-	      imageSrc: 'https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/a896b7a20c9d8a4cee12998faead9a9.jpg',
+	    imageSrc: 'https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/a896b7a20c9d8a4cee12998faead9a9.jpg',
       title: '记录一下这半年多来写过的信',
       description: '和别人写信应该有5、6次了，想着这也是我思想的载体，好好保存',
       link:'Letters',
@@ -103,3 +101,4 @@ navbar: false
       }
     // Add more stories as needed
   ]
+</script>

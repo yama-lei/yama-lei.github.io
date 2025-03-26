@@ -17,9 +17,9 @@ sidebar: true
 tagline: Welcome to My Blog!
 projects:
   - icon: project
-    name: 好玩的东西
-    desc: 好玩的东西合集
-    link: /fun/
+    name: 项目集合
+    desc: 记录一下自己几年来的项目
+    link: /projects/
 
   - icon: friend
     name: 友链
@@ -37,9 +37,9 @@ projects:
     link: /fiction/
   
   - icon: book
-    name: MyLife
-    desc: Enjoy the jounery of life
-    link: /story/
+    name: 说说
+    desc: Small talk and life sharing
+    link: /talk/
 #   - icon: article
 #     name: 文章名称
 #     desc: 文章详细描述

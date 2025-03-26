@@ -36,10 +36,6 @@ export default navbar([
           {
             text: "数字逻辑与计算机组成",
             link:  "数字逻辑与计算机组成/",
-          },
-          {
-            text: "普通物理学（上）",
-            link:  "普通物理学（上）/",
           }
         ]
       },
@@ -57,6 +53,11 @@ export default navbar([
     text:"NJUCS南大计算机笔记",
     icon: "/assets/icon/nju.svg",
     link: "/posts/NJUCS/"
+  },
+  {
+    text:"科研启蒙",
+    icon: "/assets/icon/nju.svg",
+    link: "/posts/科研启蒙/"
   },
   
 ]);
