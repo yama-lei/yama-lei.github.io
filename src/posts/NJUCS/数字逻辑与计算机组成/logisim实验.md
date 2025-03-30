@@ -54,6 +54,8 @@ title: 数字逻辑与计算机组成实验
 
 （仔细看上面PMOS和CMOS的区别）
 
+
+
 ### 思考题
 
 如何实现二进制和格雷码之间的转换？
@@ -65,6 +67,10 @@ title: 数字逻辑与计算机组成实验
 -   格雷码转二进制：
 
     <img src="https://pic4.zhimg.com/v2-686a9ef84945949b1f0ab8c17f45badf_1440w.jpg" alt="img" style="zoom: 33%;" />
+
+
+
+
 
 ## 实验二
 

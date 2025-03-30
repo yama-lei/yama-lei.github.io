@@ -27,3 +27,10 @@
     desc="这是小张的个人博客"
     link="http://mrzym.top/#/talk"
 />
+
+<VPCard
+    title="NJU2016级翠翠"
+    logo="https://cdn.idealclover.cn/Projects/homepage/icon.png"
+    desc="翠翠开发过南哪课表"
+    link="https://idealclover.top/"
+/>
