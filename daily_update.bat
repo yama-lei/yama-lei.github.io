@@ -1,17 +1,17 @@
 @echo off
-:: è·å–å½“å‰æ—¥æœŸå¹¶æ ¼å¼åŒ–ä¸º YYYY-MM-DD æ ¼å¼
+:: »ñÈ¡µ±Ç°ÈÕÆÚ²¢¸ñÊ½»¯Îª YYYY-MM-DD ¸ñÊ½
 for /f "tokens=2 delims==" %%i in ('"wmic os get localdatetime /value | findstr LocalDateTime"') do set datetime=%%i
 set date=%datetime:~0,4%-%datetime:~4,2%-%datetime:~6,2%
 
-:: Git æ“ä½œ
-echo æ­£åœ¨æ·»åŠ æ‰€æœ‰æ›´æ”¹åˆ°æš‚å­˜åŒº...
+:: Git ²Ù×÷
+echo ÕıÔÚÌí¼ÓËùÓĞ¸ü¸Äµ½Ôİ´æÇø...
 git add .
 
-echo æ­£åœ¨æäº¤æ›´æ”¹ï¼Œæäº¤ä¿¡æ¯ä¸º "Daily update: %date%"...
+echo ÕıÔÚÌá½»¸ü¸Ä£¬Ìá½»ĞÅÏ¢Îª "Daily update: %date%"...
 git commit -m "Daily update: %date%"
 
-echo æ­£åœ¨æ¨é€æ›´æ”¹åˆ°è¿œç¨‹ä»“åº“ (main åˆ†æ”¯)...
+echo ÕıÔÚÍÆËÍ¸ü¸Äµ½Ô¶³Ì²Ö¿â (main ·ÖÖ§)...
 git push origin main
 
-echo å®Œæˆï¼
+echo Íê³É£¡
 pause
