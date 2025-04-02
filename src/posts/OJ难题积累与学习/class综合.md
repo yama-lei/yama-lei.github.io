@@ -136,7 +136,7 @@ struct MM_Struct {    bool locked;    size_t size; //如果是一段连续分配
 
 ---
 
-## My solution
+### My solution
 
 This question is quite demanding!!!!!
 
@@ -571,8 +571,10 @@ time
 1
 ```
 
-#### **测试结果**
-- 测试集1 ~ 测试集11。
+#### 我的错误：
+
+1.   在遍历processCommand的时候，我错误地每一次都将处理的结果赋值给ok，结果导致ok只会记录最后一次的结果
+2.   在processCommand的时候，如果得到的processor是nullptr，那么不应该把它push到activeProcessor里面去。
 
 ## Naive Pointer
 
@@ -664,6 +666,56 @@ sp1.assign(*(new SmartPointer(new Node(456)))); // Node 456 仍然被持有
 #### **测试结果**
 - 测试集1 ~ 测试集10。
 
----
+### solution
 
-以上是两个题目的 Markdown 格式内容整理。
+```cpp
+#include "SmartPointer.h"
+
+SmartPointer::SmartPointer(const SmartPointer &sptr){
+    //TODO
+    pointer=sptr.pointer;
+    ref_cnt=sptr.ref_cnt;
+    if(ref_cnt!=nullptr){
+        (*ref_cnt)+=1;
+    }
+}
+
+void SmartPointer::assign(const SmartPointer &sptr){
+    //TODO
+    if(sptr.ref_cnt==ref_cnt){
+        return;
+    }
+    if(ref_cnt!=nullptr){
+        (*ref_cnt)-=1;
+        if(*ref_cnt<=0){
+            delete pointer;
+            delete ref_cnt;
+        }
+    }
+    ref_cnt=sptr.ref_cnt;
+    pointer=sptr.pointer;
+    if(ref_cnt!=nullptr){
+        (*ref_cnt)+=1;
+    }
+}
+
+SmartPointer::~SmartPointer(){
+    //TODO
+    if(ref_cnt!=nullptr){
+        (*ref_cnt)-=1;
+        if((*ref_cnt)<=0){
+            delete pointer;
+            delete ref_cnt;
+        }
+    }
+    pointer=nullptr;
+    ref_cnt=nullptr;
+}
+```
+
+这道题对于边界情况的考虑很多：
+
+1.   能否为自己赋值（assign自己的时候，应该直接return，因为可能出现先把自己delete的case）
+2.   在delete之后，要将指针赋值为nullptr（防止悬浮指针）
+3.   其他的与nullptr有关的内容
+
