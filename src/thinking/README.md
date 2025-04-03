@@ -14,7 +14,7 @@ article: false
 <VPCard
     title="有趣的句子与一点哲思"
     desc="一些从网上找来的句子和文章"
-    link="/thinking/一位很优秀的老师说的话"
+    link="/thinking/beautifulSentence"
 />
 <VPCard
     logo="https://pic3.zhimg.com/v2-fade3cf8a4fa45a78376638db3ba71f9.webp?source=9963c322"
@@ -27,6 +27,13 @@ article: false
     title="睡前消息"
     desc="马督工的补档，睡前消息的文档网站"
     link="https://archive.bedtime.news/"
+/>
+
+<VPCard
+    logo="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/20250403203926.png"
+    title="马原概念"
+    desc="用知识武装自己！"
+    link="/thinking/konwledges"
 />
 
 ---
