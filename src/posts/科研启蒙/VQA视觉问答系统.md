@@ -490,9 +490,7 @@ github：[zhoubolei/VQAbaseline: Simple Baseline for Visual Question Answering](
 
 论文里对模型的分析，要和其他的模型进行对比，还要进行**剖分实验** （without这个模块，之后性能怎么样？ 把这个component换成别的性能怎么样），敏感度，模型性能随着参数的变化的变化趋势
 
-# 例会汇报 | 第三次
 
-### 部分早期的vqa方法
 
 前面提到的那个baseline模型使用简单的`特征提取-> 特征融合 -> softmax得到答案`。
 
@@ -514,8 +512,6 @@ graph TD
 
 
 
-### 现代的vqa方法
-
 许多vqa模型都是基于transformer实现的。下图是一个简单的结构，BLIP采取的结构和这个很相似：
 
 ```mermaid
@@ -527,11 +523,11 @@ graph TD
   E -->|Transformer Decoder| F[生成答案]
 ```
 
+
+
 ---
 
-VILT && BLIT && CLIP
 
-VILT的特点
 
 
 
