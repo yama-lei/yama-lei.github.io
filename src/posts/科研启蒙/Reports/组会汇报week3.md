@@ -1,6 +1,5 @@
 ---
 title: 例会汇报 | 第三次
-tags: vqa
 ---
 
 ## What I have done in the last week?
