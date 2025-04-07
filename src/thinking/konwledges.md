@@ -669,7 +669,7 @@ C、现象可以直接感知，本质只能用理性思维才能把握。
 
 # 名词检索
 
-## 小布什维亚
+## 小布尔乔亚
 
 >   作者：知乎用户7bUIIs
 >   链接：https://www.zhihu.com/question/462514575/answer/1985328626
@@ -718,12 +718,6 @@ author:  [深海](https://www.zhihu.com/people/fanshihuan)
 关注他
 
 4835 人赞同了该文章
-
-
-
-
-
-
 
 我们每天看国际新闻时，在介绍某国领导人和他们的政策时，常常能听到左与右、激进与保守、或自由与保守之类的基本评价。在国际政治舞台上，任何一个政客，基本上都免不了被贴上左或右的标签，为的是给群众形成一个**最基本的**印象，也能对他们日后所要实行的政策做一个简单的预测。
 
@@ -791,7 +785,7 @@ author:  [深海](https://www.zhihu.com/people/fanshihuan)
 
 也因此，左与右又多了一层内涵：
 
-![img](https://pic4.zhimg.com/v2-c72b82417196e33ca3daa1e12025f139_1440w.jpg)
+![img](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/v2-c72b82417196e33ca3daa1e12025f139_1440w.jpg)
 
 **左——强调集体主义、甚至国际主义、世界主义（全世界无产者联合起来），主张形成大政府。**
 
@@ -815,7 +809,7 @@ author:  [深海](https://www.zhihu.com/people/fanshihuan)
 
 到了二十世纪八九十年代，即冷战末期，先前的那种左与右的区分逐渐模糊起来。
 
-![img](https://pic4.zhimg.com/v2-814092b47bd190b84d01e0dc1fa0315f_1440w.jpg)
+![img](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/v2-814092b47bd190b84d01e0dc1fa0315f_1440w.jpg)
 
 **当代许多政治家、思想家认为，左与右的区分，在21世纪的语境下，毫无意义。**因为，当今世界，绝大多数国家的政策制度，虽然在称呼上仍有姓资姓社的区别，但在实际上，两者之间的界限已经非常模糊。
 
@@ -825,7 +819,7 @@ author:  [深海](https://www.zhihu.com/people/fanshihuan)
 
 与此同时，一些社会观点也渐渐被两派所共同接受。这时，两者之间的区分就渐渐模糊起来。两者不再执着于姓资姓社的刻板观念，凡能为我所用，促我发展者，便借鉴应用。而这其中做的最好的，莫过于中国和北欧（不是西欧）。
 
-![img](https://pic4.zhimg.com/v2-adedf72114b00d1a131ea2be9b9b53b9_1440w.jpg)
+![img](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/v2-adedf72114b00d1a131ea2be9b9b53b9_1440w.jpg)
 
 我国没有过多的思想禁锢，秉持实践是检验真理的唯一标准，不拘泥任何形式，发展是硬道理。
 
@@ -839,7 +833,7 @@ author:  [深海](https://www.zhihu.com/people/fanshihuan)
 
 虽然如今，白左已经成了一个贬义词，饱含乌托邦似的理想主义，在网上甚至可以直接与“圣母”划上等号。**但玩笑归玩笑，以社会进步的角度而言，在未走向极端化前的白左，为世界社会进步作出了不小的贡献。**
 
-![img](https://pic3.zhimg.com/v2-1f5cb5bb08f19965b1c5ab8d7bb5681c_1440w.jpg)
+![img](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/v2-1f5cb5bb08f19965b1c5ab8d7bb5681c_1440w.jpg)
 
 比如，白左们主张的女权运动、环保主义、福利社会、多元文化、民族交融、世界主义、国际主义、人道主义、维护同性恋权益、提高人权。
 
@@ -861,7 +855,7 @@ author:  [深海](https://www.zhihu.com/people/fanshihuan)
 
 事实上，无论左与右，它们在行为上都可以是激进的或保守的，这取决于具体情况，包含历史因素。建议大家在理解的时候，**不要直接把“左”完全与“激进”捆绑在一起**（或罗斯福以后的所谓“自由派”），**也不要直接把“右”完全与“保守”捆绑在一起。**而是要做到具体问题具体分析。
 
-![img](https://pic3.zhimg.com/v2-2d2f8baf82094f5f0a21635a5af43118_1440w.jpg)
+![img](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/v2-2d2f8baf82094f5f0a21635a5af43118_1440w.jpg)
 
 比如，美国共和党一向被认为是右派政党，特朗普也有明显的右派特征，但他的行为本身是激进的，而非保守的（如修墙、贸易战），其原因在于，先前的奥巴马政府是由左派民主党执政，推行的政策（如医保）是左的，所以特朗普必须以激进的方式拨回到右这一边。
 
@@ -907,7 +901,7 @@ author:  [深海](https://www.zhihu.com/people/fanshihuan)
 
 说这些，是让看官们了解，**这世界上没有人可以被简单地贴上左与右的标签**（即便特朗普也有维护本国工人的一面），左与右的标签曾给我们国人带来过沉重的灾难，希望不要重演。
 
-![img](https://pic3.zhimg.com/v2-49cb97454ecf57d64ded68f99dd931d6_1440w.jpg)
+![img](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/v2-49cb97454ecf57d64ded68f99dd931d6_1440w.jpg)
 
 
 
