@@ -22,7 +22,13 @@ article: false
     desc="知乎好文系列"
     link="/thinking/Zhihu1"
 />
+
 <VPCard
+    logo="https://pic3.zhimg.com/v2-fade3cf8a4fa45a78376638db3ba71f9.webp?source=9963c322"
+    title="孙吧老哥爱上小红书仙女"
+    desc="知乎好文系列"
+    link="/thinking/Zhihu3"
+/><VPCard
     logo="https://archive.bedtime.news/assets/bedtime-logo.png"
     title="睡前消息"
     desc="马督工的补档，睡前消息的文档网站"

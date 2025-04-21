@@ -11,6 +11,14 @@ navbar: false
 
 <script setup>
    const myStories = [{
+      imageSrc: 'https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/14038cbc6297c3e6bc90719f92ca674.jpg',
+      title: '关关难过关关过',
+      description: '人生中第一次答辩，碰上了学期中第二忙的一周；从稿子到ppt，我准备了近一周，背一遍稿子做一题微积分，同时复习vjf，离散',
+      link:'',
+      time:'2025-4-16',
+      comments:'',
+      showComments:false,
+      },{
       imageSrc: '',
       title: '',
       description: '好尴尬,今天去交奖学金材料,办公室里有两个我认识的同学,然而老师还当众夸了我,好尴尬;让我很难堪,因为这个学期我感觉学习压力也挺大的,大概率是不会有上学期那么好了',

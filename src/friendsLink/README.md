@@ -34,3 +34,11 @@
     desc="翠翠开发过南哪课表"
     link="https://idealclover.top/"
 />
+
+<VPCard
+    title="JackCui"
+    logo="DLCO助教的博客"
+    desc="翠翠开发过南哪课表"
+    link="https://jackcuii.github.io"
+/>
+
