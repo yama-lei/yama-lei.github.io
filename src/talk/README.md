@@ -11,9 +11,17 @@ navbar: false
 
 <script setup>
    const myStories = [{
+      imageSrc: '',
+      title: '傻逼计组',
+      description: '老子上大学上过最垃圾的课之一',
+      link:'',
+      time:'2025-4-27',
+      comments:'',
+      showComments:false,
+      },{
       imageSrc: 'https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/14038cbc6297c3e6bc90719f92ca674.jpg',
       title: '关关难过关关过',
-      description: '人生中第一次答辩，碰上了学期中第二忙的一周；从稿子到ppt，我准备了近一周，背一遍稿子做一题微积分，同时复习vjf，离散',
+      description: '人生中第一次答辩，碰上了学期中第二忙的一周；从稿子到ppt，我准备了近一周，背一遍稿子做一题微积分，极限两天复习vjf，虽然周老师上课太慢了，但是给分还是不错的',
       link:'',
       time:'2025-4-16',
       comments:'',
