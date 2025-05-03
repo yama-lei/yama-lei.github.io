@@ -13,7 +13,7 @@ navbar: false
    const myStories = [{
       imageSrc: '',
       title: '傻逼计组',
-      description: '老子上大学上过最垃圾的课之一',
+      description: '老子上大学上过最垃圾的课之一，作业题和课上讲的内容脱钩，课上学的东西也没有主次，每次点人回答一下智障一样的问题，还很多人回答不出来，作业题这么逆天，也从来不讲，。。',
       link:'',
       time:'2025-4-27',
       comments:'',
