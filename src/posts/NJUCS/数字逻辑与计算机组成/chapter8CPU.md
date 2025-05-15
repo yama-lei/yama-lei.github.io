@@ -425,3 +425,128 @@ Jump： 取指令200+ 存入PC+4 50 + ALU计算跳转位置 100 =350；
 
       ![image-20250428115548563](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250428115548563.png)
 
+---
+
+>   五一假期结束，现在看不懂自己的笔记了
+
+时钟周期的= clock-to-q+setup+longest-delay
+
+注意无论是那一条指令，都有两个步骤是相同的，即IFetch和RFetch/ID，其中IFetch进行取指令，并且计算PC+4；RFetch/ID有‘投机计算’
+
+状态1之后，按照指令的译码进入不同的指令。
+
+除了Jump指令是3个周期之外，所有的指令都是4个周期，即除了Jump的CPI为3其他都是为4
+
+>   如果没有投机计算，那么lw和sw的CPI为5
+
+### PLA控制器的设计
+
+PLA控制器又称为组合逻辑控制器，或者硬连线控制器。
+
+![image-20250509104343151](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250509104343151.png)
+
+**下一状态是当前状态和操作码的函数**
+
+我们可以画出一个状态转换表来实现PLA电路，
+
+![image-20250509104713007](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250509104713007.png)
+
+硬连线方式可以自行看ppt了解，因为不是重点，故不在这里展示。
+
+特点是：1. 速度快 2. 硬件实现复杂、灵活性差。
+
+### 微程序控制器设计
+
+>   这是一个很有趣的思想，尽管在这里用不上。
+
+基本思想：用微程序来描述机器指令，每一个微程序都有多个微指令，微指令有多个微命令。
+
+每一条微指令和一个状态对应（这里的状态指的是上述的状态转换图的圈圈图）
+
+所有的微程序只存出在制度存储器中，称为控制存储器，Control Storage 简称控存CS。
+
+---
+
+#### 执行指令
+
+-   从CS中取出微程序
+-   执行微程序也就是执行其中的微指令
+-   对微指令译码就是产生对应的微命令-控制信号
+-   按照微命令来执行程序
+
+可以了解一下微程序控制器的基本结构：
+
+其中$\mu$ 开头的代表**微**
+
+![image-20250509110118838](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250509110118838.png)
+
+#### 微指令的设计
+
+![image-20250509113020592](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250509113020592.png)
+
+
+
+
+
+>   在这里我就想吐槽了： 也没有铺垫，也没说为什么要在这里将异常处理机制
+
+### 异常处理机制
+
+#### 带异常处理机制的数据通路设计
+
+添加，两个寄存器EPC和Cause，前者存储断点，后者存储异常状态；
+
+同样的，需要添加这两个寄存器的写使能信号，
+
+-   EPCWr：在保存断点的时候有效，存入断点的PC
+-   CauseWr： 发现异常的的时候有效，将异常类型存入Cause寄存器
+
+示意图：
+
+![image-20250509114300857](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250509114300857.png)
+
+重点关注其中有关Casue和EPC的部分，是在原先的数据通路下添加的。
+
+#### 带异常处理机制的控制器设计
+
+前面数据通路使用到的新的寄存器写使能端信号需要由控制器生成，并且需要设计两个异常状态。
+
+加入异常和中断事件后的状态转换图：
+
+![image-20250509114755501](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250509114755501.png)
+
+### 多周期和时钟周期的CPU比较
+
+**多周期的时钟周期是所有阶段的最长值**
+
+单周期的时钟周期是所有指令中的最大值。（一般是lord指令）
+
+![image-20250509114657162](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250509114657162.png)
+
+![image-20250509114650257](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250509114650257.png)
+
+---
+
+
+
+
+
+
+
+# 4. 流水线CPU的设计
+
+前面提到，多周期CPU并不能很明显地提升性能，下面介绍流水线CPU。
+
+流水线CPU的核心思想是，将指令分成不同的阶段，在前一个指令的某一个阶段完成之后，紧接着开始执行下一个指令的这一个阶段。如图，以load指令为例。
+
+![image-20250509115710725](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250509115710725.png)
+
+
+
+>   必须保证不同阶段不会冲突，即不会用到相同的部件，比如在夏木木寄存器堆的读和写是分开的，可以看成两个独立的部件
+
+>   流水线每一个阶段的时间是相同的（都是所有阶段的最大值），应该很好理解，因为是并行执行不同指令的不同阶段，所以必须满足最大的时间要求。
+
+性能比较：
+
+![image-20250509115926577](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250509115926577.png)

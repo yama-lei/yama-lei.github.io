@@ -12,6 +12,14 @@ navbar: false
 <script setup>
    const myStories = [{
       imageSrc: '',
+      title: 'No Title',
+      description: '今天是母亲节。4月末，英语老师给放了一部黑镜的电影，男主内心最大的恐惧是无法面对自己的母亲。',
+      link:'noTitle',
+      time:'2025-5-11',
+      comments:'',
+      showComments:false,
+      },{
+      imageSrc: '',
       title: '傻逼计组',
       description: '老子上大学上过最垃圾的课之一，作业题和课上讲的内容脱钩，课上学的东西也没有主次，每次点人回答一下智障一样的问题，还很多人回答不出来，作业题这么逆天，也从来不讲，。。',
       link:'',
