@@ -517,7 +517,7 @@ PLA控制器又称为组合逻辑控制器，或者硬连线控制器。
 
 ### 多周期和时钟周期的CPU比较
 
-**多周期的时钟周期是所有阶段的最长值**
+**多周期的时钟周期是所有阶段的最长值** (就是上面的那个图中所有最长的周期！)
 
 单周期的时钟周期是所有指令中的最大值。（一般是lord指令）
 
@@ -537,6 +537,8 @@ PLA控制器又称为组合逻辑控制器，或者硬连线控制器。
 
 前面提到，多周期CPU并不能很明显地提升性能，下面介绍流水线CPU。
 
+## 核心思想
+
 流水线CPU的核心思想是，将指令分成不同的阶段，在前一个指令的某一个阶段完成之后，紧接着开始执行下一个指令的这一个阶段。如图，以load指令为例。
 
 ![image-20250509115710725](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250509115710725.png)
@@ -547,6 +549,171 @@ PLA控制器又称为组合逻辑控制器，或者硬连线控制器。
 
 >   流水线每一个阶段的时间是相同的（都是所有阶段的最大值），应该很好理解，因为是并行执行不同指令的不同阶段，所以必须满足最大的时间要求。
 
+## 与其他CPU比较
+
 性能比较：
 
 ![image-20250509115926577](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250509115926577.png)
+
+**流水线能够大大提高指令的吞吐率**(单位时间内执行的指令条数)
+
+
+
+>   在理想状态下（忽略流水线启动的初始4个周期），流水线一直都是五个部件，每一个周期都有指令执行完成，也有指令开始执行；
+>
+>   因此流水线CPU的理想下的CPI为1，虽然每一条指令都需要5个周期，但是同时可以执行5个指令，因此CPI为1。
+>
+>   回顾： 1. 单周期CPU的CPI为1，以最长的指令load来取周期宽度。  2. 流水线的CPU的CPI为1，周期宽度为5个阶段最长的那个（实际执行的时候每一个阶段都会占用一个周期的时间） 3.多周期的CPI需要知道不同指令的比例，jump指令占用3个周期，其他的指令占用四个周期，需要知道比例进行计算。多周期的时钟周期宽度为最长的那个。
+
+
+
+ 
+
+
+
+---
+
+## 指令执行分析
+
+流水线CPU将指令分成以下五个阶段：
+
+Ifetch,Reg/Dec (取数和译码),Exec(执行), Mem（读存储器）, Wr（写寄存器）
+
+先以load指令为例：
+
+>   load rs1 rs2 imm12 RTL功能为 R[rs1]<-M[R[rs2]+STEX(imm12)]
+
+-   Ifetch： 取指令、计算PC+4，需要用到指令存储器、Adder
+-   Reg/Dec : 取数并且译码，需要用到寄存器、指令译码器
+-   Exec：执行，ALU、扩展器
+-   Mem： 数据存储器
+-   Wr： 写使能端
+
+>   流水线CPU设计使得每一条指令的执行的时候占用的资源都是不一样的。
+>
+>   同一个功能部件
+>
+>   同时被多条指令使用的现象叫做**结构冒险**
+>
+>   为了流水线能够正常地工作，我们规定：
+>
+>   -   每一个功能部件在一条指令中 只能使用一次
+>   -   每一个部件使用的时候必须在同一个阶段
+>
+>   我们需要设计每一种类型的指令，使得所有的指令都能符合这个规定
+
+
+
+---
+
+### R-Type
+
+R型指令因为不需要进行
+
+
+
+![image-20250516105219861](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250516105219861.png)
+
+Ifetch: 取指令 
+
+Reg/Dec：取操作数rs1 rs2，指令译码
+
+Exec：进行运算，使用ALu
+
+Wr：将结果写入目的寄存器
+
+
+
+
+
+---
+
+### Store
+
+![image-20250516110435256](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250516110435256.png)
+
+Ifetch：取指令并计算PC+4 （写入PC）
+
+Reg/Dec： 从寄存器（rs1）取数，同时指令在译码器进行译码
+
+Exec：12位立即数（imm12）符号扩展后与寄存器值（ rs1 ）相加，计算主存地址Mem：将寄存器（rs2）读出的数据写到主存
+
+---
+
+### I-Type
+
+
+
+
+
+---
+
+### Beq
+
+与其他指令不同的区别是，Beq中间的Exec阶段需要用到ALU和adder，因此必须单独加上一个adder，防止和其他指令冲突
+
+>   每一个功能部件只能在同一阶段使用、每一个周期只能用一次。即上述的adder只能在第三周期使用。
+
+![image-20250516105727514](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250516105727514.png)
+
+Ifetch: 取指令并计算PC+4 （写入PC，但后续可能需要修改PC）
+
+Reg/Dec:从寄存器（rs1，rs2）取数，同时指令在译码器进行译码
+
+Exec:  执行阶段ALU中比较两个寄存器（rs1，rs2）的大小（做减法）Adder中计算转移地址（PC+SEXT（imm12）<<1）
+
+Mem: 如果比较相等, 则：转移目标地址写到PC
+
+>   这里转移目标地址的方法可以参考单周期的相关指令，通过控制信号生成下一个PC地址
+
+### J-Type
+
+![image-20250516110036021](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250516110036021.png)
+
+`Ifetch`: 取指令并计算PC+4 （写入PC ，但后续肯定需要修改PC ）
+
+`Reg/Dec:`从寄存器取数，同时指令在译码器进行译码
+
+`Exec`:  执行阶段ALU中计算PC+4（准备写入rd）Adder中计算转移地址（PC+SEXT（imm20）<<1）
+
+`Mem`:把转移地址写入PC
+
+>   PC可以修改多次，因为更新PC的时候前一个PC已经没有用了，不会出现冲突。
+
+`Wr`: 把ALU运算结果（PC+4）写入rd.
+
+---
+
+## 数据通路设计
+
+![image-20250516111552870](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250516111552870.png)
+
+和单周期的区别在与中间的寄存器，用于保存每一个周期的执行结果，属于内部寄存器，可以理解为，每一个寄存器里面存储的都是某一条指令的当前状态（寄存器和它右边的部分属于当前状态）。
+
+>   "The pipelined datapath consists of combination logic blocks separated by pipeline registers. If you get rid of all these registers (not the PC), this pipelined datapath is reduced to the single-cycle datapath."
+
+>   ppt中还提到了其他的一个细节：下一个clock tick来临之后需要一个clock-to-Q才能进行下一阶段（或者说写入下一个阶段）
+
+### IUnit设计
+
+![image-20250516114408758](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250516114408758.png)
+
+在IF/ID寄存器中存储有PC和指令
+
+### Reg/Dec
+
+在ID/EX寄存器中，存储`R[Rs1], R[Rs2], Rd, Imm, PC`
+
+### Exec Unit的设计
+
+>   详细内容请见ppt，不同的指令需要的信号来自不同的地方
+>
+>   可以留心的是，这里使用了Adder和ALu，进行并行计算，因为前面有一个步骤在这里需要同时进行两个计算（如果都用ALU算的话，显然会冲突）。
+
+![image-20250516115523660](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250516115523660.png)
+
+在EX/M寄存器中存储了，跳转地址、Zero、ALU运算结果、busB、rd
+
+
+
+---
