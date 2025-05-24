@@ -2,6 +2,8 @@
 title: 数字逻辑与计算机组成实验
 ---
 
+>   [ 电路元件库手册](https://www.baillifard.com/logisim/zh/html/libs/) This is a very good website designed for starters to learn logisim
+
 ## 实验一
 
 ## 学习logisim
@@ -169,3 +171,8 @@ $$
 2.   逻辑左移：符号位不变，其他的地方正常移，末尾补零
 3.   逻辑右移：补符号位
 4.   循环左移、右移：都是将移出的位数放回
+
+
+
+
+

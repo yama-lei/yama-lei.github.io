@@ -11,6 +11,14 @@ navbar: false
 
 <script setup>
    const myStories = [{
+      imageSrc: 'https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/20250524194821.png',
+      title: '满负荷运行的人生',
+      description: 'EL交互组比赛95%以上代码是我写的，小组任务是小组长的任务；马上又要期末考试了，哎；明天还有组会。。。',
+      link:'',
+      time:'2025-5-24',
+      comments:'',
+      showComments:false,
+      },{
       imageSrc: '',
       title: 'No Title',
       description: '今天是母亲节。4月末，英语老师给放了一部黑镜的电影，男主内心最大的恐惧是无法面对自己的母亲。',
