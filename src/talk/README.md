@@ -11,6 +11,14 @@ navbar: false
 
 <script setup>
    const myStories = [{
+      imageSrc: '',
+      title: '答辩结束-EL比赛不知道能拿什么奖项',
+      description: '麻痹的，终于结束了，现在要全力以赴 复习微积分离散数学马原计组高程物理英语读写听说四六级了；昨天晚上还得知我要担任明年的学术科创部主席 我还要去新疆去社会实践',
+      link:'',
+      time:'2025-5-24',
+      comments:'',
+      showComments:false,
+      },{
       imageSrc: 'https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/20250524194821.png',
       title: '满负荷运行的人生',
       description: 'EL交互组比赛95%以上代码是我写的，小组任务是小组长的任务；马上又要期末考试了，哎；明天还有组会。。。',
