@@ -102,7 +102,7 @@ def store_digits(n):
         n//=10
     return temp
 ```
- 
+
 
 wrong solution
 
@@ -139,7 +139,7 @@ def store_digits(n):
         return Link(n%10,store_digits(n//10))
 #顺序相反了
 ```
- 
+
 
 A right but inefficient solution
 ```py
@@ -154,7 +154,7 @@ def store_digits(n):
         temp.rest = Link(n % 10)
         return head
 ```
- 
+
 
 
 
@@ -209,7 +209,7 @@ def reverse(lnk):
             curr=next
         return prev    # return the prev node
 ```
- 
+
 
 solution2 using recursion
 

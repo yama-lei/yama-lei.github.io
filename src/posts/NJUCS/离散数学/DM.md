@@ -4,6 +4,30 @@ title: Discreate Mathmatics
 
 >   期末才想起来要学离散
 
+## 计数原理
+
+**容斥原理**
+
+![image-20250606090907959](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250606090907959.png)
+
+>   注意！！！ 只学两种语言不是$\sum_{1<=i<j<=3}A_i \and A_j$,而是A1交A2交A3的反，因而还需要减去三倍的学习三种语言的人
+
+**鸽笼原理**
+
+![image-20250606091840485](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250606091840485.png)
+
+>   前者把36个连续扇区看成是36个连续的4扇区，每一个扇区被计数4次，发现取等号的情况是每一个连续的四扇区和为74，出现周期性，矛盾；
+>
+>   后者将1从中剔除，考虑不含1的剩下35个数，其平均值为19，因此存在大于19*5=95的扇区。 `大于94，即要大于等于95`
+
+![image-20250606093347140](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250606093347140.png)
+
+## 群论
+
+problem set19
+
+![image-20250606174059928](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250606174059928.png)
+
 ## 布尔代数
 
 ![image-20250517223806266](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250517223806266.png)
