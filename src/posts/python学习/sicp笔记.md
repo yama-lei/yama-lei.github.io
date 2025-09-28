@@ -1,1 +1,441 @@
----\ndate: 2025-01-18\n---\n\n# sicp笔记\n\n## !!!考前注意：\n\n  1. 注意不要破坏抽象：比如scheme list要用对应的constructor和selector不要用car，cons\n  2. 注意在继承的时候，能调用super().method就尽量调用\n  3. 注意是list of lists 还是list！\n  4. 降序排列是DESC，升序不用写  \n  5. 如果是print or repr 某一个由instance组成的list， 里面的每一个instance都会被repr作用；而不是str！！！！！！！！！\n  6. 注意看题目要求要的是什么！不要只看doctest。\n\n### 我的精神状态belike： \n![](https://img2024.cnblogs.com/blog/3578676/202412/3578676-20241231183714559-1474398211.jpg)\n\n## 1.The difference between quoted and unquoted string\n\n```python\n>>>print('hello world')\nhello world #unquoted\n>>>a='hello world'\n>>>a   #It is the same if you want to look up an attribute of an \n     #instance(or class) and the attribute is a string;\n'hello world' #quoted\n```\nAnd one more strange thing:\n```py\nclass A:\n  def __init__(self,x):\n    self.x=x\n  def __repr__(self):\n    return self.x\n  def __str__(self):\n    return self.x\n>>>print(A('10'))\n10  #注意这里不能是print(A(10))因为 str的返回值不能是非str的\n>>>A('10')    #inexplictly call __repr__\n10\n>>>repr(A('10')) #explictly call __repr__\n'10'\n#经助教提醒后幡然醒悟：前面那个显示10并不意味着repr(A('10'))为10，而是经过了Read-Eval-Print-Loop之后才显示为10。\n```\n\n## 2.Attribute lookup:\n\n```py\nclass Car:\n  def __init__(self):\n    pass\nclass electric_car(Car):\n   def get_charged(self):\n     pass\nA=electric_car()\nCar.get_charged(A) #Error!\n#search the function 'get_charged' from the class Car, but failed.\nelectric_car.get_charged(A) \n#equals to A.get_chaeged()\n```\n\n## 3.Super method: 'super' is a method that allows you to call the method of superclass.\n\n>**Method Binding**\n>When you call a method using super(), the method is bound to the current instance (i.e., self), not to the temporary proxy object. This is why the method has access to the instance’s attributes and can modify them. --from deepseek V3\n\n```\nclass electric_car(Car):\n   def __init__(self):\n     super().__init__()\n#you don't have to take 'self' as a parameter, because it is bound already\n   def get_charged(self):\n     pass\n```\n\n##4.Handle string format with for expression:\n>hint: you are recommended to read the manual about string function like join, format ,zfill,and so on;\n```py\n#example 1\ndef shift(x,str):\n  return \"\".join([(ord(ch)-ord('a')+x)%26+ord('a')] for ch in message)\n#shift all the letter back by x\n```\n\n```py\n#example 2\ndef time_format(year,month,day,format=\"yy.mm.dd\"):\n   return format.replace(\"yy\",str(year)).replace(\"mm\",str(month).zfill(2)).replace(\"dd\",str(day).zfill(2))\n#  original_str.replace(old_substr,new_str);\n#  str.zfill(width) => fill zeros ahead of the str;\n```\n```py\n#example 3\ndef fliiter_index(str,x):\n  #flitter out the letters whose indices are the multiple of x (excluding 0)\n  return \"\".join(str[index] if index==0 or index%x!=0 else \"\" for index in range(len(str)))\n  \n```\n##5. **special method**\nThere are some special methods like '__radd__','__rsub__', but when they are called? \n\n>These methods are called to implement the binary arithmetic operations (+, -, *, @, /, //, %, divmod(), pow(), **, <<, >>, &, ^, |) with reflected (swapped) operands. These functions are only called if the left operand does not support the corresponding operation 3 and the operands are of different types. 4 For instance, to evaluate the expression x - y, where y is an instance of a class that has an __rsub__() method, y.__rsub__(x) is called if x.__sub__(y) returns NotImplemented.\n>[https://docs.python.org/3.9/reference/datamodel.html?highlight=radd#object.__radd__]()\n\n```py\nclass num1:\n   def __init__(self,num):\n     self.num=num\n   def __add__(self,other):\n     return num1(self.num+other.num)\n   def __radd__(self,other):\n     return num1(2*self.num+other.num)\n   def __str__(self):\n     return f\"the value is {self.num}\"\nclass num2:\n   def __init__(self,num):\n     self.num=num\n   def __add__(self,other):\n     return num1(self.num+other.num)\n   def __radd__(self,other):\n     return num1(2*self.num+other.n)\nn1=num1(1)\nn2=num2(2)\nprint(n1+n2)  # the value is 3\nprint(n2+n1)  # the value is 4\n# first: check if the __add__ method of the left operand is able to work\n# second: if them are the same type, then an error occurs (it's no use even if you change their position) otherwise, the __radd__ method of the right operand is called \n```\n\n\n## 6.Scheme\n- Everything is considered `#t` (true) except `#f` (false).\n- `or` evaluates its arguments from left to right and returns the first truthy value.\nIf all arguments evaluate to `#f`, it returns `#f`.\n- `and` evaluates its arguments from left to right and returns the first falsy value.\nIf all arguments are truthy, it returns the last truthy value.\n- use `eq?` or `equal?` to compare symbol and number; `=`  can only be used to compare number!\n- `pair?`:return `#t` when operand is a pair (or list); In python we use` isinstance(lnk,Link)`\n\n##7.Interpreter\n- REPL:'read-eval-print-loop'\n- environment is often representated as a dictionary;\n  To check if the dict has key 'a' use:`a in dict.keys()`\n  To add a new key-value bound or change the value use: `dict[key]=value` \n  To delete a key-value bound use: `del dict[k]`\n\n## 8.Define Macro in Scheme\n ###  The ensence of marco procedure: Code Transformation\n\n```scm\n(define-macro (f x) (+ x 2))\n(f (+ 2 3))\n(define-macro (g x) (list '+ x 2))\n(g (+ 2 3)）\n```\n`(f (+ 2 3))` will apply the macro function f with the value `'(+ 2 3)` as `x`. It will try to `(+ '(+ 2 3) 2)` of which the result is the new code that replaces the whole `(f (+ 2 3))` entirely. However + cannot add a list to a number so it makes no sense to create a macro like that.\n>######Take the source code as-is(add a quotation before it so when it is changed and evaled it is represented as-is) \n\n`(g (+ 2 3))` will apply the macro function g with the value `'(+ 2 3)` as `x`. It will try to `(list '+ '(+ 2 3) 2))` of which the result is `(+ (+ 2 3) 2)`. This is then put verbatim at the code location of `(g (+ 2 3))` as if it has always been `(+ (+ 2 3) 2)` all along before the program starts executing. It works because `(+ (+ 2 3) 2)` is a valid expression.\n\n## 9. Scheme List\n Problem 1: Count Change III (100 pts)\nWrite a procedure make-change, which takes in positive integers total and biggest and outputs a list of lists, in which each inner list contains positive numbers no larger than biggest that sum to total.\n\n>Note: Both outer list and inner lists should be descending ordered.\n> Hint: You may find Scheme built-in procedure append useful.\n```scm\n(define (make-change total biggest)\n  'YOUR-CODE-HERE\n)\n\n;;; Tests\n; scm> (make-change 2 2)\n; ((2) (1 1))\n; scm> (make-change 3 3)\n; ((3) (2 1) (1 1 1))\n; scm> (make-change 4 3)\n; ((3 1) (2 2) (2 1 1) (1 1 1 1))\n```\n**Solution**:\n```\n(define (make-change total biggest)\n  (cond ((= total 0) '(()) )    ;A right path \n   (or (< total) (= biggest 0) '() ) ;Invalid path, should be ingnored\n   (else\n     (let ((with (map (lambda (lst) (cons biggest lst)) (make-change (- total biggest) biggest) )  ) \n     (without (make-change total (- biggest 1))))\n     (append with without)\n     )\n  )\n)\n```\n## 10. Scheme Macro\n\n>由于尚未完全掌握 暂时不完全展示\n--------------\n\n## 11. Scheme Stream\n\n  - **A Speacial data type**\n  ```scm\n  ;the following are the constructor and selector of Stream:\n  (define (cons-stream first rest)\n    (cons first (delay rest))\n  )\n  (define (cdr-stream s)\n  (force (cdr s))\n)\n  ```\n<details>\n<summary>More demo</summary>\n\n```scm\n(define (constant-stream i) (cons-stream i (constant-stream i)))\n\n(define (slice s start end)\n   (if  (and (< start end) (not (null? s)) )\n     (if (and (= 0 start))\n       (cons (car s) (slice (cdr-stream s) start (- end 1)) )\n       (slice (cdr-stream s) (- start 1) (- end 1))\n       )     \n     nil\n   )\n)\n\n(define (add-stream s1 s2) \n   (cond \n     ((null? s1) s2)\n     ((null? s2) s1)\n     (else (cons-stream (+ (car s1) (car s2)) (add-stream  (cdr-stream s1) (cdr-stream s2) )) )\n   )\n)\n\n(define (merge-stream s1 s2)\n   (cond \n     ((null? s1) s2)\n     ((null? s2) s1)\n     (else \n       (if (> (car s1) (car s2))\n         (cons-stream (car s2) (merge-stream (cdr-stream s2) s1))\n         (cons-stream (car s1) (merge-stream (cdr-stream s1) s2))\n       )  \n     )\n   )\n)\n\n(define (map-stream fn stream )\n   (if (null? stream)\n     nil\n     (cons-stream (fn (car stream)) (map-stream fn (cdr-stream stream)))\n   )\n)\n\n(define (filter-stream fn stream)\n   (if (null? stream) nil\n     (if (fn (car stream))\n       (cons-stream (car stream) (filter-stream fn (cdr-stream stream)))\n       (filter-stream fn (cdr-stream stream))\n     )   \n   )\n)\n\n(define (nats start) (cons-stream start (nats (+ start 1))))\n(define natuals (nats 0))\n(define ones (constant-stream 1))\n(define s1 (cons-stream 1 (cons-stream 2 (cons-stream 3 (cons-stream 4 nil)))))\n\n```\n</details>\n\n- What 's wrong with the code?\n```scm\n(define (filter-stream f s)\n  (if (null? s) nil\n    (let ((rest (filter-stream f (cdr-stream s))))\n     (if (f (car s))\n       (cons-stream (car s) rest)\n       rest))))\n```\n>**Tips**: To get `rest` you have to get the result of the recursive call `(filter-stream f (cdr-stream s)))`, so it is not a lazy evaluation.\n\n- The most beautiful part of Stream lies in its power of creation: you can design many streams by some simple streams\n  Take `factorial` as an example: \n  We konw the factorials of naturals are 1 1 2 6 24 120...(start by 0!) \n  Given a stream of nuturals :1 2 3 4 5 ...\n  And we may found that if we combine  the two streams by multiple their corresponding element, we may get a new stream :1 2 6 24 120 720.... (1 * 1=1, 1 * 2=2, 2 * 3=6...)\n  And apperently, it is just part of the factorial stream, \n  so the factorail stream can be defined recursively:\n    \n  - the first element is 1 \n  - the rest are the `combination` of stream `naturals`  and the stream `factorials`\n>It's Beautiful! Right?\n\n更一般地：\n```scm\n  （define sum-stream \n    (cons-stream (car an-stream)  \n      (add-stream sum-stream (cdr-stream an-stream)\n    )\n   )\n;即,Sn+1=Sn+an+1;\n```\n - **More demos**:\n\n#Problem 4: Non Decreasing (100 pts)\nDefine a function nondecrease, which takes in a scheme stream of numbers and outputs a stream of lists, which overall has the same numbers in the same order, but grouped into lists that are non-decreasing.\n\nFor example, if the input is a stream containing elements\n\n(1 2 3 4 1 2 3 4 1 1 1 2 1 1 0 4 3 2 1)\nthe output should contain elements\n\n((1 2 3 4) (1 2 3 4) (1 1 1 2) (1 1) (0 4) (3) (2) (1))\nYour solution may handle infinite streams correctly, which means if an infinite streams is always non-decreasing after the nth element, and from the 0th to the n - 1th element can group to m non-decreasing sublists, your solution can output the first m sublists correctly.\n\n\n(define (nondecrease s)\n  'YOUR-CODE-HERE\n)\n\n;;; Tests\n; scm> (define s (list-to-stream '(1 2 3 4 1 2 3 4 1 1 1 2 1 1 0 4 3 2 1))) ; a helper function to make stream from list\n; s\n; scm> (slice (nondecrease s) 0 8)\n; ((1 2 3 4) (1 2 3 4) (1 1 1 2) (1 1) (0 4) (3) (2) (1))\n<details>\n<summary>solution1</summary>\n\n```scm\n(define (non-decreasing stream)\n   (cond ( (null? stream) (cons-stream nil ni) )\n     ( (null? (cdr-stream stream)) (cons-stream (cons (car stream) nil) nil))\n     (else \n       (let ((next (non-decreasing (cdr-stream stream))))\n         (if (<= (car stream) (car (car next)))\n           (cons-stream (cons (car stream) (car next))  (cdr-stream next))\n           (cons-stream (cons (car stream) nil) next)\n           )   \n       )\n     )\n   )\n)\n;\n```\n</details>\n\n>The main idea of solution one is take out the first element(`car stream`) and 'add' it to the result without it(recursively,`(non-decreasing (cdr-stream s)`) \n<details>\n<summary>solution2 from chatgpt</summary>\n\n```\n(define (non-decreasing stream) \n   (define (take-group stream)\n     (cond ((null? stream) nil)\n        ((null? (cdr-stream stream)) (cons (car stream) nil))\n       (else (if (<= (car stream) (car (cdr-stream stream) ) ) \n             (cons (car stream) (take-group (cdr-stream stream)))\n             (cons (car stream)  nil)\n           ))\n     )   \n   )\n   (define (next-stream stream)\n       (cond ((null? stream) nil)\n          ((null? (cdr-stream stream)) stream )\n          ((< (car stream) (car (cdr-stream stream))) (next-stream (cdr-stream stream)) )\n          (else (cdr-stream stream))\n          )\n     )\n   (if (null? (take-group stream)) nil (cons-stream (take-group stream) (non-decreasing (next-stream stream))))\n)\n\n```\n</details>\n\n> Main idea: `take-group` from the current stream and recursively take the group from the `next-stream`\n\n\n##12. SQL\n\n  - Create a tabel:\n    ```sql  \n    CREATE TABLE name AS:\n      SELECT 'content' AS coulmn_name UNION\n      .....\n    ```\n\n  - Select:\n    ```sql  \n    SELECT column FROM table_name AS column_name WHERE condition ORDER BY column LIMINT maximun_num\n    \n    ```\n   在ORDER BY col 后面可以加上 ASC或DESC，否则默认ASC；\n  - Joining tabels:\n    ```sql  \n    SELECT col FROM table1,table2 WHERE condition.....\n    ```\n  - Aggregation\n    ```c\n    1.GROUP BY \n    2.COUNT(*):计算所有列数，COUNT(DISTINCT col)计算不同col那一列地不同值的个数\n    3.MAX(col),MIN(col)\n    4. \n    ```\n - **Some common Aggregation function:**\n   ![](https://img2024.cnblogs.com/blog/3578676/202501/3578676-20250103083236722-333088327.png)\n\n##14. Others\n - Scheme Diagram:  \n\n\n\n\n\n  - Draw Lists:\n    - 自行体会：\n   ![](https://img2024.cnblogs.com/blog/3578676/202501/3578676-20250103085651349-898535439.png)\n  \n  - Environment, Frame:\n   Notice： Whenever you call a function, you create a new frame, whose parent is the frame where the function is defined. In the following example, the function `make-adder` is defined in the global frame, when call the function by `(make-adder 3)`, a new frame `f1` is created and returnd a lambda function (defined in `f1`). And later when you call the function `add-three` which is bound to the lambda function, new frames are created, more specifically `f2` and `f3`.The parent frame of `f2` and `f3` is `f1`, because the lambda is define in `f1`;\n  >But `add-there` is defined in Global Frame, why is their parent frame not the Global Frame?  When evaluating the call expression, the operator is evaluated first, which results in  a lambda procedure. Therefore the parent frame of the function call is the frame in which  the lambda procedure was defined.\n\n  ![](https://img2024.cnblogs.com/blog/3578676/202501/3578676-20250103090205733-663837540.png)\n\n  - Some Scheme procedure/SQL function often ignored:\n    - `modulo` 取模\n    - `quotident` 整除\n    - `equal?` or `eq?` 用于比较数字和非数字是否相等(`=`只用作数字之间的比较)\n    - `Round` (SQL aggregation Function) 四舍五入\n    - `AVG`  (SQL aggregation Function)  对group取平均值，注意，如果没有用GROUP BY 但是用了aggregation function，则认为是对整个的table当成是一个group；\n\n## 15. Interpreter\n\n  - Counting：考试会考！\n   - 这个是built-in procedure  \n   ![](https://img2024.cnblogs.com/blog/3578676/202501/3578676-20250103094500138-224050086.png)\n   - 这个是 user-defined procudure(`LambdaProcedure`)\n   ![](https://img2024.cnblogs.com/blog/3578676/202501/3578676-20250103094635619-1657772481.png)\n  >Pay attention to the eval process: you have to eval the exprssion in the body of the function.\n\n  - WWSP\n  ```scm\n  >>>scm (cons '(car) '('(1 2)))\n   (car (quote (1 2)))\n  ;解释：'(car) ->Pair(car) '('(1 2))->Pair(Pair(quote, Pair(1, Pair(2,nil))))\n  当调用cons的时候，需要先eval operand，分别得到car和Pair(quote,Pair(1, Pair(2, nil)))\n  再用cons创建一个pair-> Pair(car, Pair(quote, Pair(1, Pair(2,nil))))\n  >>(eval (cons '(car) '('(1 2))) )\n  1\n  ;解释，在上述的基础上再调用eval，发现Pair第一个是procedure（car）,因此按function call来，分别evaluate opertor 和operand，期中operand得到(1 2)\n  ```
+---
+date: 2025-01-18
+---
+# sicp笔记
+
+## !!!考前注意：
+
+  1. 注意不要破坏抽象：比如Scheme list要用对应的constructor和selector，不要用car、cdr
+  2. 注意在继承的时候，能调用super().method就尽量调用
+  3. 注意是list of lists还是list！
+  4. 降序排列是DESC，升序不用写
+  5. 如果是print或repr某个由instance组成的list，里面的每一个instance都会被repr作用；而不是str！！！！！！！！！
+  6. 注意看题目要求要的是什么！不要只看doctest。
+
+### 我的精神状态belike：
+![](https://img2024.cnblogs.com/blog/3578676/202412/3578676-20241231183714559-1474398211.jpg)
+
+## 1. The difference between quoted and unquoted string
+```python
+>>> print('hello world')
+hello world # unquoted
+>>> a = 'hello world'
+>>> a   # It is the same if you want to look up an attribute of an
+     # instance (or class) and the attribute is a string;
+'hello world' # quoted
+```
+And one more strange thing:
+```py
+class A:
+  def __init__(self, x):
+    self.x = x
+  def __repr__(self):
+    return self.x
+  def __str__(self):
+    return self.x
+>>> print(A('10'))
+10  # 注意这里不能是print(A(10))因为 str的返回值不能是非str的
+>>> A('10')    # implicitly call __repr__
+10
+>>> repr(A('10')) # explicitly call __repr__
+'10'
+# 经助教提醒后幡然醒悟：前面那个显示10并不意味着repr(A('10'))为10，而是经过了Read-Eval-Print-Loop之后才显示为10。
+```
+
+## 2. Attribute lookup:
+
+```py
+class Car:
+  def __init__(self):
+    pass
+class electric_car(Car):
+   def get_charged(self):
+     pass
+A = electric_car()
+Car.get_charged(A) # Error!
+# search the function 'get_charged' from the class Car, but failed.
+electric_car.get_charged(A) 
+# equals to A.get_charged()
+```
+
+## 3. Super method:  
+'super' is a method that allows you to call the method of superclass.
+
+> **Method Binding**  
+> When you call a method using super(), the method is bound to the current instance (i.e., self), not to the temporary proxy object. This is why the method has access to the instance’s attributes and can modify them. -- from deepseek V3
+
+```py
+class electric_car(Car):
+   def __init__(self):
+     super().__init__()
+# you don't have to take 'self' as a parameter, because it is bound already
+   def get_charged(self):
+     pass
+```
+
+## 4. Handle string format with for expression:
+> hint: you are recommended to read the manual about string functions like join, format, zfill, and so on;
+```py
+# example 1
+def shift(x, s):
+  return "".join([chr((ord(ch) - ord('a') + x) % 26 + ord('a')) for ch in s])
+# shift all the letters back by x
+```
+
+```py
+# example 2
+def time_format(year, month, day, format="yy.mm.dd"):
+   return format.replace("yy", str(year)).replace("mm", str(month).zfill(2)).replace("dd", str(day).zfill(2))
+# original_str.replace(old_substr, new_str);
+# str.zfill(width) => fill zeros ahead of the str;
+```
+```py
+# example 3
+def filter_index(s, x):
+  # filter out the letters whose indices are the multiple of x (excluding 0)
+  return "".join(s[index] if index == 0 or index % x != 0 else "" for index in range(len(s)))
+```
+##5. **special method**  
+There are some special methods like '__radd__','__rsub__', but when they are called?  
+
+>These methods are called to implement the binary arithmetic operations (+, -, *, @, /, //, %, divmod(), pow(), **, <<, >>, &, ^, |) with reflected (swapped) operands. These functions are only called if the left operand does not support the corresponding operation and the operands are of different types. For instance, to evaluate the expression x - y, where y is an instance of a class that has an __rsub__() method, y.__rsub__(x) is called if x.__sub__(y) returns NotImplemented.  
+>[https://docs.python.org/3.9/reference/datamodel.html?highlight=radd#object.__radd__]()  
+
+```py
+class num1:
+   def __init__(self,num):
+     self.num=num
+   def __add__(self,other):
+     return num1(self.num+other.num)
+   def __radd__(self,other):
+     return num1(2*self.num+other.num)
+   def __str__(self):
+     return f"the value is {self.num}"
+class num2:
+   def __init__(self,num):
+     self.num=num
+   def __add__(self,other):
+     return num1(self.num+other.num)
+   def __radd__(self,other):
+     return num1(2*self.num+other.n)
+n1=num1(1)
+n2=num2(2)
+print(n1+n2)  # the value is 3
+print(n2+n1)  # the value is 4
+# first: check if the __add__ method of the left operand is able to work
+# second: if they are the same type, then an error occurs (it's no use even if you change their position) otherwise, the __radd__ method of the right operand is called
+```
+
+## 6. Scheme
+- Everything is considered `#t` (true) except `#f` (false).  
+- `or` evaluates its arguments from left to right and returns the first truthy value.  
+If all arguments evaluate to `#f`, it returns `#f`.  
+- `and` evaluates its arguments from left to right and returns the first falsy value.  
+If all arguments are truthy, it returns the last truthy value.  
+- use `eq?` or `equal?` to compare symbol and number; `=` can only be used to compare numbers!  
+- `pair?`: return `#t` when operand is a pair (or list); In Python we use `isinstance(lnk, Link)`  
+
+##7. Interpreter
+- REPL: 'read-eval-print-loop'  
+- environment is often represented as a dictionary;  
+  To check if the dict has key 'a' use: `a in dict.keys()`  
+  To add a new key-value bound or change the value use: `dict[key] = value`  
+  To delete a key-value bound use: `del dict[k]`  
+
+## 8. Define Macro in Scheme  
+### The essence of macro procedure: Code Transformation  
+
+```scm
+(define-macro (f x) (+ x 2))
+(f (+ 2 3))
+(define-macro (g x) (list '+ x 2))
+(g (+ 2 3))
+```
+`(f (+ 2 3))` will apply the macro function f with the value `'(+ 2 3)` as `x`. It will try to `(+ '(+ 2 3) 2)` of which the result is the new code that replaces the whole `(f (+ 2 3))` entirely. However, + cannot add a list to a number, so it makes no sense to create a macro like that.  
+>######Take the source code as-is (add a quotation before it so when it is changed and evaled it is represented as-is)  
+
+`(g (+ 2 3))` will apply the macro function g with the value `'(+ 2 3)` as `x`. It will try to `(list '+ '(+ 2 3) 2)` of which the result is `(+ (+ 2 3) 2)`. This is then put verbatim at the code location of `(g (+ 2 3))` as if it has always been `(+ (+ 2 3) 2)` all along before the program starts executing. It works because `(+ (+ 2 3) 2)` is a valid expression.  
+
+## 9. Scheme List  
+Problem 1: Count Change III (100 pts)  
+Write a procedure make-change, which takes in positive integers total and biggest and outputs a list of lists, in which each inner list contains positive numbers no larger than biggest that sum to total.  
+
+>Note: Both outer list and inner lists should be descending ordered.  
+> Hint: You may find Scheme built-in procedure append useful.  
+```scm
+(define (make-change total biggest)
+  'YOUR-CODE-HERE
+)
+
+;;; Tests
+; scm> (make-change 2 2)
+; ((2) (1 1))
+; scm> (make-change 3 3)
+; ((3) (2 1) (1 1 1))
+; scm> (make-change 4 3)
+; ((3 1) (2 2) (2 1 1) (1 1 1 1))
+```
+**Solution**:  
+```
+(define (make-change total biggest)
+  (cond ((= total 0) '(()) )    
+   ((< total 0) (= biggest 0) '() ) 
+   (else
+     (let ((with (map (lambda (lst) (cons biggest lst)) (make-change (- total biggest) biggest) ) ) 
+     (without (make-change total (- biggest 1))))
+     (append with without)
+     )
+  )
+)
+```
+
+## 10. Scheme Macro  
+
+>由于尚未完全掌握 暂时不完全展示  
+--------------  
+
+## 11. Scheme Stream  
+
+  - **A special data type**  
+  ```scm
+  ; the following are the constructor and selector of Stream:
+  (define (cons-stream first rest)
+    (cons first (delay rest))
+  )
+  (define (cdr-stream s)
+    (force (cdr s))
+  )
+  ```  
+More demo：  
+```scm
+(define (constant-stream i) (cons-stream i (constant-stream i)))
+
+(define (slice s start end)
+   (if (and (< start end) (not (null? s)))
+     (if (= start 0)
+       (cons (car s) (slice (cdr-stream s) start (- end 1)))
+       (slice (cdr-stream s) (- start 1) (- end 1))
+     )
+     nil
+   )
+)
+
+(define (add-stream s1 s2) 
+   (cond 
+     ((null? s1) s2)
+     ((null? s2) s1)
+     (else (cons-stream (+ (car s1) (car s2)) (add-stream (cdr-stream s1) (cdr-stream s2))))
+   )
+)
+
+(define (merge-stream s1 s2)
+   (cond 
+     ((null? s1) s2)
+     ((null? s2) s1)
+     (else 
+       (if (> (car s1) (car s2))
+         (cons-stream (car s2) (merge-stream (cdr-stream s2) s1))
+         (cons-stream (car s1) (merge-stream (cdr-stream s1) s2))
+       )
+     )
+   )
+)
+
+(define (map-stream fn stream)
+   (if (null? stream)
+     nil
+     (cons-stream (fn (car stream)) (map-stream fn (cdr-stream stream)))
+   )
+)
+
+(define (filter-stream fn stream)
+   (if (null? stream) nil
+     (if (fn (car stream))
+       (cons-stream (car stream) (filter-stream fn (cdr-stream stream)))
+       (filter-stream fn (cdr-stream stream))
+     )
+   )
+)
+
+(define (nats start) (cons-stream start (nats (+ start 1))))
+(define natural (nats 0))
+(define ones (constant-stream 1))
+(define s1 (cons-stream 1 (cons-stream 2 (cons-stream 3 (cons-stream 4 nil)))))
+```
+
+- What's wrong with the code?  
+```scm
+(define (filter-stream f s)
+  (if (null? s) nil
+    (let ((rest (filter-stream f (cdr-stream s))))
+     (if (f (car s))
+       (cons-stream (car s) rest)
+       rest))))
+```
+>**Tips**: To get `rest` you have to get the result of the recursive call `(filter-stream f (cdr-stream s))`, so it is not a lazy evaluation.  
+
+- The most beautiful part of Stream lies in its power of creation: you can design many streams by some simple streams.  
+  Take `factorial` as an example:  
+  We know the factorials of naturals are 1 1 2 6 24 120... (start by 0!)  
+  Given a stream of naturals: 1 2 3 4 5 ...  
+  And we may find that if we combine the two streams by multiplying their corresponding elements, we may get a new stream: 1 2 6 24 120 720 ... (1 * 1 = 1, 1 * 2 = 2, 2 * 3 = 6 ...)  
+  And apparently, it is just part of the factorial stream.  
+  So the factorial stream can be defined recursively:  
+
+  - the first element is 1  
+  - the rest are the `combination` of stream `naturals` and the stream `factorials`  
+>It's beautiful! Right?  
+
+More generally:  
+```scm
+(define sum-stream
+  (cons-stream (car an-stream)
+    (add-stream sum-stream (cdr-stream an-stream))
+  )
+)
+;即, Sn+1 = Sn + an+1;
+```  
+- **More demos**:  
+
+# Problem 4: Non Decreasing (100 pts)  
+Define a function nondecrease, which takes in a Scheme stream of numbers and outputs a stream of lists, which overall has the same numbers in the same order, but grouped into lists that are non-decreasing.  
+
+For example, if the input is a stream containing elements  
+
+(1 2 3 4 1 2 3 4 1 1 1 2 1 1 0 4 3 2 1)  
+the output should contain elements  
+
+((1 2 3 4) (1 2 3 4) (1 1 1 2) (1 1) (0 4) (3) (2) (1))  
+Your solution may handle infinite streams correctly, which means if an infinite stream is always non-decreasing after the nth element, and from the 0th to the n-1th element can group to m non-decreasing sublists, your solution can output the first m sublists correctly.  
+
+```scm
+(define (nondecrease s)
+  'YOUR-CODE-HERE
+)
+
+;;; Tests
+; scm> (define s (list-to-stream '(1 2 3 4 1 2 3 4 1 1 1 2 1 1 0 4 3 2 1))) ; a helper function to make stream from list
+; s
+; scm> (slice (nondecrease s) 0 8)
+; ((1 2 3 4) (1 2 3 4) (1 1 1 2) (1 1) (0 4) (3) (2) (1))
+```
+<details>  
+<summary>solution1</summary>  
+
+```scm
+(define (non-decreasing stream)
+   (cond ((null? stream) (cons-stream nil nil))
+     ((null? (cdr-stream stream)) (cons-stream (cons (car stream) nil) nil))
+     (else 
+       (let ((next (non-decreasing (cdr-stream stream))))
+         (if (<= (car stream) (car (car next)))
+           (cons-stream (cons (car stream) (car next)) (cdr-stream next))
+           (cons-stream (cons (car stream) nil) next)
+         )
+       )
+     )
+   )
+)
+```
+</details>  
+
+>The main idea of solution one is take out the first element (`car stream`) and 'add' it to the result without it (recursively, `(non-decreasing (cdr-stream s))`)  
+
+<details>  
+<summary>solution2 from chatgpt</summary>  
+
+```scm
+(define (non-decreasing stream) 
+   (define (take-group stream)
+     (cond ((null? stream) nil)
+        ((null? (cdr-stream stream)) (cons (car stream) nil))
+       (else (if (<= (car stream) (car (cdr-stream stream)))
+             (cons (car stream) (take-group (cdr-stream stream)))
+             (cons (car stream) nil)
+           ))
+     )
+   )
+   (define (next-stream stream)
+       (cond ((null? stream) nil)
+          ((null? (cdr-stream stream)) stream)
+          ((< (car stream) (car (cdr-stream stream))) (next-stream (cdr-stream stream)))
+          (else (cdr-stream stream))
+          )
+     )
+   (if (null? (take-group stream)) nil (cons-stream (take-group stream) (non-decreasing (next-stream stream))))
+)
+```
+</details>  
+
+> Main idea: `take-group` from the current stream and recursively take the group from the `next-stream`  
+
+##12. SQL  
+
+  - Create a table:  
+    ```sql  
+    CREATE TABLE name AS
+      SELECT 'content' AS column_name UNION
+      ......
+    ```  
+
+  - Select:  
+    ```sql  
+    SELECT column FROM table_name AS column_name WHERE condition ORDER BY column LIMIT maximum_num
+    ```  
+   In ORDER BY col, you can add ASC or DESC; otherwise, default is ASC.  
+  - Joining tables:  
+    ```sql  
+    SELECT col FROM table1, table2 WHERE condition.....
+    ```  
+  - Aggregation  
+    ```c
+    1. GROUP BY  
+    2. COUNT(*): counts all rows; COUNT(DISTINCT col) counts the number of distinct values in column col  
+    3. MAX(col), MIN(col)  
+    4.  
+    ```  
+ - **Some common Aggregation functions:**  
+   ![](https://img2024.cnblogs.com/blog/3578676/202501/3578676-20250103083236722-333088327.png)  
+
+##14. Others  
+ - Scheme Diagram:  
+
+  
+
+  - Draw Lists:  
+    - 自行体会：  
+   ![](https://img2024.cnblogs.com/blog/3578676/202501/3578676-20250103085651349-898535439.png)  
+
+  - Environment, Frame:  
+   Notice: Whenever you call a function, you create a new frame, whose parent is the frame where the function is defined. In the following example, the function `make-adder` is defined in the global frame. When calling the function by `(make-adder 3)`, a new frame `f1` is created and returns a lambda function (defined in `f1`). Later, when you call the function `add-three` which is bound to the lambda function, new frames are created, more specifically `f2` and `f3`. The parent frame of `f2` and `f3` is `f1`, because the lambda is defined in `f1`.  
+  > But `add-three` is defined in the global frame; why is their parent frame not the global frame? When evaluating the call expression, the operator is evaluated first, which results in a lambda procedure. Therefore, the parent frame of the function call is the frame in which the lambda procedure was defined.  
+
+  ![](https://img2024.cnblogs.com/blog/3578676/202501/3578676-20250103090205733-663837540.png)  
+
+  - Some Scheme procedure/SQL function often ignored:  
+    - `modulo` — remainder  
+    - `quotient` — integer division  
+    - `equal?` or `eq?` — used to compare numbers and non-numbers for equality (`=` only for numbers)  
+    - `ROUND` (SQL aggregation function) — round to nearest integer  
+    - `AVG` (SQL aggregation function) — compute average over a group; note that if no `GROUP BY` is used but an aggregation function is applied, the entire table is treated as one group  
+
+## 15. Interpreter  
+
+  - Counting:考试会考!  
+   - This is a built-in procedure  
+   ![](https://img2024.cnblogs.com/blog/3578676/202501/3578676-20250103094500138-224050086.png)  
+   - This is a user-defined procedure (`LambdaProcedure`)  
+   ![](https://img2024.cnblogs.com/blog/3578676/202501/3578676-20250103094635619-1657772481.png)  
+  > Pay attention to the eval process: you have to eval the expression in the body of the function.  
+
+  - WWSP  
+  ```scm
+  >>> scm (cons '(car) '('(1 2)))
+   (car (quote (1 2)))
+  ; explanation: '(car) -> Pair(car); '('(1 2)) -> Pair(Pair(quote, Pair(1, Pair(2, nil))))  
+  When calling cons, you must first eval the operands, getting `car` and `Pair(quote, Pair(1, Pair(2, nil)))`  
+  Then use cons to create a pair -> Pair(car, Pair(quote, Pair(1, Pair(2, nil))))  
+  >> (eval (cons '(car) '('(1 2))))
+  1  
+  ; explanation: on top of the above, call eval again. It finds the first element is a procedure (car), so it treats it as a function call. It evaluates the operator and operand separately, where the operand becomes (1 2)  
+  ```

@@ -212,3 +212,35 @@ static int cmd_q(char *args) {
 
 ![image-20250912214558229](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250912214558229.png)
 
+
+### 实现算术表达式的词法分析
+
+你需要完成以下的内容:
+
+- 为算术表达式中的各种token类型添加规则, 你需要注意C语言字符串中转义字符的存在和正则表达式中元字符的功能.
+- 在成功识别出token后, 将token的信息依次记录到`tokens`数组中.
+> [!NOTE] regex库快速了解
+
+## 补充：C语言拾遗
+
+**Spiral Rule** 螺旋法则
+
+[Clockwise/Spiral Rule](https://c-faq.com/decl/spiral.anderson.html)
+```c
+                      +-----------------------------+
+                      |                  +---+      |
+                      |  +---+           |+-+|      |
+                      |  ^   |           |^ ||      |
+                void (*signal(int, void (*fp)(int)))(int);
+                 ^    ^      |      ^    ^  ||      |
+                 |    +------+      |    +--+|      |
+                 |                  +--------+      |
+                 +----------------------------------+
+```
+signal是一个函数：
+- 参数为：
+	1. int
+	2. 一个函数指针fp，fp指向的函数接受一个int作为参数，return为空
+- 返回值为：一个函数指针，接受参数为int，返回为空
+**建议**：使用 `typedef`，比如`typedef void (*sighandle_t)(int)`之后，再定义为`sighandle_t signal(int, void (*fp)(int));`
+

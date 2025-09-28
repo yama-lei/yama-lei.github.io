@@ -1,5 +1,10 @@
 [
   "obsidian-image-auto-upload-plugin",
   "obsidian-pandoc",
-  "obsidian-git"
+  "obsidian-git",
+  "copilot",
+  "code-styler",
+  "zhihu",
+  "obsidian-zotero-desktop-connector",
+  "mermaid-tools"
 ]
