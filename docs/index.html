@@ -1,0 +1,228 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>YamaBlog - 亚麻的博客</title><meta name="author" content="Yama-lei"><meta name="copyright" content="Yama-lei"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="记录一个NJUCSer的学习">
+<meta property="og:type" content="website">
+<meta property="og:title" content="YamaBlog">
+<meta property="og:url" content="https://yama-lei.top/index.html">
+<meta property="og:site_name" content="YamaBlog">
+<meta property="og:description" content="记录一个NJUCSer的学习">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp">
+<meta property="article:author" content="Yama-lei">
+<meta property="article:tag" content="博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "YamaBlog",
+  "alternateName": [
+    "亚麻的博客",
+    "yama-lei.top"
+  ],
+  "url": "https://yama-lei.top/"
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yama-lei.top/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":true,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'YamaBlog',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><link rel="stylesheet" href="/css/callout_blocks.css"><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/homepage-hero.css"><link rel="stylesheet" href="/css/card-enhance.css"><link rel="stylesheet" href="/css/sidebar-enhance.css"><link rel="stylesheet" href="/css/category-tag-page.css"><meta name="generator" content="Hexo 8.0.0"><link rel="alternate" href="/atom.xml" title="YamaBlog" type="application/atom+xml">
+</head><body><div id="web_bg" style="background-color: #ffffff;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">105</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-list"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/essay/"><i class="fa-fw fas fa-comment-dots"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/playground/"><i class="fa-fw fas fa-flask"></i><span> Playground</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-user-friends"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-top-img fixed" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">YamaBlog</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-list"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/essay/"><i class="fa-fw fas fa-comment-dots"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/playground/"><i class="fa-fw fas fa-flask"></i><span> Playground</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-user-friends"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><h1 class="title-seo">YamaBlog</h1></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/66b650927646/" title="多维数组">多维数组</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-09-30T16:00:00.000Z" title="发表于 2025-10-01 00:00:00">2025-10-01</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/NJUCS/">NJUCS</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/NJUCS/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></span></div><div class="content">二维数组  typedef T a[m][n] 等价于 typedef T b[m] + typedef b a[n] 如果 int a[m][n]; 那么 a[i][j] 代表的位置是 a + i * n + j 递归计算位置：Loc(i)=αLoc(i) = \alphaLoc(i)=α if i=0i = 0i=0 else Loc(i−1)+lLoc(i-1) + lLoc(i−1)+l； Loc(i,j)=Loc(i,0)+j=Loc(0,0)+i∗m+jLoc(i,j)= Loc(i,0)+j=Loc(0,0)+i*m+jLoc(i,j)=Loc(i,0)+j=Loc(0,0)+i∗m+j 三维数组 int a[m][n][p] 如果访问a[i][j][k]，访问的地址为a+i*n*p+j*p+k  对称矩阵 M=MT	M=M^T M=MT 对于对称矩阵来说，有M[i][j]=M[j][i],因此我们只需要存储一个上三角矩阵或者一个下三角矩阵就能够把所有的有效元素访问到。 只需要存储1+2+3+…+n=(1+n)n/2个元素，以下三角矩阵为例： 12345678910...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/66c438509deb/" title="多模态综述">多模态综述</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-09-30T13:14:40.000Z" title="发表于 2025-09-30 21:14:40">2025-09-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/NOVA/">NOVA</a></span></div><div class="content">精读(perhaps)了《A Survey on Multimodal Large Language Models》（IEEE2024）这篇文章有关MLLM的发展历程概括，论文中还给了一个github链接https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models，这篇论文不曾想，点进去就看到了南大的标，并且这篇论文很帅气地写下了这句话： “To the best of our knowledge, this is the first survey on MLLM.” “据我们所知，这篇综述是MLMM方向的第一篇综述”  原来是南大发的论文 出于好奇，我搜了一下Mig小组，发现该组有4位老师，其中两位老师恰好是我这个学期计算机系统基础的老师。 9月28日更正：这篇论文的作者来自南大，中科大和腾讯，其中南大的Fu Chaoyou是共一+project leader   LLM，LVM，MLLM LLM(Large Model) 参数量大，强于推理能力，但是没有视觉 LVM（Large Vision Model...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/54b78cdb42c3/" title="无标题">无标题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-09-30T01:58:28.349Z" title="发表于 2025-09-30 09:58:28">2025-09-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/NJUCS/">NJUCS</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/NJUCS/ICS%E8%AE%A1%E7%AE%97%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/">ICS计算系统基础</a></span></div><div class="content">使用BurpSuite对即将发布的ics-chatbot的抓包分析   ICS chat-bot接口 使用BurpSuite抓包可以发现如下接口：  1. 登录接口 POST /login   请求需要包含JSON格式的token： JSON   123&#123;    &#x27;token&#x27;: YOUR_TOKEN&#125;   响应中会包含Set-Cookie: user_session=XXX，请务必保存此user_session，后续所有请求都需要将其作为Cookie发送。   请求示例: HTTP 123456789POST /login HTTP/1.1Host: 114.212.10.249:8080...Content-Type: application/x-www-form-urlencoded...Cookie: user_session=816368583df0135efaf9e8ceae0ff49b%2Fbedd3a284c8ef8265dad6337a6be88030338355463fe06b9c5d1768f0ff685012bcfc...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/d1739767f4d2/" title="实用网站">实用网站</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-09-29T16:00:00.000Z" title="发表于 2025-09-30 00:00:00">2025-09-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Mics/">Mics</a></span></div><div class="content"> 南大网站      南京大学五育项目管理系统     南京大学-学生第二课堂     网络认证     选课系统     信息化建设管理中心     南京大学网上办事服务大厅     南大云盘     南大表格     南大镜像     南大测速     教务系统     大外网  ## 工具类  文件转markdown    To be continued…  </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/0ac3e125560f/" title="Riscv介绍">Riscv介绍</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-09-29T16:00:00.000Z" title="发表于 2025-09-30 00:00:00">2025-09-30</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/NJUCS/">NJUCS</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/NJUCS/ICS%E8%AE%A1%E7%AE%97%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/">ICS计算系统基础</a></span></div><div class="content">RISCV：开源，Load/Store形式 指令有R-type，I-type，S-type，U-type，B-type，J-type等类型  推荐RISC-V 指令集参考手册来了解这个相关指令 在riscv里面将a0-a1作为返回值寄存器，如果是是32位就只需要a0，如果是64位那就需要64位，如果是更大的，那么存入栈中，并且放回地址（对应x86的eax） sp相当于是x_86的esp（栈顶指针） 在x86中放回地址是压入栈中，然后跳转，但是在riscv中 （在x86中，call指令会push return addr并且跳转，ret指令先pop返回指令，再跳转，这里的跳转指的是修改栈顶指针） 而在riscv中使用寄存器进行保存  （图为riscv的寄存器和对应的abi name，以及描述相关内容）   Instructions  Arithmetic Instructions  add rd rs1 rs2  将寄存器 rs1 和 rs2 中的值相加，结果写入 rd。 有符号整数加法，若溢出则不触发异常，结果直接截断（由软件处理）。   addi rd rs1 imm12  立即...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/6d799cb58280/" title="第四章：程序的链接">第四章：程序的链接</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-09-28T16:00:00.000Z" title="发表于 2025-09-29 00:00:00">2025-09-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/NJUCS/">NJUCS</a><i class="fas fa-angle-right article-meta-link"></i><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/NJUCS/ICS%E8%AE%A1%E7%AE%97%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/">ICS计算系统基础</a></span></div><div class="content"> Note  老师说这一章很重要，特别是函数调用部分，要能够读懂函数调用的过程  听到了代码，栈，三个寄存器（EBP，ESP，EIP）来完成整个函数的调用之类的东西 将来会叫我们画函数的栈帧，里面会有eax ebx之类的东西，会有局部变量，会有函数的参数等等 在函数的执行过程中，ebp不变，一直指向栈帧基址 栈帧形状  12345678910参数 (caller传的)返回地址 (call压入)旧 ebp (push ebp 保存的)------------------ ← ebp 指向这里 (栈帧基址)局部变量区 (向低地址扩展)临时保存的寄存器------------------ ← esp 指向这里 (栈顶)[低地址]所以参数的访问都是用 ebp + 偏移量来访问，返回值一般都在 eax 寄存器中，如果是浮点数，那么就是压入 XX（这个不考）  栈帧必须要会画 以这个代码为 123456789int add ( int x, int y ) &#123;	 return x+y;&#125;int	 caller ( ) &#123;		 int	t1 = 125;     ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/800444f268fd/" title="无标题">无标题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-09-28T13:20:28.804Z" title="发表于 2025-09-28 21:20:28">2025-09-28</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/">一些碎碎念</a></span></div><div class="content"> 一位很优秀的老师说的话  这里说的老师是，李越老师。  引言：樾哥在最后一节课上，把SQL的最后一点语法讲完了；短暂休息了几分钟后，把他带来的圣诞节礼物–巧克力，分给了学生，开始了下面这段讲话。 （暂未人工校对，有许多的错误） 樾哥： 当老师有这样的一个好处：当你一直在观察学生的时候，你会发现历史总是惊人的相似:每一届学生的烦恼都是惊人的相似。 我可以大胆地说一句，因为自从我生病以后发言都比较大胆 （笑声） 为什么，因为觉得大不了就命一条,工作又算得了什么。  “我们的教育确实有问题”  我只想实际跟你说，包括我们国家也好，国外也好，我毕竟在国外呆了7年，我觉得很大一部分我们的教育体系是缺失的，缺失在哪里？缺失在我们学生 18 岁成年了之前，一直是素质教育也好，教育也好，都是一种选拔式的、竞争式的、优胜劣汰是这样的去筛选人才。我们管理国家也好，管理信息当然要公平的简单的有效方式，但是国家机器而言，只是一个简单有效的方法，也是一个公平工作，但是落实到我们个人，个人成为了牺牲品。 那么你们信任我们现在来到南京大学，属于基础计划很重要，你们属于社会价值体系当中优秀部分，因为部分外面住...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/0a58f97eba42/" title=" 如何看待人民日报官方微信公众号转载的文章《孩子，我宁愿欠你一个快乐的少年，也不愿看到你卑微的成年》"> 如何看待人民日报官方微信公众号转载的文章《孩子，我宁愿欠你一个快乐的少年，也不愿看到你卑微的成年》</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-09-28T13:20:28.802Z" title="发表于 2025-09-28 21:20:28">2025-09-28</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/">一些碎碎念</a></span></div><div class="content"> 如何看待人民日报官方微信公众号转载的文章《孩子，我宁愿欠你一个快乐的少年，也不愿看到你卑微的成年》？ 本文由人民日报官方公众号（id：rmrbwx）发布于2016年8月31日，转载文章链接： 【荐读】 孩子，我宁愿欠你一个快乐的少年，也不愿看到你卑微的成年 注意，《人民日报》官网、官方微博并未转载该文。 －－－－原题主问题－－－－ 第一个问题，填鸭式的应试教育是否能真的成就栋梁之才，能的话成才率是多少？ 第二个问题，怎么看待现在孩子从小开始就被迫的补课，占用大量休息时间，这种方式公认不值得提倡，但为何这么多人照做？ 相关问题： 怎样看待钱文忠教授说「我不相信教育是快乐的，请别再以爱的名义对孩子让步」？ - 学习  天平 永远是学生，永远爱写作，兼职写小说、小说大纲和人设 关注 4.9 万人赞同了该回答 10.19（最新，大概也是最后的更新了，更新内容仅限中括号内的） 【这篇回答的评论区被锁了，不是我锁的，我也没有办法打开它，问了知乎管理，说是评论区可能涉及到违反法律或引起争议的内容，所以锁了。如果大家有什么想说的，我主页里有关于这一篇的想法，那里只有一个本文链接，在那下面评论吧...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/8344ebe68b71/" title="锐评高考作文">锐评高考作文</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-09-28T13:20:28.800Z" title="发表于 2025-09-28 21:20:28">2025-09-28</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/">一些碎碎念</a></span></div><div class="content"> 你说的对 学习AI中 关注 186 人赞同了该回答 负分作文已经出来了: 砖”家之言：脱离烟火气的“传世”臆想 每每面对一些“高屋建瓴”的作文题目，我总觉得像是走进了一个由“砖”家们精心搭建的空中楼阁，里面充斥着华丽却空洞的辞藻，与真实的烟火气格格不入。今年的“专”“转”“传”作文题，更是将这种“砖”家气概展现得淋漓尽致。 首先，让我们来审视一下这“专”“转”“传”的概念。所谓的“专”指专业文章，“转”指被转发的通俗文章，“传”指获得广泛传播的佳作，甚至是传世文章。听起来煞有介事，仿佛洞悉了文章传播的终极奥秘。然而，这“专”与“转”的界限，本身就模糊不清。一篇专业文章，难道就不能是通俗易懂、广受欢迎的吗？难道只有“被转发”才算“通俗”？它忽视了作品本身的质量、读者的接受习惯以及传播媒介的复杂性，仅仅用几个简单的汉字就试图概括纷繁复杂的现象，这种“一言以蔽之”的做派，恰恰暴露了其缺乏深入思考的本质。 更令人啼笑皆非的是，题目中提出的“专业文章可以变成被转发的通俗文章，而面对大量‘转’文，读者又不免期待可传世的文章”，以及最核心的追问：“由‘专’到‘传’，必定要经过‘转’吗？”这简...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/posts/1f6f93e44946/" title="互联网圣地一览">互联网圣地一览</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-09-28T13:20:28.797Z" title="发表于 2025-09-28 21:20:28">2025-09-28</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/">一些碎碎念</a></span></div><div class="content"> 如何评价小红书？  谢於飞Official 写小说的电子宠物狐狸，合作/标明出处转载欢迎 1443 人赞同了该回答  欢迎观看赛博厕所争霸记 叠甲环节在评论区 已完结  刘智孚加班回家，推门看见儿子刘璧黎瘫在沙发上看纸片小人。 儿子的名字本来想叫做刘哔哩哔哩[1]，奈何遭妻子洪晓淑为首的一众家人坚决反对。于是刘智孚退而求其次，依照《诗经·国风·候风·大野》中描述国中美玉的“马璧黎璞，奠璧三狼”一句择出两个字，以附会这一谐音，“刘哔哩”则留作小名。 刘璧黎问过刘智孚自己的名字是什么意思。 “对，先问是不是，再问为什么。这首诗上半句说的是，雕刻着马的玉璧看起来十分朴实，好像没有加工的痕迹；下半句又在说在新的玉璧上打基础，准备在上面雕刻三匹狼。”他由衷希望儿子能尽早多受一些此方面的熏陶，好在今后的某一天能及时抛露出他们一家颇具文化底蕴的证明；而这一《诗经》篇目的真实性并不予以考定。  打野走位我就觉得***离谱，你老在那想刷你那b三狼干什么玩意？ 洪晓淑则在搜罗一系列“小众英文名”“高级英文名”“英文名好听不俗有寓意”后，给儿子取下英文名Billy，为日后做留子作第一步准备。 然而刘...</div></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/#content-inner">11</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Yama-lei</div><div class="author-info-description">记录一个NJUCSer的学习</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">105</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yama-lei"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/yama-lei" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:your@email.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color: #FFA500;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">博客正在建设中...能看就行...😋😋😋</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/66b650927646/" title="多维数组">多维数组</a><time datetime="2025-09-30T16:00:00.000Z" title="发表于 2025-10-01 00:00:00">2025-10-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/66c438509deb/" title="多模态综述">多模态综述</a><time datetime="2025-09-30T13:14:40.000Z" title="发表于 2025-09-30 21:14:40">2025-09-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/54b78cdb42c3/" title="无标题">无标题</a><time datetime="2025-09-30T01:58:28.349Z" title="发表于 2025-09-30 09:58:28">2025-09-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/0ac3e125560f/" title="Riscv介绍">Riscv介绍</a><time datetime="2025-09-29T16:00:00.000Z" title="发表于 2025-09-30 00:00:00">2025-09-30</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            <a class="card-more-btn" href="/categories/" title="查看更多">
+      <i class="fas fa-angle-right"></i></a>
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Mics/"><span class="card-category-list-name">Mics</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/NJUCS/"><span class="card-category-list-name">NJUCS</span><span class="card-category-list-count">57</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/NJUCS/ICS%E8%AE%A1%E7%AE%97%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/"><span class="card-category-list-name">ICS计算系统基础</span><span class="card-category-list-count">8</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/NJUCS/Others/"><span class="card-category-list-name">Others</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/NJUCS/%E5%AD%A6%E6%9C%AF%E9%98%85%E8%AF%BB%E5%92%8C%E5%86%99%E4%BD%9C/"><span class="card-category-list-name">学术阅读和写作</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/NJUCS/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/"><span class="card-category-list-name">数字逻辑与计算机组成</span><span class="card-category-list-count">14</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/NJUCS/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"><span class="card-category-list-name">数据结构</span><span class="card-category-list-count">7</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/NJUCS/%E6%99%AE%E9%80%9A%E7%89%A9%E7%90%86%E5%AD%A6%EF%BC%88%E4%B8%8A%EF%BC%89/"><span class="card-category-list-name">普通物理学（上）</span><span class="card-category-list-count">3</span></a></li></ul></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/zhihu-article/" style="font-size: 1.1em; color: #999">zhihu-article</a> <a href="/tags/njucs/" style="font-size: 1.5em; color: #99a9bf">njucs</a> <a href="/tags/DataStructure/" style="font-size: 1.1em; color: #999">DataStructure</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 1.1em; color: #999">数据结构</a> <a href="/tags/%E5%A4%8D%E4%B9%A0/" style="font-size: 1.1em; color: #999">复习</a> <a href="/tags/tech/" style="font-size: 1.1em; color: #999">tech</a> <a href="/tags/docker/" style="font-size: 1.1em; color: #999">docker</a> <a href="/tags/nova/" style="font-size: 1.1em; color: #999">nova</a> <a href="/tags/class-notes/" style="font-size: 1.5em; color: #99a9bf">class-notes</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      <a class="card-more-btn" href="/archives/"
+            title="查看更多">
+            <i class="fas fa-angle-right"></i>
+          </a>
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/10/">
+            <span class="card-archive-list-date">
+              十月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/09/">
+            <span class="card-archive-list-date">
+              九月 2025
+            </span>
+            <span class="card-archive-list-count">75</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/07/">
+            <span class="card-archive-list-date">
+              七月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/06/">
+            <span class="card-archive-list-date">
+              六月 2025
+            </span>
+            <span class="card-archive-list-count">4</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/05/">
+            <span class="card-archive-list-date">
+              五月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/04/">
+            <span class="card-archive-list-date">
+              四月 2025
+            </span>
+            <span class="card-archive-list-count">11</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/03/">
+            <span class="card-archive-list-date">
+              三月 2025
+            </span>
+            <span class="card-archive-list-count">5</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/02/">
+            <span class="card-archive-list-date">
+              二月 2025
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">105</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-10-02T03:40:39.429Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="ft"><div class="ft-item-1"><div class="t-top"><div class="t-t-l"><p class="ft-t t-l-t">格言🧬</p><div class="bg-ad"><div>记录一个NJUCSer的学习历程 · 代码改变世界，技术创造未来</div><div class="btn-xz-box"><a class="btn-xz" href="/about/">了解更多</a></div></div></div></div></div><div class="ft-item-2"><p class="ft-t">推荐友链⌛</p><div class="ft-img-group"><div class="img-group-item"><a href="/links/" title="广告位招租"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/zhaozu.jpg" alt="广告位招租"/></a></div><div class="img-group-item"><a href="/links/" title="更多友联"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/zhaozu.jpg" alt="友链"/></a></div></div></div></div><div class="copyright"><span><b>&copy;2025</b></span><span><b>&nbsp;&nbsp;By Yama-lei</b></span></div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Less is more · © YamaBlog</div><div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat-square" alt="Hexo"/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat-square" alt="Butterfly"/></a><a class="github-badge" target="_blank" href="https://github.com/yama-lei" style="margin-inline:5px" title="源码托管于GitHub"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat-square" alt="GitHub"/></a></p></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><script src="/js/custom.js"></script><script src="/js/footer-enhance.js"></script><script src="/js/homepage-enhance.js"></script><script defer src="/js/runtime.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

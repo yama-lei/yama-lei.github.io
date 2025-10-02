@@ -1,0 +1,525 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>期末复习 | YamaBlog</title><meta name="author" content="Yama-lei"><meta name="copyright" content="Yama-lei"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="期末复习  记录于最后一节课，补充于6月16日前后  选择题10*2&#x3D;20分（基本概念，简单计算） 30 &#x3D; 组合逻辑+时序逻辑（课堂讲得内容，给题干，设计电路、时序分析等，参考作业） 50 &#x3D; 一个大题，和指令系统、单周期、流水线CPU等（老师说和往年卷很像）   冯诺依曼结构 此处知识点，请参考详细笔记第一章-二进制表示 五大部件：运算器、存储器、控制器、IO设备 存储程序的工作方式（程序和">
+<meta property="og:type" content="article">
+<meta property="og:title" content="期末复习">
+<meta property="og:url" content="https://yama-lei.top/posts/ee554c3c6e11/index.html">
+<meta property="og:site_name" content="YamaBlog">
+<meta property="og:description" content="期末复习  记录于最后一节课，补充于6月16日前后  选择题10*2&#x3D;20分（基本概念，简单计算） 30 &#x3D; 组合逻辑+时序逻辑（课堂讲得内容，给题干，设计电路、时序分析等，参考作业） 50 &#x3D; 一个大题，和指令系统、单周期、流水线CPU等（老师说和往年卷很像）   冯诺依曼结构 此处知识点，请参考详细笔记第一章-二进制表示 五大部件：运算器、存储器、控制器、IO设备 存储程序的工作方式（程序和">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp">
+<meta property="article:published_time" content="2025-09-28T13:20:28.495Z">
+<meta property="article:modified_time" content="2025-09-28T13:41:20.031Z">
+<meta property="article:author" content="Yama-lei">
+<meta property="article:tag" content="博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "期末复习",
+  "url": "https://yama-lei.top/posts/ee554c3c6e11/",
+  "image": "https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp",
+  "datePublished": "2025-09-28T13:20:28.495Z",
+  "dateModified": "2025-09-28T13:41:20.031Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Yama-lei",
+      "url": "https://yama-lei.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yama-lei.top/posts/ee554c3c6e11/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":true,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '期末复习',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/callout_blocks.css"><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/homepage-hero.css"><link rel="stylesheet" href="/css/card-enhance.css"><link rel="stylesheet" href="/css/sidebar-enhance.css"><link rel="stylesheet" href="/css/category-tag-page.css"><meta name="generator" content="Hexo 8.0.0"><link rel="alternate" href="/atom.xml" title="YamaBlog" type="application/atom+xml">
+</head><body><div id="web_bg" style="background-color: #ffffff;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">105</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-list"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/essay/"><i class="fa-fw fas fa-comment-dots"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/playground/"><i class="fa-fw fas fa-flask"></i><span> Playground</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-user-friends"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img fixed" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">YamaBlog</span></a><a class="nav-page-title" href="/"><span class="site-name">期末复习</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-list"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/essay/"><i class="fa-fw fas fa-comment-dots"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/playground/"><i class="fa-fw fas fa-flask"></i><span> Playground</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-user-friends"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">期末复习</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-09-28T13:20:28.495Z" title="发表于 2025-09-28 21:20:28">2025-09-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-09-28T13:41:20.031Z" title="更新于 2025-09-28 21:41:20">2025-09-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/NJUCS/">NJUCS</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/NJUCS/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">数字逻辑与计算机组成</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="container post-content" id="article-container"><h1 id="期末复习"><a class="markdownIt-Anchor" href="#期末复习"></a> 期末复习</h1>
+<blockquote>
+<p>记录于最后一节课，补充于6月16日前后</p>
+</blockquote>
+<p>选择题10*2=20分（基本概念，简单计算）</p>
+<p>30 = 组合逻辑+时序逻辑（课堂讲得内容，给题干，设计电路、时序分析等，参考作业）</p>
+<p>50 = 一个大题，和指令系统、单周期、流水线CPU等（老师说和往年卷很像）</p>
+<hr />
+<h2 id="冯诺依曼结构"><a class="markdownIt-Anchor" href="#冯诺依曼结构"></a> 冯诺依曼结构</h2>
+<p>此处知识点，请参考详细笔记<a href="chapter1%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%A1%A8%E7%A4%BA.md">第一章-二进制表示</a></p>
+<p>五大部件：运算器、存储器、控制器、IO设备</p>
+<p><strong>存储程序</strong>的工作方式（程序和数据都存放在存储设备中，再取出执行）</p>
+<h3 id="不同层次语言之间的等价转换"><a class="markdownIt-Anchor" href="#不同层次语言之间的等价转换"></a> 不同层次语言之间的等价转换</h3>
+<p><code>高级语言</code>-》编译得到<code>汇编语言</code>-》通过汇编程序得到<code>机器语言目标程序</code>-》指令译码器得到<code>控制信号</code></p>
+<p>每条指令都和操作码和地址码组成</p>
+<p>高级语言可以编译成不同的汇编代码，汇编程序和机器指令是1对1的（和指令也是一对一的，由<code>ISA</code>决定）；</p>
+<p>任何语言都是要最终通过执行机器指令来实现功能</p>
+<h2 id="isa指令集体系结构"><a class="markdownIt-Anchor" href="#isa指令集体系结构"></a> ISA指令集体系结构</h2>
+<p>Instruction Set Architecture</p>
+<p>ISA的核心是指令系统，包括指令格式、操作种类，寻址方式，寄存器大小，编址方式，大端小端等等。</p>
+<h2 id="数据的编码"><a class="markdownIt-Anchor" href="#数据的编码"></a> 数据的编码</h2>
+<p>数值数据三要素：进制。浮点、定点。编码</p>
+<p><strong>整数:</strong></p>
+<ul>
+<li>unsigned：原码</li>
+<li>signed：补码</li>
+<li><strong>整数的范围：编码方式和位数有关</strong></li>
+</ul>
+<p><strong>浮点数</strong>：</p>
+<ul>
+<li>IEEE754</li>
+<li>符号位</li>
+<li>尾数：定点原码</li>
+<li>指数（阶码）：使用移码，有偏移常数</li>
+<li><strong>范围：和阶码位数和基的大小有关（尾数的影响很小）</strong></li>
+<li><strong>精度：和尾数的位数和是否规格化有关</strong></li>
+</ul>
+<p><strong>BCD码</strong></p>
+<ul>
+<li>用二进制表示0-9</li>
+</ul>
+<p><strong>格雷码</strong></p>
+<ul>
+<li>相邻两个只差一位</li>
+</ul>
+<h2 id="数据的宽度和存储"><a class="markdownIt-Anchor" href="#数据的宽度和存储"></a> 数据的宽度和存储</h2>
+<p>什么是数据的地址</p>
+<p>大端，小端?</p>
+<h2 id="数字逻辑基础"><a class="markdownIt-Anchor" href="#数字逻辑基础"></a> 数字逻辑基础</h2>
+<p><strong>逻辑门</strong>：</p>
+<p>使用Cmos晶体管（含n-mos和p-mos，一对nmos和pmos称位cmos）</p>
+<p>与非或非需要2对cmos，非门1对cmos，与门和或门是3对。</p>
+<p>缓冲器、传输门、三态门</p>
+<p><strong>不会在考试中用布尔代数相关定理进行化简</strong></p>
+<p>真值表和逻辑表达式来描述逻辑变量</p>
+<p>（<em><strong>即真值表到表达式要很熟悉！！</strong></em>）</p>
+<p><strong>一定会考卡诺图化简</strong>，不考代数法化简</p>
+<p><strong>等效逻辑符号、电路</strong>-&gt;使用与非和或非来构建电路，因为效率更高；</p>
+<p>使用de-morgan将所有的逻辑表达式都化简为二级<strong>与非</strong>表达式</p>
+<h2 id="组合逻辑电路"><a class="markdownIt-Anchor" href="#组合逻辑电路"></a> 组合逻辑电路</h2>
+<p>数字逻辑电路有组合逻辑电路和时序逻辑电路</p>
+<p><strong>组合逻辑电路的输出仅仅依赖于当前的输入</strong></p>
+<p>组合逻辑电路可以是多级，两级电路的</p>
+<hr />
+<p>重点：参考作业题目进行复习！</p>
+<ol>
+<li>组合逻辑的设计： 功能分析-真值表-化简-画图-评价</li>
+<li>无关项的处理很重要</li>
+</ol>
+<hr />
+<p>三态门和高阻态非法值</p>
+<p>典型的组合逻辑部件：译码器等等</p>
+<p>延迟分析：</p>
+<ul>
+<li>传输延迟：关键路径上所有元器件的传输延迟</li>
+</ul>
+<h2 id="时序逻辑电路"><a class="markdownIt-Anchor" href="#时序逻辑电路"></a> 时序逻辑电路</h2>
+<p>不需要学会复现SR、D锁存器等等</p>
+<p>但是要熟悉其符号表示和功能，比如在试卷中出现图，需要认识，能够分析电路</p>
+<p><strong>SR锁存器</strong></p>
+<ul>
+<li>S为置位端、R是复位端</li>
+</ul>
+<p>这里省略其他锁存器，</p>
+<p>时序逻辑电路不仅仅依赖于当前的</p>
+<p>Mealy型： ：输出=G(现态+输出)</p>
+<p>Moore型：输出=G(现态)</p>
+<p>时序电路的设计：功能分析-</p>
+<p><strong>状态的编码考试会给定！</strong></p>
+<p>未用状态分析(挂起、无法自启动) 是否无论从那个状态开始进入之后都可以进入正确的状态循环</p>
+<p><strong>定时分析！！</strong>（clk-to-q，setup，hold最大延迟决定了时钟周期）</p>
+<p>典型时序逻辑电路部件（不会要求画图）</p>
+<h3 id="存储器的结构和基本概念"><a class="markdownIt-Anchor" href="#存储器的结构和基本概念"></a> 存储器的结构和基本概念</h3>
+<blockquote>
+<p>非重点，老师讲得很快</p>
+</blockquote>
+<p>完全不用知道实现原理</p>
+<p>寄存器用来存储少量数据，存储器整列存储大量数据</p>
+<p>ROM、RAM</p>
+<h2 id="运算部件的设计"><a class="markdownIt-Anchor" href="#运算部件的设计"></a> 运算部件的设计</h2>
+<p><strong>ALU的实现</strong>：</p>
+<ul>
+<li>加法器是基础（全加器，会计算标志位ZF,CF,OF等等知识点）</li>
+<li>并行进位（不需要画图）但是要知道概念</li>
+</ul>
+<p><strong>算数运算</strong>：</p>
+<ul>
+<li>定点运算</li>
+</ul>
+<p><strong>明确不考：浮点数的运算部分</strong></p>
+<p>不考列竖式计算，考试不会考列竖式计算</p>
+<p><strong>乘法运算：关注思路、参考作业题</strong></p>
+<p>n*n得到2n位，如果只保留n位会溢出，如何判断移出？</p>
+<p><strong>除法运算：关注概念</strong></p>
+<p>扩充为2n%n位</p>
+<h2 id="指令系统"><a class="markdownIt-Anchor" href="#指令系统"></a> 指令系统</h2>
+<p>如何定义每一条指令</p>
+<p>指令含有操作码和地址码</p>
+<p>如何对操作数进行存储？ 寻址方式</p>
+<p>如何周而复始执行指令？ 1. 隐式地跳转到下一条 2. 显式地在指令中给出下一条指令 3. 条件测试后计算出转移地址</p>
+<p>寻址方式</p>
+<p>CISC和RISC的概念</p>
+<p>指令的格式</p>
+<p><strong>RISC-V</strong>   有不同的指令，指令的设计</p>
+<p><strong>具体的指令和RTL功能</strong>： 明确强调需要掌握一些指令的功能和RTL语言</p>
+<h2 id="cpu基础"><a class="markdownIt-Anchor" href="#cpu基础"></a> CPU基础</h2>
+<p>此处知识点，参考[第八章-CPU 说是]</p>
+<p>CPU的设计决定了时钟周期宽度和CPI（Cycle per Instruction)</p>
+<p>time= CPI *T *numOfInstrction</p>
+<p>CPU： 数据通路+控制器</p>
+<ol>
+<li>数据通路
+<ul>
+<li>包含有 存储元件和操作元件</li>
+<li>存储元件是时序逻辑</li>
+<li>状态元件是组合逻辑</li>
+</ul>
+</li>
+<li>控制器</li>
+</ol>
+<p><strong>单周期CPU</strong></p>
+<p><strong>数据通路的图需要很熟悉！！</strong></p>
+<p><strong>每一条指令对应的控制信号都要知道！！</strong></p>
+<p><strong>每一个指令的执行过程</strong></p>
+<p>每一个指令都在一个时钟周期内完成</p>
+<p>取指令，经过clk-to-Q, PC得到新值，经过access time得到单签指令，之后计算下指令，送入PC输入端，下一个时钟周期到来时，更新PC；同时执行对应指令</p>
+<p><strong>多周期</strong></p>
+<p>不需要数据通路和控制器等原理</p>
+<p><strong>只需要会对比即可！！</strong></p>
+<h2 id="单周期和多周期的对比"><a class="markdownIt-Anchor" href="#单周期和多周期的对比"></a> 单周期和多周期的对比：</h2>
+<ul>
+<li>单周期：T为load指令的花费时间；控制信号不变；</li>
+<li>多周期：不同指令的周期数不同，T是所有阶段中最长的为准；控制信号为变，使用有限状态机来描述指令执行的流程，用PLA或者微程序的方式…</li>
+</ul>
+<h2 id="流水线cpu"><a class="markdownIt-Anchor" href="#流水线cpu"></a> 流水线CPU</h2>
+<p>流水线数据通路也要很熟悉！！！</p>
+<p>指令的吞吐率：1s能够执行的指令数量；</p>
+<p>时钟周期为：流水段寄存器的读写时间+Mem阶段的时间；吞吐率=1/ T，T为周期； 每一条指令需要n*T时间进行执行</p>
+<p>每一个流水段的时间都是一个时钟；</p>
+<p>每一条指令的执行时间都相同，都为阶段数* 时钟周期</p>
+<p>单条指令的时间变长，但是吞吐率变大。</p>
+<p>结构冒险</p>
+<p>数据冒险</p>
+<ul>
+<li>软件阻塞、硬件优化</li>
+<li>数据转发</li>
+<li>寄存器先读后写</li>
+<li>编译优化</li>
+<li>load-use：转发+nop（或者阻塞）解决</li>
+</ul>
+<p>控制冒险</p>
+<p>在正确的目标地址取出之前有几个出现的</p>
+<ul>
+<li>延迟分支。硬件阻塞</li>
+<li>分支预测（静态和动态）</li>
+<li>异常中断会引发控制冒险</li>
+</ul>
+<h2 id="cpu小结"><a class="markdownIt-Anchor" href="#cpu小结"></a> CPU小结</h2>
+<p>CPU的功能</p>
+<p>控制信号由控制信号生成，数据在数据通路中的流动由控制信号确定</p>
+<p>单周期、多周期、流水线CPU的对比</p>
+<hr />
+<p>我的问题：</p>
+<ol>
+<li>**涉及到画图的内容是 从头开始画吗？(比如画出数据通路)还是电路的某一部分，还是连线？**都会有</li>
+<li>**会不会涉及到 考察“为了使得datapath支持某一个指令，如何对其进行扩展”？ **会</li>
+<li>会不会考察如何根据写出汇编代码？ 不会</li>
+<li><strong>会不会考察如何对汇编程序进行 编译优化、分支调度等？</strong> 会</li>
+</ol>
+<h1 id="小知识点总结"><a class="markdownIt-Anchor" href="#小知识点总结"></a> 小知识点总结</h1>
+<blockquote>
+<p>笔者在复习的时候，发现有一些知识点容易遗忘，下面是笔者整理的一些知识点</p>
+</blockquote>
+<h3 id="标志信号"><a class="markdownIt-Anchor" href="#标志信号"></a> 标志信号</h3>
+<p>在加法器中我们生成了ZF、CF、OF、SF几个标志信号：</p>
+<ol>
+<li>
+<p>如何求？<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mi>F</mi><mo>=</mo><msub><mi>C</mi><mi>n</mi></msub><mo>⊕</mo><msub><mi>C</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>X</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><msub><mi>Y</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><msub><mover accent="true"><mi>C</mi><mo stretchy="true">‾</mo></mover><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>+</mo><msub><mover accent="true"><mi>X</mi><mo stretchy="true">‾</mo></mover><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><msub><mover accent="true"><mi>Y</mi><mo stretchy="true">‾</mo></mover><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><msub><mi>C</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mspace linebreak="newline"></mspace><mi>C</mi><mi>F</mi><mo>=</mo><mi>C</mi><mi>i</mi><mi>n</mi><mo>⊕</mo><mi>C</mi><mi>o</mi><mi>u</mi><mi>t</mi><mo>=</mo><mi>S</mi><mi>u</mi><mi>b</mi><mo>⊕</mo><mi>C</mi><mi>o</mi><mi>u</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">OF=C_n \oplus C_{n-1} =X_{n-1}Y_{n-1} \overline C_{n-1}+ \overline X_{n-1} \overline Y_{n-1} C_{n-1}    \\ CF= Cin \oplus Cout= Sub \oplus Cout</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.891661em;vertical-align:-0.208331em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.091661em;vertical-align:-0.208331em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:-0.22222em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833300000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span></span><span style="top:-3.80333em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.091661em;vertical-align:-0.208331em;"></span><span class="mord"><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833300000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span><span style="top:-3.80333em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833300000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span></span><span style="top:-3.80333em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal">o</span><span class="mord mathnormal">u</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">u</span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal">o</span><span class="mord mathnormal">u</span><span class="mord mathnormal">t</span></span></span></span></p>
+</li>
+<li>
+<p>Signed和unsigned分别有哪些符号？</p>
+<p>Signed 对应有ZF、OF、SF ；Unsigned 对应有ZF、CF；</p>
+</li>
+<li>
+<p>如何比较两数大小？</p>
+<ol>
+<li>如果是Singed，则<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>&lt;</mo><mi>y</mi><mtext>   </mtext><mi>i</mi><mi>f</mi><mi>f</mi><mtext>    </mtext><mi>S</mi><mi>F</mi><mo>⊕</mo><mi>O</mi><mi>F</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x&lt;y  \ \ \  iff \ \ \ \  SF \oplus OF=1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace"> </span><span class="mspace"> </span><span class="mspace"> </span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mspace"> </span><span class="mspace"> </span><span class="mspace"> </span><span class="mspace"> </span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></li>
+<li>如果是Unsigned，那么<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>&lt;</mo><mi>y</mi><mtext>   </mtext><mi>i</mi><mi>f</mi><mi>f</mi><mtext>   </mtext><mi>C</mi><mi>o</mi><mi>u</mi><mi>t</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">x&lt; y \  \ \ iff \ \ \ Cout=1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace"> </span><span class="mspace"> </span><span class="mspace"> </span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mspace"> </span><span class="mspace"> </span><span class="mspace"> </span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal">o</span><span class="mord mathnormal">u</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></li>
+<li>如果询问<strong>大于等于、小于等于呢</strong> 和ZF信号进行组合即可，<s>添双筷子的事。</s></li>
+</ol>
+</li>
+</ol>
+<h3 id="指令复习"><a class="markdownIt-Anchor" href="#指令复习"></a> 指令复习</h3>
+<p>问：jalr和jal的区别是什么？</p>
+<p>jalr的功能是存储PC+4,并且跳转到imm+R[rs]的位置；而jal是跳转到PC+imm12的位置。</p>
+<p>问：beq为什么不能实现远距离调用函数？</p>
+<p>因为beq是条件条状指令，不是调用指令，无法返回地址</p>
+<p>问：返回指令是否需要指定放回地址？</p>
+<p>如果返回地址存放在栈中或特定的寄存器中，则返回指令中可以不需要地址码；如果返回地址存放在某个通用寄存器中，则返回指令中需要给出通用寄存器编号（地址码）</p>
+<blockquote>
+<p>比如我们知道使用jal指令可以实现函数调用，jal ra callsite，将PC+4存入ra寄存器（Register Adderess，在RISC架构下是寄存器x1）之后跳转到目的地址；</p>
+<p>在目的函数结束之后，有一个返回指令，可以是jalr x0 0(ra)，即，将PC+4存入x0中，PC改为R[ra]+0，也就是之前保存的值；从而实现return。（写入X0是因为 x0的值不会被修改，<strong>x0是硬编码0的！</strong>）</p>
+<p>说到X0硬编码为0还有另外一个小知识点：有的时候，我们需要在汇编代码中使用x0作为写入的对象和写出的值（读取这里面的0）； 我们在流水线CPU中知道，如果后一个指令依赖到了前一个指令所需要写入的寄存器，会通过数据转发，直接将前者的结果送入到后面指令的执行过程中（比如直接送到后者的ALU中）；但是如果这个“冲突”的寄存器是x0呢？前者写入x0为了舍弃掉这个输入，因为无意义；后者使用x0是为了用到这里的0，如果数据转发，会导致<strong>后者得到的值变成了不确定的值</strong>。 因此在数据转发的时候，还需要判断一下寄存器是否为0.</p>
+</blockquote>
+<hr />
+<p>需要记忆的指令除了<code>牢九条</code>，还有<code>jalr</code>,<code>auipc</code>等</p>
+<p><code>jalr rd rs1 1mm12</code>: jump and link resigter, 功能是R[rd]&lt;-- PC+4; PC&lt;-- R[rs]+SEXT(imm12&lt;&lt;1)</p>
+<p><code>auipc rd imm20 </code>: add upper imm to PC, R[rd]&lt;-- PC+imm20||000H  (这个表示拼接12个0上去，也可以用&lt;&lt;12,即左移12位)；</p>
+<blockquote>
+<p>突然想到一个<strong>题目</strong>：（在作业题和PPT中均涉及到相关问题）</p>
+<p>如果想要将一个32位的数字赋值给一个寄存器，需要先将高32位使用<code>lui</code>指令存储到<code>t0</code>中，再把低12位用addi加进去即可；</p>
+<p>但是，如果低12位的首位为1，那么会出现错误（addi指令会对imm12进行SEXT），所以，最好的办法是：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>l</mi><mi>u</mi><mi>i</mi><mtext>  </mtext><mi>t</mi><mn>0</mn><mtext>  </mtext><mi>o</mi><mi>f</mi><mi>f</mi><mi>s</mi><mi>e</mi><mi>t</mi><mo stretchy="false">[</mo><mn>31</mn><mo>:</mo><mn>12</mn><mo stretchy="false">]</mo><mo>+</mo><mi>o</mi><mi>f</mi><mi>f</mi><mi>s</mi><mi>e</mi><mi>t</mi><mo stretchy="false">[</mo><mn>11</mn><mo stretchy="false">]</mo><mspace linebreak="newline"></mspace><mi>a</mi><mi>d</mi><mi>d</mi><mi>i</mi><mtext>  </mtext><mi>t</mi><mn>0</mn><mtext>  </mtext><mi>o</mi><mi>f</mi><mi>f</mi><mi>s</mi><mi>e</mi><mi>t</mi><mo stretchy="false">[</mo><mn>11</mn><mo>:</mo><mn>0</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">lui \ \ t0 \ \ offset[31:12]+offset[11] \\ 
+addi \ \ t0  \ \ offset[11:0]
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">u</span><span class="mord mathnormal">i</span><span class="mspace"> </span><span class="mspace"> </span><span class="mord mathnormal">t</span><span class="mord">0</span><span class="mspace"> </span><span class="mspace"> </span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">s</span><span class="mord mathnormal">e</span><span class="mord mathnormal">t</span><span class="mopen">[</span><span class="mord">3</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord">2</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">s</span><span class="mord mathnormal">e</span><span class="mord mathnormal">t</span><span class="mopen">[</span><span class="mord">1</span><span class="mord">1</span><span class="mclose">]</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mord mathnormal">d</span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mspace"> </span><span class="mspace"> </span><span class="mord mathnormal">t</span><span class="mord">0</span><span class="mspace"> </span><span class="mspace"> </span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">s</span><span class="mord mathnormal">e</span><span class="mord mathnormal">t</span><span class="mopen">[</span><span class="mord">1</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0</span><span class="mclose">]</span></span></span></span></span></p>
+<p>（大概是这个意思）</p>
+<p>在lui中，额外加上一个offset[11]，也就是符号位；左移12位，和低12位的符号位扩展相加，这样就可以刚好<strong>和扩展的符号位相互抵消</strong>（进位了）</p>
+<p>对题目的补充： 另外一个实现是，</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>l</mi><mi>u</mi><mi>i</mi><mtext>  </mtext><mi>t</mi><mn>0</mn><mtext>  </mtext><mi>A</mi><mi>u</mi><mi>p</mi><mi>p</mi><mi>e</mi><mi>r</mi><mn>20</mn><mspace linebreak="newline"></mspace><mi>x</mi><mi>o</mi><mi>r</mi><mi>i</mi><mtext>  </mtext><mi>t</mi><mn>0</mn><mtext>  </mtext><mi>A</mi><mi>l</mi><mi>o</mi><mi>w</mi><mi>e</mi><mi>r</mi><mn>12</mn><mspace linebreak="newline"></mspace><mi>l</mi><mi>w</mi><mtext>  </mtext><mi>t</mi><mn>1</mn><mtext>  </mtext><mn>0</mn><mo stretchy="false">(</mo><mi>t</mi><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">lui \ \ t0 \ \ Aupper20 \\
+xori \ \ t0 \ \ Alower12\\
+lw \ \ t1\ \  0(t0)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">u</span><span class="mord mathnormal">i</span><span class="mspace"> </span><span class="mspace"> </span><span class="mord mathnormal">t</span><span class="mord">0</span><span class="mspace"> </span><span class="mspace"> </span><span class="mord mathnormal">A</span><span class="mord mathnormal">u</span><span class="mord mathnormal">p</span><span class="mord mathnormal">p</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord">2</span><span class="mord">0</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">x</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">i</span><span class="mspace"> </span><span class="mspace"> </span><span class="mord mathnormal">t</span><span class="mord">0</span><span class="mspace"> </span><span class="mspace"> </span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord">1</span><span class="mord">2</span></span><span class="mspace newline"></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mspace"> </span><span class="mspace"> </span><span class="mord mathnormal">t</span><span class="mord">1</span><span class="mspace"> </span><span class="mspace"> </span><span class="mord">0</span><span class="mopen">(</span><span class="mord mathnormal">t</span><span class="mord">0</span><span class="mclose">)</span></span></span></span></span></p>
+<p>即，直接将Apper20低位补0的数和Alower12位取异或 就可以实现将一个32位的数字存储到t1寄存器中。</p>
+</blockquote>
+<h3 id="数据通路扩展"><a class="markdownIt-Anchor" href="#数据通路扩展"></a> 数据通路扩展</h3>
+<p>下面这个是单周期CPU，支持<code>牢九条</code>指令，那么如何进行扩展使得其支持其他的指令呢？</p>
+<p><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250616211109101.png" alt="image-20250616211109101" /></p>
+<p>如何扩展以下指令？</p>
+<ol>
+<li>auipc？在ALUASrc选择PC作为输入即可</li>
+<li>其他的b型指令？ 可能需要func3字段作为多路选择器的选择段，将ZERO信号换成多路选择器，按照不同的b型指令，来输出对应的值；(未经验证)</li>
+<li>jalr指令（jalr rd rs imm12和jal区别在于，新的PC是在rs的基础上加了一个offset，比jal范围更大）？将PC+4送入busW；在下地值逻辑处，添加一个多路选择器，如果是jalr指令的话，Adder的左边就输入busA而非PC；</li>
+</ol>
+<p>控制器部分可能需要参考单周期CPIU实验部分内容，给相应的控制信号添加上相应的编码：</p>
+<p>比如我想要添加jalr信号，可能控制信号要多加一个<code>Jalr</code>,只有当指令为jalr的时候才为1，使Adder的左操作数为busA, 否则左操作数为PC（和正常的一样）</p>
+<hr />
+<p>下面是流水线CPU的扩展数据通路</p>
+<blockquote>
+<p>没找到相关内容</p>
+</blockquote>
+<hr />
+<h3 id="性能分析"><a class="markdownIt-Anchor" href="#性能分析"></a> 性能分析</h3>
+<blockquote>
+<p>注意：要把握住题目中的关键信息，比如，是否考虑流水段寄存器等等；</p>
+</blockquote>
+<p><strong>单周期和多周期对比：</strong></p>
+<p>成本比较：单周期下功能部件不能重复使用；而多周期下可重复使用，比单周期省单周期指令执行结果直接保存在PC、Regfile和Memory；而多周期下需加一些临时寄存器保存中间结果，比单周期费</p>
+<p>性能比较：单周期CPU的CPI为1，但时钟周期为最长的load指令执行时间多周期CPU的CPI是多少？时钟周期多长？</p>
+<p>假定程序中22%为Load，11%为Store，49%为R-Type，16%为I-Type ，2%为Jump。每个状态需要一个时钟周期，CPI为多少？</p>
+<p>若每种指令所需的时钟周期数为：   Load：4；Store：4；R-Type：4；I-Type：4；Jump：3</p>
+<blockquote>
+<p>JUMP的CPI为3，其余的指令CPI均为4</p>
+</blockquote>
+<p>CPI = 0.22x4+0.11x4+0.49x4+0.16x4+0.02x3 = 3.98</p>
+<p>假设单周期时钟宽度为1，且多周期时钟周期约为单周期的1/5，则多周期的总体时间约：3.98x1/5=0.796 ；而单周期总体时间为：1x1=1这种情况下：多周期比单周期效率高！</p>
+<blockquote>
+<p>源自课件</p>
+</blockquote>
+<p><strong>单周期和流水线对比</strong></p>
+<p>假设在单周期处理器中，各主要功能单元的操作时间为：</p>
+<p>存储单元（取指令、存取存储器里的数据）：200ps</p>
+<p>ALU和加法器：100ps 寄存器、寄存器堆（读/写）：50ps</p>
+<p>假设MUX、控制单元、PC、扩展器和传输线路都没有延迟，不考虑任何特殊情况（延迟），则单周期和流水线的实现方式相比，哪个更快？吞吐率呢？</p>
+<p><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250617085215143.png" alt="image-20250617085215143" /></p>
+<blockquote>
+<p>注： 1. 显然没考虑冒险 2. 吞吐率一般用</p>
+</blockquote>
+<p><strong>单周期、多周期、流水线CPU比较</strong></p>
+<img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250617095210877.png" alt="image-20250617095210877" style="zoom:50%;" />
+<img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250617095239909.png" alt="image-20250617095239909" style="zoom:50%;" />
+<img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250617095316897.png" alt="image-20250617095316897" style="zoom:50%;" />
+<hr />
+<h3 id="冒险"><a class="markdownIt-Anchor" href="#冒险"></a> 冒险</h3>
+<p>冒险的分类：</p>
+<ul>
+<li>控制冒险：后续指令在转移目标地址产生之前已经被取出</li>
+<li>结构冒险：同一部件被不同指令所使用</li>
+<li>数据冒险：后面的指令使用到了前面还没有生成的数据</li>
+</ul>
+<p>冒险的解决方案：</p>
+<ul>
+<li>
+<p>数据冒险：</p>
+<ul>
+<li>硬件阻塞、软件插入无关指令</li>
+<li>同一周期先写后读（对于后面指令读了前面指令写的寄存器问题，只能将原先空三个指令改为空2个指令）</li>
+<li>转发（无法解决load use冒险）</li>
+<li>编译优化（解决一下load-use冒险）</li>
+</ul>
+<blockquote>
+<ol>
+<li>Load-use冒险没法通过转发技术解决，因为load一定要到M段才能把得到结果，而后面的一个指令此时一定处于Exec阶段，需要这个数据；矛盾无法调和。</li>
+<li><strong>数据冒险处理最佳方案：“转发” + “Load-use阻塞”</strong></li>
+</ol>
+</blockquote>
+</li>
+<li>
+<p>控制冒险</p>
+<ul>
+<li>阻塞、空指令</li>
+<li>减小延迟损失片</li>
+</ul>
+<blockquote>
+<p>没有任何的优化（在M段才把PC进行更新）C=3</p>
+<p>如果在Ex段就根据Zero信号和Target来更新PC，那么C=2</p>
+<p>如果将target的计算和zero计算都前移到ID阶段，那么C=1</p>
+<p>Reference：[(26 封私信 / 19 条消息) <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/107760564">读书笔记]CSAPP：13[B]处理器体系结构：流水线 - 知乎</a></p>
+</blockquote>
+<ul>
+<li>
+<p>分支预测（静态、动态）</p>
+<blockquote>
+<p>分支预测计算CPI的时候注意，只有B型指令可以预测，且B型指令的CPI为1+C*p，p为预测错误的概率</p>
+</blockquote>
+</li>
+<li>
+<p>延迟分支（将前面的指令往后移）</p>
+<blockquote>
+<p>类似之前解决load-use冒险的编译优化，也是调整指令的顺序；</p>
+<p>把分支指令前面的与分支指令无关的指令调到分支指令后面执行，以填充延迟时间片（也称分支延迟槽Branch Delay slot），不够时用nop操作填充；</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="cpu中异常的处理"><a class="markdownIt-Anchor" href="#cpu中异常的处理"></a> CPU中异常的处理</h3>
+<blockquote>
+<p>不知道会不会考，但是我记得相关的知识点在几个章节里面都有</p>
+</blockquote>
+<p>外部异常、内部中断；</p>
+<p>CPU对异常的处理流程：</p>
+<ol>
+<li>保存断点和程序状态</li>
+<li>识别程序异常状态并且转到异常状态进行执行</li>
+</ol>
+<hr />
+<p>多周期的异常处理：</p>
+<blockquote>
+<p>图中添加了两个状态对应异常处理的状态；新增的寄存器<code>Cause</code>,<code>EPC</code>分别存储异常原因和断点信息</p>
+</blockquote>
+<img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250617144747882.png" alt="image-20250617144747882" style="zoom:25%;" />
+<p>流水线的异常处理：</p>
+<p>异常和中断会引起<code>控制冒险</code>；</p>
+<p>处理方法：</p>
+<ul>
+<li>IF段前先检查是否有外部中断：如果有就执行中断逻辑。</li>
+<li>在每一个流水段中添加对应可能出现的内部异常检测逻辑，比如EX段添加OVERFLOW的检测；</li>
+<li>2021真题：“该数据通路能否检测溢出异常？在溢出异常发生时，结果是否会写入目的寄存器”,可以，因为流水段中有Overflow信号。</li>
+</ul>
+<blockquote>
+<p>见课本270页；</p>
+</blockquote>
+<h3 id="the-end"><a class="markdownIt-Anchor" href="#the-end"></a> The End</h3>
+<blockquote>
+<p>本课程最后一页ppt</p>
+</blockquote>
+<img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250617140923745.png" alt="image-20250617140923745" style="zoom:33%;" />
+<h1 id="考前提醒"><a class="markdownIt-Anchor" href="#考前提醒"></a> 考前提醒</h1>
+<ol>
+<li>地址范围不是指令范围</li>
+<li>注意判断需要插入几个nop指令、阻塞几个周期时，需要考虑<strong>是否有寄存器先写后读！否则需要分类讨论</strong></li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://yama-lei.top">Yama-lei</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://yama-lei.top/posts/ee554c3c6e11/">https://yama-lei.top/posts/ee554c3c6e11/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://yama-lei.top" target="_blank">YamaBlog</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/e8c5ae902325/" title="数据结构 | 字符串"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">数据结构 | 字符串</div></div><div class="info-2"><div class="info-item-1">空串：只有一个串结束符“\0”，不含其他任何字符。 strlen(s) != sizeof(s) / sizeof(char) 比如 char* s = “Hello”, 那么 strlen(s) = 5，但是存储还需要加上一个串结束符。 注意事项         Node&amp; test1() { return Node(); } //有错误，会出现 Dangling Reference，可能会在编译阶段就报错,正确做法应该是return一个对象，而非其引用    KMP算法 在讨论问题之前，我们先定义一些符号： 匹配的字符串P，目标串为T，维护的当前索引为currentIndex 推荐阅读[[KMP 算法详解-labuladong的文章]] 状态机解法 把字符匹配看成是状态机的转移， 书本的解法 主要还是要关注书本的写法，因为书本上的解会是考试的重点！ 最差时间复杂度是2m次，先有m次不断往前走，然后m次回溯 </div></div></div></a><a class="pagination-related" href="/posts/f529779ae614/" title="Homework4"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Homework4</div></div><div class="info-2"><div class="info-item-1"> 这里的几个波形图由于是使用电脑画图软件做的，有的地方画的不是很整齐，见谅！   4：做出输出波形： 图中最后六段是非法输出，最后三段是不确定的输出   5：做出输出波形：  注：由于题目没有说明是上升沿触发还是下降沿触发，所以做了两个图，上面是 上升沿触发 下面是下降沿触发什    6：使用带使能端的T触发器，和组合逻辑电路构造D触发器 因为D触发器的状态方程为Q*=D,T触发器的次态方程为Q∗=En⊕QQ^*=En \oplus QQ∗=En⊕Q 从而有D=En⊕QD = En \oplus QD=En⊕Q 因此有En=D⊕QEn= D \oplus QEn=D⊕Q 故，可以做下面的图：   9：使用尽可能少的D触发器实现检测110的电路   状态编码，化简等步骤：    最终电路：    如果D寄存器的个数没有限制，不妨用三位给状态进行编码，分别编码为100,010,001； 类似地，再进行分析：    11：求Clk的最大频率 根据时序逻辑电路的分析可知：TClk&gt;Ttp+Tsetup+TandT_{Clk}&gt;T_{tp}+T_{setup}+T_{and}T...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Yama-lei</div><div class="author-info-description">记录一个NJUCSer的学习</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">105</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yama-lei"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/yama-lei" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:your@email.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color: #FFA500;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">博客正在建设中...能看就行...😋😋😋</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%9F%E6%9C%AB%E5%A4%8D%E4%B9%A0"><span class="toc-number">1.</span> <span class="toc-text"> 期末复习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%AF%E8%AF%BA%E4%BE%9D%E6%9B%BC%E7%BB%93%E6%9E%84"><span class="toc-number">1.1.</span> <span class="toc-text"> 冯诺依曼结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E5%B1%82%E6%AC%A1%E8%AF%AD%E8%A8%80%E4%B9%8B%E9%97%B4%E7%9A%84%E7%AD%89%E4%BB%B7%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 不同层次语言之间的等价转换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#isa%E6%8C%87%E4%BB%A4%E9%9B%86%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="toc-number">1.2.</span> <span class="toc-text"> ISA指令集体系结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E7%BC%96%E7%A0%81"><span class="toc-number">1.3.</span> <span class="toc-text"> 数据的编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E5%AE%BD%E5%BA%A6%E5%92%8C%E5%AD%98%E5%82%A8"><span class="toc-number">1.4.</span> <span class="toc-text"> 数据的宽度和存储</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E5%9F%BA%E7%A1%80"><span class="toc-number">1.5.</span> <span class="toc-text"> 数字逻辑基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF"><span class="toc-number">1.6.</span> <span class="toc-text"> 组合逻辑电路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%B6%E5%BA%8F%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF"><span class="toc-number">1.7.</span> <span class="toc-text"> 时序逻辑电路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E5%99%A8%E7%9A%84%E7%BB%93%E6%9E%84%E5%92%8C%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.7.1.</span> <span class="toc-text"> 存储器的结构和基本概念</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E9%83%A8%E4%BB%B6%E7%9A%84%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.8.</span> <span class="toc-text"> 运算部件的设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.9.</span> <span class="toc-text"> 指令系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cpu%E5%9F%BA%E7%A1%80"><span class="toc-number">1.10.</span> <span class="toc-text"> CPU基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E5%91%A8%E6%9C%9F%E5%92%8C%E5%A4%9A%E5%91%A8%E6%9C%9F%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-number">1.11.</span> <span class="toc-text"> 单周期和多周期的对比：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%81%E6%B0%B4%E7%BA%BFcpu"><span class="toc-number">1.12.</span> <span class="toc-text"> 流水线CPU</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cpu%E5%B0%8F%E7%BB%93"><span class="toc-number">1.13.</span> <span class="toc-text"> CPU小结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93"><span class="toc-number">2.</span> <span class="toc-text"> 小知识点总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E5%BF%97%E4%BF%A1%E5%8F%B7"><span class="toc-number">2.0.1.</span> <span class="toc-text"> 标志信号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4%E5%A4%8D%E4%B9%A0"><span class="toc-number">2.0.2.</span> <span class="toc-text"> 指令复习</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%80%9A%E8%B7%AF%E6%89%A9%E5%B1%95"><span class="toc-number">2.0.3.</span> <span class="toc-text"> 数据通路扩展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="toc-number">2.0.4.</span> <span class="toc-text"> 性能分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%92%E9%99%A9"><span class="toc-number">2.0.5.</span> <span class="toc-text"> 冒险</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cpu%E4%B8%AD%E5%BC%82%E5%B8%B8%E7%9A%84%E5%A4%84%E7%90%86"><span class="toc-number">2.0.6.</span> <span class="toc-text"> CPU中异常的处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#the-end"><span class="toc-number">2.0.7.</span> <span class="toc-text"> The End</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%80%83%E5%89%8D%E6%8F%90%E9%86%92"><span class="toc-number">3.</span> <span class="toc-text"> 考前提醒</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/66b650927646/" title="多维数组">多维数组</a><time datetime="2025-09-30T16:00:00.000Z" title="发表于 2025-10-01 00:00:00">2025-10-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/66c438509deb/" title="多模态综述">多模态综述</a><time datetime="2025-09-30T13:14:40.000Z" title="发表于 2025-09-30 21:14:40">2025-09-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/54b78cdb42c3/" title="无标题">无标题</a><time datetime="2025-09-30T01:58:28.349Z" title="发表于 2025-09-30 09:58:28">2025-09-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/0ac3e125560f/" title="Riscv介绍">Riscv介绍</a><time datetime="2025-09-29T16:00:00.000Z" title="发表于 2025-09-30 00:00:00">2025-09-30</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="ft"><div class="ft-item-1"><div class="t-top"><div class="t-t-l"><p class="ft-t t-l-t">格言🧬</p><div class="bg-ad"><div>记录一个NJUCSer的学习历程 · 代码改变世界，技术创造未来</div><div class="btn-xz-box"><a class="btn-xz" href="/about/">了解更多</a></div></div></div></div></div><div class="ft-item-2"><p class="ft-t">推荐友链⌛</p><div class="ft-img-group"><div class="img-group-item"><a href="/links/" title="广告位招租"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/zhaozu.jpg" alt="广告位招租"/></a></div><div class="img-group-item"><a href="/links/" title="更多友联"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/zhaozu.jpg" alt="友链"/></a></div></div></div></div><div class="copyright"><span><b>&copy;2025</b></span><span><b>&nbsp;&nbsp;By Yama-lei</b></span></div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Less is more · © YamaBlog</div><div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat-square" alt="Hexo"/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat-square" alt="Butterfly"/></a><a class="github-badge" target="_blank" href="https://github.com/yama-lei" style="margin-inline:5px" title="源码托管于GitHub"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat-square" alt="GitHub"/></a></p></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><script src="/js/custom.js"></script><script src="/js/footer-enhance.js"></script><script src="/js/homepage-enhance.js"></script><script defer src="/js/runtime.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

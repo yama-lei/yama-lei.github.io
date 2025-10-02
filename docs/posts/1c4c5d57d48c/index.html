@@ -1,0 +1,356 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>VQA视觉问答系统学习笔记 | YamaBlog</title><meta name="author" content="Yama-lei"><meta name="copyright" content="Yama-lei"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="VQA 综述阅读：  This passage is a reading note of a survey on VQA. Reading the raw passage is recommened:A Comprehensive Survey on Visual Question Answering Datasets and Algorithms   Abstract: Datasets: W">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VQA视觉问答系统学习笔记">
+<meta property="og:url" content="https://yama-lei.top/posts/1c4c5d57d48c/index.html">
+<meta property="og:site_name" content="YamaBlog">
+<meta property="og:description" content="VQA 综述阅读：  This passage is a reading note of a survey on VQA. Reading the raw passage is recommened:A Comprehensive Survey on Visual Question Answering Datasets and Algorithms   Abstract: Datasets: W">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp">
+<meta property="article:published_time" content="2025-02-13T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-09-30T13:09:09.183Z">
+<meta property="article:author" content="Yama-lei">
+<meta property="article:tag" content="博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "VQA视觉问答系统学习笔记",
+  "url": "https://yama-lei.top/posts/1c4c5d57d48c/",
+  "image": "https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp",
+  "datePublished": "2025-02-13T16:00:00.000Z",
+  "dateModified": "2025-09-30T13:09:09.183Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Yama-lei",
+      "url": "https://yama-lei.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yama-lei.top/posts/1c4c5d57d48c/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":true,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'VQA视觉问答系统学习笔记',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/callout_blocks.css"><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/homepage-hero.css"><link rel="stylesheet" href="/css/card-enhance.css"><link rel="stylesheet" href="/css/sidebar-enhance.css"><link rel="stylesheet" href="/css/category-tag-page.css"><meta name="generator" content="Hexo 8.0.0"><link rel="alternate" href="/atom.xml" title="YamaBlog" type="application/atom+xml">
+</head><body><div id="web_bg" style="background-color: #ffffff;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">105</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-list"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/essay/"><i class="fa-fw fas fa-comment-dots"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/playground/"><i class="fa-fw fas fa-flask"></i><span> Playground</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-user-friends"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img fixed" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">YamaBlog</span></a><a class="nav-page-title" href="/"><span class="site-name">VQA视觉问答系统学习笔记</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-list"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/essay/"><i class="fa-fw fas fa-comment-dots"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/playground/"><i class="fa-fw fas fa-flask"></i><span> Playground</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-user-friends"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">VQA视觉问答系统学习笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-02-13T16:00:00.000Z" title="发表于 2025-02-14 00:00:00">2025-02-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-09-30T13:09:09.183Z" title="更新于 2025-09-30 21:09:09">2025-09-30</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%A7%91%E7%A0%94%E5%90%AF%E8%92%99/">科研启蒙</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="container post-content" id="article-container"><h1 id="vqa-综述阅读"><a class="markdownIt-Anchor" href="#vqa-综述阅读"></a> VQA 综述阅读：</h1>
+<blockquote>
+<p>This passage is a reading note of a survey on VQA. Reading the raw passage is recommened:<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2411.11150">A Comprehensive Survey on Visual Question Answering Datasets and Algorithms</a></p>
+</blockquote>
+<h2 id="abstract"><a class="markdownIt-Anchor" href="#abstract"></a> Abstract:</h2>
+<p><strong>Datasets</strong>: We can devide the datasets of VQA into 4 catecories, namely:</p>
+<p>•Available datasets that contain a rich collection of authentic images<br />
+•Synthetic datasets that contain only synthetic images produced through artificial means<br />
+•Diagnostic datasets that are specially designed to test model performance in a particular area, e.g., understanding the scene text<br />
+•KB (Knowledge-Based) datasets that are designed to measure a model’s ability to utilize outside knowledge</p>
+<p><strong>Main paradigms</strong>: In this survey, we wlii explore six main paradigms:</p>
+<ul>
+<li>Fusion is where we discuss different methods of fusing information between visual and textual modalities.</li>
+<li>Attention is the technique of using information from one modality to filter information from another. External knowledge base where we discuss different models utilizing outside information.</li>
+<li>Composition or Reasoning, where we analyze techniques to answer advanced questions that require complex reasoning steps.</li>
+<li>Explanation, which is the process of generating visual and/or textual descriptions to verify<br />
+sound Reasoning.</li>
+<li>Graph models which encode and manipulate relationships through nodes in a graph.</li>
+</ul>
+<p>We also discuss some miscellaneous topics, such as scene text understanding, counting, and bias reduction.</p>
+<p><strong>Problems</strong>: VQA compasses the following questions:</p>
+<p>• Object recognition: What is behind the chair?<br />
+• Object detection: Are there any people in the image?<br />
+• Counting: How many dogs are there?<br />
+• Scene classification: Is it raining?<br />
+• Attribute classification: Is the person happy?</p>
+<h2 id="datasets"><a class="markdownIt-Anchor" href="#datasets"></a> Datasets</h2>
+<h3 id="general-datasets"><a class="markdownIt-Anchor" href="#general-datasets"></a> General datasets</h3>
+<p>General datasets are the largest, richest, and most used datasets in VQA. General datasets contain many thousands of<br />
+real-world images from mainstream image datasets like MSCOCO [74] and Imagenet [32]. These datasets are notable for<br />
+their large scope and diversity. This variety is important as VQA datasets need to reflect the general nature of VQA. Although<br />
+these datasets do not necessarily capture the endless complexity and variety of visuals in real life, they achieve a close approximation.</p>
+<p><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250222220048981.png" alt="image-20250222220048981" /></p>
+<h3 id="synthetic-datasets-虚构的"><a class="markdownIt-Anchor" href="#synthetic-datasets-虚构的"></a> Synthetic datasets (虚构的)</h3>
+<p>Synthetic datasets contain artificial images, produced using software, instead of real images. A good VQA model should<br />
+be able to perform well on both real and synthetic data like  humans do. Synthetic datasets are easier, less expensive, and<br />
+less time-consuming to produce as the building of a large dataset can be automated. Synthetic datasets can be tailored<br />
+so that performing well on them requires better reasoning and  composition skills.</p>
+<p><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250222220150232.png" alt="image-20250222220150232" /></p>
+<h3 id="dignostic-datasets"><a class="markdownIt-Anchor" href="#dignostic-datasets"></a> Dignostic datasets</h3>
+<p>Diagnostic datasets are specialized in the sense that they test a model’s ability in a particular area. They are usually small in size and are meant to complement larger, more general datasets by diagnosing the model’s performance in a distinct area which may not have pronounced results in the more  general dataset.</p>
+<p><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250223085514869.png" alt="image-20250223085514869" /></p>
+<h3 id="kb-datasets"><a class="markdownIt-Anchor" href="#kb-datasets"></a> KB datasets</h3>
+<p>Sometimes it is not possible to answer a question with  only the information present in the image. In such cases, the required knowledge has to be acquired from external  sources. This is where KB datasets come in. They provide questions that require finding and using external knowledge. KB datasets can teach a model to know when it needs to search for absent knowledge and how to acquire that knowledge.</p>
+<p><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250223090140313.png" alt="image-20250223090140313" /></p>
+<h3 id="evaluation-datasets"><a class="markdownIt-Anchor" href="#evaluation-datasets"></a> Evaluation datasets</h3>
+<p>A model’s performance being correctly evaluated depends on the evaluation metric used. Unfortunately, a major problem of VQA is that there is no widely agreed upon evaluation metric. Many different metrics have been proposed.</p>
+<h2 id="algoritms"><a class="markdownIt-Anchor" href="#algoritms"></a> Algoritms</h2>
+<h3 id="image-representation"><a class="markdownIt-Anchor" href="#image-representation"></a> Image Representation</h3>
+<p><strong>1. CNN</strong></p>
+<ul>
+<li>When given an input image, a CNN goes through several  convolution and pooling layers to produce a C × W × H shaped output.</li>
+<li>Devide the image into grids</li>
+<li>Problem: be distracted by noise (could be solved by Attention mechanism); one boject could be devided into multi adjacent blocks.</li>
+</ul>
+<p><strong>2. Object Detection</strong></p>
+<ul>
+<li>
+<p>Example: Fast R-CNN</p>
+</li>
+<li>
+<p>They produce multiple bounding boxes. Each bounding box usually contains an object belonging to a specific object class.</p>
+</li>
+<li>
+<p>Devide the image into multiple ‘bounding box’</p>
+</li>
+<li>
+<p>Problem: possible information loss (some information that is not in the bounding boxes would be dismissed)</p>
+</li>
+</ul>
+<p><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250223092722130.png" alt="image-20250223092722130" /></p>
+<p>​								<strong>CNN(left) and Faster R-CNN(right).</strong></p>
+<h3 id="questions-representation"><a class="markdownIt-Anchor" href="#questions-representation"></a> Questions Representation</h3>
+<p>Question representation in VQA is usually done by first embedding individual words and then using an RNN or a CNN to produce an embedding of the entire question.</p>
+<blockquote>
+<p>Here are the explanations from Grok3:</p>
+<ol>
+<li>
+<p>Take a question like “What color is the car?”</p>
+</li>
+<li>
+<p><strong>Embed individual words</strong>: Convert each word into a vector using a word embedding technique (e.g., “What” → [0.1, 0.3, …], “color” → [0.4, -0.1, …], etc.).</p>
+</li>
+<li>
+<p><strong>Process with an RNN or CNN</strong>:</p>
+<ul>
+<li>
+<p>RNN: Feed the vectors in sequence, and the final hidden state is the question embedding.</p>
+</li>
+<li>
+<p>CNN: Apply filters to the sequence, pool the results, and get the question embedding.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>The output is a single vector representing the whole question, which the VQA model can then combine with image features to generate an answer.</p>
+</li>
+</ol>
+</blockquote>
+<h3 id="fusion-and-attention"><a class="markdownIt-Anchor" href="#fusion-and-attention"></a> Fusion and Attention</h3>
+<p>We will tlk about it in the following part</p>
+<h3 id="answering"><a class="markdownIt-Anchor" href="#answering"></a> Answering</h3>
+<p>Here’s a quick summary of how “answering” works in Visual Question Answering (VQA) based on the “Answering” section (D) from the survey’s algorithm part:</p>
+<p>In VQA, answering can be <strong>open-ended</strong> (free-form answers) or <strong>multiple-choice</strong> (choosing from options). There are two main ways to predict answers for open-ended VQA:</p>
+<ol>
+<li>
+<p><strong>Non-Generative Approach</strong> (Most Common):</p>
+<ul>
+<li>Treats answers as predefined classes (e.g., all unique answers in the dataset).</li>
+<li>Two types:
+<ul>
+<li><strong>Single-Label Classification</strong>: The model predicts one answer by outputting a probability distribution (using softmax) over all possible answers, trained to maximize the probability of the most agreed-upon answer from annotators. It’s simple but ignores multiple valid answers.</li>
+<li><strong>Multi-Label Regression</strong>: The model predicts scores for multiple candidate answers, reflecting how many annotators agreed (e.g., VQA-v1 uses a soft score like <code>min(# humans agreeing / 3, 1)</code>). This handles multiple correct answers better. The BUTD model pioneered this by treating it as a regression task, and most modern models follow this approach.</li>
+</ul>
+</li>
+<li><strong>Pros</strong>: Easy to implement and evaluate.</li>
+<li><strong>Cons</strong>: Can’t predict new answers not seen in training.</li>
+</ul>
+</li>
+<li>
+<p><strong>Generative Approach</strong>:</p>
+<ul>
+<li>Uses an RNN to generate answers word by word.</li>
+<li><strong>Issue</strong>: Hard to evaluate, so it’s rarely used.</li>
+</ul>
+</li>
+</ol>
+<p>For <strong>Multiple-Choice VQA</strong>:</p>
+<ul>
+<li>Treated as a ranking problem: The model scores each question-image-answer trio, and the highest-scoring answer wins.</li>
+</ul>
+<p><strong>Answer Representation</strong>:</p>
+<ul>
+<li>Most models use <strong>one-hot vectors</strong> (e.g., [1, 0, 0] for “dog”) for answers, which is simple but loses semantic meaning—e.g., “cat” and “German Shepherd” are equally wrong compared to “dog.”</li>
+<li>Some newer approaches embed answers into the same semantic space as questions (like word vectors), turning answering into a regression of answer vectors. This makes “German Shepherd” closer to “dog” than “cat,” improving the model’s understanding and training signal.</li>
+</ul>
+<p>In short, modern VQA answering leans toward multi-label regression for open-ended questions, using soft scores from annotators, while multiple-choice uses ranking. Efforts are ongoing to make answer representations more semantically rich!</p>
+<h3 id="mutilmodel-fusion"><a class="markdownIt-Anchor" href="#mutilmodel-fusion"></a> Mutilmodel Fusion</h3>
+<p>In order to perform joint reasoning on a QA pair, information from the two modalities have to mix and interact. This can be achieved by multimodal fusion. We divide fusion in VQA into two types, <strong>vector operation</strong> and <strong>bilinear pooling</strong>.</p>
+<h4 id="vector-operation"><a class="markdownIt-Anchor" href="#vector-operation"></a> Vector operation</h4>
+<p>In vector addition and multiplication, question and image features are projected linearly through fully-connected layers to match their dimensions.</p>
+<blockquote>
+<p>Namely: fusion the vector of image and question by vector operation</p>
+</blockquote>
+<ul>
+<li>cons: Bad Accuarcy</li>
+</ul>
+<h4 id="bilinear-pooling"><a class="markdownIt-Anchor" href="#bilinear-pooling"></a> Bilinear pooling</h4>
+<blockquote>
+<p>The following content is generated by Grok3 for the raw survey is too hard for me.  ಥ_ಥ</p>
+</blockquote>
+<p><strong>Bilinear Pooling</strong> combines question and image feature vectors (e.g., both 2048-dimensional) by computing their <strong>outer product</strong>, capturing all interactions between them. For an output ( &lt;z_i ) (answer score), it’s defined as ( z_i = x^T W_i y ), where ( x ) is the question vector, ( y ) is the image vector, and ( W ) is a huge weight tensor. However, with 3000 answer classes, this requires billions of parameters (e.g., 12.5 billion), making it computationally expensive and prone to overfitting. Different models tweak this to balance complexity and performance:</p>
+<blockquote>
+<ol>
+<li>
+<p><strong>MCB (Multimodal Compact Bilinear)</strong>:</p>
+<ul>
+<li>Uses a trick from math: the outer product’s “count sketch” can be computed as a convolution of individual sketches.</li>
+<li>Replaces convolution with an efficient element-wise product in FFT space to indirectly get the outer product.</li>
+<li>Still has many parameters due to fixed random settings.</li>
+</ul>
+</li>
+<li>
+<p><strong>MLB (Multimodal Low-rank Bilinear)</strong>:</p>
+<ul>
+<li>Reduces parameters by decomposing ( W = U V^T ), turning ( z_i = 1^T (U_i^T x \circ V_i^T y) ) (where ( \circ ) is element-wise multiplication).</li>
+<li>Limits ( W )’s rank to ( k ), cutting complexity, and adds a matrix ( P_i ) for further reduction.</li>
+<li>Downside: Slow to train and sensitive to tuning.</li>
+</ul>
+</li>
+<li>
+<p><strong>MFB (Multimodal Factorized Bilinear)</strong>:</p>
+<ul>
+<li>Tweaks MLB by adjusting ( U ) and ( V ) dimensions and adding <strong>sum pooling</strong> over windows of size ( k ): ( z = SumPool(U’^T x \circ V’^T y, k) ).</li>
+<li>MLB is a special case when ( k = 1 ). <strong>MFH</strong> stacks MFBs for richer pooling.</li>
+</ul>
+</li>
+<li>
+<p><strong>MUTAN (Multimodal Tucker Fusion)</strong>:</p>
+<ul>
+<li>Uses <strong>Tucker decomposition</strong>: ( W = \tau_c \times W_q \times W_v \times W_o ).</li>
+<li>( W_q ) and ( W_v ) project question and image vectors, ( \tau_c ) controls interaction complexity, and ( W_o ) scores answers.</li>
+<li>MCB and MLB are simpler versions of this.</li>
+</ul>
+</li>
+<li>
+<p><strong>BLOCK</strong>:</p>
+<ul>
+<li>Uses <strong>block-term decomposition</strong>, balancing MLB (many small blocks, high-dimensional but weak interactions) and MUTAN (one big block, strong interactions but less accurate projections).</li>
+<li>Strikes a middle ground and often performs better.</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<p>In short, bilinear pooling fuses question and image data via their outer product, but raw computation is impractical. These models (MCB, MLB, MFB, MUTAN, BLOCK) reduce parameters in clever ways, trading off expressiveness (how much they capture) and trainability (how easy they are to optimize). Each improves on the last, with BLOCK aiming for the best of both worlds!</p>
+<h3 id="attention"><a class="markdownIt-Anchor" href="#attention"></a> Attention</h3>
+<p>Make the model to focus on the object that are more relavant to <strong>questions</strong> to filter out noise and imrove accuarcy.</p>
+<h4 id="soft-and-hard-attention"><a class="markdownIt-Anchor" href="#soft-and-hard-attention"></a> Soft and hard attention</h4>
+<p>Both of <strong>soft attention</strong> and <strong>hard attention</strong> use the question to make a map, which assigns the objects on the picture to different values–the more relavent, the higher the value is.</p>
+<p>But the difference lies in:</p>
+<ul>
+<li><strong>Soft attention</strong>  assigns all the object to a cretain value, do not dismiss any objects;</li>
+<li><strong>Hard attention</strong> discard those with low relavance, and only cares about those relavent to the questions</li>
+</ul>
+<h4 id="grid-and-objct-based-attention"><a class="markdownIt-Anchor" href="#grid-and-objct-based-attention"></a> Grid and objct based attention</h4>
+<h4 id="bottom-up-and-top-down-attention"><a class="markdownIt-Anchor" href="#bottom-up-and-top-down-attention"></a> BOTTOM-UP AND TOP-DOWN ATTENTION</h4>
+<h4 id="co-attention-and-self-attention"><a class="markdownIt-Anchor" href="#co-attention-and-self-attention"></a> CO-ATTENTION AND SELF-ATTENTION</h4>
+<blockquote>
+<p>To get more about these attention machenism, read the raw paper.</p>
+</blockquote>
+<h3 id="external-knowledge"><a class="markdownIt-Anchor" href="#external-knowledge"></a> External Knowledge</h3>
+<p>Sometimes the model need more information to solve the problem,int that case, we need to give the model the capability to query an <strong>External Knowledge Base</strong> or <strong>EKB</strong>.</p>
+<hr />
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://yama-lei.top">Yama-lei</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://yama-lei.top/posts/1c4c5d57d48c/">https://yama-lei.top/posts/1c4c5d57d48c/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://yama-lei.top" target="_blank">YamaBlog</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/f533a447f93c/" title="排序算法"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">排序算法</div></div><div class="info-2"><div class="info-item-1"> 学了这么久的计算机，结果还是只会冒泡排序，是时候做个了解了。   Bubble sort 冒泡排序  We import the pacage ‘bits/stdc’ and all codes are in the std namespace  123456789void bubble_sort(int* arr,int len,bool(*cmp) (int,int))&#123;    for(int i=0;i&lt;len-1;i++)&#123;        for(int j=0;j&lt;len-i-1;j++)&#123;            if(!cmp(arr[j],arr[j+1]))&#123;                swap(arr[j],arr[j+1]);            &#125;           &#125;    &#125;&#125;  Quick sort 快速排序  Main idea: Devide and Conquer We devide the array into three parts: the...</div></div></div></a><a class="pagination-related" href="/posts/10ae6aa45f17/" title="STL容器"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">STL容器</div></div><div class="info-2"><div class="info-item-1">有关STL容器的内容 声明  由于我实在懒 不小心把自己写的文件给覆盖了，搞得我很不爽，不想再写了于是抄了一份别人的：https://github.com/ChrisKimZHT/Haotian-BiJi/blob/master/150~159/154【杂项】算竞常用 C%2B%2B STL 用法.md  C++ 标准模板库 (STL, Standard Template Library)：包含一些常用数据结构与算法的模板的 C++ 软件库。其包含四个组件——算法 (Algorithms)、容器 (Containers)、仿函数 (Functors)、迭代器 (Iterators)。 示例：  算法：sort(a.begin(), a.end()) 容器：priority_queue&lt;int&gt; pque 仿函数：greater&lt;int&gt;() 迭代器：vector&lt;int&gt;::iterator it = a.begin()   1 前言 STL 作为一个封装良好，性能合格的 C++ 标准库，在算法竞赛中运用极其常见。灵活且正确使用 STL 可以节...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Yama-lei</div><div class="author-info-description">记录一个NJUCSer的学习</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">105</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yama-lei"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/yama-lei" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:your@email.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color: #FFA500;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">博客正在建设中...能看就行...😋😋😋</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#vqa-%E7%BB%BC%E8%BF%B0%E9%98%85%E8%AF%BB"><span class="toc-number">1.</span> <span class="toc-text"> VQA 综述阅读：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#abstract"><span class="toc-number">1.1.</span> <span class="toc-text"> Abstract:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#datasets"><span class="toc-number">1.2.</span> <span class="toc-text"> Datasets</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#general-datasets"><span class="toc-number">1.2.1.</span> <span class="toc-text"> General datasets</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#synthetic-datasets-%E8%99%9A%E6%9E%84%E7%9A%84"><span class="toc-number">1.2.2.</span> <span class="toc-text"> Synthetic datasets (虚构的)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dignostic-datasets"><span class="toc-number">1.2.3.</span> <span class="toc-text"> Dignostic datasets</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#kb-datasets"><span class="toc-number">1.2.4.</span> <span class="toc-text"> KB datasets</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#evaluation-datasets"><span class="toc-number">1.2.5.</span> <span class="toc-text"> Evaluation datasets</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#algoritms"><span class="toc-number">1.3.</span> <span class="toc-text"> Algoritms</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#image-representation"><span class="toc-number">1.3.1.</span> <span class="toc-text"> Image Representation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#questions-representation"><span class="toc-number">1.3.2.</span> <span class="toc-text"> Questions Representation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fusion-and-attention"><span class="toc-number">1.3.3.</span> <span class="toc-text"> Fusion and Attention</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#answering"><span class="toc-number">1.3.4.</span> <span class="toc-text"> Answering</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mutilmodel-fusion"><span class="toc-number">1.3.5.</span> <span class="toc-text"> Mutilmodel Fusion</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#vector-operation"><span class="toc-number">1.3.5.1.</span> <span class="toc-text"> Vector operation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#bilinear-pooling"><span class="toc-number">1.3.5.2.</span> <span class="toc-text"> Bilinear pooling</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#attention"><span class="toc-number">1.3.6.</span> <span class="toc-text"> Attention</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#soft-and-hard-attention"><span class="toc-number">1.3.6.1.</span> <span class="toc-text"> Soft and hard attention</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#grid-and-objct-based-attention"><span class="toc-number">1.3.6.2.</span> <span class="toc-text"> Grid and objct based attention</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#bottom-up-and-top-down-attention"><span class="toc-number">1.3.6.3.</span> <span class="toc-text"> BOTTOM-UP AND TOP-DOWN ATTENTION</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#co-attention-and-self-attention"><span class="toc-number">1.3.6.4.</span> <span class="toc-text"> CO-ATTENTION AND SELF-ATTENTION</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#external-knowledge"><span class="toc-number">1.3.7.</span> <span class="toc-text"> External Knowledge</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/66b650927646/" title="多维数组">多维数组</a><time datetime="2025-09-30T16:00:00.000Z" title="发表于 2025-10-01 00:00:00">2025-10-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/66c438509deb/" title="多模态综述">多模态综述</a><time datetime="2025-09-30T13:14:40.000Z" title="发表于 2025-09-30 21:14:40">2025-09-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/54b78cdb42c3/" title="无标题">无标题</a><time datetime="2025-09-30T01:58:28.349Z" title="发表于 2025-09-30 09:58:28">2025-09-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/0ac3e125560f/" title="Riscv介绍">Riscv介绍</a><time datetime="2025-09-29T16:00:00.000Z" title="发表于 2025-09-30 00:00:00">2025-09-30</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="ft"><div class="ft-item-1"><div class="t-top"><div class="t-t-l"><p class="ft-t t-l-t">格言🧬</p><div class="bg-ad"><div>记录一个NJUCSer的学习历程 · 代码改变世界，技术创造未来</div><div class="btn-xz-box"><a class="btn-xz" href="/about/">了解更多</a></div></div></div></div></div><div class="ft-item-2"><p class="ft-t">推荐友链⌛</p><div class="ft-img-group"><div class="img-group-item"><a href="/links/" title="广告位招租"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/zhaozu.jpg" alt="广告位招租"/></a></div><div class="img-group-item"><a href="/links/" title="更多友联"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/zhaozu.jpg" alt="友链"/></a></div></div></div></div><div class="copyright"><span><b>&copy;2025</b></span><span><b>&nbsp;&nbsp;By Yama-lei</b></span></div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Less is more · © YamaBlog</div><div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat-square" alt="Hexo"/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat-square" alt="Butterfly"/></a><a class="github-badge" target="_blank" href="https://github.com/yama-lei" style="margin-inline:5px" title="源码托管于GitHub"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat-square" alt="GitHub"/></a></p></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><script src="/js/custom.js"></script><script src="/js/footer-enhance.js"></script><script src="/js/homepage-enhance.js"></script><script defer src="/js/runtime.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

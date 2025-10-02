@@ -1,0 +1,264 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>第三章：程序的转换以及机器数表示 | YamaBlog</title><meta name="author" content="Yama-lei"><meta name="copyright" content="Yama-lei"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="程序的转换以及机器数表示 RTL表示 RTL：Register Transfer Language。在本书中规定为：R[r]寄存器r里面存储的内容，M[addr]地址addr里面存储的内容，PC程序计数器 目的寄存器在左，源操作数在  重点掌握32位的知识，这个是考试的核心的内容，但是64位是现在用的比较多的。。 考试形式：给高级语言和汇编语言，分析程序执行过程中的各种内容的分析  汇编语言格式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第三章：程序的转换以及机器数表示">
+<meta property="og:url" content="https://yama-lei.top/posts/99b290041c5c/index.html">
+<meta property="og:site_name" content="YamaBlog">
+<meta property="og:description" content="程序的转换以及机器数表示 RTL表示 RTL：Register Transfer Language。在本书中规定为：R[r]寄存器r里面存储的内容，M[addr]地址addr里面存储的内容，PC程序计数器 目的寄存器在左，源操作数在  重点掌握32位的知识，这个是考试的核心的内容，但是64位是现在用的比较多的。。 考试形式：给高级语言和汇编语言，分析程序执行过程中的各种内容的分析  汇编语言格式">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp">
+<meta property="article:published_time" content="2025-09-27T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-09-29T02:50:24.250Z">
+<meta property="article:author" content="Yama-lei">
+<meta property="article:tag" content="博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "第三章：程序的转换以及机器数表示",
+  "url": "https://yama-lei.top/posts/99b290041c5c/",
+  "image": "https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp",
+  "datePublished": "2025-09-27T16:00:00.000Z",
+  "dateModified": "2025-09-29T02:50:24.250Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Yama-lei",
+      "url": "https://yama-lei.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yama-lei.top/posts/99b290041c5c/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":true,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '第三章：程序的转换以及机器数表示',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/callout_blocks.css"><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/homepage-hero.css"><link rel="stylesheet" href="/css/card-enhance.css"><link rel="stylesheet" href="/css/sidebar-enhance.css"><link rel="stylesheet" href="/css/category-tag-page.css"><meta name="generator" content="Hexo 8.0.0"><link rel="alternate" href="/atom.xml" title="YamaBlog" type="application/atom+xml">
+</head><body><div id="web_bg" style="background-color: #ffffff;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">105</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-list"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/essay/"><i class="fa-fw fas fa-comment-dots"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/playground/"><i class="fa-fw fas fa-flask"></i><span> Playground</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-user-friends"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img fixed" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">YamaBlog</span></a><a class="nav-page-title" href="/"><span class="site-name">第三章：程序的转换以及机器数表示</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-list"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/essay/"><i class="fa-fw fas fa-comment-dots"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/playground/"><i class="fa-fw fas fa-flask"></i><span> Playground</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-user-friends"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">第三章：程序的转换以及机器数表示</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-09-27T16:00:00.000Z" title="发表于 2025-09-28 00:00:00">2025-09-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-09-29T02:50:24.250Z" title="更新于 2025-09-29 10:50:24">2025-09-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/NJUCS/">NJUCS</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/NJUCS/ICS%E8%AE%A1%E7%AE%97%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/">ICS计算系统基础</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="container post-content" id="article-container"><h1 id="程序的转换以及机器数表示"><a class="markdownIt-Anchor" href="#程序的转换以及机器数表示"></a> 程序的转换以及机器数表示</h1>
+<p><strong>RTL表示</strong></p>
+<p>RTL：Register Transfer Language。在本书中规定为：R[r]寄存器r里面存储的内容，M[addr]地址addr里面存储的内容，PC程序计数器</p>
+<p>目的寄存器在左，源操作数在</p>
+<blockquote>
+<p>重点掌握32位的知识，这个是考试的核心的内容，但是64位是现在用的比较多的。。</p>
+<p>考试形式：给高级语言和汇编语言，分析程序执行过程中的各种内容的分析</p>
+</blockquote>
+<p><strong>汇编语言格式</strong></p>
+<blockquote>
+<p>以mov指令为例，这里选取了一个基址+变址*倍数 +偏移量的方式</p>
+</blockquote>
+<p>Intel格式： mov [bx+di-6], cl</p>
+<p>AT&amp;T格式：</p>
+<blockquote>
+<p>课程采取AT&amp;T的格式</p>
+</blockquote>
+<p>我们需要学习的是，如何写RTL语言</p>
+<p><strong>一条指令必须包含的信息</strong></p>
+<p>操作码：指定操作类型</p>
+<p>操作数：一个或多个源操作数所在的地址</p>
+<p><strong>x86_64和IA32的区别</strong></p>
+<p>x86_64添加了8个64位的通用寄存器，所有的GPRs都由原先的32位扩充到64位。字长变为64位，过程调用的时候通常用通用寄存器而不是栈来传递参数</p>
+<h2 id="32-ia-32"><a class="markdownIt-Anchor" href="#32-ia-32"></a> 3.2 IA-32</h2>
+<h3 id="寻址方式"><a class="markdownIt-Anchor" href="#寻址方式"></a> 寻址方式</h3>
+<blockquote>
+<p>寄存器的顺序是： <strong>eax ecx edx ebx</strong> 分别代表了0 1 2 3 &gt; 然后是esp，ebp，esi和edi分别是5678</p>
+</blockquote>
+<h2 id="ia32指令格式"><a class="markdownIt-Anchor" href="#ia32指令格式"></a> IA32指令格式</h2>
+<p>机器指令由指令前缀+指令本身构成<br />
+指令前缀：<br />
+指令的结构为：<br />
+OP+ModR/M+ SIB+位移+ 立即数</p>
+<p>b  w l q(分别代表1个，2个，4个和8个字节)</p>
+<p>w要加66，q要加一个48（不一定是48，二进制的低三位不一定全为0）</p>
+<h3 id="常见的汇编指令"><a class="markdownIt-Anchor" href="#常见的汇编指令"></a> 常见的汇编指令</h3>
+<p><strong>操作码的后缀</strong><br />
+因为数据宽度的不同（比如有8位寄存器，16位寄存器和32位寄存器等等），同一个指令后面加上数据宽度的后缀就能够表示对不同宽度寄存器的操作</p>
+<ul>
+<li><code>movl %eax %ecx </code>将32位（4个字节）的eax内的数据传递到ecx里面</li>
+<li><code>pushq %ebx</code> 从栈中弹出64位的（8个字节）数据，保存到ebx里面<br />
+其中，一般用b w l q 代表1,2,4,8个字节（一个字节是8位）</li>
+</ul>
+<p>MOV:<br />
+MOVS: 符号扩展传递，如movsbw将byte的移动到一个w长度的寄存器<br />
+MOVZ:</p>
+<blockquote>
+<p>不存在从单独的截断指令，直接使用mov指令传送即可，按照位数低的来进行传送，默认会选取低XX位进行传送。<br />
+<code>movl %edi %eax</code>把</p>
+</blockquote>
+<p><strong>PUSH、POP</strong>：入栈出栈，如pushq为推入一个4字节的指令<br />
+注意：在执行pop和push的时候，一定会改变esp的值，比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pushl %eax</span><br><span class="line">popl %ecx</span><br></pre></td></tr></table></figure>
+<p>在这里中</p>
+<p><strong>LEA指令</strong> (Load Effective Adderess)有效地址传输<br />
+比如 leal 6(%eax), %edx 用于将eax寄存器+6的地址存在edx中（如果eax的值是x，那么edx里面存储的是x+6)<br />
+lea的花哨用法：用于加减乘法，<br />
+比如 leal 0x10(%eax, %eax, 3) %eax 的效果为：<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>4</mn><mo>∗</mo><mi>x</mi><mo>+</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">x= 4* x+10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span></span></span></span><br />
+<strong>输入输出指令</strong><br />
+in将端口内容送累加器，out将累加器送I/O端口<br />
+<strong>标志传送指令</strong><br />
+pushf将标志寄存器的内容压栈；popf将栈顶的内容存入标志寄存器中<br />
+<strong>加减指令</strong><br />
+ADD和SUB都是将结果存入目的地，并且加减的结果标志送入标志寄存器<code>FLAGS/EFLAGS</code>中<br />
+<strong>INC/DEC</strong><br />
+对指定的位串进行+1（INC，increment）或者-1（DEC，decrement）操作，标志信息存标志寄存器中<br />
+<strong>NEG指令</strong><br />
+取负指令，或者为取补指令，对指定的位串进行按位取反再加一。<br />
+如果是0，那么NEG后仍为0，但是CF置为0（其他的情况，CF一直都是0）<br />
+如果是首位为1，其他位都是0（也就是最大的负数），NEG之后，值不变，且将OF设置为1，即溢出。<br />
+<strong>乘除指令</strong></p>
+<blockquote>
+<p>比较复杂，建议看书，P106</p>
+</blockquote>
+<details class="custom-callout note" open><summary class="callout-title"><div class="callout-icon"></div><div>+ Note</div>
+<div class="callout-fold"></div></summary><div class="callout-body">
+<p>老师说：</p>
+<ol>
+<li>考试可能会考类似，“执行了XX乘法指令之后，哪些寄存器发生了改变”</li>
+<li>乘法指令要考就考只有一个操作数的，除法的话，如果是8位除8位，那么一定要把被除数扩展到16位。被除数放到eax里面，扩展到edx里面</li>
+<li>凡是</li>
+</ol>
+</div>
+</details><p>例题：</p>
+<p></p>
+<p>布斯算法的思想：乘以其真值而非机器数的值，只要我乘的是其真值<br />
+判断溢出，无符号，高X位不全位0，有符号，高X位不全为符号位。</p>
+<p>数据类型：考虑宽度，以及带不带符号<br />
+64位是r开头，比如rax （64位是q）<br />
+32位都是e开头的（eax）（32位是l）<br />
+16位没有e，比如ax（16位是w，word）<br />
+（8位是b，byte）</p>
+<p>作long型除法时，被除数被扩展，原来的在rax里面，拓展的部分在rdx里面。（ppt里面有一个例子，说的是想要把RDI里面的x除以XX里面的y，指定要把除数和XX放到XX寄存器，问可以怎么写汇编指令，可以看一下这个题目，挺好的，因为作除法的时候会占用edx，所以需要一开始就把edx的值先存放到其他的寄存器中）</p>
+<p><strong>位移指令</strong><br />
+见ppt吧</p>
+<p><strong>控制转移指令</strong></p>
+<ol>
+<li>无条件跳转
+<ul>
+<li>JUP DST 无条件跳转到DST处</li>
+</ul>
+</li>
+<li>有条件跳转
+<ul>
+<li>先cmp b a</li>
+</ul>
+</li>
+<li>条件设置和条件传输</li>
+<li>调用和放回指令
+<ul>
+<li>CALL DST: 放回地址ra入栈，转到DST继续执行</li>
+<li>RET:  从栈中拿回返回地址RA，转到RA继续执行</li>
+</ul>
+</li>
+<li>陷阱指令
+<ul>
+<li>和函数的区别，陷阱指令</li>
+</ul>
+</li>
+</ol>
+<p>0x8048000是XX 制度文件去的开始地址是</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://yama-lei.top">Yama-lei</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://yama-lei.top/posts/99b290041c5c/">https://yama-lei.top/posts/99b290041c5c/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://yama-lei.top" target="_blank">YamaBlog</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/bd9f41d2313f/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2"></div></div><div class="info-2"><div class="info-item-1">Add relevant emojis to enhance {}. Follow these rules: 1. Insert emojis at natural breaks in the text 2. Never place two emojis next to each other 3. Keep all original text unchanged 4. Choose emojis that match the context and tone Return only the emojified text. </div></div></div></a><a class="pagination-related" href="/posts/1254bdaf8180/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2"></div></div><div class="info-2"><div class="info-item-1"> 一个困扰许多人的问题 一个很常见的场景：你在 GitHub 上看到一个很有趣的 Python 项目，决定把它拿到 Windows 本地试试。你熟练地敲： 12git clone git@github.com:yama-lei/demo.gitcd demo 发现仓库里有 requirements.txt，部署过多个python应用的你熟练地敲下： 123python -m venv .venv.venv/Scripts/activatepip install -r requirements.txt 然而命令刚跑没多久，就红了一大片错误：error: XXX is required. Please XXXXX&quot;.某个依赖是 C 扩展，pip 没找到合适的 wheel，要从源码编译。 你去问了 AI，AI回复了一大串，给了几条建议——安装 XXX、装上 XXX。你按照建议去做，装了几个XXX的构建工具，回到项目目录再跑一遍。终于，pip 的输出不再一直报错，慢慢地安装完了。  Install Success! 激动的心，颤抖的手，你高兴地敲下：python app.py ...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Yama-lei</div><div class="author-info-description">记录一个NJUCSer的学习</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">105</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yama-lei"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/yama-lei" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:your@email.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color: #FFA500;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">博客正在建设中...能看就行...😋😋😋</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E7%9A%84%E8%BD%AC%E6%8D%A2%E4%BB%A5%E5%8F%8A%E6%9C%BA%E5%99%A8%E6%95%B0%E8%A1%A8%E7%A4%BA"><span class="toc-number">1.</span> <span class="toc-text"> 程序的转换以及机器数表示</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#32-ia-32"><span class="toc-number">1.1.</span> <span class="toc-text"> 3.2 IA-32</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 寻址方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ia32%E6%8C%87%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text"> IA32指令格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E6%B1%87%E7%BC%96%E6%8C%87%E4%BB%A4"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 常见的汇编指令</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/66b650927646/" title="多维数组">多维数组</a><time datetime="2025-09-30T16:00:00.000Z" title="发表于 2025-10-01 00:00:00">2025-10-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/66c438509deb/" title="多模态综述">多模态综述</a><time datetime="2025-09-30T13:14:40.000Z" title="发表于 2025-09-30 21:14:40">2025-09-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/54b78cdb42c3/" title="无标题">无标题</a><time datetime="2025-09-30T01:58:28.349Z" title="发表于 2025-09-30 09:58:28">2025-09-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/0ac3e125560f/" title="Riscv介绍">Riscv介绍</a><time datetime="2025-09-29T16:00:00.000Z" title="发表于 2025-09-30 00:00:00">2025-09-30</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="ft"><div class="ft-item-1"><div class="t-top"><div class="t-t-l"><p class="ft-t t-l-t">格言🧬</p><div class="bg-ad"><div>记录一个NJUCSer的学习历程 · 代码改变世界，技术创造未来</div><div class="btn-xz-box"><a class="btn-xz" href="/about/">了解更多</a></div></div></div></div></div><div class="ft-item-2"><p class="ft-t">推荐友链⌛</p><div class="ft-img-group"><div class="img-group-item"><a href="/links/" title="广告位招租"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/zhaozu.jpg" alt="广告位招租"/></a></div><div class="img-group-item"><a href="/links/" title="更多友联"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/zhaozu.jpg" alt="友链"/></a></div></div></div></div><div class="copyright"><span><b>&copy;2025</b></span><span><b>&nbsp;&nbsp;By Yama-lei</b></span></div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Less is more · © YamaBlog</div><div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat-square" alt="Hexo"/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat-square" alt="Butterfly"/></a><a class="github-badge" target="_blank" href="https://github.com/yama-lei" style="margin-inline:5px" title="源码托管于GitHub"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat-square" alt="GitHub"/></a></p></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><script src="/js/custom.js"></script><script src="/js/footer-enhance.js"></script><script src="/js/homepage-enhance.js"></script><script defer src="/js/runtime.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

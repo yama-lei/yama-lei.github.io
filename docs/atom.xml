@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>YamaBlog</title>
+  <icon>https://yama-lei.top/img/avatar.png</icon>
+  <subtitle>亚麻的博客</subtitle>
+  <link href="https://yama-lei.top/atom.xml" rel="self"/>
+  
+  <link href="https://yama-lei.top/"/>
+  <updated>2025-10-01T10:08:51.285Z</updated>
+  <id>https://yama-lei.top/</id>
+  
+  <author>
+    <name>Yama-lei</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>多维数组</title>
+    <link href="https://yama-lei.top/posts/66b650927646/"/>
+    <id>https://yama-lei.top/posts/66b650927646/</id>
+    <published>2025-09-30T16:00:00.000Z</published>
+    <updated>2025-10-01T10:08:51.285Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;二维数组&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;typedef T a[m][n]&lt;/code&gt; 等价于 &lt;code&gt;typedef T b[m]&lt;/code&gt; + &lt;code&gt;typedef b</summary>
+        
+      
+    
+    
+    
+    <category term="NJUCS" scheme="https://yama-lei.top/categories/NJUCS/"/>
+    
+    <category term="数据结构" scheme="https://yama-lei.top/categories/NJUCS/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>多模态综述</title>
+    <link href="https://yama-lei.top/posts/66c438509deb/"/>
+    <id>https://yama-lei.top/posts/66c438509deb/</id>
+    <published>2025-09-30T13:14:40.000Z</published>
+    <updated>2025-09-30T13:15:17.978Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;精读(perhaps)了《A Survey on Multimodal Large Language Models》（IEEE2024）这篇文章有关MLLM的发展历程概括，论文中还给了一个github链接&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="NOVA" scheme="https://yama-lei.top/categories/NOVA/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://yama-lei.top/posts/54b78cdb42c3/"/>
+    <id>https://yama-lei.top/posts/54b78cdb42c3/</id>
+    <published>2025-09-30T01:58:28.349Z</published>
+    <updated>2025-09-30T07:19:00.841Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;使用BurpSuite对即将发布的ics-chatbot的抓包分析&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h3 id=&quot;ics-chat-bot接口&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#ics-chat-bot接口&quot;&gt;&lt;/a&gt; ICS</summary>
+        
+      
+    
+    
+    
+    <category term="NJUCS" scheme="https://yama-lei.top/categories/NJUCS/"/>
+    
+    <category term="ICS计算系统基础" scheme="https://yama-lei.top/categories/NJUCS/ICS%E8%AE%A1%E7%AE%97%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>实用网站</title>
+    <link href="https://yama-lei.top/posts/d1739767f4d2/"/>
+    <id>https://yama-lei.top/posts/d1739767f4d2/</id>
+    <published>2025-09-29T16:00:00.000Z</published>
+    <updated>2025-09-30T13:22:51.306Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;南大网站&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#南大网站&quot;&gt;&lt;/a&gt; 南大网站&lt;/h2&gt;
+&lt;ol&gt;
+    &lt;li&gt;&lt;a target=&quot;_blank&quot; rel=&quot;noopener&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Mics" scheme="https://yama-lei.top/categories/Mics/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Riscv介绍</title>
+    <link href="https://yama-lei.top/posts/0ac3e125560f/"/>
+    <id>https://yama-lei.top/posts/0ac3e125560f/</id>
+    <published>2025-09-29T16:00:00.000Z</published>
+    <updated>2025-09-30T07:47:16.643Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;RISCV：开源，Load/Store形式&lt;br /&gt;
+指令有R-type，I-type，S-type，U-type，B-type，J-type等类型&lt;br /&gt;
+&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="NJUCS" scheme="https://yama-lei.top/categories/NJUCS/"/>
+    
+    <category term="ICS计算系统基础" scheme="https://yama-lei.top/categories/NJUCS/ICS%E8%AE%A1%E7%AE%97%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>第四章：程序的链接</title>
+    <link href="https://yama-lei.top/posts/6d799cb58280/"/>
+    <id>https://yama-lei.top/posts/6d799cb58280/</id>
+    <published>2025-09-28T16:00:00.000Z</published>
+    <updated>2025-09-29T03:51:25.082Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;hr /&gt;
+&lt;details class=&quot;custom-callout note&quot; open&gt;&lt;summary class=&quot;callout-title&quot;&gt;&lt;div class=&quot;callout-icon&quot;&gt;&lt;/div&gt;&lt;div&gt;Note&lt;/div&gt;
+&lt;div</summary>
+        
+      
+    
+    
+    
+    <category term="NJUCS" scheme="https://yama-lei.top/categories/NJUCS/"/>
+    
+    <category term="ICS计算系统基础" scheme="https://yama-lei.top/categories/NJUCS/ICS%E8%AE%A1%E7%AE%97%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/"/>
+    
+    
+    <category term="class-notes" scheme="https://yama-lei.top/tags/class-notes/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://yama-lei.top/posts/800444f268fd/"/>
+    <id>https://yama-lei.top/posts/800444f268fd/</id>
+    <published>2025-09-28T13:20:28.804Z</published>
+    <updated>2025-09-28T13:41:20.030Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;一位很优秀的老师说的话&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#一位很优秀的老师说的话&quot;&gt;&lt;/a&gt; 一位很优秀的老师说的话&lt;/h1&gt;
+&lt;br&gt;
+&lt;p&gt;这里说的老师是，李越老师。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="一些碎碎念" scheme="https://yama-lei.top/categories/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title> 如何看待人民日报官方微信公众号转载的文章《孩子，我宁愿欠你一个快乐的少年，也不愿看到你卑微的成年》</title>
+    <link href="https://yama-lei.top/posts/0a58f97eba42/"/>
+    <id>https://yama-lei.top/posts/0a58f97eba42/</id>
+    <published>2025-09-28T13:20:28.802Z</published>
+    <updated>2025-09-30T13:06:43.981Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;如何看待人民日报官方微信公众号转载的文章孩子我宁愿欠你一个快乐的少年也不愿看到你卑微的成年&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="一些碎碎念" scheme="https://yama-lei.top/categories/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>锐评高考作文</title>
+    <link href="https://yama-lei.top/posts/8344ebe68b71/"/>
+    <id>https://yama-lei.top/posts/8344ebe68b71/</id>
+    <published>2025-09-28T13:20:28.800Z</published>
+    <updated>2025-09-28T13:41:20.028Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://www.zhihu.com/people/yi-dian-yi-dian-33-80&quot;&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="一些碎碎念" scheme="https://yama-lei.top/categories/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>互联网圣地一览</title>
+    <link href="https://yama-lei.top/posts/1f6f93e44946/"/>
+    <id>https://yama-lei.top/posts/1f6f93e44946/</id>
+    <published>2025-09-28T13:20:28.797Z</published>
+    <updated>2025-09-28T13:41:20.028Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;如何评价小红书&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#如何评价小红书&quot;&gt;&lt;/a&gt; &lt;a href=&quot;https://www.zhihu.com/question/305033283/answer/3588581182&quot;&gt;如何评价小红书？&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.zhihu.com/people/xie-yu-tang-55&quot;&gt;&lt;img src=&quot;https://picx.zhimg.com/50/v2-c5b80a6bc246e479fa74f132b244162b_l.jpg?source=b6762063&quot; alt=&quot;谢於飞Official&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.zhihu.com/people/xie-yu-tang-55&quot;&gt;谢於飞Official&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;写小说的电子宠物狐狸，合作/标明出处转载欢迎&lt;/p&gt;
+&lt;p&gt;1443 人赞同了该回答&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://picx.zhimg.com/v2-6b1c11cae5c7be45ce6b85bcaf41b581_1440w.jpg&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;欢迎观看赛博厕所争霸记 叠甲环节在评论区 已完结&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="一些碎碎念" scheme="https://yama-lei.top/categories/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>为什么说高考是不公平的--驳[高考公平论]的六大经典误区</title>
+    <link href="https://yama-lei.top/posts/915ecb4cd831/"/>
+    <id>https://yama-lei.top/posts/915ecb4cd831/</id>
+    <published>2025-09-28T13:20:28.794Z</published>
+    <updated>2025-09-28T13:41:20.028Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;作者：Liuuzaki&lt;br /&gt;
+链接：&lt;a href=&quot;https://zhuanlan.zhihu.com/p/31120034016&quot;&gt;https://zhuanlan.zhihu.com/p/31120034016&lt;/a&gt;&lt;br /&gt;
+来源：知乎&lt;br</summary>
+        
+      
+    
+    
+    
+    <category term="一些碎碎念" scheme="https://yama-lei.top/categories/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>亚麻的‘白月光’</title>
+    <link href="https://yama-lei.top/posts/6fe35e693afb/"/>
+    <id>https://yama-lei.top/posts/6fe35e693afb/</id>
+    <published>2025-09-28T13:20:28.792Z</published>
+    <updated>2025-10-01T12:28:49.114Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;亚麻的白月光&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#亚麻的白月光&quot;&gt;&lt;/a&gt; 亚麻的‘白月光’&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;作于2025春节，感谢WYQ同学催更&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="一些碎碎念" scheme="https://yama-lei.top/categories/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://yama-lei.top/posts/54f090a9b59e/"/>
+    <id>https://yama-lei.top/posts/54f090a9b59e/</id>
+    <published>2025-09-28T13:20:28.787Z</published>
+    <updated>2025-09-30T13:10:56.356Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;center&gt;在西湖这座巨大的线程池里，我像是那条永远闲置的线程，旁观着那些并发的爱情故事&lt;/center&gt;
+&lt;center&gt;每个人年轻的时候，都以为我命由我不由天，直到体检报告给出生活的差评，你才知道什么叫不是不报时辰未到&lt;/center&gt;
+&lt;center&gt;人总是在上台讲话时</summary>
+        
+      
+    
+    
+    
+    <category term="一些碎碎念" scheme="https://yama-lei.top/categories/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://yama-lei.top/posts/f64f2732e82c/"/>
+    <id>https://yama-lei.top/posts/f64f2732e82c/</id>
+    <published>2025-09-28T13:20:28.786Z</published>
+    <updated>2025-10-02T02:10:14.025Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;我的情况：&lt;br</summary>
+        
+      
+    
+    
+    
+    <category term="一些碎碎念" scheme="https://yama-lei.top/categories/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://yama-lei.top/posts/6e8261e7fc8a/"/>
+    <id>https://yama-lei.top/posts/6e8261e7fc8a/</id>
+    <published>2025-09-28T13:20:28.784Z</published>
+    <updated>2025-09-28T13:41:20.028Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;反思，自己进入大二以来的学习状态。&lt;/p&gt;
+</summary>
+        
+      
+    
+    
+    
+    <category term="一些碎碎念" scheme="https://yama-lei.top/categories/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>例会汇报 | 第三次</title>
+    <link href="https://yama-lei.top/posts/168bd04ffb48/"/>
+    <id>https://yama-lei.top/posts/168bd04ffb48/</id>
+    <published>2025-09-28T13:20:28.744Z</published>
+    <updated>2025-09-28T13:41:20.031Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;what-i-have-done-in-the-last-week&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#what-i-have-done-in-the-last-week&quot;&gt;&lt;/a&gt; What I have done in</summary>
+        
+      
+    
+    
+    
+    <category term="科研启蒙" scheme="https://yama-lei.top/categories/%E7%A7%91%E7%A0%94%E5%90%AF%E8%92%99/"/>
+    
+    <category term="Reports" scheme="https://yama-lei.top/categories/%E7%A7%91%E7%A0%94%E5%90%AF%E8%92%99/Reports/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://yama-lei.top/posts/d5a5689a747c/"/>
+    <id>https://yama-lei.top/posts/d5a5689a747c/</id>
+    <published>2025-09-28T13:20:28.742Z</published>
+    <updated>2025-09-28T13:41:20.031Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;例会汇报-第二次&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#例会汇报-第二次&quot;&gt;&lt;/a&gt; 例会汇报 | 第二次&lt;/h1&gt;
+&lt;p&gt;（接上一次BLIP系列模型的讨论）我没有仔细看对应的论文，下方图片来自知乎。&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="科研启蒙" scheme="https://yama-lei.top/categories/%E7%A7%91%E7%A0%94%E5%90%AF%E8%92%99/"/>
+    
+    <category term="Reports" scheme="https://yama-lei.top/categories/%E7%A7%91%E7%A0%94%E5%90%AF%E8%92%99/Reports/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>组会汇报week11</title>
+    <link href="https://yama-lei.top/posts/ea148cfa24c8/"/>
+    <id>https://yama-lei.top/posts/ea148cfa24c8/</id>
+    <published>2025-09-28T13:20:28.737Z</published>
+    <updated>2025-09-28T13:41:20.031Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;vqa模型比较&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#vqa模型比较&quot;&gt;&lt;/a&gt; vqa模型比较&lt;/h2&gt;
+&lt;p&gt;在过去一周，我把模型全部重新跑了一遍，使用相同的数据集、采取相同的评估方法(loss,</summary>
+        
+      
+    
+    
+    
+    <category term="科研启蒙" scheme="https://yama-lei.top/categories/%E7%A7%91%E7%A0%94%E5%90%AF%E8%92%99/"/>
+    
+    <category term="Reports" scheme="https://yama-lei.top/categories/%E7%A7%91%E7%A0%94%E5%90%AF%E8%92%99/Reports/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>例会汇报 | 第一次</title>
+    <link href="https://yama-lei.top/posts/a7fa9e47a9a5/"/>
+    <id>https://yama-lei.top/posts/a7fa9e47a9a5/</id>
+    <published>2025-09-28T13:20:28.734Z</published>
+    <updated>2025-09-28T13:38:57.697Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;例会汇报-第一次&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#例会汇报-第一次&quot;&gt;&lt;/a&gt; 例会汇报 | 第一次&lt;/h1&gt;
+&lt;h2 id=&quot;vqa算法&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="科研启蒙" scheme="https://yama-lei.top/categories/%E7%A7%91%E7%A0%94%E5%90%AF%E8%92%99/"/>
+    
+    <category term="Reports" scheme="https://yama-lei.top/categories/%E7%A7%91%E7%A0%94%E5%90%AF%E8%92%99/Reports/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>神经网络的基本概念</title>
+    <link href="https://yama-lei.top/posts/9c0fdb37d738/"/>
+    <id>https://yama-lei.top/posts/9c0fdb37d738/</id>
+    <published>2025-09-28T13:20:28.718Z</published>
+    <updated>2025-09-28T13:41:20.028Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;神经网络基础结构&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#神经网络基础结构&quot;&gt;&lt;/a&gt; 神经网络基础结构&lt;/h2&gt;
+&lt;p&gt;值得参考的资料：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="科研启蒙" scheme="https://yama-lei.top/categories/%E7%A7%91%E7%A0%94%E5%90%AF%E8%92%99/"/>
+    
+    
+  </entry>
+  
+</feed>

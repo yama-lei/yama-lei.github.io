@@ -1,0 +1,349 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>String, buffer and file operation | YamaBlog</title><meta name="author" content="Yama-lei"><meta name="copyright" content="Yama-lei"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="I&#x2F;O Stream Input&#x2F;Output (I&#x2F;O) operations in C++ are managed through a set of libraries that provide abstractions for handling streams of data. These libraries allow you to interact with various sourc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="String, buffer and file operation">
+<meta property="og:url" content="https://yama-lei.top/posts/409805ea00ab/index.html">
+<meta property="og:site_name" content="YamaBlog">
+<meta property="og:description" content="I&#x2F;O Stream Input&#x2F;Output (I&#x2F;O) operations in C++ are managed through a set of libraries that provide abstractions for handling streams of data. These libraries allow you to interact with various sourc">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp">
+<meta property="article:published_time" content="2025-04-01T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-09-28T13:41:20.030Z">
+<meta property="article:author" content="Yama-lei">
+<meta property="article:tag" content="博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "String, buffer and file operation",
+  "url": "https://yama-lei.top/posts/409805ea00ab/",
+  "image": "https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp",
+  "datePublished": "2025-04-01T16:00:00.000Z",
+  "dateModified": "2025-09-28T13:41:20.030Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Yama-lei",
+      "url": "https://yama-lei.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yama-lei.top/posts/409805ea00ab/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":true,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'String, buffer and file operation',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/callout_blocks.css"><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/homepage-hero.css"><link rel="stylesheet" href="/css/card-enhance.css"><link rel="stylesheet" href="/css/sidebar-enhance.css"><link rel="stylesheet" href="/css/category-tag-page.css"><meta name="generator" content="Hexo 8.0.0"><link rel="alternate" href="/atom.xml" title="YamaBlog" type="application/atom+xml">
+</head><body><div id="web_bg" style="background-color: #ffffff;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">105</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-list"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/essay/"><i class="fa-fw fas fa-comment-dots"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/playground/"><i class="fa-fw fas fa-flask"></i><span> Playground</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-user-friends"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img fixed" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">YamaBlog</span></a><a class="nav-page-title" href="/"><span class="site-name">String, buffer and file operation</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-list"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/essay/"><i class="fa-fw fas fa-comment-dots"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/playground/"><i class="fa-fw fas fa-flask"></i><span> Playground</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-user-friends"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">String, buffer and file operation</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-04-01T16:00:00.000Z" title="发表于 2025-04-02 00:00:00">2025-04-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-09-28T13:41:20.030Z" title="更新于 2025-09-28 21:41:20">2025-09-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/NJUCS/">NJUCS</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/NJUCS/%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/">高级程序设计</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="container post-content" id="article-container"><h1 id="io-stream"><a class="markdownIt-Anchor" href="#io-stream"></a> I/O Stream</h1>
+<p>Input/Output (I/O) operations in C++ are managed through a set of libraries that provide abstractions for handling streams of data. These libraries allow you to interact with various sources like the console, files, and strings seamlessly.</p>
+<h2 id="iostream"><a class="markdownIt-Anchor" href="#iostream"></a> <code>iostream</code></h2>
+<p>The <code>&lt;iostream&gt;</code> library provides functionality for reading from and writing to the standard input (<code>std::cin</code>) and standard output (<code>std::cout</code>). It also includes error streams (<code>std::cerr</code> and <code>std::clog</code>).</p>
+<h3 id="key-features"><a class="markdownIt-Anchor" href="#key-features"></a> Key Features:</h3>
+<ol>
+<li>
+<p><strong>Standard Input (<code>std::cin</code>)</strong>:</p>
+<ul>
+<li>Reads input from the console.</li>
+<li>Example:<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> number;</span><br><span class="line">std::cin &gt;&gt; number; <span class="comment">// Reads an integer from the user</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Standard Output (<code>std::cout</code>)</strong>:</p>
+<ul>
+<li>Writes output to the console.</li>
+<li>Example:<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">std::cout &lt;&lt; <span class="string">&quot;Hello, World!&quot;</span> &lt;&lt; std::endl;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Error Streams (<code>std::cerr</code>, <code>std::clog</code>)</strong>:</p>
+<ul>
+<li><code>std::cerr</code>: Unbuffered, used for immediate error messages.</li>
+<li><code>std::clog</code>: Buffered, used for logging diagnostic information.</li>
+<li>Example:<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">std::cerr &lt;&lt; <span class="string">&quot;Error: Invalid input!&quot;</span> &lt;&lt; std::endl;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="fstream"><a class="markdownIt-Anchor" href="#fstream"></a> <code>fstream</code></h2>
+<p>The <code>&lt;fstream&gt;</code> library extends the capabilities of <code>&lt;iostream&gt;</code> to handle file-based input and output. It provides classes like <code>std::ifstream</code>, <code>std::ofstream</code>, and <code>std::fstream</code>.</p>
+<h3 id="key-classes"><a class="markdownIt-Anchor" href="#key-classes"></a> Key Classes:</h3>
+<ol>
+<li>
+<p><strong><code>std::ifstream</code></strong>:</p>
+<ul>
+<li>Used for reading data from files.</li>
+<li>Example:<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">std::ifstream <span class="title">inputFile</span><span class="params">(<span class="string">&quot;data.txt&quot;</span>)</span></span>;</span><br><span class="line"><span class="keyword">if</span> (!inputFile.<span class="built_in">is_open</span>()) &#123;</span><br><span class="line">    std::cerr &lt;&lt; <span class="string">&quot;Failed to open file!&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>std::ofstream</code></strong>:</p>
+<ul>
+<li>Used for writing data to files.</li>
+<li>Example:<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">std::ofstream <span class="title">outputFile</span><span class="params">(<span class="string">&quot;output.txt&quot;</span>)</span></span>;</span><br><span class="line">outputFile &lt;&lt; <span class="string">&quot;Writing to file.&quot;</span> &lt;&lt; std::endl;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>std::fstream</code></strong>:</p>
+<ul>
+<li>Supports both reading and writing to files.</li>
+<li>Example:<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">std::fstream <span class="title">file</span><span class="params">(<span class="string">&quot;data.txt&quot;</span>, std::ios::in | std::ios::out)</span></span>;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="stringstream"><a class="markdownIt-Anchor" href="#stringstream"></a> <code>stringstream</code></h2>
+<p>The <code>&lt;sstream&gt;</code> library allows you to treat strings as streams, enabling formatted input and output operations on strings.</p>
+<h3 id="key-classes-2"><a class="markdownIt-Anchor" href="#key-classes-2"></a> Key Classes:</h3>
+<ol>
+<li>
+<p><strong><code>std::istringstream</code></strong>:</p>
+<ul>
+<li>Used for reading data from strings.</li>
+<li>Example:<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">std::string data = <span class="string">&quot;42 3.14 Hello&quot;</span>;</span><br><span class="line"><span class="function">std::istringstream <span class="title">iss</span><span class="params">(data)</span></span>;</span><br><span class="line"><span class="type">int</span> intValue;</span><br><span class="line"><span class="type">double</span> doubleValue;</span><br><span class="line">std::string stringValue;</span><br><span class="line">iss &gt;&gt; intValue &gt;&gt; doubleValue &gt;&gt; stringValue;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>std::ostringstream</code></strong>:</p>
+<ul>
+<li>Used for writing data to strings.</li>
+<li>Example:<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">std::ostringstream oss;</span><br><span class="line">oss &lt;&lt; <span class="string">&quot;Integer: &quot;</span> &lt;&lt; <span class="number">42</span> &lt;&lt; <span class="string">&quot;, Double: &quot;</span> &lt;&lt; <span class="number">3.14</span>;</span><br><span class="line">std::string result = oss.<span class="built_in">str</span>();</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>std::stringstream</code></strong>:</p>
+<ul>
+<li>Combines the functionality of <code>std::istringstream</code> and <code>std::ostringstream</code>.</li>
+<li>Example:<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">std::stringstream ss;</span><br><span class="line">ss &lt;&lt; <span class="string">&quot;Hello&quot;</span> &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; <span class="string">&quot;World!&quot;</span>;</span><br><span class="line">std::string message = ss.<span class="built_in">str</span>();</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h1 id="file-operation"><a class="markdownIt-Anchor" href="#file-operation"></a> File Operation</h1>
+<p>File operations involve interacting with files on disk or other storage devices. The typical workflow follows the pattern: <strong>Open -&gt; Perform Operations -&gt; Close</strong>.</p>
+<h2 id="open-and-check"><a class="markdownIt-Anchor" href="#open-and-check"></a> Open and Check</h2>
+<p>Before performing any file operation, you must ensure the file is successfully opened. This can be done using:</p>
+<ol>
+<li>
+<p><strong><code>is_open()</code></strong>:</p>
+<ul>
+<li>Checks if the file stream is open.</li>
+<li>Example:<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">std::ifstream <span class="title">file</span><span class="params">(<span class="string">&quot;example.txt&quot;</span>)</span></span>;</span><br><span class="line"><span class="keyword">if</span> (!file.<span class="built_in">is_open</span>()) &#123;</span><br><span class="line">    std::cerr &lt;&lt; <span class="string">&quot;Failed to open file!&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>try-catch</code> Block</strong>:</p>
+<ul>
+<li>Handles exceptions during file operations.</li>
+<li>Example:<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="function">std::ifstream <span class="title">file</span><span class="params">(<span class="string">&quot;example.txt&quot;</span>)</span></span>;</span><br><span class="line">    <span class="keyword">if</span> (!file) <span class="keyword">throw</span> std::<span class="built_in">runtime_error</span>(<span class="string">&quot;File not found!&quot;</span>);</span><br><span class="line">&#125; <span class="built_in">catch</span> (<span class="type">const</span> std::exception&amp; e) &#123;</span><br><span class="line">    std::cerr &lt;&lt; e.<span class="built_in">what</span>() &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><code>assert</code></strong>:</p>
+<ul>
+<li>Ensures the file is open during debugging.</li>
+<li>Example:<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">std::ifstream <span class="title">file</span><span class="params">(<span class="string">&quot;example.txt&quot;</span>)</span></span>;</span><br><span class="line"><span class="built_in">assert</span>(file.<span class="built_in">is_open</span>());</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="file-operation-2"><a class="markdownIt-Anchor" href="#file-operation-2"></a> File Operation</h2>
+<p>Once the file is open, you can perform various operations such as reading, writing, appending, and binary file handling.</p>
+<h3 id="reading-from-a-file"><a class="markdownIt-Anchor" href="#reading-from-a-file"></a> Reading from a File</h3>
+<ul>
+<li>Use <code>&gt;&gt;</code> for formatted input or <code>getline()</code> for line-based input.</li>
+<li>Example:<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">std::ifstream <span class="title">file</span><span class="params">(<span class="string">&quot;example.txt&quot;</span>)</span></span>;</span><br><span class="line">std::string line;</span><br><span class="line"><span class="keyword">while</span> (std::<span class="built_in">getline</span>(file, line)) &#123;</span><br><span class="line">    std::cout &lt;&lt; line &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="writing-to-a-file"><a class="markdownIt-Anchor" href="#writing-to-a-file"></a> Writing to a File</h3>
+<ul>
+<li>Use <code>&lt;&lt;</code> for formatted output.</li>
+<li>Example:<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">std::ofstream <span class="title">file</span><span class="params">(<span class="string">&quot;output.txt&quot;</span>)</span></span>;</span><br><span class="line">file &lt;&lt; <span class="string">&quot;Writing to file.&quot;</span> &lt;&lt; std::endl;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="appending-to-a-file"><a class="markdownIt-Anchor" href="#appending-to-a-file"></a> Appending to a File</h3>
+<ul>
+<li>Open the file in append mode (<code>std::ios::app</code>).</li>
+<li>Example:<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">std::ofstream <span class="title">file</span><span class="params">(<span class="string">&quot;log.txt&quot;</span>, std::ios::app)</span></span>;</span><br><span class="line">file &lt;&lt; <span class="string">&quot;Appending new line.&quot;</span> &lt;&lt; std::endl;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="binary-file-handling"><a class="markdownIt-Anchor" href="#binary-file-handling"></a> Binary File Handling</h3>
+<ul>
+<li>Open the file in binary mode (<code>std::ios::binary</code>).</li>
+<li>Example:<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">std::ofstream <span class="title">file</span><span class="params">(<span class="string">&quot;data.bin&quot;</span>, std::ios::binary)</span></span>;</span><br><span class="line"><span class="type">int</span> data = <span class="number">42</span>;</span><br><span class="line">file.<span class="built_in">write</span>(<span class="built_in">reinterpret_cast</span>&lt;<span class="type">char</span>*&gt;(&amp;data), <span class="built_in">sizeof</span>(data));</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="close-the-file"><a class="markdownIt-Anchor" href="#close-the-file"></a> Close the File</h3>
+<p>Closing the file ensures all buffered data is flushed and resources are released.</p>
+<ul>
+<li>Example:<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file.<span class="built_in">close</span>();</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr />
+<h1 id="buffer"><a class="markdownIt-Anchor" href="#buffer"></a> Buffer</h1>
+<p>A buffer is a temporary storage area used to hold data during input/output operations. Buffers improve performance by reducing direct interactions with slow devices like disks.</p>
+<h2 id="what-is-buffer"><a class="markdownIt-Anchor" href="#what-is-buffer"></a> What is Buffer?</h2>
+<p>Buffers act as intermediaries between programs and external devices. They store data temporarily while it’s being read from or written to a device.</p>
+<h3 id="why-use-buffers"><a class="markdownIt-Anchor" href="#why-use-buffers"></a> Why Use Buffers?</h3>
+<ul>
+<li>Optimize performance by batching I/O operations.</li>
+<li>Reduce the number of expensive system calls.</li>
+<li>Handle partial reads/writes gracefully.</li>
+</ul>
+<h2 id="common-api"><a class="markdownIt-Anchor" href="#common-api"></a> Common API</h2>
+<ol>
+<li>
+<p><strong>Accessing Buffers</strong>:</p>
+<ul>
+<li>Use <code>rdbuf()</code> to access the underlying stream buffer.</li>
+<li>Example:<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">std::ifstream <span class="title">file</span><span class="params">(<span class="string">&quot;example.txt&quot;</span>)</span></span>;</span><br><span class="line">std::streambuf* buf = file.<span class="built_in">rdbuf</span>();</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Flushing Buffers</strong>:</p>
+<ul>
+<li>Use <code>flush()</code> to manually flush the buffer.</li>
+<li>Example:<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">std::cout &lt;&lt; <span class="string">&quot;Flushing buffer...&quot;</span> &lt;&lt; std::flush;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Customizing Buffers</strong>:</p>
+<ul>
+<li>Use <code>pubsetbuf()</code> to set a custom buffer.</li>
+<li>Example:<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> buffer[<span class="number">1024</span>];</span><br><span class="line"><span class="function">std::ofstream <span class="title">file</span><span class="params">(<span class="string">&quot;output.txt&quot;</span>)</span></span>;</span><br><span class="line">file.<span class="built_in">rdbuf</span>()-&gt;<span class="built_in">pubsetbuf</span>(buffer, <span class="built_in">sizeof</span>(buffer));</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Disabling Buffering</strong>:</p>
+<ul>
+<li>Set the buffer size to 0 to disable buffering.</li>
+<li>Example:<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file.<span class="built_in">rdbuf</span>()-&gt;<span class="built_in">pubsetbuf</span>(<span class="literal">nullptr</span>, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="usage-in-file-operation"><a class="markdownIt-Anchor" href="#usage-in-file-operation"></a> Usage in File Operation</h2>
+<p>Buffers are integral to file operations, especially when dealing with large files or binary data.</p>
+<h3 id="example-copying-file-content-using-buffers"><a class="markdownIt-Anchor" href="#example-copying-file-content-using-buffers"></a> Example: Copying File Content Using Buffers</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;fstream&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">std::ifstream <span class="title">inputFile</span><span class="params">(<span class="string">&quot;source.txt&quot;</span>, std::ios::binary)</span></span>;</span><br><span class="line">    <span class="function">std::ofstream <span class="title">outputFile</span><span class="params">(<span class="string">&quot;destination.txt&quot;</span>, std::ios::binary)</span></span>;</span><br><span class="line">    <span class="keyword">if</span> (!inputFile.<span class="built_in">is_open</span>() || !outputFile.<span class="built_in">is_open</span>()) &#123;</span><br><span class="line">        std::cerr &lt;&lt; <span class="string">&quot;Failed to open files!&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Use buffers to copy file content</span></span><br><span class="line">    outputFile &lt;&lt; inputFile.<span class="built_in">rdbuf</span>();</span><br><span class="line">    inputFile.<span class="built_in">close</span>();</span><br><span class="line">    outputFile.<span class="built_in">close</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>The buffer of filestream and stringstream are the same.</p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://yama-lei.top">Yama-lei</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://yama-lei.top/posts/409805ea00ab/">https://yama-lei.top/posts/409805ea00ab/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://yama-lei.top" target="_blank">YamaBlog</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/e07adf0e1246/" title="知识武装头脑"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">知识武装头脑</div></div><div class="info-2"><div class="info-item-1">  名词检索  小布尔乔亚  作者：知乎用户7bUIIs 链接：https://www.zhihu.com/question/462514575/answer/1985328626 来源：知乎 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。  小资产阶级通病产生于小资产阶级的阶级不稳定性，在资本主义制度下小资产阶级随时可能滑落至无产阶级，但是又好像有那么一点能进入资产阶级行列的机会。 这就使他们内部产生了分化，那些过的好一点的会基本一边倒地支持资本主义制度，因为他们马上就要得到他们梦寐以求的生活了——起码是他们是这么想的。坏一点的又因为自己有那么一点学识，彻底地看清了这个社会，被社会压迫的喘不过来气，但是他们同样也怀念自己目前的这种“小康的生活”，就想要一场立即的、疯狂的、一哄而上的、立即成功的革命。 小资产阶级又因为缺乏组织性与斗争性，经常会因为一些眼前的小利小惠而放弃、甚至背叛革命。因此以小资产阶级为领导的革命通常是松散的、转瞬即逝的（他们管这种松散叫民主、去中心化，但是这只是小资产阶级的民主、去中心化）。 在今天，我们也可以看见小资产阶级因为在社会中碰...</div></div></div></a><a class="pagination-related" href="/posts/cd82ef212fbf/" title="专题：D，T寄存器和D锁存器之间的转换"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">专题：D，T寄存器和D锁存器之间的转换</div></div><div class="info-2"><div class="info-item-1">推荐阅读： 四种触发器的相互转换（卡诺图法与直接法） - asandstar - 博客园    </div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Yama-lei</div><div class="author-info-description">记录一个NJUCSer的学习</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">105</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yama-lei"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/yama-lei" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:your@email.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color: #FFA500;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">博客正在建设中...能看就行...😋😋😋</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#io-stream"><span class="toc-number">1.</span> <span class="toc-text"> I&#x2F;O Stream</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#iostream"><span class="toc-number">1.1.</span> <span class="toc-text"> iostream</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#key-features"><span class="toc-number">1.1.1.</span> <span class="toc-text"> Key Features:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#fstream"><span class="toc-number">1.2.</span> <span class="toc-text"> fstream</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#key-classes"><span class="toc-number">1.2.1.</span> <span class="toc-text"> Key Classes:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#stringstream"><span class="toc-number">1.3.</span> <span class="toc-text"> stringstream</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#key-classes-2"><span class="toc-number">1.3.1.</span> <span class="toc-text"> Key Classes:</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#file-operation"><span class="toc-number">2.</span> <span class="toc-text"> File Operation</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#open-and-check"><span class="toc-number">2.1.</span> <span class="toc-text"> Open and Check</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#file-operation-2"><span class="toc-number">2.2.</span> <span class="toc-text"> File Operation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#reading-from-a-file"><span class="toc-number">2.2.1.</span> <span class="toc-text"> Reading from a File</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#writing-to-a-file"><span class="toc-number">2.2.2.</span> <span class="toc-text"> Writing to a File</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#appending-to-a-file"><span class="toc-number">2.2.3.</span> <span class="toc-text"> Appending to a File</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#binary-file-handling"><span class="toc-number">2.2.4.</span> <span class="toc-text"> Binary File Handling</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#close-the-file"><span class="toc-number">2.2.5.</span> <span class="toc-text"> Close the File</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#buffer"><span class="toc-number">3.</span> <span class="toc-text"> Buffer</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#what-is-buffer"><span class="toc-number">3.1.</span> <span class="toc-text"> What is Buffer?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#why-use-buffers"><span class="toc-number">3.1.1.</span> <span class="toc-text"> Why Use Buffers?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#common-api"><span class="toc-number">3.2.</span> <span class="toc-text"> Common API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#usage-in-file-operation"><span class="toc-number">3.3.</span> <span class="toc-text"> Usage in File Operation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#example-copying-file-content-using-buffers"><span class="toc-number">3.3.1.</span> <span class="toc-text"> Example: Copying File Content Using Buffers</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/66b650927646/" title="多维数组">多维数组</a><time datetime="2025-09-30T16:00:00.000Z" title="发表于 2025-10-01 00:00:00">2025-10-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/66c438509deb/" title="多模态综述">多模态综述</a><time datetime="2025-09-30T13:14:40.000Z" title="发表于 2025-09-30 21:14:40">2025-09-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/54b78cdb42c3/" title="无标题">无标题</a><time datetime="2025-09-30T01:58:28.349Z" title="发表于 2025-09-30 09:58:28">2025-09-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/0ac3e125560f/" title="Riscv介绍">Riscv介绍</a><time datetime="2025-09-29T16:00:00.000Z" title="发表于 2025-09-30 00:00:00">2025-09-30</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="ft"><div class="ft-item-1"><div class="t-top"><div class="t-t-l"><p class="ft-t t-l-t">格言🧬</p><div class="bg-ad"><div>记录一个NJUCSer的学习历程 · 代码改变世界，技术创造未来</div><div class="btn-xz-box"><a class="btn-xz" href="/about/">了解更多</a></div></div></div></div></div><div class="ft-item-2"><p class="ft-t">推荐友链⌛</p><div class="ft-img-group"><div class="img-group-item"><a href="/links/" title="广告位招租"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/zhaozu.jpg" alt="广告位招租"/></a></div><div class="img-group-item"><a href="/links/" title="更多友联"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/zhaozu.jpg" alt="友链"/></a></div></div></div></div><div class="copyright"><span><b>&copy;2025</b></span><span><b>&nbsp;&nbsp;By Yama-lei</b></span></div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Less is more · © YamaBlog</div><div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat-square" alt="Hexo"/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat-square" alt="Butterfly"/></a><a class="github-badge" target="_blank" href="https://github.com/yama-lei" style="margin-inline:5px" title="源码托管于GitHub"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat-square" alt="GitHub"/></a></p></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><script src="/js/custom.js"></script><script src="/js/footer-enhance.js"></script><script src="/js/homepage-enhance.js"></script><script defer src="/js/runtime.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

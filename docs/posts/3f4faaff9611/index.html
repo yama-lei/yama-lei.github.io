@@ -1,0 +1,397 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>组合逻辑电路 | YamaBlog</title><meta name="author" content="Yama-lei"><meta name="copyright" content="Yama-lei"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="第一讲 | 组合逻辑电路概述 数字逻辑电路分为组合逻辑电路和时序逻辑电路  组合逻辑电路：输出只依赖于输入 时序逻辑电路：输出和输入、电路状态有关    CPU是时序逻辑电路 组合逻辑电路和时序逻辑电路混在一起用也是时序逻辑电路    组合逻辑电路构成规则   元件是组合逻辑电路   输出端只能相互连接 | 即，每一个点的信号来源只能有一个  也就是多个组件的输出不连在一起    输出节点不能反">
+<meta property="og:type" content="article">
+<meta property="og:title" content="组合逻辑电路">
+<meta property="og:url" content="https://yama-lei.top/posts/3f4faaff9611/index.html">
+<meta property="og:site_name" content="YamaBlog">
+<meta property="og:description" content="第一讲 | 组合逻辑电路概述 数字逻辑电路分为组合逻辑电路和时序逻辑电路  组合逻辑电路：输出只依赖于输入 时序逻辑电路：输出和输入、电路状态有关    CPU是时序逻辑电路 组合逻辑电路和时序逻辑电路混在一起用也是时序逻辑电路    组合逻辑电路构成规则   元件是组合逻辑电路   输出端只能相互连接 | 即，每一个点的信号来源只能有一个  也就是多个组件的输出不连在一起    输出节点不能反">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp">
+<meta property="article:published_time" content="2025-03-06T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-09-28T13:41:20.030Z">
+<meta property="article:author" content="Yama-lei">
+<meta property="article:tag" content="博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "组合逻辑电路",
+  "url": "https://yama-lei.top/posts/3f4faaff9611/",
+  "image": "https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp",
+  "datePublished": "2025-03-06T16:00:00.000Z",
+  "dateModified": "2025-09-28T13:41:20.030Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Yama-lei",
+      "url": "https://yama-lei.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yama-lei.top/posts/3f4faaff9611/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":true,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '组合逻辑电路',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/callout_blocks.css"><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/homepage-hero.css"><link rel="stylesheet" href="/css/card-enhance.css"><link rel="stylesheet" href="/css/sidebar-enhance.css"><link rel="stylesheet" href="/css/category-tag-page.css"><meta name="generator" content="Hexo 8.0.0"><link rel="alternate" href="/atom.xml" title="YamaBlog" type="application/atom+xml">
+</head><body><div id="web_bg" style="background-color: #ffffff;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">105</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-list"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/essay/"><i class="fa-fw fas fa-comment-dots"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/playground/"><i class="fa-fw fas fa-flask"></i><span> Playground</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-user-friends"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img fixed" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">YamaBlog</span></a><a class="nav-page-title" href="/"><span class="site-name">组合逻辑电路</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-list"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/essay/"><i class="fa-fw fas fa-comment-dots"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/playground/"><i class="fa-fw fas fa-flask"></i><span> Playground</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-user-friends"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">组合逻辑电路</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-06T16:00:00.000Z" title="发表于 2025-03-07 00:00:00">2025-03-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-09-28T13:41:20.030Z" title="更新于 2025-09-28 21:41:20">2025-09-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/NJUCS/">NJUCS</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/NJUCS/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/">数字逻辑与计算机组成</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="container post-content" id="article-container"><h2 id="第一讲-组合逻辑电路概述"><a class="markdownIt-Anchor" href="#第一讲-组合逻辑电路概述"></a> 第一讲 | 组合逻辑电路概述</h2>
+<p>数字逻辑电路分为<strong>组合逻辑电路</strong>和<strong>时序逻辑电路</strong></p>
+<ul>
+<li>组合逻辑电路：输出只依赖于输入</li>
+<li>时序逻辑电路：输出和输入、电路状态有关</li>
+</ul>
+<blockquote>
+<ol>
+<li>CPU是时序逻辑电路</li>
+<li>组合逻辑电路和时序逻辑电路混在一起用也是时序逻辑电路</li>
+</ol>
+</blockquote>
+<h3 id="组合逻辑电路构成规则"><a class="markdownIt-Anchor" href="#组合逻辑电路构成规则"></a> 组合逻辑电路构成规则</h3>
+<ol>
+<li>
+<p>元件是组合逻辑电路</p>
+</li>
+<li>
+<p>输出端只能相互连接 | 即，每一个点的信号来源只能有一个</p>
+<blockquote>
+<p>也就是多个组件的输出不连在一起</p>
+</blockquote>
+</li>
+<li>
+<p>输出节点不能反馈到输入端</p>
+<blockquote>
+<p>也就是不能输出不能&quot;回头&quot;</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="逻辑电路图"><a class="markdownIt-Anchor" href="#逻辑电路图"></a> 逻辑电路图</h3>
+<p>一个逻辑电路对应一个逻辑表达式（单输出）</p>
+<p>一个元件可以是多个逻辑电路图和在一起，比如有多输出的元件。</p>
+<p><strong>扇出系数</strong>： 一个逻辑门允许的最大输入数目</p>
+<p><strong>扇出系数</strong>：最大输出数目</p>
+<h4 id="画逻辑门"><a class="markdownIt-Anchor" href="#画逻辑门"></a> <strong>画逻辑门</strong></h4>
+<ul>
+<li>
+<p>根据优先级</p>
+</li>
+<li>
+<p><strong>非&gt;与、与非 &gt;异或、同或 &gt;或、或非</strong></p>
+</li>
+<li>
+<p>多位二进制运算，需要标志位数：</p>
+</li>
+</ul>
+<p><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250307113324303.png" alt="image-20250307113324303" /></p>
+<h3 id="多级逻辑电路"><a class="markdownIt-Anchor" href="#多级逻辑电路"></a> 多级逻辑电路</h3>
+<p><strong>门的传播延迟 | 门延迟</strong>： 输入信号改变到输出信号发生改变之间的时间；</p>
+<p><strong>任何逻辑电路都可以是两级电路</strong>：可以画真值表，再写成<strong>与-或表达式</strong>或<strong>或-与表达式</strong></p>
+<blockquote>
+<p>将多级变成两级：</p>
+<ul>
+<li>减少时间延迟，提高速度</li>
+<li>增加电路的复杂程度；使用的电路硬件数目会增加</li>
+<li>速度up，成本up</li>
+</ul>
+</blockquote>
+<h3 id="组合逻辑电路设计"><a class="markdownIt-Anchor" href="#组合逻辑电路设计"></a> 组合逻辑电路设计</h3>
+<ol>
+<li>逻辑抽象</li>
+<li>真值表</li>
+<li>卡诺图化简</li>
+<li>画图</li>
+</ol>
+<blockquote>
+<p>注： 任何表达式都可以化简成为二级<strong>与-或</strong>表达式，将与或表达式两次取反，可以得到<strong>与非 -与非</strong>表达式；</p>
+</blockquote>
+<p><strong>示例：红绿灯正常工作状态</strong></p>
+<ol>
+<li>
+<p>数字抽象：三位输出，每一位代表一个灯，每个灯要么亮要么关（0 or 1）</p>
+</li>
+<li>
+<p>真值表和卡诺图：</p>
+</li>
+</ol>
+<p><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250310101940750.png" alt="image-20250310101940750" /></p>
+<p>最后得到F的表达式（最简表达式）</p>
+<p><strong>两级的与-或表达式可以变成与非-与非表达式</strong>：通过两次取反！</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>F</mi><mo>=</mo><mover accent="true"><mrow><mover accent="true"><mrow><mover accent="true"><mi>R</mi><mo stretchy="true">‾</mo></mover><mo>⋅</mo><mover accent="true"><mi>Y</mi><mo stretchy="true">‾</mo></mover><mo>⋅</mo><mover accent="true"><mi>G</mi><mo stretchy="true">‾</mo></mover></mrow><mo stretchy="true">‾</mo></mover><mo>⋅</mo><mover accent="true"><mrow><mi>R</mi><mo>⋅</mo><mi>Y</mi></mrow><mo stretchy="true">‾</mo></mover><mo>⋅</mo><mover accent="true"><mrow><mi>R</mi><mo>⋅</mo><mi>G</mi></mrow><mo stretchy="true">‾</mo></mover><mo>⋅</mo><mover accent="true"><mrow><mi>Y</mi><mo>⋅</mo><mi>G</mi></mrow><mo stretchy="true">‾</mo></mover></mrow><mo stretchy="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">F= \overline{\overline{\overline R \cdot \overline{Y} \cdot \overline{G}} \cdot \overline{R \cdot Y} \cdot \overline{R \cdot G} \cdot \overline{Y \cdot G} }
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.2833300000000003em;vertical-align:0em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:1.2833300000000003em;"><span style="top:-3.08333em;"><span class="pstrut" style="height:3.08333em;"></span><span class="mord"><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:1.0833300000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833300000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span><span style="top:-3.80333em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833300000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span></span></span><span style="top:-3.80333em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833300000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">G</span></span></span><span style="top:-3.80333em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span></span></span><span style="top:-4.00333em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833300000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span></span></span><span style="top:-3.80333em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833300000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathnormal">G</span></span></span><span style="top:-3.80333em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833300000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathnormal">G</span></span></span><span style="top:-3.80333em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span></span></span><span style="top:-4.28666em;"><span class="pstrut" style="height:3.08333em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span></span></span></span></span></p>
+<h3 id="无关项非法值高阻态三态门"><a class="markdownIt-Anchor" href="#无关项非法值高阻态三态门"></a> 无关项，非法值，高阻态，三态门</h3>
+<h4 id="无关项"><a class="markdownIt-Anchor" href="#无关项"></a> <strong>无关项</strong></h4>
+<ul>
+<li><strong>不在乎的输入组合</strong>即是无关项：压根不会出现的输入组合，或者没有影响的项；如BCD码里面大于1001的编码都是无关项。</li>
+<li>无关项在真值表中用d表示，意思是0 or 1毫不关心。</li>
+<li>无关项在卡诺图中<strong>可以全部填上</strong>，如果这有利于你化简卡诺图的话。你只需要在乎真的输出为1的项，无关项你可以选择是否保留，<strong>只要有利于你化简</strong>。</li>
+</ul>
+<h4 id="非法值"><a class="markdownIt-Anchor" href="#非法值"></a> <strong>非法值</strong></h4>
+<ul>
+<li>既不是0也不是1</li>
+</ul>
+<h4 id="高阻态"><a class="markdownIt-Anchor" href="#高阻态"></a> <strong>高阻态</strong></h4>
+<ul>
+<li>处于一种非正常状态的第三种电气态，<strong>电路就项断开一样</strong></li>
+</ul>
+<h4 id="三态门"><a class="markdownIt-Anchor" href="#三态门"></a> <strong>三态门</strong></h4>
+<ul>
+<li>
+<p>一种总线接口电路，可以输出0,1，高组态</p>
+</li>
+<li>
+<p>有一个<strong>输出使能控制端</strong> EN</p>
+<img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250310103629211.png" alt="image-20250310103629211" style="zoom:33%;" />
+</li>
+<li>
+<p>使用例子：用于连接总线，多个三台逻辑连接在一起，使得每一次，只能有一个输入端可以输入总线。</p>
+</li>
+<li>
+<p>三态门有两种，一种是当使能端为H时可以工作，另一种是当其为L时工作。</p>
+</li>
+<li>
+<p>使能端也可以同时有多个，比如有三个使能端G,G2A_L,G2B_L，则只有为1 0 0的时候才能正输出0 or 1。 ）</p>
+</li>
+<li>
+<p>在将EN端写入真值表后，每一个最小项、最大项都要将EN的输入考虑进去；</p>
+</li>
+</ul>
+<img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250310110012505.png" alt="image-20250310110012505" style="zoom:33%;" />
+<p>根据这个，可以写出：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>Y</mi><mn>0</mn><mo>=</mo><mover accent="true"><mrow><mi>E</mi><mi>N</mi></mrow><mo stretchy="true">‾</mo></mover><mo>+</mo><mi>E</mi><mi>N</mi><mo>⋅</mo><mover accent="true"><mrow><mi>A</mi><mn>1</mn></mrow><mo stretchy="true">‾</mo></mover><mo>⋅</mo><mi>A</mi><mn>0</mn><mo>+</mo><mi>E</mi><mi>N</mi><mo>⋅</mo><mi>A</mi><mn>1</mn><mo>⋅</mo><mover accent="true"><mrow><mi>A</mi><mn>0</mn></mrow><mo stretchy="true">‾</mo></mover><mo>+</mo><mi>E</mi><mi>N</mi><mo>⋅</mo><mi>A</mi><mn>1</mn><mo>⋅</mo><mi>A</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">Y0=\overline{EN}+ EN \cdot \overline{A1} \cdot A0+ EN \cdot A1 \cdot \overline{A0}+EN \cdot A1  \cdot A2
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">Y</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.9666600000000001em;vertical-align:-0.08333em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833300000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span><span style="top:-3.80333em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8833300000000001em;vertical-align:0em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833300000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="mord">1</span></span></span><span style="top:-3.80333em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">A</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal">A</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.9666600000000001em;vertical-align:-0.08333em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833300000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="mord">0</span></span></span><span style="top:-3.80333em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal">A</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal">A</span><span class="mord">2</span></span></span></span></span></p>
+<blockquote>
+<p>需要将EN端也要考虑到这里的输出表达式；因为EN端相当于也是一个输入端</p>
+</blockquote>
+<h2 id="第二讲-典型组合逻辑部件"><a class="markdownIt-Anchor" href="#第二讲-典型组合逻辑部件"></a> 第二讲 | 典型组合逻辑部件</h2>
+<h3 id="译码器"><a class="markdownIt-Anchor" href="#译码器"></a> 译码器</h3>
+<ul>
+<li>多数入，多输出；通常是<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>−</mo><msup><mn>2</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">n-2^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.664392em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span> 型；</li>
+<li>最简单的译码器：从<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">2^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.664392em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span></span></span> 个输出端中，选择一个输出；即，根据输入的数据，&quot;翻译&quot;出对应的输出信号。</li>
+<li>每一个输出都对应了一个数字逻辑电路，多输出有多个电路，最后将其组合在一起</li>
+</ul>
+<p><strong>应用实例</strong>： 数字灯</p>
+<ol>
+<li>
+<p>输入信号：四位二进制，代表0-9；多出来的几种表示一些字母（图中有）</p>
+</li>
+<li>
+<p>输出信号：a~g的输出信号，代表 a~g的对应的管子是否亮；</p>
+</li>
+<li>
+<p>真值表：</p>
+<img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250310111606460.png" style="width: 50%"/>
+</li>
+</ol>
+<center>（多出来的A b C d E F，如果不需要的话，可以当成<em>无关项</em>）</center>
+<ol start="4">
+<li>最后可以画卡诺图(以a为例)</li>
+</ol>
+<p><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250310112019639.png" alt="image-20250310112019639" /></p>
+<hr />
+<h3 id="编码器"><a class="markdownIt-Anchor" href="#编码器"></a> 编码器</h3>
+<p>实现<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup><mo>−</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">2^n-n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.747722em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span></span></span></span>的编码</p>
+<img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250310112417722.png" style="width: 50%"/>
+<center>示意图</center>
+<h4 id="互斥编码器"><a class="markdownIt-Anchor" href="#互斥编码器"></a> 互斥编码器</h4>
+<p>所有输入端互斥，只能有一个为高电位，其余都是低电位；这一个低电位，映射得到n个输出的结果；</p>
+<div style="display:grid; grid-template-columns: 1fr 1fr 1fr;">
+<img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250310112449336.png"/>
+<img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250310112458266.png"/>
+<img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250310112512746.png"/>
+</div>
+<center>真值表是简化的</center>
+<h4 id="优先级编码器"><a class="markdownIt-Anchor" href="#优先级编码器"></a> 优先级编码器</h4>
+<ul>
+<li>输入端可以有多个高电位</li>
+<li>按照输入端的优先级来决定输出什么</li>
+</ul>
+<div style="display:grid  ;grid-template-columns: 1fr 1fr">
+    <img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250310113140218.png"/>
+    <img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250310113149719.png"/>
+</div>
+<blockquote>
+<p>真值表 和 示意图</p>
+</blockquote>
+<h3 id="多路选择器"><a class="markdownIt-Anchor" href="#多路选择器"></a> 多路选择器</h3>
+<ul>
+<li>多个输入，一个输出，通过控制端来决定输出哪个；</li>
+<li>输入端和输出端的<strong>位数要一致</strong>；但是，控制端的位数可以和输入输出端不一致；</li>
+</ul>
+<p>选择器的实现：</p>
+<p><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250310114125426.png" alt="image-20250310114125426" /></p>
+<center>1位2路选择器</center>
+<p><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250310114250807.png" alt="image-20250310114250807" /></p>
+<center>1位4路选择器</center>
+<p>多路选择器还可以实现类似门电路的性质：</p>
+<p><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250310114759765.png" alt="image-20250310114759765" /></p>
+<h3 id="多路分配器"><a class="markdownIt-Anchor" href="#多路分配器"></a> 多路分配器</h3>
+<p>将一个输入信号，输出到某一个输出端里面；具体输出到哪个电路，由控制端决定;</p>
+<p><strong>一个输入，多个输出，其中某一些为1</strong></p>
+<h3 id="半加器-全加器"><a class="markdownIt-Anchor" href="#半加器-全加器"></a> 半加器、全加器</h3>
+<h4 id="半加器-ha-half-adder"><a class="markdownIt-Anchor" href="#半加器-ha-half-adder"></a> 半加器 HA （Half Adder）</h4>
+<p>只考虑加数和被加数，<strong>不考虑低位的进位</strong>；</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>F</mi><mo>=</mo><mi>A</mi><mo>⊕</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">F= A  \oplus B
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></span></p>
+<p>当前数字为F</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>c</mi><mi>o</mi><mi>u</mi><mi>t</mi><mo>=</mo><mi>A</mi><mo>⋅</mo><mi>B</mi></mrow><annotation encoding="application/x-tex">cout=A \cdot B
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathnormal">c</span><span class="mord mathnormal">o</span><span class="mord mathnormal">u</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span></span></span></span></p>
+<p>进位为cout</p>
+<h4 id="全加器fa-full-adder"><a class="markdownIt-Anchor" href="#全加器fa-full-adder"></a> 全加器FA （Full Adder)</h4>
+<p>考虑加数、被加数和低位的进位；</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>F</mi><mo>=</mo><mi>A</mi><mo>⊕</mo><mi>B</mi><mo>⊕</mo><mi>C</mi><mi>i</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">F= A  \oplus B \oplus Cin
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span></span></span></span></span></p>
+<p>含义是，A，B，Cin如果只有一个或者有三个为1，则F为1；</p>
+<blockquote>
+<p>在数学中，异或就是模二加法，因此<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>⊕</mo><mi>B</mi><mo>⊕</mo><mi>C</mi><mi>i</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">A \oplus B \oplus Cin</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⊕</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span></span></span></span>就是三个相加对2取模，取模即进位</p>
+</blockquote>
+<p>输出为：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>c</mi><mi>o</mi><mi>u</mi><mi>t</mi><mo>=</mo><mi>A</mi><mo>⋅</mo><mi>B</mi><mo>+</mo><mi>A</mi><mo>⋅</mo><mi>c</mi><mi>i</mi><mi>n</mi><mo>+</mo><mi>B</mi><mo>⋅</mo><mi>c</mi><mi>i</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">cout=A \cdot B+A \cdot cin+B \cdot cin
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathnormal">c</span><span class="mord mathnormal">o</span><span class="mord mathnormal">u</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.74285em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">c</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathnormal">c</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span></span></span></span></span></p>
+<p>含义是，A，B，Cin如果有两个以上为1，则F为1；</p>
+<h2 id="第三讲-组合逻辑电路的时序分析"><a class="markdownIt-Anchor" href="#第三讲-组合逻辑电路的时序分析"></a> 第三讲 | 组合逻辑电路的时序分析</h2>
+<h4 id="tplh和tphl"><a class="markdownIt-Anchor" href="#tplh和tphl"></a> tpLH和tpHL</h4>
+<p><strong>tpLH</strong>是<code>上升沿电路延时</code>，从输入信号改变到输出信号由Low变High的时间</p>
+<p><strong>tpHL</strong>是<code>下降沿电路延时</code>，从输入信号改变到输出信号由High变Low的时间</p>
+<p><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250314100910471.png" alt="image-20250314100910471" /></p>
+<center>通常，我们忽略上升下降的过程</center>
+<h4 id="传输延迟-和-最小延迟"><a class="markdownIt-Anchor" href="#传输延迟-和-最小延迟"></a> 传输延迟 和 最小延迟</h4>
+<p>传输延迟 | Propogation delay <code>Tpd</code>：由输入信号改变到<strong>所有</strong>输出端得到<strong>稳定</strong>的信号所需的时间；</p>
+<p>最小延迟 | Contamination delay <code>Tcd</code>：由输出信号改变到<strong>任何一个</strong>输出信号<strong>开始改变</strong>所需的时间；</p>
+<p>关键路径： 从输入端到输出端的<strong>最长路径</strong> ；整个电路的传输延迟的时间即关键路径上所有的元件的<strong>传输延迟之和</strong></p>
+<p>最小路径：电路的最小延迟是最短路径上所有的元件的最小延迟之和</p>
+<p><strong>例子：</strong></p>
+<p>假设每一个逻辑门电路的传输延时和最小延时分别是90ps和60ps；求下面这个电路的传输延迟和最小延迟</p>
+<img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250314102739355.png" alt="image-20250314102739355" style="zoom:33%;" />
+<ol>
+<li>关键路径：必须经过3个逻辑门，则tpd=90ps*3=270ps；</li>
+<li>最小延迟：至少经过2个逻辑门，则tcd=60ps*2=120ps；</li>
+</ol>
+<blockquote>
+<p>最小延迟只是 有输出信号所需的最小时间，此时<strong>输出的并不是最终稳定的结果</strong></p>
+</blockquote>
+<h4 id="竞争与冒险"><a class="markdownIt-Anchor" href="#竞争与冒险"></a> 竞争与冒险</h4>
+<p>某个输入信号通过多个路径作用到输出端，由于延迟不同，导致输入信号对于输出端造成不同的影响，称为<strong>竞争</strong></p>
+<p>由于竞争，在输入信号发生变化的时候  输出端短时间可能出现不正确的电路信号，称为<strong>毛刺</strong></p>
+<p>有毛刺，称为存在<strong>冒险</strong></p>
+<div style="display:grid;grid-template-columns: 1fr 1fr 1fr;">
+    <img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250314103910590.png"/>
+    <img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250314103926203.png"/>
+    <img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250314103936138.png"/>
+</div>
+<center>在A段从高点位变成低电位时出现竞争冒险</center>
+<p><strong>判断出现竞争、冒险</strong></p>
+<ol>
+<li>如果将逻辑表达式固定一个变量，其余变量任取，如果出现<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>⋅</mo><mover accent="true"><mi>X</mi><mo stretchy="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">X \cdot \overline X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8833300000000001em;vertical-align:0em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833300000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span><span style="top:-3.80333em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span></span></span></span>或<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>+</mo><mover accent="true"><mi>X</mi><mo stretchy="true">‾</mo></mover></mrow><annotation encoding="application/x-tex">X + \overline X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8833300000000001em;vertical-align:0em;"></span><span class="mord overline"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8833300000000001em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span></span><span style="top:-3.80333em;"><span class="pstrut" style="height:3em;"></span><span class="overline-line" style="border-bottom-width:0.04em;"></span></span></span></span></span></span></span></span></span> 那么存在毛刺</li>
+<li><strong>如果卡诺图里面任何两个相邻的1没有包含在同一个卡诺圈中</strong></li>
+</ol>
+<p><strong>消除竞争冒险</strong></p>
+<ol>
+<li>增加冗余项 （在卡诺图中多加几个圈，使得全部相邻的1都被包在一起）</li>
+<li>低通滤波</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://yama-lei.top">Yama-lei</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://yama-lei.top/posts/3f4faaff9611/">https://yama-lei.top/posts/3f4faaff9611/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://yama-lei.top" target="_blank">YamaBlog</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/68fc9bc1a5c8/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2"></div></div><div class="info-2"><div class="info-item-1"> STL算法  sort sort(arr.begin(),a.end(),cmp);按照cmp的方式进行排序，其中cmp函数接受两个参数（arr中的两个相邻元素），如果cmp返回的值为false，那么交换这两个元素。 1234567891011121314151617181920212223242526272829303132#include&lt;bits/stdc++.h&gt;using namespace std;typedef struct Student&#123;    string name;    string id;    int score;&#125;S;bool cmp(S&amp;s1,S&amp;s2)&#123;    if(s1.score==s2.score)&#123;        return s1.name&gt;s2.name;    &#125;    return s1.score&gt;s2.score;&#125;int main&#123;    int n,m;    cin&gt;&gt;n;    vector&lt...</div></div></div></a><a class="pagination-related" href="/posts/f533a447f93c/" title="排序算法"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">排序算法</div></div><div class="info-2"><div class="info-item-1"> 学了这么久的计算机，结果还是只会冒泡排序，是时候做个了解了。   Bubble sort 冒泡排序  We import the pacage ‘bits/stdc’ and all codes are in the std namespace  123456789void bubble_sort(int* arr,int len,bool(*cmp) (int,int))&#123;    for(int i=0;i&lt;len-1;i++)&#123;        for(int j=0;j&lt;len-i-1;j++)&#123;            if(!cmp(arr[j],arr[j+1]))&#123;                swap(arr[j],arr[j+1]);            &#125;           &#125;    &#125;&#125;  Quick sort 快速排序  Main idea: Devide and Conquer We devide the array into three parts: the...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Yama-lei</div><div class="author-info-description">记录一个NJUCSer的学习</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">105</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yama-lei"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/yama-lei" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:your@email.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color: #FFA500;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">博客正在建设中...能看就行...😋😋😋</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E8%AE%B2-%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text"> 第一讲 | 组合逻辑电路概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E6%9E%84%E6%88%90%E8%A7%84%E5%88%99"><span class="toc-number">1.1.</span> <span class="toc-text"> 组合逻辑电路构成规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E5%9B%BE"><span class="toc-number">1.2.</span> <span class="toc-text"> 逻辑电路图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%BB%E9%80%BB%E8%BE%91%E9%97%A8"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 画逻辑门</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E7%BA%A7%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF"><span class="toc-number">1.3.</span> <span class="toc-text"> 多级逻辑电路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1"><span class="toc-number">1.4.</span> <span class="toc-text"> 组合逻辑电路设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E5%85%B3%E9%A1%B9%E9%9D%9E%E6%B3%95%E5%80%BC%E9%AB%98%E9%98%BB%E6%80%81%E4%B8%89%E6%80%81%E9%97%A8"><span class="toc-number">1.5.</span> <span class="toc-text"> 无关项，非法值，高阻态，三态门</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A0%E5%85%B3%E9%A1%B9"><span class="toc-number">1.5.1.</span> <span class="toc-text"> 无关项</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%9E%E6%B3%95%E5%80%BC"><span class="toc-number">1.5.2.</span> <span class="toc-text"> 非法值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%AB%98%E9%98%BB%E6%80%81"><span class="toc-number">1.5.3.</span> <span class="toc-text"> 高阻态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E6%80%81%E9%97%A8"><span class="toc-number">1.5.4.</span> <span class="toc-text"> 三态门</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E8%AE%B2-%E5%85%B8%E5%9E%8B%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E9%83%A8%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text"> 第二讲 | 典型组合逻辑部件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%91%E7%A0%81%E5%99%A8"><span class="toc-number">2.1.</span> <span class="toc-text"> 译码器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E7%A0%81%E5%99%A8"><span class="toc-number">2.2.</span> <span class="toc-text"> 编码器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%92%E6%96%A5%E7%BC%96%E7%A0%81%E5%99%A8"><span class="toc-number">2.2.1.</span> <span class="toc-text"> 互斥编码器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%85%88%E7%BA%A7%E7%BC%96%E7%A0%81%E5%99%A8"><span class="toc-number">2.2.2.</span> <span class="toc-text"> 优先级编码器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E8%B7%AF%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">2.3.</span> <span class="toc-text"> 多路选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E8%B7%AF%E5%88%86%E9%85%8D%E5%99%A8"><span class="toc-number">2.4.</span> <span class="toc-text"> 多路分配器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%8A%E5%8A%A0%E5%99%A8-%E5%85%A8%E5%8A%A0%E5%99%A8"><span class="toc-number">2.5.</span> <span class="toc-text"> 半加器、全加器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%8A%E5%8A%A0%E5%99%A8-ha-half-adder"><span class="toc-number">2.5.1.</span> <span class="toc-text"> 半加器 HA （Half Adder）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A8%E5%8A%A0%E5%99%A8fa-full-adder"><span class="toc-number">2.5.2.</span> <span class="toc-text"> 全加器FA （Full Adder)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E8%AE%B2-%E7%BB%84%E5%90%88%E9%80%BB%E8%BE%91%E7%94%B5%E8%B7%AF%E7%9A%84%E6%97%B6%E5%BA%8F%E5%88%86%E6%9E%90"><span class="toc-number">3.</span> <span class="toc-text"> 第三讲 | 组合逻辑电路的时序分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#tplh%E5%92%8Ctphl"><span class="toc-number">3.0.1.</span> <span class="toc-text"> tpLH和tpHL</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%A0%E8%BE%93%E5%BB%B6%E8%BF%9F-%E5%92%8C-%E6%9C%80%E5%B0%8F%E5%BB%B6%E8%BF%9F"><span class="toc-number">3.0.2.</span> <span class="toc-text"> 传输延迟 和 最小延迟</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AB%9E%E4%BA%89%E4%B8%8E%E5%86%92%E9%99%A9"><span class="toc-number">3.0.3.</span> <span class="toc-text"> 竞争与冒险</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/66b650927646/" title="多维数组">多维数组</a><time datetime="2025-09-30T16:00:00.000Z" title="发表于 2025-10-01 00:00:00">2025-10-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/66c438509deb/" title="多模态综述">多模态综述</a><time datetime="2025-09-30T13:14:40.000Z" title="发表于 2025-09-30 21:14:40">2025-09-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/54b78cdb42c3/" title="无标题">无标题</a><time datetime="2025-09-30T01:58:28.349Z" title="发表于 2025-09-30 09:58:28">2025-09-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/0ac3e125560f/" title="Riscv介绍">Riscv介绍</a><time datetime="2025-09-29T16:00:00.000Z" title="发表于 2025-09-30 00:00:00">2025-09-30</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="ft"><div class="ft-item-1"><div class="t-top"><div class="t-t-l"><p class="ft-t t-l-t">格言🧬</p><div class="bg-ad"><div>记录一个NJUCSer的学习历程 · 代码改变世界，技术创造未来</div><div class="btn-xz-box"><a class="btn-xz" href="/about/">了解更多</a></div></div></div></div></div><div class="ft-item-2"><p class="ft-t">推荐友链⌛</p><div class="ft-img-group"><div class="img-group-item"><a href="/links/" title="广告位招租"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/zhaozu.jpg" alt="广告位招租"/></a></div><div class="img-group-item"><a href="/links/" title="更多友联"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/zhaozu.jpg" alt="友链"/></a></div></div></div></div><div class="copyright"><span><b>&copy;2025</b></span><span><b>&nbsp;&nbsp;By Yama-lei</b></span></div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Less is more · © YamaBlog</div><div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat-square" alt="Hexo"/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat-square" alt="Butterfly"/></a><a class="github-badge" target="_blank" href="https://github.com/yama-lei" style="margin-inline:5px" title="源码托管于GitHub"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat-square" alt="GitHub"/></a></p></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><script src="/js/custom.js"></script><script src="/js/footer-enhance.js"></script><script src="/js/homepage-enhance.js"></script><script defer src="/js/runtime.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

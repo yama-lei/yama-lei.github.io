@@ -1,0 +1,316 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>组会汇报week11 | YamaBlog</title><meta name="author" content="Yama-lei"><meta name="copyright" content="Yama-lei"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="vqa模型比较 在过去一周，我把模型全部重新跑了一遍，使用相同的数据集、采取相同的评估方法(loss, acc)，采取相同的一套接口， 区别仅仅在于模型的内部结构不一样  训练数据集：vqa-v2 train 评估数据集： vqa-v2 val 训练轮次：15 epochs 单卡（batch_size&#x3D; 512, num_workers&#x3D;16) 训练时长从2-3h，每一个模型训练实际占用显存约5">
+<meta property="og:type" content="article">
+<meta property="og:title" content="组会汇报week11">
+<meta property="og:url" content="https://yama-lei.top/posts/ea148cfa24c8/index.html">
+<meta property="og:site_name" content="YamaBlog">
+<meta property="og:description" content="vqa模型比较 在过去一周，我把模型全部重新跑了一遍，使用相同的数据集、采取相同的评估方法(loss, acc)，采取相同的一套接口， 区别仅仅在于模型的内部结构不一样  训练数据集：vqa-v2 train 评估数据集： vqa-v2 val 训练轮次：15 epochs 单卡（batch_size&#x3D; 512, num_workers&#x3D;16) 训练时长从2-3h，每一个模型训练实际占用显存约5">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp">
+<meta property="article:published_time" content="2025-09-28T13:20:28.737Z">
+<meta property="article:modified_time" content="2025-09-28T13:41:20.031Z">
+<meta property="article:author" content="Yama-lei">
+<meta property="article:tag" content="博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "组会汇报week11",
+  "url": "https://yama-lei.top/posts/ea148cfa24c8/",
+  "image": "https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp",
+  "datePublished": "2025-09-28T13:20:28.737Z",
+  "dateModified": "2025-09-28T13:41:20.031Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Yama-lei",
+      "url": "https://yama-lei.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yama-lei.top/posts/ea148cfa24c8/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":true,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '组会汇报week11',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/callout_blocks.css"><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/homepage-hero.css"><link rel="stylesheet" href="/css/card-enhance.css"><link rel="stylesheet" href="/css/sidebar-enhance.css"><link rel="stylesheet" href="/css/category-tag-page.css"><meta name="generator" content="Hexo 8.0.0"><link rel="alternate" href="/atom.xml" title="YamaBlog" type="application/atom+xml">
+</head><body><div id="web_bg" style="background-color: #ffffff;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">105</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-list"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/essay/"><i class="fa-fw fas fa-comment-dots"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/playground/"><i class="fa-fw fas fa-flask"></i><span> Playground</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-user-friends"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img fixed" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">YamaBlog</span></a><a class="nav-page-title" href="/"><span class="site-name">组会汇报week11</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-list"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/essay/"><i class="fa-fw fas fa-comment-dots"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/playground/"><i class="fa-fw fas fa-flask"></i><span> Playground</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-user-friends"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">组会汇报week11</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-09-28T13:20:28.737Z" title="发表于 2025-09-28 21:20:28">2025-09-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-09-28T13:41:20.031Z" title="更新于 2025-09-28 21:41:20">2025-09-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%A7%91%E7%A0%94%E5%90%AF%E8%92%99/">科研启蒙</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%A7%91%E7%A0%94%E5%90%AF%E8%92%99/Reports/">Reports</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="container post-content" id="article-container"><h2 id="vqa模型比较"><a class="markdownIt-Anchor" href="#vqa模型比较"></a> vqa模型比较</h2>
+<p>在过去一周，我把模型全部重新跑了一遍，使用相同的数据集、采取相同的评估方法(loss, acc)，采取相同的一套接口， 区别仅仅在于<strong>模型的内部结构不一样</strong></p>
+<ul>
+<li>训练数据集：vqa-v2 train</li>
+<li>评估数据集： vqa-v2 val</li>
+<li>训练轮次：15 epochs</li>
+<li>单卡（batch_size= 512, num_workers=16) 训练时长从2-3h，每一个模型训练实际占用显存约5GB<br />
+结果如下：<br />
+<img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/loss_comparison.png" alt="loss_comparison" /></li>
+</ul>
+<p><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250720132512120.png" alt="image-20250720132512120" /></p>
+<p>下面是这四个模型的不同结构：</p>
+<blockquote>
+<p>下面是让AI总结的</p>
+</blockquote>
+<!-- 模型一 -->
+<div style="display: flex; margin-bottom: 40px;">
+  <div style="flex: 1; padding-right: 20px; border-right: 2px solid #ccc;">
+    <h3>模型一：平均词嵌入（Mean Pooling）</h3>
+    <pre><code>question_features = self.embed(question).mean(dim=1)</code></pre>
+    <p>将每个词嵌入后，取平均作为问题表示。</p>
+  </div>
+  <div style="flex: 1; padding-left: 20px;">
+    <h4>优点</h4>
+    <ul>
+      <li>实现简单，计算速度快</li>
+      <li>适合短文本</li>
+    </ul>
+    <h4>缺点</h4>
+    <ul>
+      <li>忽略词序与上下文关系</li>
+      <li>无法突出关键信息</li>
+    </ul>
+  </div>
+</div>
+<!-- 模型二 -->
+<div style="display: flex; margin-bottom: 40px;">
+  <div style="flex: 1; padding-right: 20px; border-right: 2px solid #ccc;">
+    <h3>模型二：LSTM 编码</h3>
+    <pre><code>self.q_lstm = nn.LSTM(input_size=512, hidden_size=512)
+question_features = self.embed(question)
+question_features, _ = self.q_lstm(question_features)
+question_features = question_features[:, -1, :]</code></pre>
+    <p>用 LSTM 编码问题，取最后一个时间步的 hidden state。</p>
+  </div>
+  <div style="flex: 1; padding-left: 20px;">
+    <h4>优点</h4>
+    <ul>
+      <li>考虑词序信息</li>
+      <li>较强语义表达能力</li>
+    </ul>
+    <h4>缺点</h4>
+    <ul>
+      <li>仅用最后一个时间步，可能信息损失</li>
+      <li>对长句不稳定</li>
+    </ul>
+  </div>
+</div>
+<!-- 模型三 -->
+<div style="display: flex; margin-bottom: 40px;">
+  <div style="flex: 1; padding-right: 20px; border-right: 2px solid #ccc;">
+    <h3>模型三：LSTM + 注意力机制</h3>
+    <pre><code>self.q_lstm = nn.LSTM(input_size=512, hidden_size=512)
+self.question_attention_linear = nn.Linear(hidden_size, 1)
+question_features = self.embed(question)
+question_features, _ = self.q_lstm(question_features)
+attention_scores = self.question_attention_linear(question_features)
+attention_weights = torch.softmax(attention_scores, dim=1)
+question_features = torch.sum(question_features * attention_weights, dim=1)</code></pre>
+    <p>LSTM 输出后，加权聚合每个时间步的隐藏状态。</p>
+  </div>
+  <div style="flex: 1; padding-left: 20px;">
+    <h4>优点</h4>
+    <ul>
+      <li>可关注问题关键词</li>
+      <li>提升语义建模能力</li>
+    </ul>
+    <h4>缺点</h4>
+    <ul>
+      <li>模型结构略复杂</li>
+      <li>对注意力参数敏感</li>
+    </ul>
+  </div>
+</div>
+<!-- 模型四 -->
+<blockquote>
+<p>模型三和模型四 是参考了论文SANs的注意力机制，均只使用了一层堆叠注意力；但是模型三的图像编码使用的方法是resnet18删去了最后一层，图形送入，得到512维度张量； 而模型四的图像编码采用的方法是删除resnet18的最后两层，借助的是其预训练好的CNN部分，和SANs结构更加贴近。</p>
+</blockquote>
+<div style="display: flex; margin-bottom: 40px;">
+  <div style="flex: 1; padding-right: 20px; border-right: 2px solid #ccc;">
+    <h3>模型四：图文融合注意力模型（基于ResNet + 文本引导）</h3>
+    <pre><code># 图像特征提取
+self.cnn = ResNet18 (去除全连接层)
+v_I = CNN(image) → shape: (B, 512, 14, 14) # 问题编码
+v_Q = self.embed(question).mean(dim=1)# 注意力融合
+h_A = fc1(v_I) + (fc2(v_Q) + b_A)
+p_I = softmax(fc3(h_A))
+v_I_a = 加权图像区域  # 融合表示
+u_1 = v_I_a + v_Q → 分类器输出答案</code></pre>
+    <p>使用视觉注意力机制结合问题内容对图像区域加权。</p>
+  </div>
+  <div style="flex: 1; padding-left: 20px;">
+    <h4>优点</h4>
+    <ul>
+      <li>图文信息融合充分</li>
+      <li>能动态关注图像关键区域</li>
+    </ul>
+    <h4>缺点</h4>
+    <ul>
+      <li>结构复杂，调参要求高</li>
+      <li>训练成本高于前三个模型</li>
+    </ul>
+  </div>
+</div>
+<h2 id="长句的vqa数据集"><a class="markdownIt-Anchor" href="#长句的vqa数据集"></a> 长句的vqa数据集</h2>
+<p><strong>fsvqa数据集</strong></p>
+<p>论文： <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1609.06657">https://arxiv.org/pdf/1609.06657</a></p>
+<p>Name： The Color of the Cat is Gray: 1 Million Full-Sentences Visual Question Answering (FSVQA)</p>
+<p>图像依旧使用的是<strong>COCO</strong>，数据集提供了original和augmented两个版本</p>
+<p>其中original版本的train data约为23w对QA对，augmented的train有66w对QA对（貌似augmented是origianl的超集？）</p>
+<p>整理为统一格式后：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">question_id<span class="punctuation">:</span><span class="number">4870251</span></span><br><span class="line">question<span class="punctuation">:</span><span class="string">&quot;Is there a shadow?&quot;</span></span><br><span class="line">answer<span class="punctuation">:</span><span class="string">&quot;Yes, there is a shadow.&quot;</span></span><br><span class="line">image_id<span class="punctuation">:</span><span class="number">487025</span></span><br><span class="line">image_path<span class="punctuation">:</span><span class="string">&quot;/project/vqa/resources/vqa-v1/images/train2014/COCO_train2014_000000487025.jpg&quot;</span></span><br></pre></td></tr></table></figure>
+<p><strong>lfvqa数据集</strong></p>
+<p>论文： <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2408.06303">https://arxiv.org/pdf/2408.06303</a></p>
+<p>Name:  Long-Form Answers to Visual Questions from Blind and Low Vision People</p>
+<p>图像使用的是<strong>VizWiz</strong>（收集自视障人士实际拍摄的图片）的一部分（只选择了600张图像），每一个图像的对应的问题由多个大模型（LLava、BLIP、QWEN、GEMINI等）进行回复，</p>
+<p>原数据集中大模型的回复通常比较长，<s>貌似不太适合我们模型</s>，我先对数据进行了整理，从大语言模型的多句回答中，选择直接回复的答案的句子，并且统一为统一格式，最后筛选得到了3129个QA对。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span>&#x27;image_id&#x27;<span class="punctuation">:</span> <span class="number">16783</span><span class="punctuation">,</span> </span><br><span class="line"> &#x27;question_id&#x27;<span class="punctuation">:</span> <span class="number">16783</span><span class="punctuation">,</span> </span><br><span class="line"> &#x27;question&#x27;<span class="punctuation">:</span> &#x27;Can you tell me what kind of vehicle this is?&#x27;<span class="punctuation">,</span> </span><br><span class="line"> &#x27;answer&#x27;<span class="punctuation">:</span> &#x27;The vehicle in the image appears to be a utility service truck<span class="punctuation">,</span> commonly used by contractors or maintenance departments&#x27;<span class="punctuation">,</span> </span><br><span class="line"> &#x27;image_path&#x27;<span class="punctuation">:</span> &#x27;image/<span class="number">16783.</span>jpg&#x27;</span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>Generative Model:</p>
+<p>使用数据集： fsvqa</p>
+<p>训练到第40个epoch，出现了过拟合特征：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">--- Sample 1/5 ---</span><br><span class="line">Image Path:          /project/vqa/resources/vqa-v1/images/train2014/COCO_train2014_000000539562.jpg</span><br><span class="line">Question:            Has this bed been made?</span><br><span class="line">Ground Truth Answer: Yes, this bed has been made.</span><br><span class="line">Model Generated Answer:  yes this bed has been made</span><br><span class="line">------------------</span><br><span class="line">--- Sample 2/5 ---</span><br><span class="line">Image Path:          /project/vqa/resources/vqa-v1/images/train2014/COCO_train2014_000000191639.jpg</span><br><span class="line">Question:            Is it cold out?</span><br><span class="line">Ground Truth Answer: Yes, it is cold out.</span><br><span class="line">Model Generated Answer:  yes it is cold out</span><br><span class="line">------------------</span><br><span class="line">--- Sample 3/5 ---</span><br><span class="line">Image Path:          /project/vqa/resources/vqa-v1/images/train2014/COCO_train2014_000000289004.jpg</span><br><span class="line">Question:            Are there clouds in the sky?</span><br><span class="line">Ground Truth Answer: No, there are not clouds in the sky.</span><br><span class="line">Model Generated Answer:  yes there are clouds in the sky</span><br><span class="line">------------------</span><br></pre></td></tr></table></figure>
+<p><strong>其他补充：</strong></p>
+<ol>
+<li>
+<p>线路二的模型（Start From Scratch）使用的数据集的统一格式和接口：</p>
+<ul>
+<li>
+<p>格式为</p>
+</li>
+<li>
+<p>{‘image_id’: 16783,<br />
+‘question_id’: 16783,<br />
+‘question’: ‘Can you tell me what kind of vehicle this is?’,<br />
+‘answer’: ‘The vehicle in the image appears to be a utility service truck, commonly used by contractors or maintenance departments’,<br />
+‘image_path’: ‘image/16783.jpg’ ‘question_type’: ‘’</p>
+<p>}</p>
+</li>
+<li>
+<p>接口为： loadData(train=False, num=-1, dataset_type= ‘’)</p>
+</li>
+<li>
+<p>使用方法： 1. 使用loadData函数导入数据，得到的数据即为上述格式的一个数组  2. 导入词表   3. 传入VQA_Dataset，在这一步会对question和image进行预处理（tokenize、编码等等） 4. 实例化Dataloader，并作为参数传入训练的函数</p>
+</li>
+</ul>
+</li>
+<li>
+<p>吃了个西瓜，忘记要写什么了</p>
+</li>
+</ol>
+<p><strong>Failed Attempt On Long Answer VQA</strong></p>
+<p>让AI写了一个模型，尝试使用上述整理好的数据集，进行训练：</p>
+<p>训练了30个epoch的模型：（在train上的表现，过拟合，背住了答案）</p>
+<img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250721001811333.png" alt="image-20250721001811333" style="zoom:50%;" />
+<p>在val上的表现：已经完全是放飞自我，回答牛头不对马嘴了，只是学会了基本的语言规则，并没有学会看图和回答</p>
+<img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250721001916470.png" alt="image-20250721001916470" style="zoom:50%;" />
+<h2 id="中文vqa尝试"><a class="markdownIt-Anchor" href="#中文vqa尝试"></a> 中文vqa尝试</h2>
+<p>既然英文的成功跑起来了，那么理论上我只需要把词表换成中文词表，不就有了中文vqa模型？</p>
+<p>理论存在，实践开始：</p>
+<p>我用google的开源翻译模型，将fsvqa翻译成中文并且按照新的数据集重新构建了词表，训练了中文的vqa模型:</p>
+<p>结果只能说 和上面那个英文的vqa模型 算是<strong>卧龙凤雏、不相上下</strong></p>
+<hr />
+<p>组会： 尝试使用预训练好的词嵌入模型和动态卷积</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://yama-lei.top">Yama-lei</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://yama-lei.top/posts/ea148cfa24c8/">https://yama-lei.top/posts/ea148cfa24c8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://yama-lei.top" target="_blank">YamaBlog</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/d5a5689a747c/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2"></div></div><div class="info-2"><div class="info-item-1"> 例会汇报 | 第二次 （接上一次BLIP系列模型的讨论）我没有仔细看对应的论文，下方图片来自知乎。    一个VQA领域的baseline模型  Baseline模型的含义： 容易实现、功能基础的模型，作为’基线’(baseline)。  我找到一篇10年前的论文：Simple Baseline for Visual Question Answering，文章中提到的“iBowing”模型的结构是： 1234567graph TD    A[输入问题（文本）] --&gt;|One-hot Encoding + 词袋模型（BoW）| B[文本特征]    C[输入图像] --&gt;|CNN（如GoogLeNet）| D[图像特征]    B --&gt;|拼接| E[联合特征向量]    D --&gt;|拼接| E    E --&gt;|Softmax 分类| F[预测答案] 模型核心思路如下：   文字处理  One-hot Encoding 与 Bag-of-Words (BoW)： 模型首先将输入的问句转换为 one-hot 向量。在 one-hot encodin...</div></div></div></a><a class="pagination-related" href="/posts/a7fa9e47a9a5/" title="例会汇报 | 第一次"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">例会汇报 | 第一次</div></div><div class="info-2"><div class="info-item-1"> 例会汇报 | 第一次  VQA算法 12graph LR	图像,问题展示  --&gt; 将文字,图像特征综合 --&gt; 回答生成  图像/问题表征方法   图像展示 | Image representation 问题呈现 | Question representation   多模态融合与回答生成算法   将视觉信息和文字信息综合 | Fusion and/or Attention   The interaction of the visual and textual domain in VQA is either done directly through multimodal fusion or indirectly through attention mechanisms.                                                                          	      — A Comprehensive Survey on Visual Question Answering Datasets and A...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Yama-lei</div><div class="author-info-description">记录一个NJUCSer的学习</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">105</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yama-lei"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/yama-lei" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:your@email.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color: #FFA500;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">博客正在建设中...能看就行...😋😋😋</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#vqa%E6%A8%A1%E5%9E%8B%E6%AF%94%E8%BE%83"><span class="toc-number">1.</span> <span class="toc-text"> vqa模型比较</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.1.</span> <span class="toc-text">模型一：平均词嵌入（Mean Pooling）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.1.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.1.2.</span> <span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.2.</span> <span class="toc-text">模型二：LSTM 编码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.2.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.2.2.</span> <span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.3.</span> <span class="toc-text">模型三：LSTM + 注意力机制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.3.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.3.2.</span> <span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.4.</span> <span class="toc-text">模型四：图文融合注意力模型（基于ResNet + 文本引导）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.4.1.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link"><span class="toc-number">1.4.2.</span> <span class="toc-text">缺点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%95%BF%E5%8F%A5%E7%9A%84vqa%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-number">2.</span> <span class="toc-text"> 长句的vqa数据集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E6%96%87vqa%E5%B0%9D%E8%AF%95"><span class="toc-number">3.</span> <span class="toc-text"> 中文vqa尝试</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/66b650927646/" title="多维数组">多维数组</a><time datetime="2025-09-30T16:00:00.000Z" title="发表于 2025-10-01 00:00:00">2025-10-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/66c438509deb/" title="多模态综述">多模态综述</a><time datetime="2025-09-30T13:14:40.000Z" title="发表于 2025-09-30 21:14:40">2025-09-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/54b78cdb42c3/" title="无标题">无标题</a><time datetime="2025-09-30T01:58:28.349Z" title="发表于 2025-09-30 09:58:28">2025-09-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/0ac3e125560f/" title="Riscv介绍">Riscv介绍</a><time datetime="2025-09-29T16:00:00.000Z" title="发表于 2025-09-30 00:00:00">2025-09-30</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="ft"><div class="ft-item-1"><div class="t-top"><div class="t-t-l"><p class="ft-t t-l-t">格言🧬</p><div class="bg-ad"><div>记录一个NJUCSer的学习历程 · 代码改变世界，技术创造未来</div><div class="btn-xz-box"><a class="btn-xz" href="/about/">了解更多</a></div></div></div></div></div><div class="ft-item-2"><p class="ft-t">推荐友链⌛</p><div class="ft-img-group"><div class="img-group-item"><a href="/links/" title="广告位招租"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/zhaozu.jpg" alt="广告位招租"/></a></div><div class="img-group-item"><a href="/links/" title="更多友联"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/zhaozu.jpg" alt="友链"/></a></div></div></div></div><div class="copyright"><span><b>&copy;2025</b></span><span><b>&nbsp;&nbsp;By Yama-lei</b></span></div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Less is more · © YamaBlog</div><div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat-square" alt="Hexo"/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat-square" alt="Butterfly"/></a><a class="github-badge" target="_blank" href="https://github.com/yama-lei" style="margin-inline:5px" title="源码托管于GitHub"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat-square" alt="GitHub"/></a></p></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><script src="/js/custom.js"></script><script src="/js/footer-enhance.js"></script><script src="/js/homepage-enhance.js"></script><script defer src="/js/runtime.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>多模态综述 | YamaBlog</title><meta name="author" content="Yama-lei"><meta name="copyright" content="Yama-lei"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="精读(perhaps)了《A Survey on Multimodal Large Language Models》（IEEE2024）这篇文章有关MLLM的发展历程概括，论文中还给了一个github链接https:&#x2F;&#x2F;github.com&#x2F;BradyFU&#x2F;Awesome-Multimodal-Large-Language-Models，这篇论文不曾想，点进去就看到了南大的标，并且这篇论文很帅气地">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多模态综述">
+<meta property="og:url" content="https://yama-lei.top/posts/66c438509deb/index.html">
+<meta property="og:site_name" content="YamaBlog">
+<meta property="og:description" content="精读(perhaps)了《A Survey on Multimodal Large Language Models》（IEEE2024）这篇文章有关MLLM的发展历程概括，论文中还给了一个github链接https:&#x2F;&#x2F;github.com&#x2F;BradyFU&#x2F;Awesome-Multimodal-Large-Language-Models，这篇论文不曾想，点进去就看到了南大的标，并且这篇论文很帅气地">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp">
+<meta property="article:published_time" content="2025-09-30T13:14:40.000Z">
+<meta property="article:modified_time" content="2025-09-30T13:15:17.978Z">
+<meta property="article:author" content="Yama-lei">
+<meta property="article:tag" content="博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "多模态综述",
+  "url": "https://yama-lei.top/posts/66c438509deb/",
+  "image": "https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp",
+  "datePublished": "2025-09-30T13:14:40.000Z",
+  "dateModified": "2025-09-30T13:15:17.978Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Yama-lei",
+      "url": "https://yama-lei.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yama-lei.top/posts/66c438509deb/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":true,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '多模态综述',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/callout_blocks.css"><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/homepage-hero.css"><link rel="stylesheet" href="/css/card-enhance.css"><link rel="stylesheet" href="/css/sidebar-enhance.css"><link rel="stylesheet" href="/css/category-tag-page.css"><meta name="generator" content="Hexo 8.0.0"><link rel="alternate" href="/atom.xml" title="YamaBlog" type="application/atom+xml">
+</head><body><div id="web_bg" style="background-color: #ffffff;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">105</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-list"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/essay/"><i class="fa-fw fas fa-comment-dots"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/playground/"><i class="fa-fw fas fa-flask"></i><span> Playground</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-user-friends"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img fixed" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">YamaBlog</span></a><a class="nav-page-title" href="/"><span class="site-name">多模态综述</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-list"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/essay/"><i class="fa-fw fas fa-comment-dots"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/playground/"><i class="fa-fw fas fa-flask"></i><span> Playground</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-user-friends"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">多模态综述</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-09-30T13:14:40.000Z" title="发表于 2025-09-30 21:14:40">2025-09-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-09-30T13:15:17.978Z" title="更新于 2025-09-30 21:15:17">2025-09-30</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/NOVA/">NOVA</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="container post-content" id="article-container"><p>精读(perhaps)了《A Survey on Multimodal Large Language Models》（IEEE2024）这篇文章有关MLLM的发展历程概括，论文中还给了一个github链接<a target="_blank" rel="noopener" href="https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models">https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models</a>，这篇论文不曾想，点进去就看到了南大的标，并且这篇论文很帅气地写下了这句话：</p>
+<p><strong>“To the best of our knowledge, this is the first survey on MLLM.”</strong></p>
+<p><strong>“据我们所知，这篇综述是MLMM方向的第一篇综述”</strong></p>
+<p><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/MiG_logo.jpg" alt="" /></p>
+<p>原来是南大发的论文 出于好奇，我搜了一下Mig小组，发现该组有4位老师，其中两位老师恰好是我这个学期计算机系统基础的老师。</p>
+<p>9月28日更正：这篇论文的作者来自南大，中科大和腾讯，其中南大的Fu Chaoyou是共一+project leader</p>
+<hr />
+<h2 id="llmlvmmllm"><a class="markdownIt-Anchor" href="#llmlvmmllm"></a> LLM，LVM，MLLM</h2>
+<p>LLM(Large Model) 参数量大，强于推理能力，但是没有视觉</p>
+<p>LVM（Large Vision Model）能够理解图像，但是没有推理能力</p>
+<p>MLLM（Multimodel Large Langage Model）继承了大参数的特点的同时，使用了新的训练范式。并且在应用场景和功能上进行了扩充：能够读懂多种模态的信息（model）</p>
+<h2 id="mllm-architecture"><a class="markdownIt-Anchor" href="#mllm-architecture"></a> MLLM Architecture</h2>
+<p><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/1758964094269-4a2e023e-4ce3-4df9-94f7-46ac2d14e21e.png" alt="" /></p>
+<p>架构图</p>
+<p>传统的LLM接受文本作为输入并且输出文本，但是MLLM还需要能够接受并且输出多模态的信息，就需要对多模态的信息做一个处理。主流MLLM再处理多模态的信息的时候，需要用一个特殊的多模态编码器，来把多模态信息转换为LLM可以读懂的信息，最后是LLM的推理和输出，如果是输出多模态的信息需要借助对应的生成器。</p>
+<p><strong>预训练模态编码器</strong></p>
+<p>作用：把多模态信息（audio、image，video）转换为更加紧凑的表示（more compact representation）通常选取已经在特定模态上已经对齐过的编码器，而非从0开始训练，比如clip在图像-文本信息上进行过对齐，使用这些预训练好的模型更加容易将多模态信息和LLM进行对齐。</p>
+<p><strong>预训练大模型</strong></p>
+<p>原文对这一部分没有过多地阐述，只提到Scaling Law依旧有效；以及提到MoE架构通过激活部分参数来实现增大模型参数量并且减少计算开销的效果。</p>
+<p><strong>多模态交互</strong></p>
+<p>补充，前面说编码器不是已经对齐了吗，那为什么还需要connector来连接编码器和LLM？</p>
+<p>因为有的编码器没做对齐（如ConvNext）</p>
+<p>直接训练end2end的模型开销太大，因此采取需要借助一个中间的媒介来沟通多模态信息和LLM。方法有两个：</p>
+<ol>
+<li>训练一个connector模块。包括token级别和feature级别的融合：</li>
+</ol>
+<ul>
+<li>token级别：将编码器输出的编码转换成token与文本token<strong>拼接</strong>后进入LLM。</li>
+<li>feature级别：使用了注意力机制把特征进行融合。</li>
+</ul>
+<ol start="2">
+<li>使用专家模型：思想是使用专用的模型把其他模态的信息转换为text，但是灵活度不够</li>
+</ol>
+<p>这一部分对应论文中的这一张图，最左边是token级别的connector：</p>
+<p><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/1758977027205-4b1bbde8-ef34-4731-aae5-aa7f6f224640.png" alt="" /></p>
+<hr />
+<h2 id="训练策略"><a class="markdownIt-Anchor" href="#训练策略"></a> 训练策略</h2>
+<p><strong>预训练Pretraining</strong></p>
+<p>预训练的目的有2个：1. 为了让大模型对齐多个模态的信息 2. 让模型获取到外部知识。以图像-文本为例，常见的方法是拿caption数据进行训练，冻结大部分模块，只训练少部分的模块（比如connector）</p>
+<p>相关的数据集有：</p>
+<ul>
+<li>Coarse-Grained Data：数据多，但是质量参差不齐，比如CC</li>
+<li>Fined-Gained Data：数量少，并且质量高，比如ShareGPT4V</li>
+</ul>
+<p><strong>指令微调Instruction tuning</strong></p>
+<p>指令微调是指通过构建指令格式的实例，然后以<strong>有监督</strong>的方式对大语言模型进行微调，来帮助LLM<strong>拥有更好的推理能力</strong>， 从而展现出**泛化到未见过任务（zero-shot 0样本）**的卓越能力。</p>
+<p>用于指令微调的数据样本可以用这样的一个三元组来表示</p>
+<p>数据来源可以是：</p>
+<ol>
+<li>Data Adaptation。把其他相似的任务的数据集改为指令微调数据集，比如把VQA数据集进行扩充和修改</li>
+<li>Self-Instruction。手工写一些数据集，然后用大模型生成更多的数据集。</li>
+<li>Data Mixture：除了多模态指令数据，纯文本的问答对话也可以用于提升对话专业性和指令遵循能力。（不太理解为什么要叫做Data Mixture，也许是把纯文本的对话混合到了多模态的指令微调任务里面？）</li>
+</ol>
+<p><strong>对齐微调Alignment tuning</strong></p>
+<p>常常用于需要有特定的回复偏好时。Reinforcement Learning with Human Feedback <strong>(RLHF)</strong> and Direct Preference Optimization <strong>(DPO)</strong> 是对齐微调的两个主流方法。</p>
+<p>**RLHF：**利用强化学习算法让LLM对齐人类需求，通过在训练循环中加入人类监督。以InstructGPT举例，RLHF分为以下三个部分：</p>
+<ol>
+<li>有监督微调：这一步旨在微调一个预训练模型，以使其输出期望结果，这个微调好的模型被称作policy model。当然也可以直接使用预训练模型，跳过这一步骤。</li>
+<li>奖励建模：这一步使用偏好对训练一个奖励模型。</li>
+<li>强化学习（这一步没看懂）</li>
+</ol>
+<p>**DPO：**利用简单的二元分类损失从人类偏好的标注中学习。</p>
+<p>注： 由于缺乏对强化学习的理解，这一部分只是粗读</p>
+<h2 id="前沿拓展技术和相应的应用场景"><a class="markdownIt-Anchor" href="#前沿拓展技术和相应的应用场景"></a> 前沿拓展技术和相应的应用场景</h2>
+<p><strong>Multimodal In-Context Learning</strong></p>
+<ol>
+<li>只需要通过少量样本、可选的指引和外推的新问题进行学习，就能够模型对应样本，解决复杂的问题和未见任务；</li>
+<li>不需要专门训练，可以灵活引入不同架构。</li>
+</ol>
+<p>应用场景：</p>
+<ol>
+<li>解决多样的视觉推理任务。通常是提供一些特定任务的样例给模型学习，模型泛化到一些新的相似问题上。LLM从样例中学习任务是什么和输出格式是什么，最终生成给定结果。</li>
+</ol>
+<p>因为ICL可以通过少量的样本就可以学习新的问题，所以可以学习其他的任务，泛化能力强</p>
+<ol start="2">
+<li>教LLM使用外部工具。通常涉及更细粒度的信息，由一连串可按顺序执行的步骤组成，以完成任务。与下面的CoT密切相关。</li>
+</ol>
+<p>不过我没太看明白这个和多模态有什么关系，我觉得这个更多是ICL的作用，而非MICL，或许应该侧重说明多模态的能力让其能够在更加复杂的环境下进行推理，从而提升agent能力</p>
+<p><strong>Multimodal Chain of Thought 多模态思维链</strong></p>
+<p>引导LLM一步步思考，回答推理过程，最终输出答案。</p>
+<p>思维链在结构方面有单链和的树形链条，前者方法通过一步步推理得到问题-推理过程-答案的链条，后者将问题分解成多个子问题，每个由LLM或者视觉专家模型来生成推理过程，LLM再利用推理过程求出答案。</p>
+<p>长度方面，可以分为自适应长度和预定义长度</p>
+<p><strong>LLM-Aided Visual Reasoning（LLM 辅助视觉推理）</strong></p>
+<p>主要是在agent方面的应用</p>
+<p>这类方法的核心是引入外部工具或视觉模型，让 LLM 成为任务的“助手”。它们既可以针对特定任务设计，也能做成通用系统。和传统的视觉推理模型相比，这些系统有几个显著的优势：能更好地泛化到新对象和新概念，能够借助 LLM 的强大推理实现复杂任务，还能提供更自然的交互方式和更灵活的控制。</p>
+<p>在训练方式上，大体可以分两类：</p>
+<ol>
+<li>一种是不需要额外训练，直接通过 prompt 驱动 LLM 来完成任务。</li>
+<li>另一种方式是微调，通过给模型额外的工具使用数据集，提升它在调用工具、定位等方面的能力。GPT4Tools 就是通过收集新的工具相关指令数据，进行 instruction-tuning 来改进系统表现。</li>
+</ol>
+<p>LLM 在这些系统里面有这些作用：</p>
+<ul>
+<li><strong>LLM as a Controller.</strong>：把复杂任务拆解成更小的子任务，并分配给合适的模块去执行。这里通常会用到链式思维（CoT），比如 VisProg 就要求 LLM 输出一个视觉程序，每行都对应调用一个模块，还要附带参数。这类方法经常借助少量手工示例作为参考。</li>
+<li><strong>LLM as a Decision Maker.</strong>：总结上下文和历史信息，判断当前是否有足够信息来完成任务。如果没有，就继续获取信息；如果够了，就组织和整理出用户友好的答案。</li>
+<li><strong>LLM as a Semantics Refiner.</strong>：利用 LLM 的语言和语义能力，把零散的信息整合成连贯自然的表述，或者根据用户需求调整生成的文本。</li>
+</ul>
+<h2 id="前沿文章摘要"><a class="markdownIt-Anchor" href="#前沿文章摘要"></a> 前沿文章摘要</h2>
+<ol>
+<li>
+<p>Multi-Layer Visual Feature Fusion in Multimodal LLMs: Methods, Analysis, and Best Practices <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2503.06063">https://arxiv.org/abs/2503.06063</a></p>
+</li>
+<li>
+<p>tags：特征融合</p>
+</li>
+<li>
+<p>本文系统研究了多层视觉特征在多模态大模型中的融合方法，首次提出针对<strong>视觉层次选择</strong>和<strong>融合策略</strong>的系统化分析。作者发现从起始、中期和末期各选择一层作为融合输入能够获得最佳效果，并验证了“直接在输入端融合多层特征”优于在内部层融合等方案。这些发现为构建高效的视觉-语言模型提供了实践指南，是提升多模态LLM性能的新思路</p>
+</li>
+<li>
+<p>Benchmarking Multimodal Retrieval Augmented Generation with Dynamic VQA Dataset and Self-adaptive Planning Agent <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2411.02937">https://arxiv.org/abs/2411.02937</a></p>
+</li>
+<li>
+<p>tags: 多模态信息检索</p>
+</li>
+<li>
+<p>本文针对多模态检索增强生成(mRAG)提出了新的评测框架和方法。作者创建了 <strong>Dyn-VQA</strong> 数据集，引入需动态检索的复杂问题，挑战传统的固定检索流程。研究发现现有mRAG方法难以应对此类问题，于是提出了 <strong>OmniSearch</strong> 自适应检索规划器，能够将复杂问题动态拆分成子问题并逐步检索答案。该方案在实验中显著优于传统方法，推进了多模态RAG的研究前沿</p>
+</li>
+<li>
+<p>SViQA: A Unified Speech-Vision Multimodal Model for Textless Visual Question Answering <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2504.01049">https://arxiv.org/abs/2504.01049</a></p>
+</li>
+<li>
+<p>tags: audio generation</p>
+</li>
+<li>
+<p>本文提出了首个<strong>语音-视觉统一模型</strong>SViQA，直接处理口语提问而无需转换为文字，填补了现有模型多聚焦于文本-视觉融合的空白 。</p>
+</li>
+</ol>
+<hr />
+<p>后记与补充：</p>
+<ol>
+<li>上个学期使用过zotero但是当时不知为何十分卡顿，今天尝试多个方案解决问题，最后发现的问题是：我把zotero的默认下载路径改到D盘。。。后续删除重新再C盘默认路径下载之后解决了问题。（使用zotero版本为7.x）</li>
+<li>目前使用ob来管理笔记，使用zotero阅读文章，缺少联动的方法。</li>
+<li>我发现自己了解过的相关知识阅读起来就很舒服，一旦在一大段里面多次出现自己不理解的概念，读起来就很难受了。</li>
+<li>接上一条所说的，读论文会发现自己还有相当多的知识没有搞懂，一篇论文会涉及到诸多方面的内容，比如这篇讲多模态方面的论文，就涉及到了Cot，ICL，RLHF，指令微调、对齐微调等等内容，而我连基本的模型都写不了😂</li>
+</ol>
+<p>下一阶段计划：</p>
+<ul>
+<li>学一些基础知识（模型训练全流程，基础的神经网络结构）</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://yama-lei.top">Yama-lei</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://yama-lei.top/posts/66c438509deb/">https://yama-lei.top/posts/66c438509deb/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://yama-lei.top" target="_blank">YamaBlog</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/66b650927646/" title="多维数组"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">多维数组</div></div><div class="info-2"><div class="info-item-1">二维数组  typedef T a[m][n] 等价于 typedef T b[m] + typedef b a[n] 如果 int a[m][n]; 那么 a[i][j] 代表的位置是 a + i * n + j 递归计算位置：Loc(i)=αLoc(i) = \alphaLoc(i)=α if i=0i = 0i=0 else Loc(i−1)+lLoc(i-1) + lLoc(i−1)+l； Loc(i,j)=Loc(i,0)+j=Loc(0,0)+i∗m+jLoc(i,j)= Loc(i,0)+j=Loc(0,0)+i*m+jLoc(i,j)=Loc(i,0)+j=Loc(0,0)+i∗m+j 三维数组 int a[m][n][p] 如果访问a[i][j][k]，访问的地址为a+i*n*p+j*p+k  对称矩阵 M=MT	M=M^T M=MT 对于对称矩阵来说，有M[i][j]=M[j][i],因此我们只需要存储一个上三角矩阵或者一个下三角矩阵就能够把所有的有效元素访问到。 只需要存储1+2+3+…+n=(1+n)n/2个元素，以下三角矩阵为例： 12345678910...</div></div></div></a><a class="pagination-related" href="/posts/54b78cdb42c3/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2"></div></div><div class="info-2"><div class="info-item-1">使用BurpSuite对即将发布的ics-chatbot的抓包分析   ICS chat-bot接口 使用BurpSuite抓包可以发现如下接口：  1. 登录接口 POST /login   请求需要包含JSON格式的token： JSON   123&#123;    &#x27;token&#x27;: YOUR_TOKEN&#125;   响应中会包含Set-Cookie: user_session=XXX，请务必保存此user_session，后续所有请求都需要将其作为Cookie发送。   请求示例: HTTP 123456789POST /login HTTP/1.1Host: 114.212.10.249:8080...Content-Type: application/x-www-form-urlencoded...Cookie: user_session=816368583df0135efaf9e8ceae0ff49b%2Fbedd3a284c8ef8265dad6337a6be88030338355463fe06b9c5d1768f0ff685012bcfc...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Yama-lei</div><div class="author-info-description">记录一个NJUCSer的学习</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">105</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yama-lei"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/yama-lei" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:your@email.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color: #FFA500;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">博客正在建设中...能看就行...😋😋😋</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#llmlvmmllm"><span class="toc-number">1.</span> <span class="toc-text"> LLM，LVM，MLLM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mllm-architecture"><span class="toc-number">2.</span> <span class="toc-text"> MLLM Architecture</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%AD%E7%BB%83%E7%AD%96%E7%95%A5"><span class="toc-number">3.</span> <span class="toc-text"> 训练策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E6%B2%BF%E6%8B%93%E5%B1%95%E6%8A%80%E6%9C%AF%E5%92%8C%E7%9B%B8%E5%BA%94%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">4.</span> <span class="toc-text"> 前沿拓展技术和相应的应用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E6%B2%BF%E6%96%87%E7%AB%A0%E6%91%98%E8%A6%81"><span class="toc-number">5.</span> <span class="toc-text"> 前沿文章摘要</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/66b650927646/" title="多维数组">多维数组</a><time datetime="2025-09-30T16:00:00.000Z" title="发表于 2025-10-01 00:00:00">2025-10-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/66c438509deb/" title="多模态综述">多模态综述</a><time datetime="2025-09-30T13:14:40.000Z" title="发表于 2025-09-30 21:14:40">2025-09-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/54b78cdb42c3/" title="无标题">无标题</a><time datetime="2025-09-30T01:58:28.349Z" title="发表于 2025-09-30 09:58:28">2025-09-30</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/0ac3e125560f/" title="Riscv介绍">Riscv介绍</a><time datetime="2025-09-29T16:00:00.000Z" title="发表于 2025-09-30 00:00:00">2025-09-30</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="ft"><div class="ft-item-1"><div class="t-top"><div class="t-t-l"><p class="ft-t t-l-t">格言🧬</p><div class="bg-ad"><div>记录一个NJUCSer的学习历程 · 代码改变世界，技术创造未来</div><div class="btn-xz-box"><a class="btn-xz" href="/about/">了解更多</a></div></div></div></div></div><div class="ft-item-2"><p class="ft-t">推荐友链⌛</p><div class="ft-img-group"><div class="img-group-item"><a href="/links/" title="广告位招租"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/zhaozu.jpg" alt="广告位招租"/></a></div><div class="img-group-item"><a href="/links/" title="更多友联"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/zhaozu.jpg" alt="友链"/></a></div></div></div></div><div class="copyright"><span><b>&copy;2025</b></span><span><b>&nbsp;&nbsp;By Yama-lei</b></span></div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Less is more · © YamaBlog</div><div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat-square" alt="Hexo"/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat-square" alt="Butterfly"/></a><a class="github-badge" target="_blank" href="https://github.com/yama-lei" style="margin-inline:5px" title="源码托管于GitHub"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat-square" alt="GitHub"/></a></p></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><script src="/js/custom.js"></script><script src="/js/footer-enhance.js"></script><script src="/js/homepage-enhance.js"></script><script defer src="/js/runtime.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

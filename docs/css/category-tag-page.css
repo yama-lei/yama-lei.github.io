@@ -1,0 +1,296 @@
+/* ============================================
+   Category & Tag Page Enhancement
+   ============================================ */
+
+/* Page header for category/tag pages */
+#page-header.not-home-page {
+  min-height: 400px;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#page-header.not-home-page #page-site-info {
+  text-align: center;
+  color: white;
+}
+
+#page-header.not-home-page #page-site-info h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Category list page */
+.category-lists {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem 0;
+}
+
+.category-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.category-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(102, 126, 234, 0.15);
+  border-color: rgba(102, 126, 234, 0.3);
+}
+
+.category-card:hover::before {
+  transform: scaleX(1);
+}
+
+.category-card .category-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1rem;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: #667eea;
+  transition: all 0.4s ease;
+}
+
+.category-card:hover .category-icon {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  transform: rotate(360deg) scale(1.1);
+}
+
+.category-card .category-name {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.category-card:hover .category-name {
+  color: #667eea;
+}
+
+.category-card .category-count {
+  font-size: 0.9rem;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+.category-card .category-count span {
+  color: #667eea;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+/* Tag cloud page */
+.tag-cloud-page {
+  padding: 3rem 0;
+}
+
+.tag-cloud-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 3rem;
+}
+
+.tag-cloud-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.tag-cloud-tags .tag-cloud-item {
+  display: inline-block;
+  margin: 0;
+}
+
+.tag-cloud-tags .tag-cloud-item a {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.6rem 1.2rem;
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 999px;
+  color: #1f2937 !important;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.tag-cloud-tags .tag-cloud-item a:hover {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white !important;
+  border-color: transparent;
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+/* Different font sizes for tag cloud */
+.tag-cloud-tags .tag-cloud-item.size-1 a {
+  font-size: 0.85rem;
+}
+
+.tag-cloud-tags .tag-cloud-item.size-2 a {
+  font-size: 0.95rem;
+}
+
+.tag-cloud-tags .tag-cloud-item.size-3 a {
+  font-size: 1.05rem;
+}
+
+.tag-cloud-tags .tag-cloud-item.size-4 a {
+  font-size: 1.15rem;
+}
+
+.tag-cloud-tags .tag-cloud-item.size-5 a {
+  font-size: 1.25rem;
+}
+
+/* Category/Tag post list */
+.category-post-list,
+.tag-post-list {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.category-post-list .post-list-item,
+.tag-post-list .post-list-item {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.category-post-list .post-list-item:hover,
+.tag-post-list .post-list-item:hover {
+  transform: translateX(8px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border-color: rgba(102, 126, 234, 0.3);
+}
+
+.category-post-list .post-list-item .post-cover,
+.tag-post-list .post-list-item .post-cover {
+  flex-shrink: 0;
+  width: 150px;
+  height: 150px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.category-post-list .post-list-item .post-cover img,
+.tag-post-list .post-list-item .post-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.category-post-list .post-list-item:hover .post-cover img,
+.tag-post-list .post-list-item:hover .post-cover img {
+  transform: scale(1.1);
+}
+
+.category-post-list .post-list-item .post-info,
+.tag-post-list .post-list-item .post-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.category-post-list .post-list-item .post-title,
+.tag-post-list .post-list-item .post-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.8rem;
+  transition: color 0.3s ease;
+}
+
+.category-post-list .post-list-item:hover .post-title,
+.tag-post-list .post-list-item:hover .post-title {
+  color: #667eea;
+}
+
+.category-post-list .post-list-item .post-excerpt,
+.tag-post-list .post-list-item .post-excerpt {
+  color: #6b7280;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: auto;
+}
+
+.category-post-list .post-list-item .post-meta,
+.tag-post-list .post-list-item .post-meta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .category-lists {
+    grid-template-columns: 1fr;
+  }
+  
+  #page-header.not-home-page #page-site-info h1 {
+    font-size: 1.8rem;
+  }
+  
+  .category-post-list .post-list-item,
+  .tag-post-list .post-list-item {
+    flex-direction: column;
+  }
+  
+  .category-post-list .post-list-item .post-cover,
+  .tag-post-list .post-list-item .post-cover {
+    width: 100%;
+    height: 200px;
+  }
+}
+
