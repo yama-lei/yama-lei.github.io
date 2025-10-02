@@ -10,9 +10,33 @@
 - class_name: NJUer's Blog
   class_desc:  Blogs of NJUers (Always collecting...)
   link_list:
+    - name: NJU-LUG Blogroll
+      link: https://blogroll.njulug.org/
+      avatar: https://blogroll.njulug.org/assets/logo.56c0d74c.png
+      descr: NJU-LUG的博客集合
+      siteshot: https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/20251001222821.png
+      # siteshot就是站点缩略图的链接。因为Volantis的site-card比Butterfly的flink-card多出了一个站点缩略图
     - name: lyc8503
       link: https://blog.lyc8503.net/
       avatar: https://blog.lyc8503.net/img/avatar.png
-      descr: 同样都是lyc，为什么这个lyc这么厉害
+      descr: 同样都是lyc，为什么这个lyc这么厉害，我给lyc们丢脸了
+      siteshot: https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/20251001222821.png
+      # siteshot就是站点缩略图的链接。因为Volantis的site-card比Butterfly的flink-card多出了一个站点缩略图
+    - name: jjppp
+      link: https://jjppp.github.io/
+      avatar: https://jjppp.github.io/images/avatar.png
+      descr: jjppp，sicp助教，sicp期中考试的时候，有3分的bouns，让写助教的名字，我写了个jjppp
+      siteshot: https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/20251001222821.png
+      # siteshot就是站点缩略图的链接。因为Volantis的site-card比Butterfly的flink-card多出了一个站点缩略图
+    - name: JacyCui
+      link: https://www.cuijiacai.com/
+      avatar: https://www.cuijiacai.com/assets/img/avatar.jpg
+      descr: A Ph.D. student at Nanjing University, advised by Yue Li who co-runs the PASCAL Research Group with Tian Tan.
+      siteshot: https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/20251001222821.png
+      # siteshot就是站点缩略图的链接。因为Volantis的site-card比Butterfly的flink-card多出了一个站点缩略图
+    - name: starwinks
+      link: https://starwinks.github.io/
+      avatar: https://starwinks.github.io/images/avatar.png
+      descr: NJUcs在读
       siteshot: https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/20251001222821.png
       # siteshot就是站点缩略图的链接。因为Volantis的site-card比Butterfly的flink-card多出了一个站点缩略图

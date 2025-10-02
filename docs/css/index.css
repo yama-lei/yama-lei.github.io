@@ -2479,7 +2479,7 @@ figure.highlight pre .javascript .function {
   float: left;
   overflow: hidden;
   margin: 15px 7px;
-  width: calc(100% / 3 - 15px);
+  width: calc(50% - 15px);
   height: 120px;
   border-radius: 2px;
   line-height: 17px;
@@ -2490,7 +2490,7 @@ figure.highlight pre .javascript .function {
 }
 @media screen and (max-width: 1024px) {
   #article-container .flink .flink-list > .flink-list-item {
-    width: calc(50% - 15px) !important;
+    width: calc(100% - 15px) !important;
   }
 }
 @media screen and (max-width: 600px) {
