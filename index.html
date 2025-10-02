@@ -1,0 +1,243 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>YamaBlog</title><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
+<meta property="og:title" content="YamaBlog">
+<meta property="og:url" content="http://172.26.8.119:6666/index.html">
+<meta property="og:site_name" content="YamaBlog">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://172.26.8.119:6666/img/butterfly-icon.png">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://172.26.8.119:6666/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "YamaBlog",
+  "alternateName": [
+    "172.26.8.119"
+  ],
+  "url": "http://172.26.8.119:6666/"
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://172.26.8.119:6666/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'YamaBlog',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><link rel="stylesheet" href="/css/callout_blocks.css"><meta name="generator" content="Hexo 8.0.0"></head><body><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">YamaBlog</span></a></span><div id="menus"></div></nav><div id="site-info"><h1 id="site-title">YamaBlog</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/09/28/%E5%AE%9E%E7%94%A8%E7%BD%91%E7%AB%99/" title="实用网站">实用网站</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2025-09-28T13:20:28.831Z" title="Created 2025-09-28 21:20:28">2025-09-28</time></span></div><div class="content"> 南大网站      南京大学五育项目管理系统     南京大学-学生第二课堂     网络认证     选课系统     信息化建设管理中心     南京大学网上办事服务大厅     南大云盘     南大表格     南大镜像     南大测速     教务系统     大外网  ## 工具类  文件转markdown    To be continued…  </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/09/28/%E5%A4%9A%E6%A8%A1%E6%80%81%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%96%B9%E5%90%91%E7%BB%BC%E8%BF%B0/" title="Untitled">Untitled</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2025-09-28T13:20:28.829Z" title="Created 2025-09-28 21:20:28">2025-09-28</time></span></div><div class="content">精读(perhaps)了《A Survey on Multimodal Large Language Models》（IEEE2024）这篇文章有关MLLM的发展历程概括，论文中还给了一个github链接https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models，这篇论文不曾想，点进去就看到了南大的标，并且这篇论文很帅气地写下了这句话： “To the best of our knowledge, this is the first survey on MLLM.” “据我们所知，这篇综述是MLMM方向的第一篇综述”  原来是南大发的论文 出于好奇，我搜了一下Mig小组，发现该组有4位老师，其中两位老师恰好是我这个学期计算机系统基础的老师。 9月28日更正：这篇论文的作者来自南大，中科大和腾讯，其中南大的Fu Chaoyou是共一+project leader   LLM，LVM，MLLM LLM(Large Model) 参数量大，强于推理能力，但是没有视觉 LVM（Large Vision Model...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/09/28/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/%E4%B8%80%E4%BD%8D%E5%BE%88%E4%BC%98%E7%A7%80%E7%9A%84%E8%80%81%E5%B8%88%E8%AF%B4%E7%9A%84%E8%AF%9D/" title="Untitled">Untitled</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2025-09-28T13:20:28.804Z" title="Created 2025-09-28 21:20:28">2025-09-28</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/">一些碎碎念</a></span></div><div class="content"> 一位很优秀的老师说的话  这里说的老师是，李越老师。  引言：樾哥在最后一节课上，把SQL的最后一点语法讲完了；短暂休息了几分钟后，把他带来的圣诞节礼物–巧克力，分给了学生，开始了下面这段讲话。 （暂未人工校对，有许多的错误） 樾哥： 当老师有这样的一个好处：当你一直在观察学生的时候，你会发现历史总是惊人的相似:每一届学生的烦恼都是惊人的相似。 我可以大胆地说一句，因为自从我生病以后发言都比较大胆 （笑声） 为什么，因为觉得大不了就命一条,工作又算得了什么。  “我们的教育确实有问题”  我只想实际跟你说，包括我们国家也好，国外也好，我毕竟在国外呆了7年，我觉得很大一部分我们的教育体系是缺失的，缺失在哪里？缺失在我们学生 18 岁成年了之前，一直是素质教育也好，教育也好，都是一种选拔式的、竞争式的、优胜劣汰是这样的去筛选人才。我们管理国家也好，管理信息当然要公平的简单的有效方式，但是国家机器而言，只是一个简单有效的方法，也是一个公平工作，但是落实到我们个人，个人成为了牺牲品。 那么你们信任我们现在来到南京大学，属于基础计划很重要，你们属于社会价值体系当中优秀部分，因为部分外面住...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/09/28/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/Zhihu5/" title="Untitled">Untitled</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2025-09-28T13:20:28.802Z" title="Created 2025-09-28 21:20:28">2025-09-28</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/">一些碎碎念</a></span></div><div class="content"> 如何看待人民日报官方微信公众号转载的文章《孩子，我宁愿欠你一个快乐的少年，也不愿看到你卑微的成年》？ 本文由人民日报官方公众号（id：rmrbwx）发布于2016年8月31日，转载文章链接： 【荐读】 孩子，我宁愿欠你一个快乐的少年，也不愿看到你卑微的成年 注意，《人民日报》官网、官方微博并未转载该文。 －－－－原题主问题－－－－ 第一个问题，填鸭式的应试教育是否能真的成就栋梁之才，能的话成才率是多少？ 第二个问题，怎么看待现在孩子从小开始就被迫的补课，占用大量休息时间，这种方式公认不值得提倡，但为何这么多人照做？ 相关问题： 怎样看待钱文忠教授说「我不相信教育是快乐的，请别再以爱的名义对孩子让步」？ - 学习  天平 永远是学生，永远爱写作，兼职写小说、小说大纲和人设 关注 4.9 万人赞同了该回答 10.19（最新，大概也是最后的更新了，更新内容仅限中括号内的） 【这篇回答的评论区被锁了，不是我锁的，我也没有办法打开它，问了知乎管理，说是评论区可能涉及到违反法律或引起争议的内容，所以锁了。如果大家有什么想说的，我主页里有关于这一篇的想法，那里只有一个本文链接，在那下面评论吧...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/09/28/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/Zhihu4/" title="锐评高考作文">锐评高考作文</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2025-09-28T13:20:28.800Z" title="Created 2025-09-28 21:20:28">2025-09-28</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/">一些碎碎念</a></span></div><div class="content"> 你说的对 学习AI中 关注 186 人赞同了该回答 负分作文已经出来了: 砖”家之言：脱离烟火气的“传世”臆想 每每面对一些“高屋建瓴”的作文题目，我总觉得像是走进了一个由“砖”家们精心搭建的空中楼阁，里面充斥着华丽却空洞的辞藻，与真实的烟火气格格不入。今年的“专”“转”“传”作文题，更是将这种“砖”家气概展现得淋漓尽致。 首先，让我们来审视一下这“专”“转”“传”的概念。所谓的“专”指专业文章，“转”指被转发的通俗文章，“传”指获得广泛传播的佳作，甚至是传世文章。听起来煞有介事，仿佛洞悉了文章传播的终极奥秘。然而，这“专”与“转”的界限，本身就模糊不清。一篇专业文章，难道就不能是通俗易懂、广受欢迎的吗？难道只有“被转发”才算“通俗”？它忽视了作品本身的质量、读者的接受习惯以及传播媒介的复杂性，仅仅用几个简单的汉字就试图概括纷繁复杂的现象，这种“一言以蔽之”的做派，恰恰暴露了其缺乏深入思考的本质。 更令人啼笑皆非的是，题目中提出的“专业文章可以变成被转发的通俗文章，而面对大量‘转’文，读者又不免期待可传世的文章”，以及最核心的追问：“由‘专’到‘传’，必定要经过‘转’吗？”这简...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/09/28/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/Zhihu2/" title="互联网圣地一览">互联网圣地一览</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2025-09-28T13:20:28.797Z" title="Created 2025-09-28 21:20:28">2025-09-28</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/">一些碎碎念</a></span></div><div class="content"> 如何评价小红书？  谢於飞Official 写小说的电子宠物狐狸，合作/标明出处转载欢迎 1443 人赞同了该回答  欢迎观看赛博厕所争霸记 叠甲环节在评论区 已完结  刘智孚加班回家，推门看见儿子刘璧黎瘫在沙发上看纸片小人。 儿子的名字本来想叫做刘哔哩哔哩[1]，奈何遭妻子洪晓淑为首的一众家人坚决反对。于是刘智孚退而求其次，依照《诗经·国风·候风·大野》中描述国中美玉的“马璧黎璞，奠璧三狼”一句择出两个字，以附会这一谐音，“刘哔哩”则留作小名。 刘璧黎问过刘智孚自己的名字是什么意思。 “对，先问是不是，再问为什么。这首诗上半句说的是，雕刻着马的玉璧看起来十分朴实，好像没有加工的痕迹；下半句又在说在新的玉璧上打基础，准备在上面雕刻三匹狼。”他由衷希望儿子能尽早多受一些此方面的熏陶，好在今后的某一天能及时抛露出他们一家颇具文化底蕴的证明；而这一《诗经》篇目的真实性并不予以考定。  打野走位我就觉得***离谱，你老在那想刷你那b三狼干什么玩意？ 洪晓淑则在搜罗一系列“小众英文名”“高级英文名”“英文名好听不俗有寓意”后，给儿子取下英文名Billy，为日后做留子作第一步准备。 然而刘...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/09/28/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/README/" title="人生感悟">人生感悟</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2025-09-28T13:20:28.794Z" title="Created 2025-09-28 21:20:28">2025-09-28</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/">一些碎碎念</a></span></div><div class="content">这里是用来放一些对于人生的思考和感悟        </div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/09/28/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/Zhihu1/" title="为什么说高考是不公平的--驳[高考公平论]的六大经典误区">为什么说高考是不公平的--驳[高考公平论]的六大经典误区</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2025-09-28T13:20:28.794Z" title="Created 2025-09-28 21:20:28">2025-09-28</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/">一些碎碎念</a></span></div><div class="content">作者：Liuuzaki 链接：https://zhuanlan.zhihu.com/p/31120034016 来源：知乎 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 1//原文写于2023.3.25。现第四次尝试发在知乎。 中国高考公平性的问题，最迟在200x年的国内论坛上就已经得到了充分讨论。但近来总能看到一些经久不衰的错误观点。笔者在这里总结一下如何反驳这些错误观点，以后对线时可拿去用。 在以下的讨论中，笔者对大多数的错误观点都会构筑多层次的反驳。就算你成功突破了第一层论证，也还会有第二第三道防线等着你——但这并不意味着我对第一道防线缺乏信心。事实上，以大多数错误观点的离谱程度，仅第一道防线就已经不可逾越了。  1. 全国统一录取会损害落后地区利益？ 面对改善高考公平性的呼声，经常有这样一种声音：  如果全国统一录取，高考大省是开心了，西藏青海这些落后地区的学生就没学上了。  这显然是在树稻草人——立靶子自己打。 人们呼吁高考公平，自然不是期待机械地按高考分数统一录取。几乎不会有人反对为落后地区提供一定优待，人们反对的从来就是对全国最发达的直辖市提...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/09/28/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/love/" title="Untitled">Untitled</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2025-09-28T13:20:28.792Z" title="Created 2025-09-28 21:20:28">2025-09-28</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/">一些碎碎念</a></span></div><div class="content"> 亚麻的‘白月光’  作于2025春节，感谢WYQ同学催更   第一章： ​	同学们对亚麻并没有什么印象，只记得班上有个很标准的胖子手气不好，每次抽奖都抽到倒数，害得整个小组都只能坐在前排靠门的位置，组员们看上去无所谓，但是亚麻本人对此一直耿耿于怀。但他也从不抱怨自己手气差–这是他早就承认的事实， 他真真正正埋怨的是小组其他成员，一个个都不想担责，把组长的位置推给亚麻，至少这在他当时看上去是这样的。 ​	除了手气不好，别人显而易见的、也是亚麻自己熟知的一个事实就是，他十分地怯场。如果是一般人怯场也就算了，亚麻可是要做世界首富或者国家主席之类的人物，怎么能怯场呢？他也常常反思自己为什么不能改改这个坏毛病，只可惜亚麻当时还没有对基因和遗传有深入的了解，一年以后他会知道自己身上很多的“特性”都是从他父亲的身上继承而来的。 ​	其实按理说，一个人即使内向也可以安安静静地待在角落，不被别人打扰，这未尝不是一个很好的选择。亚麻也是这样想的，但不巧的就是，发言总是不可避免的。在讲这个小故事之前，我们得向大家介绍一位亚麻这辈子见过最差劲的语文老师。他的名字亚麻已经有些模糊了，我们暂且叫他建军吧。...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/09/28/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/beautifulSentence/" title="Untitled">Untitled</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2025-09-28T13:20:28.787Z" title="Created 2025-09-28 21:20:28">2025-09-28</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/">一些碎碎念</a></span></div><div class="content">在西湖这座巨大的线程池里，我像是那条永远闲置的线程，旁观着那些并发的爱情故事 每个人年轻的时候，都以为我命由我不由天，直到体检报告给出生活的差评，你才知道什么叫不是不报时辰未到 人总是在上台讲话时憋不住笑，长途旅游时憋不住尿，死到临头时憋不住想开玩笑。  一首哲理小诗：      生活打了我一巴掌，我没挺住     我给了牛至一巴掌，牛至依旧挺立     或许牛至比我更适合做人     别人给了我一刀，我挺住了     我给了牛至一刀，牛至却倒下了     或许我比牛至更适合做牛至     我不明白是我身上长了个牛至还是牛至身上长了个我     碰到喜欢的人     牛至都会硬一硬     而我却不敢吱声     我拿着杯具，骗牛至说这是个温暖的家     牛至站起来，骗我说这是个温暖的世界     我没有女朋友，牛至很高兴，因为我可以时常抚摸它     我有了女朋友，牛至也很高兴，因为它可以有个温暖的家     或许真的是牛牛身上长了我而不是我身上长了个牛牛  </div></div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/#content-inner">13</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">John Doe</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">125</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">26</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/28/%E5%AE%9E%E7%94%A8%E7%BD%91%E7%AB%99/" title="实用网站">实用网站</a><time datetime="2025-09-28T13:20:28.831Z" title="Created 2025-09-28 21:20:28">2025-09-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/28/%E5%A4%9A%E6%A8%A1%E6%80%81%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%96%B9%E5%90%91%E7%BB%BC%E8%BF%B0/" title="Untitled">Untitled</a><time datetime="2025-09-28T13:20:28.829Z" title="Created 2025-09-28 21:20:28">2025-09-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/28/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/%E4%B8%80%E4%BD%8D%E5%BE%88%E4%BC%98%E7%A7%80%E7%9A%84%E8%80%81%E5%B8%88%E8%AF%B4%E7%9A%84%E8%AF%9D/" title="Untitled">Untitled</a><time datetime="2025-09-28T13:20:28.804Z" title="Created 2025-09-28 21:20:28">2025-09-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/28/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/Zhihu5/" title="Untitled">Untitled</a><time datetime="2025-09-28T13:20:28.802Z" title="Created 2025-09-28 21:20:28">2025-09-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/28/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/Zhihu4/" title="锐评高考作文">锐评高考作文</a><time datetime="2025-09-28T13:20:28.800Z" title="Created 2025-09-28 21:20:28">2025-09-28</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>Categories</span>
+            <a class="card-more-btn" href="/categories/" title="View More">
+      <i class="fas fa-angle-right"></i></a>
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/NJUCS/"><span class="card-category-list-name">NJUCS</span><span class="card-category-list-count">51</span></a><ul class="card-category-list child"><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/NJUCS/ICS%E8%AE%A1%E7%AE%97%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/"><span class="card-category-list-name">ICS计算系统基础</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/NJUCS/Others/"><span class="card-category-list-name">Others</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/NJUCS/%E5%AD%A6%E6%9C%AF%E9%98%85%E8%AF%BB%E5%92%8C%E5%86%99%E4%BD%9C/"><span class="card-category-list-name">学术阅读和写作</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/NJUCS/%E6%95%B0%E5%AD%97%E9%80%BB%E8%BE%91%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/"><span class="card-category-list-name">数字逻辑与计算机组成</span><span class="card-category-list-count">14</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/NJUCS/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"><span class="card-category-list-name">数据结构</span><span class="card-category-list-count">5</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/NJUCS/%E6%99%AE%E9%80%9A%E7%89%A9%E7%90%86%E5%AD%A6%EF%BC%88%E4%B8%8A%EF%BC%89/"><span class="card-category-list-name">普通物理学（上）</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/NJUCS/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%92%8C%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/"><span class="card-category-list-name">概率论和数理统计</span><span class="card-category-list-count">1</span></a></li></ul></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/tech/" style="font-size: 1.1em; color: #999">tech</a> <a href="/tags/DataStructure/" style="font-size: 1.1em; color: #999">DataStructure</a> <a href="/tags/zhihu-article/" style="font-size: 1.1em; color: #999">zhihu-article</a> <a href="/tags/docker/" style="font-size: 1.1em; color: #999">docker</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 1.1em; color: #999">数据结构</a> <a href="/tags/nova/" style="font-size: 1.1em; color: #999">nova</a> <a href="/tags/njucs/" style="font-size: 1.1em; color: #999">njucs</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>Archives</span>
+      <a class="card-more-btn" href="/archives/"
+            title="View More">
+            <i class="fas fa-angle-right"></i>
+          </a>
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/09/">
+            <span class="card-archive-list-date">
+              September 2025
+            </span>
+            <span class="card-archive-list-count">80</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/07/">
+            <span class="card-archive-list-date">
+              July 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/06/">
+            <span class="card-archive-list-date">
+              June 2025
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/05/">
+            <span class="card-archive-list-date">
+              May 2025
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/04/">
+            <span class="card-archive-list-date">
+              April 2025
+            </span>
+            <span class="card-archive-list-count">14</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/03/">
+            <span class="card-archive-list-date">
+              March 2025
+            </span>
+            <span class="card-archive-list-count">8</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/02/">
+            <span class="card-archive-list-date">
+              February 2025
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/01/">
+            <span class="card-archive-list-date">
+              January 2025
+            </span>
+            <span class="card-archive-list-count">14</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Website Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article Count :</div><div class="item-count">125</div></div><div class="webinfo-item"><div class="item-name">Unique Visitors :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Page Views :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-09-28T14:07:35.833Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By John Doe</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.0.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.0</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

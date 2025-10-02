@@ -1,0 +1,446 @@
+/* ============================================
+   Global Base Styles & Variables
+   ============================================ */
+
+:root{
+  --brand: #667eea;
+  --brand-dark: #764ba2;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --bg: #ffffff;
+  --card: #ffffff;
+  --card-border: #e5e7eb;
+}
+
+/* Base refinements */
+body{
+  background: var(--bg);
+  color: var(--text);
+}
+
+a{ 
+  color: var(--brand); 
+  transition: color .2s ease, opacity .2s ease; 
+}
+
+a:hover{ 
+  opacity:.85; 
+}
+
+/* Navbar pin and blur */
+#page-header.nav-fixed{
+  backdrop-filter: saturate(160%) blur(8px);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Scroll progress bar */
+#scroll-progress{
+  position: fixed; 
+  left: 0; 
+  top: 0; 
+  height: 3px; 
+  width: 0; 
+  z-index: 9999;
+  background: linear-gradient(90deg, var(--brand), var(--brand-dark));
+}
+
+/* Footer */
+#footer{ 
+  border-top: 1px solid var(--card-border); 
+  background: var(--bg); 
+}
+
+#footer-wrap{
+  background: linear-gradient(to bottom, transparent, rgba(0,0,0,.02));
+  padding-top: 3rem;
+}
+
+/* Footer navigation (injected by JS) */
+.custom-footer-nav{
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.footer-nav-title{
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 1.5rem;
+}
+
+.footer-nav-links{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.footer-nav-link{
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  background: rgba(255,255,255,.6);
+  border: 1px solid var(--card-border);
+  color: #000000 !important;
+  transition: all .3s ease;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.footer-nav-link:hover{
+  background: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+  color: var(--brand) !important;
+}
+
+.footer-nav-link i{
+  font-size: 1rem;
+}
+
+/* Footer social icons */
+.footer-social-icons{
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.footer-social-icons a{
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+  color: #ffffff !important;
+  transition: all .3s ease;
+  text-decoration: none;
+}
+
+/* Ensure all footer text is clearly readable in black */
+#footer, #footer a, #footer .copyright, #footer .framework-info, #footer .footer_custom_text, #footer .footer-separator {
+  color: #000000 !important;
+  text-shadow: none !important;
+}
+
+/* 页脚内容居中 */
+#footer-wrap .copyright,
+#footer-wrap .framework-info,
+#footer-wrap .footer_custom_text,
+#footer-wrap #workboard,
+#footer-wrap #ghbdages {
+  text-align: center;
+  display: block;
+  width: 100%;
+}
+
+/* 运行时间文字颜色改为黑色 */
+#footer-wrap #workboard,
+#footer-wrap #workboard * {
+  color: #000000 !important;
+}
+
+/* Remove rotation on avatar and icons in sidebar */
+.card-widget.card-author:hover .author-avatar,
+.author-info__name:hover,
+.social-icon:hover,
+#sidebar .site-data .data-item:hover i,
+#rightside .rightside-item:hover i {
+  transform: none !important;
+}
+
+/* Ensure sidebar is visible */
+#sidebar {
+  display: block !important;
+  visibility: visible !important;
+}
+
+.aside-content {
+  display: block !important;
+}
+
+.footer-social-icons a:hover{
+  transform: translateY(-3px) rotate(5deg);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  opacity: 1;
+}
+
+/* Smooth scroll behavior */
+html{
+  scroll-behavior: smooth;
+}
+
+/* tzy页脚样式 */
+#ft {
+  max-width: 1200px;
+  margin: 0 auto 12px;
+  display: flex;
+  color: rgb(0 0 0 / 80%) !important;
+  text-align: left;
+  flex-wrap: wrap;
+}
+
+.ft-item-1,
+.ft-item-2 {
+  display: flex;
+  height: 100%;
+  padding: 2px 14px;
+}
+
+.ft-item-1 {
+  flex-direction: column;
+  flex: 1;
+}
+
+.ft-item-2 {
+  flex: 1;
+  flex-direction: column;
+}
+
+.t-top {
+  display: flex;
+}
+
+.t-top .t-t-l {
+  display: flex;
+  flex-direction: column;
+  flex: 1.4;
+  margin-right: 10px;
+}
+
+.t-top .t-t-l .bg-ad {
+  width: 85%;
+  border-radius: 10px;
+  padding: 0 10px;
+}
+
+.btn-xz-box {
+  margin-top: 10px;
+}
+
+/* 按钮背景颜色等 */
+.btn-xz {
+  display: block;
+  background-color: #f3f4f6;
+  color: #374151;
+  text-align: center;
+  line-height: 2.4;
+  margin: 8px 0;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.btn-xz:hover {
+  text-decoration: none !important;
+  background-color: #e5e7eb;
+  color: #111827 !important;
+}
+
+.t-top .t-t-r {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.ft-links {
+  padding: 0 14px;
+  list-style: none;
+  margin-top: 0 !important;
+}
+
+.ft-links li a {
+  display: inline-block !important;
+  width: 50%;
+  color: #374151 !important;
+}
+
+/* 链接悬浮颜色 */
+.ft-links li a:hover {
+  text-decoration: none !important;
+  color: #111827 !important;
+}
+
+.ft-item-2 .ft-img-group {
+  width: 100%;
+}
+
+.ft-t {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  line-height: 1;
+  font-weight: 600;
+  color: #111827 !important;
+}
+
+.t-l-t {
+  padding-left: 14px;
+}
+
+.ft-item-2 .ft-img-group .img-group-item {
+  display: inline-block;
+  width: 18.4%;
+  margin-right: 14px;
+  margin-bottom: 6px;
+}
+
+.ft-item-2 .ft-img-group .img-group-item a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.ft-item-2 .ft-img-group .img-group-item a img {
+  width: 100%;
+  max-height: 80px;
+  border-radius: 10px;
+}
+
+/* 头像悬浮颜色框 */
+.ft-item-2 .ft-img-group .img-group-item a img:hover {
+  border: 2px solid #6b7280;
+}
+
+@media screen and (max-width: 768px) {
+  .ft-item-1 {
+    flex-basis: 100% !important;
+  }
+
+  .ft-item-2 {
+    flex-basis: 100% !important;
+  }
+
+  .t-top .t-t-l .bg-ad {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .t-top {
+    flex-wrap: wrap;
+  }
+
+  .t-top .t-t-l {
+    flex-basis: 100% !important;
+  }
+
+  .t-top .t-t-r {
+    margin-top: 16px;
+    flex-basis: 100% !important;
+  }
+}
+
+#footer-wrap a {
+  border-radius: 30px;
+}
+
+#footer-wrap {
+  padding: 20px 20px;
+}
+
+/* 页脚心跳动画 */
+#heartbeat {
+  color: red;
+  animation: iconAnimate 1s ease-in-out infinite;
+}
+
+@-moz-keyframes iconAnimate {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  10%,
+  30% {
+    transform: scale(0.9);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: scale(1.1);
+  }
+  50%,
+  70% {
+    transform: scale(1.1);
+  }
+}
+
+@-webkit-keyframes iconAnimate {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  10%,
+  30% {
+    transform: scale(0.9);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: scale(1.1);
+  }
+  50%,
+  70% {
+    transform: scale(1.1);
+  }
+}
+
+@-o-keyframes iconAnimate {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  10%,
+  30% {
+    transform: scale(0.9);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: scale(1.1);
+  }
+  50%,
+  70% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes iconAnimate {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  10%,
+  30% {
+    transform: scale(0.9);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: scale(1.1);
+  }
+  50%,
+  70% {
+    transform: scale(1.1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-nav-links{
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .footer-nav-link{
+    justify-content: center;
+  }
+}

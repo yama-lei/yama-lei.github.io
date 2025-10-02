@@ -1,0 +1,324 @@
+---
+title: 第二章 | 数字逻辑基础
+categories:
+  - NJUCS
+  - 数字逻辑与计算机组成
+---
+
+对应了实验123.
+
+##  逻辑门与数字抽象
+
+### 逻辑门：logic gate
+
+直接上图：
+
+<div style="display:flex;width: 33.3%">
+<img src="./数字逻辑基础.assets/image-20250228105251394.png"/>
+<img src="./数字逻辑基础.assets/image-20250228105333434.png"/>
+<img src="./数字逻辑基础.assets/image-20250228105343896.png"/>
+</div>
+上面的三种logic gate是基本逻辑门。
+
+![image-20250228110021775](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250228110021775.png)
+
+但是要记住这几种logic gate对应的运算符号。
+
+-   $A \cdot B$, $\overline{A}$, A+B
+-   $A \oplus B$
+-   $A \odot B$ 
+
+### 数字抽象
+
+**数字抽象（逻辑采样）**：将某个物理量的实际值集映射为两个子集，对应于两个状态或两个逻辑值0和1。
+
+在数字系统中，将一定范围内的电压映射到两个状态：高态（high）和低态（low），并用0和1来表示。
+
+**正逻辑**将高电压映射为1，低电压映射为0；负逻辑则相反。
+
+L or H stands for 'Low' or 'High'
+
+-   VIHmin：确保能被识别为高态的最小输入电压值。
+-   VILmax：确保能被识别为低态的最大输入电压值。
+-   VOHmin：输出为高态时的最小输出电压值。
+
+>   VIHmin小于VOHmin,即**输入识别的电压范围比较大，输出电压的范围比较窄**
+
+-   VOLmax：输出为低态时的最大输出电压值。
+
+>   VILmax大于VOLmax，理由同上。
+
+>   ![image-20250228112500139](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250228112500139.png)
+>
+>   ​							（图中表示输入输出的电压范围）
+
+### CMOS晶体管
+
+MOS是三极晶体管：
+
+-   gate栅极，通常是in的部分
+-   source源极
+-   drain漏极
+
+#### NMOS和PMOS
+
+MOS常见的是下面这两种：
+<img src="./数字逻辑基础.assets/image-20250228095605847.png" width=50%/>
+
+左边是NMOS,上面是漏极，下面是源极；右边的PMOS相反。
+
+更重要的区别在与：
+
+-   对于NMOS，当Vgs<=0的时候，电阻大不导通；当Vgs>=0的时候导通
+-   PMOS是，当Vgs>=0的时候不导通，当Vgs<0的时候导通。
+
+**即栅极和源极在上面的那个电平大的时候导通**
+
+#### CMOS晶体管
+
+利用NMOS和PMOS构成CMOS,下面是非门(左），与非门（右）的实现方式：
+
+<div style="display:flex">
+<img src="./数字逻辑基础.assets/image-20250228113834753.png" width=50% />
+<img src="./数字逻辑基础.assets/image-20250228114607715.png" width=50%/>
+</div>
+**K输入**：输入k个电压，通常小于4；因为会导致噪音增大。
+
+**级联**：将多个输入端较少的门电路级联，实现多数入。
+
+**缓冲器**：取两次非，将信号更加精准。
+
+>   由两个非门**级联**得到
+>
+
+#### 设计cmos电路
+
+这篇文章值得一看[COMS门电路的设计及其优化--以异或门为例 - The Pisces - 博客园](https://www.cnblogs.com/Atsea/p/3885879.html)
+
+这篇文章是和卡诺图有关讲得很好！  [逻辑函数的卡诺图化简 || 卡诺图 || 重点 || 数电 - 知乎](https://zhuanlan.zhihu.com/p/158535749)
+
+由真值表得到CMOS电路：
+
+1. 卡诺图化简
+2. 画图
+
+非门需要一对CMOS，与非门需要两对CMOS，与门需要三队CMOS。
+
+#### CMOS的电路特性
+
+-   转换时间：输入信号（或输出信号）从一种状态变成另外一种状态的所需的时间。
+-   传播延时：输入信号变化到输出信号变化的时间。
+
+![image-20250303102631853](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250303102631853.png)
+
+<center>(传播延时,tpHL是输出信号从high到low的时间，tpLH是输出信号从low到high需要的时间)</center>
+
+## 布尔代数
+
+### 一些定理
+
+**对偶定理**
+
+-   对偶式：将与和或互换，得到的新式子就是对偶式；（注意：运算的顺序不能改变，意味着，很多地方要加上括号）
+-   如果两个逻辑表达式相等，那么逻辑表达式的对偶式也相等。
+
+**乘积项**
+
+-   单独的几个变量相乘；
+
+**求和项**
+
+-   单独几个变量相加；
+
+**标准乘积项 | 最小项**
+
+-   出现所有变量的乘积项（出现一次）
+
+**标准求和项 | 最大项**
+
+-   出现所有变量的求和项（出现一次）
+
+>   n参数的逻辑函数，最大项/最小项数目为$2^n$个；
+>
+>   **所有最小项的和为恒为1，所有极大项的积恒为0**；
+
+**几个需要记忆的式子**
+
+-   $(X+Y) \cdot (X+Z)=X+Y\cdot Z$
+-   $(X+X \cdot Y)=X$ 
+-   $X \cdot (X+Y)=X$
+-   $X \cdot Y+\overline X \cdot Z+Y \cdot Z= X \cdot Y + \overline X \cdot Z$//有一项是多余的
+-   $(X+Y)\cdot (\overline X +Z)\cdot (Y+Z)=(X+Y)\cdot (\overline X +Z)$
+
+### **异或 同或** 运算
+
+-   异或的性质：
+
+    1.   $A \oplus A= 0$
+
+    2.   $(A \oplus B) \oplus C=A \oplus (B \oplus C)$
+
+    3.   $\overline{A \oplus B}=A \oplus \overline B=\overline A \oplus B=A \odot B$
+
+- 同或的性质 
+
+    1.   $A \odot A=1$
+    2.   同样满足交换律
+    3.   取反的性质和异或式一样的
+
+-  神奇的性质 
+    对于一系列逻辑变量 $A_n, n \in N^+$，定义两种运算:
+
+	-   "连续同或运算": (第一个省略号代表多个左半括号)
+
+    $$M_k = (\ldots (A_1 \odot A_2) \odot A_3) \odot \ldots) \odot A_k, k \in N^+$$
+
+    -   "连续异或运算": (第一个省略号代表多个左半括号)
+
+    $$N_k = (\ldots (A_1 \oplus A_2) \oplus A_3) \oplus \ldots) \oplus A_k, k \in N^+$$
+
+    **根据这两种运算得到的布尔变量 $M_k, N_k$ 根据 $k$ 的不同有以下关系:**
+
+    1. $M_k = N_k$, when $k$ is odd;
+    2. $M_k = \overline{N_k}$, when $k$ is even.
+    
+    举个例子, 当 $k = 3$:
+
+    - $$M_3 = (A_1 \odot A_2) \odot A_3, \quad N_3 = (A_1 \oplus A_2) \oplus A_3$$
+
+    - 结论为: $M_3 = N_3$
+
+**De Morgan's law和香农定理**
+
+![image-20250303105327608](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250303105327608.png)
+
+## 逻辑关系描述
+
+#### 逻辑函数
+
+**每一个输入组合都有一个确定的输出值**
+
+**每个逻辑函数都有一组确定的输出分别对应各种输入组合)**
+
+#### 真值表：truth table
+
+-   输入组合按照数值大小排序
+-   每一个真值表都对应了一个一个逻辑函数
+
+#### 波形图
+
+用来描述逻辑函数的输出对于输入变量的变化的响应。（忽略时间延迟）
+
+![image-20250303112030796](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250303112030796.png)
+
+#### 逻辑函数的标准表示形式
+
+-   乘积项
+-   求和项
+-   与或表达式：先与后或；sum of product
+-   或与表达式：先或后与：product of sum
+-   标准乘积项（极小项），只有一种情况下能够取1
+-   标准求和项（极大项） ，只有一个情况下能够取0；
+
+#### 根据真值表得到逻辑函数的表示
+
+将最小项取和或者将最大项取积；
+
+![image-20250303113829446](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250303113829446.png)
+
+#### 标准表示的好处：设计电路
+
+![image-20250303112546676](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250303112546676.png)
+
+电路只有**两级**。
+
+---
+
+**标准表示不是最简**，如何将标准的表达式化成最简呢?
+
+## 逻辑函数的化简和变化
+
+#### 1. 代数化简
+
+如果表达式的层级超过了两级，那么需要先转换成两级；
+
+如果有哦整体取反运算，则需要先转换为单变量取反运算；
+
+**技巧性较强**
+
+-   如果化简的对象比较复杂，可以先化简其对偶式，再将其取一次对偶即可；
+-   与或表达式取反得到或与表达式，两次取反可以得到**与非-与非表达式**或**或非-或非表达式**
+
+
+
+#### 2. 卡诺图化简 
+
+推荐阅读：[逻辑函数的卡诺图化简 || 卡诺图 || 重点 || 数电 - 知乎](https://zhuanlan.zhihu.com/p/158535749)
+
+将真值表图形化表示出来，相邻的几项是可以化简的。
+
+>   原理：$X \cdot Y +X \cdot \overline Y=X$
+
+1.   卡诺图上找出所有的最小项（或者说真值表为1对应的所有赋值情况）
+2.   在卡诺图上将其按照相邻分块
+3.   取出所有没有相互覆盖的分块
+
+几种特殊情况：
+
+<div style="display: grid;grid-template-columns:repeat(2,50%)">
+    <img src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/20250307103204.png"/>
+    <img src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/20250307103322.png"/>
+    <img src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/20250307103322.png"/>
+</div>
+
+>   1.   注意“相邻”的含义，指的是符合格雷码的规则，不是物理含义上的相邻
+>   2.   遵守“最大圈”和“完全覆盖的原则”；比如，为了覆盖011这个位置其实可以选择$\overline X Y Z$，或者$YZ$,但是圈要最大，因此要选择YZ
+
+**蕴含项**
+
+-   最小项是蕴含项
+-   由蕴含项通过或表达式得到的乘积项也是蕴含项
+
+**质蕴含项**
+
+-   质蕴含项不能被其他的蕴含项 包含
+
+**实质蕴含项**
+
+-   **包含有至少一个最小项不为其他的蕴含项所包括**  | 人话：卡诺图里面，这个蕴含项有一个点位只有他包括进去了
+
+**最小覆盖**
+
+-   一组**蕴含项数量最少**的情况
+-   一定是要覆盖所有的点位
+
+>   实质蕴含项的定义就说明，它有别人所不能取代的原因：每一个最小覆盖一定**包含有所有的实质蕴含项**
+
+卡诺图的化简我觉得讲得最好的还是：[逻辑函数的卡诺图化简 || 卡诺图 || 重点 || 数电 - 知乎](https://zhuanlan.zhihu.com/p/158535749)
+
+#### 逻辑函数转换 
+
+可以通过对逻辑表达式进行**化简**，将逻辑表达式的形式改成更加适合电路设计；
+
+比如全部换成**与非和或非表达式**，实现的效果更快；
+
+比如对于下面这个逻辑函数
+$$
+F(X,Y,Z)=X \cdot Y +X\cdot Z +Y \cdot Z
+$$
+可以两次使用德摩根率：
+$$
+\overline {\overline{ X \cdot Y +X\cdot Z +Y \cdot Z}}=\overline {\overline{X \cdot Y}\cdot \overline{X \cdot Z} \cdot \overline{Y \cdot Z}}
+$$
+
+
+
+---
+
+![image-20250307111246272](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250307111246272.png)
+
+<center><strong>图来自ppt</strong>
+</center>
+练习：注意**圈最大、圈最少**的原则
+
+![image-20250616111644289](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250616111644289.png)

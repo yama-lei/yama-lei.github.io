@@ -1,0 +1,18 @@
+- class_name: Other hackers
+  class_desc: blogs of other tech lovers
+  link_list:
+    - name: Metaxiao
+      link: https://www.teslongxiao.cn/
+      avatar: https://image-host-for-meta.oss-cn-hangzhou.aliyuncs.com/blog-img/aoao.gif
+      descr: 这个家伙很神秘，什么都没有留下
+      siteshot: https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/20251001222821.png
+      # siteshot就是站点缩略图的链接。因为Volantis的site-card比Butterfly的flink-card多出了一个站点缩略图
+- class_name: NJUer's Blog
+  class_desc:  Blogs of NJUers (Always collecting...)
+  link_list:
+    - name: lyc8503
+      link: https://blog.lyc8503.net/
+      avatar: https://blog.lyc8503.net/img/avatar.png
+      descr: 同样都是lyc，为什么这个lyc这么厉害
+      siteshot: https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/20251001222821.png
+      # siteshot就是站点缩略图的链接。因为Volantis的site-card比Butterfly的flink-card多出了一个站点缩略图
