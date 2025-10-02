@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
   "clean": "rimraf public/{*,.*,!.,!.git}",
+  "build": "hexo clean && hexo generate",
   "go": "npm run clean && hexo generate && hexo deploy",
+  "update": "git pull origin site-v2 && npm run build && git add . && git commit -m 'update' && git push origin site-v2",
   "sync": "scp -r public/* yama@172.26.8.119:/var/www/yamablog/"
   },
   "hexo": {
