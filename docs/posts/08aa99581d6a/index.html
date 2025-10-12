@@ -1,0 +1,349 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>NEMU PA1 | YamaBlog</title><meta name="author" content="Yama-lei"><meta name="copyright" content="Yama-lei"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="[TOC]">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NEMU PA1">
+<meta property="og:url" content="https://yama-lei.top/posts/08aa99581d6a/index.html">
+<meta property="og:site_name" content="YamaBlog">
+<meta property="og:description" content="[TOC]">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp">
+<meta property="article:published_time" content="2025-09-28T13:20:28.439Z">
+<meta property="article:modified_time" content="2025-10-10T00:40:05.753Z">
+<meta property="article:author" content="Yama-lei">
+<meta property="article:tag" content="博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "NEMU PA1",
+  "url": "https://yama-lei.top/posts/08aa99581d6a/",
+  "image": "https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp",
+  "datePublished": "2025-09-28T13:20:28.439Z",
+  "dateModified": "2025-10-10T00:40:05.753Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Yama-lei",
+      "url": "https://yama-lei.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yama-lei.top/posts/08aa99581d6a/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":true,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'NEMU PA1',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/callout_blocks.css"><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/homepage-hero.css"><link rel="stylesheet" href="/css/card-enhance.css"><link rel="stylesheet" href="/css/sidebar-enhance.css"><link rel="stylesheet" href="/css/category-tag-page.css"><meta name="generator" content="Hexo 8.0.0"><link rel="alternate" href="/atom.xml" title="YamaBlog" type="application/atom+xml">
+</head><body><div id="web_bg" style="background-color: #ffffff;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">114</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-list"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/essay/"><i class="fa-fw fas fa-comment-dots"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/playground/"><i class="fa-fw fas fa-flask"></i><span> Playground</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-user-friends"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img fixed" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">YamaBlog</span></a><a class="nav-page-title" href="/"><span class="site-name">NEMU PA1</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-list"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/essay/"><i class="fa-fw fas fa-comment-dots"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" href="/playground/"><i class="fa-fw fas fa-flask"></i><span> Playground</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-user-friends"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">NEMU PA1</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-09-28T13:20:28.439Z" title="发表于 2025-09-28 21:20:28">2025-09-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-10-10T00:40:05.753Z" title="更新于 2025-10-10 08:40:05">2025-10-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/NJUCS/">NJUCS</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/NJUCS/ICS%E8%AE%A1%E7%AE%97%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/">ICS计算系统基础</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="container post-content" id="article-container"><p>[TOC]</p>
+<span id="more"></span>
+<h2 id="实验过程中的思考记录"><a class="markdownIt-Anchor" href="#实验过程中的思考记录"></a> 实验过程中的思考记录</h2>
+<h3 id="宏macro"><a class="markdownIt-Anchor" href="#宏macro"></a> <strong>宏Macro</strong></h3>
+<blockquote>
+<p>kconfig生成的宏与条件编译</p>
+<p>我们已经在上文提到过, kconfig会根据配置选项的结果在 <code>nemu/include/generated/autoconf.h</code>中定义一些形如<code>CONFIG_xxx</code>的宏, 我们可以在C代码中通过条件编译的功能对这些宏进行测试, 来判断是否编译某些代码. 例如, 当<code>CONFIG_DEVICE</code>这个宏没有定义时, 设备相关的代码就无需进行编译.</p>
+<p>为了编写更紧凑的代码, 我们在<code>nemu/include/macro.h</code>中定义了一些专门用来对宏进行测试的宏. 例如<code>IFDEF(CONFIG_DEVICE, init_device());</code>表示, 如果定义了<code>CONFIG_DEVICE</code>, 才会调用<code>init_device()</code>函数; 而<code>MUXDEF(CONFIG_TRACE, &quot;ON&quot;, &quot;OFF&quot;)</code>则表示, 如果定义了<code>CONFIG_TRACE</code>, 则预处理结果为<code>&quot;ON&quot;</code>(<code>&quot;OFF&quot;</code>在预处理后会消失), 否则预处理结果为<code>&quot;OFF&quot;</code>.</p>
+<p><strong>这些宏的功能非常神奇, 你知道这些宏是如何工作的吗?</strong></p>
+</blockquote>
+<p><strong>回答：</strong></p>
+<p>在macro.h的文件中，对<code>IFDEF</code>和<code>MUXDEF</code>的定义为：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// simplification for conditional compilation</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __IGNORE(...)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __KEEP(...) __VA_ARGS__</span></span><br><span class="line"><span class="comment">// keep the code if a boolean macro is defined</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> IFDEF(macro, ...) MUXDEF(macro, __KEEP, __IGNORE)(__VA_ARGS__)</span></span><br><span class="line"><span class="comment">// keep the code if a boolean macro is undefined</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> IFNDEF(macro, ...) MUXNDEF(macro, __KEEP, __IGNORE)(__VA_ARGS__)</span></span><br><span class="line"><span class="comment">// keep the code if a boolean macro is defined to 1</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> IFONE(macro, ...) MUXONE(macro, __KEEP, __IGNORE)(__VA_ARGS__)</span></span><br><span class="line"><span class="comment">// keep the code if a boolean macro is defined to 0</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> IFZERO(macro, ...) MUXZERO(macro, __KEEP, __IGNORE)(__VA_ARGS__)</span></span><br></pre></td></tr></table></figure>
+<p>可以看到__IGNORE和      _ KEEP宏分别就是将传入的参数全部去掉或者全部保留。</p>
+<p>而IFDEF则通过调用由boolean macro来决定是保留还是舍去。</p>
+<p>而这里的MUXDEF的实现<strong>更加巧妙</strong>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> CHOOSE2nd(a, b, ...) b</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MUX_WITH_COMMA(contain_comma, a, b) CHOOSE2nd(contain_comma a, b)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MUX_MACRO_PROPERTY(p, macro, a, b) MUX_WITH_COMMA(concat(p, macro), a, b)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __P_DEF_0  X,</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> __P_DEF_1  X,</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MUXDEF(macro, X, Y) MUX_MACRO_PROPERTY(__P_DEF_, macro, X, Y)</span></span><br></pre></td></tr></table></figure>
+<p>因为参数macro是一个boolean macro，因此结果一定是0或者1，而不论是0，还是1，经过concat之后，前面都会加上“__ P__DEF _”的前缀，最终变成<code>__P_DEF_0 </code>或者<code>__P_DEF_1</code>，但是这两个都变成了<code>X,</code>，那么被CHOOSE2nd选中的就将会是a。</p>
+<p>如果macro压根就没有被定义，那么macro对应的就是空值，因此concat之后的结果也是没有定义的（因为<code>__P_DEF_</code>没定义），因此也就不会哟“X,”的展开，那么b就是the second。</p>
+<p>也就实现了IFDEF和MUXDEF的效果：</p>
+<ul>
+<li>MUXDEF： 如果传入的macro被定义了，那么就选择a，否则就选择b</li>
+<li>IFDEF：如果macro被定义了，那就keep the code， otherwise ingnore the code</li>
+</ul>
+<blockquote>
+<p>Thanks to <a target="_blank" rel="noopener" href="https://miaohao-oops.github.io/2022/02/05/nju-pa%E6%91%B8%E9%B1%BC%E8%AE%B03-nemu%E4%B8%AD%E5%AE%8F%E7%9A%84%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/">nju-pa摸鱼记3-NEMU中宏的源码阅读 - Miao’s Blog</a> . By the way, the author is not  a nju student.</p>
+</blockquote>
+<h3 id="init_monitor函数"><a class="markdownIt-Anchor" href="#init_monitor函数"></a> <strong>init_monitor函数</strong></h3>
+<p>阅读<code>init_monitor()</code>函数的代码, 你会发现里面全部都是函数调用. 按道理, 把相应的函数体在<code>init_monitor()</code>中展开也不影响代码的正确性. 相比之下, 在这里使用函数有什么好处呢?</p>
+<p>使用函数可以使得代码更加清晰，模块分离，便于实现模块化设计。</p>
+<h3 id="parse_args的参数解析以及参数从哪里来"><a class="markdownIt-Anchor" href="#parse_args的参数解析以及参数从哪里来"></a> parse_args()的参数解析，以及参数从哪里来</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">static</span> <span class="type">int</span> <span class="title">parse_args</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span> </span></span><br></pre></td></tr></table></figure>
+<p>这里的argc是argument count，argv是argument vector；函数接受参数之后调用了getopt_long函数进行参数解析，按照传入的不同参数进行不同的解释。</p>
+<p>那么参数是哪里来的呢？通过<code>grep -nr 'init_monitor'</code>在ics2025/nemu下进行查找，发现调用<code>init_monitor</code>的地方为<code>src/nemu-main.c</code></p>
+<p>在该文件的main函数接受了参数argc 和argv，并且原封不动地将这些参数传递到了init_monitor()中；而main函数接受的这些参数又来自运行可执行文件时的命令行参数。</p>
+<p>For example, <code>./a.out arg1 arg2 arg3 </code></p>
+<p>这里一共有4个参数，其中argv[0]是程序名(“./a.out”)。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">16</span> <span class="meta">#<span class="keyword">include</span> <span class="string">&lt;common.h&gt;</span></span></span><br><span class="line"><span class="number">17</span></span><br><span class="line"><span class="number">18</span> <span class="function"><span class="type">void</span> <span class="title">init_monitor</span><span class="params">(<span class="type">int</span>, <span class="type">char</span> *[])</span></span>;</span><br><span class="line"><span class="number">19</span> <span class="function"><span class="type">void</span> <span class="title">am_init_monitor</span><span class="params">()</span></span>;</span><br><span class="line"><span class="number">20</span> <span class="function"><span class="type">void</span> <span class="title">engine_start</span><span class="params">()</span></span>;</span><br><span class="line"><span class="number">21</span> <span class="function"><span class="type">int</span> <span class="title">is_exit_status_bad</span><span class="params">()</span></span>;</span><br><span class="line"><span class="number">22</span></span><br><span class="line"><span class="number">23</span> <span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span> </span>&#123;</span><br><span class="line"><span class="number">24</span>   <span class="comment">/* Initialize the monitor. */</span></span><br><span class="line"><span class="number">25</span> <span class="meta">#<span class="keyword">ifdef</span> CONFIG_TARGET_AM</span></span><br><span class="line"><span class="number">26</span>   <span class="built_in">am_init_monitor</span>();</span><br><span class="line"><span class="number">27</span> <span class="meta">#<span class="keyword">else</span></span></span><br><span class="line"><span class="number">28</span>   <span class="built_in">init_monitor</span>(argc, argv);</span><br><span class="line"><span class="number">29</span> <span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="number">30</span></span><br><span class="line"><span class="number">31</span>   <span class="comment">/* Start engine. */</span></span><br><span class="line"><span class="number">32</span>   <span class="built_in">engine_start</span>();</span><br><span class="line"><span class="number">33</span></span><br><span class="line"><span class="number">34</span>   <span class="keyword">return</span> <span class="built_in">is_exit_status_bad</span>();</span><br><span class="line"><span class="number">35</span> &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="究竟要执行多久"><a class="markdownIt-Anchor" href="#究竟要执行多久"></a> 究竟要执行多久?</h3>
+<p>在<code>cmd_c()</code>函数中, 调用<code>cpu_exec()</code>的时候传入了参数<code>-1</code>, 你知道这是什么意思吗?</p>
+<p><strong>解答</strong></p>
+<p>调用cpu_exec(-1)的时候因为n的类型为uint64_t，因此将-1进行强制类型转换为2^64-1,之后传给execte()，在这里会run n遍execute_once()。</p>
+<p>在execute中通过添加调试打印，可以发现，在加载内置程序的时候只执行了4步，就执行了内置的Hit Good TRAP。</p>
+<blockquote>
+<p>添加  printf(“Exectute Once, current pc is %u\n”,s.pc);</p>
+</blockquote>
+<p><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250912222331896.png" alt="image-20250912222331896" /></p>
+<h3 id="优美地退出"><a class="markdownIt-Anchor" href="#优美地退出"></a> 优美地退出</h3>
+<p>为了测试大家是否已经理解框架代码, 我们给大家设置一个练习: 如果在运行NEMU之后直接键入<code>q</code>退出, 你会发现终端输出了一些错误信息. 请分析这个错误信息是什么原因造成的, 然后尝试在NEMU中修复它.</p>
+<p><strong>解答</strong>：</p>
+<p>目前程序在make run之后会出现:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Welcome to riscv32-NEMU!</span><br><span class="line">For <span class="built_in">help</span>, <span class="built_in">type</span> <span class="string">&quot;help&quot;</span></span><br><span class="line">(nemu) q</span><br><span class="line">make: *** [/home/yama/ics2024/nemu/scripts/native.mk:38: run] Error 1</span><br></pre></td></tr></table></figure>
+<p>说明程序以“1”退出了，回到<code>nemu-main</code>这个文件中，发现return的结果是：<code>is_exit_status_bad()</code>，而这个函数的的定义为：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">is_exit_status_bad</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="type">int</span> good = (nemu_state.state == NEMU_END &amp;&amp; nemu_state.halt_ret == <span class="number">0</span>) ||</span><br><span class="line">    (nemu_state.state == NEMU_QUIT);</span><br><span class="line">  <span class="keyword">return</span> !good;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>尝试打印中间变量发现，neum_state.state=1，对应的是enum { NEMU_RUNNING, NEMU_STOP, NEMU_END, NEMU_ABORT, NEMU_QUIT };中的NEMU_STOP，因此，错误<strong>在于没有将nemu_state.state进行更改</strong>或者是错误地将其赋值为了NUME_STOP</p>
+<p>使用grep查找：</p>
+<p><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250912212040608.png" alt="image-20250912212040608" /></p>
+<p>发现在state.c中有这样一段逻辑：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">NEMUState nemu_state = &#123; .state = NEMU_STOP &#125;;</span><br><span class="line"><span class="type">int</span> <span class="title function_">is_exit_status_bad</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,nemu_state.state);</span><br><span class="line">  <span class="type">int</span> good = (nemu_state.state == NEMU_END &amp;&amp; nemu_state.halt_ret == <span class="number">0</span>) ||</span><br><span class="line">    (nemu_state.state == NEMU_QUIT);</span><br><span class="line">  <span class="keyword">return</span> !good;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对nume_state进行了初始化，而此后通过grep指令搜索发现：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~/ics2024/nemu pa1 !<span class="number">1</span> ?<span class="number">1</span> ❯ grep -nr <span class="string">&#x27;nemu_state&#x27;</span> | grep NEMU_STOP</span><br><span class="line">grep: build/obj-riscv32-nemu-interpreter/src/isa/riscv32/inst.o: binary file matches</span><br><span class="line">src/cpu/cpu-exec.c:<span class="number">117</span>:    <span class="keyword">case</span> NEMU_RUNNING: nemu_state.state = NEMU_STOP; <span class="keyword">break</span>;</span><br><span class="line">src/utils/state.c:<span class="number">18</span>:NEMUState nemu_state = &#123; .state = NEMU_STOP &#125;;</span><br></pre></td></tr></table></figure>
+<p>只有在初始化以及cpu-exec的代码中才会涉及到将nemu_state设置为NEMU_STOP的情况，<s>但是我还没看懂其中逻辑</s>。</p>
+<p>最后检查发现，在输入q的时候应该将state设置为quit：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">static</span> <span class="type">int</span> <span class="title function_">cmd_q</span><span class="params">(<span class="type">char</span> *args)</span> &#123;</span><br><span class="line">  nemu_state.state=NEMU_QUIT;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>成功实现<strong>优雅地退出</strong></p>
+<p><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20250912214558229.png" alt="image-20250912214558229" /></p>
+<h3 id="表达式求值"><a class="markdownIt-Anchor" href="#表达式求值"></a> 表达式求值</h3>
+<h4 id="实现算术表达式的词法分析"><a class="markdownIt-Anchor" href="#实现算术表达式的词法分析"></a> 实现算术表达式的词法分析</h4>
+<p>你需要完成以下的内容:</p>
+<ul>
+<li>为算术表达式中的各种token类型添加规则, 你需要注意C语言字符串中转义字符的存在和正则表达式中元字符的功能.</li>
+<li>在成功识别出token后, 将token的信息依次记录到<code>tokens</code>数组中.</li>
+</ul>
+<p>我使用的不是BNF的方法，我采用的是数据结构课程上面学到的，使用栈来解决表达式求值的问题，我认为二者是完全等价的，因此我没有参考BNF的解法。<br />
+我的实现逻辑：</p>
+<ol>
+<li>读取token</li>
+<li>把操作符和操作数分成两个栈，读取到之后顺序入栈，对于operands直接入栈，对于operator来说先考察其操作符大小</li>
+</ol>
+<p><strong>补充</strong>：在最后实现负号和Dereference的时候，我尝试在make_tokens阶段把负号和解引用进行计算和求解，最后发现cornerr case太多了，最后花了很长 的时间重构代码，才解决了这些问题。</p>
+<h5 id="为什么printf的输出要换行"><a class="markdownIt-Anchor" href="#为什么printf的输出要换行"></a> 为什么printf()的输出要换行?</h5>
+<p>如果不换行, 可能会发生什么? 你可以在代码中尝试一下, 并思考原因, 然后STFW对比你的想法.<br />
+<strong>回答：</strong> <s>如果不换行就看不清😂输出都胡在一起了怎么看？</s><br />
+STFW之后发现有两个作用：</p>
+<ul>
+<li>格式化输出，好看</li>
+<li>缓冲区刷新，确保内容输出</li>
+</ul>
+<p><strong>框架代码中定义<code>wp_pool</code>等变量的时候使用了关键字<code>static</code>, <code>static</code>在此处的含义是什么? 为什么要在此处使用它?</strong></p>
+<p><strong>回答</strong>： 作用是让 其变为静态变量，生命周期贯穿程序始终，并且具有文件作用域，确保wp_poop的唯一性。</p>
+<h4 id="测试表达式功能"><a class="markdownIt-Anchor" href="#测试表达式功能"></a> 测试表达式功能</h4>
+<p>在测试代码中，在生成随机表达式的时候，常常出现随机性的报错。最后发现``<br />
+缺少了这句话<code>buf[expr_size]='\0';</code></p>
+<ol>
+<li>表达式有些过长：添加阶段逻辑，限制最大深度为10，避免过长的表达式</li>
+<li>溢出和除0错误：添加-Wall -Werror参数，直接忽略<br />
+最后是编写一个函数，来测试功能，在文件io和字符串的操作方面我不是很熟悉，<s>吃了大亏</s><br />
+<strong>所以说c语言好啊，得学啊。</strong><br />
+最后的处理方式是</li>
+</ol>
+<h5 id="你会如何测试你的监视点实现"><a class="markdownIt-Anchor" href="#你会如何测试你的监视点实现"></a> 你会如何测试你的监视点实现?</h5>
+<p>我们没有提供监视点相关的测试, 思考一下, 你会如何测试?<br />
+<strong>回答</strong>：在检查监测点是否变化的时候，故意在代码里面修改watchpoints的值<img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/20251007175139.png" alt="image.png" /><br />
+人为地制造监测点被改变的情况，检查发现的确游游泳。</p>
+<hr />
+<h2 id="必答题"><a class="markdownIt-Anchor" href="#必答题"></a> 必答题</h2>
+<h3 id="程序是个状态机"><a class="markdownIt-Anchor" href="#程序是个状态机"></a> 程序是个状态机</h3>
+<ul>
+<li>程序是个状态机 画出计算<code>1+2+...+100</code>的程序的状态机, 具体请参考<a target="_blank" rel="noopener" href="https://nju-projectn.github.io/ics-pa-gitbook/ics2025/1.2.html#%E4%BB%8E%E7%8A%B6%E6%80%81%E6%9C%BA%E8%A7%86%E8%A7%92%E7%90%86%E8%A7%A3%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C">这里</a>.</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// PC: instruction    | // label: statement</span><br><span class="line">0: mov  r1, 0         |  pc0: r1 = 0;</span><br><span class="line">1: mov  r2, 0         |  pc1: r2 = 0;</span><br><span class="line">2: addi r2, r2, 1     |  pc2: r2 = r2 + 1;</span><br><span class="line">3: add  r1, r1, r2    |  pc3: r1 = r1 + r2;</span><br><span class="line">4: blt  r2, 100, 2    |  pc4: if (r2 &lt; 100) goto pc2;   // branch if less than</span><br><span class="line">5: jmp 5              |  pc5: goto pc5;</span><br></pre></td></tr></table></figure>
+<details class="custom-callout note" open><summary class="callout-title"><div class="callout-icon"></div><div><strong>回答</strong></div>
+<div class="callout-fold"></div></summary><div class="callout-body">
+<p>(0,x,x)-&gt;(1,0,x)-&gt;(2,0,0)-&gt;(3,0,1)-&gt;(4,1,1)-&gt;(2,1,1)-&gt;(3,1,2)-&gt;(4,3,2)-&gt;…-&gt;(2,4851,98)-&gt;(3,4851,99)-&gt;(4,4950,99)-&gt;(2,4950,99)-&gt;(3,4950,100)-&gt;(4,5050,100)-&gt;(5,5050,100)-&gt;…# 不断循环这个</p>
+</div>
+</details><h3 id="理解基础设施"><a class="markdownIt-Anchor" href="#理解基础设施"></a> 理解基础设施</h3>
+<ul>
+<li>
+<p>我们通过一些简单的计算来体会简易调试器的作用. 首先作以下假设:</p>
+<ul>
+<li>假设你需要编译500次NEMU才能完成PA.</li>
+<li>假设这500次编译当中, 有90%的次数是用于调试.</li>
+<li>假设你没有实现简易调试器, 只能通过GDB对运行在NEMU上的客户程序进行调试. 在每一次调试中, 由于GDB不能直接观测客户程序, 你需要花费30秒的时间来从GDB中获取并分析一个信息.</li>
+<li>假设你需要获取并分析20个信息才能排除一个bug.</li>
+</ul>
+<p>那么这个学期下来, 你将会在调试上花费多少时间?</p>
+</li>
+</ul>
+<details class="custom-callout note" open><summary class="callout-title"><div class="callout-icon"></div><div>回答</div>
+<div class="callout-fold"></div></summary><div class="callout-body">
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>500</mn><mo>×</mo><mn>0.9</mn><mo>×</mo><mn>30</mn><mo>×</mo><mn>20</mn><mo>=</mo><mn>27000</mn><mtext> </mtext><mtext>s</mtext></mrow><annotation encoding="application/x-tex">500 \times 0.9 \times 30 \times 20 = 27000\,\text{s}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">5</span><span class="mord">0</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">0</span><span class="mord">.</span><span class="mord">9</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">3</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">7</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord text"><span class="mord">s</span></span></span></span></span></p>
+</div>
+</details><p>由于简易调试器可以直接观测客户程序，假设通过简易调试器只需要花费10秒的时间从中获取并分析相同的信息。那么这个学期下来，简易调试器可以帮助你节省多少调试的时间？</p>
+<details class="custom-callout note" open><summary class="callout-title"><div class="callout-icon"></div><div>回答</div>
+<div class="callout-fold"></div></summary><div class="callout-body">
+<p>使用 sdb 之后，每一个信息只需要 10 秒的时间进行获取，那么只需要花费原先 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{1}{3}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.190108em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.845108em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span> 的时间，也就是 9000 s</p>
+</div>
+</details><p></p>
+<h3 id="rtfm"><a class="markdownIt-Anchor" href="#rtfm"></a> RTFM</h3>
+<ul>
+<li>RTFM 理解了科学查阅手册的方法之后, 请你尝试在你选择的ISA手册中查阅以下问题所在的位置, 把需要阅读的范围写到你的实验报告里面:
+<ul>
+<li>x86
+<ul>
+<li>EFLAGS寄存器中的CF位是什么意思?</li>
+<li>ModR/M字节是什么?</li>
+<li>mov指令的具体格式是怎么样的?</li>
+</ul>
+</li>
+<li>mips32
+<ul>
+<li>mips32有哪几种指令格式?</li>
+<li>CP0寄存器是什么?</li>
+<li>若除法指令的除数为0, 结果会怎样?</li>
+</ul>
+</li>
+<li><strong>riscv32</strong>
+<ul>
+<li>riscv32有哪几种指令格式?</li>
+<li>LUI指令的行为是什么?</li>
+<li>mstatus寄存器的结构是怎么样的?</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<details class="custom-callout note" open><summary class="callout-title"><div class="callout-icon"></div><div>回答</div>
+<div class="callout-fold"></div></summary><div class="callout-body">
+<p>我选择的是Riscv32。<br />
+<strong>对于问题一</strong>，riscv32有几种指令格式，我查阅了<a target="_blank" rel="noopener" href="https://github.com/riscv/riscv-isa-manual/releases/download/riscv-isa-release-382fd8b-2024-04-11/unpriv-isa-asciidoc.pdf">https://github.com/riscv/riscv-isa-manual/releases/download/riscv-isa-release-382fd8b-2024-04-11/unpriv-isa-asciidoc.pdf</a><br />
+在书中的2.3（Page 24）中提到了有6种指令格式，R I S B U J type<br />
+<img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/20251007164614.png" alt="image.png" /><br />
+<strong>对于问题二</strong>，lui指令以i结尾，结合名字推断，应该是load upper immediate，推断是一个U型指令，并且属于<code>Integer Register-Immediate Instructions</code>，于是在Manual中找到这一部分，并且在P27页中发现了<br />
+<img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/20251007165257.png" alt="image.png" /><br />
+其功能是将一个32位的常量的高20位移动到rd寄存器中，然后将低12位赋值为0<br />
+<strong>对于问题三</strong> 要求寻找一个寄存器的结构，先搜索得到<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000044992918">risc-v–mstatus寄存器 - putao0525 - SegmentFault 思否</a> 发现mstatus和特权相关，因此在Volume二（特权架构）里面找；mstatus的全称为Machine Status Registers，因此定位到3.1.6（Page25）的内容<img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/20251007170135.png" alt="image.png" /><br />
+架构如图中figure7所示。</p>
+</div>
+</details><p></p>
+<p></p>
+<p></p>
+<h3 id="shell命令"><a class="markdownIt-Anchor" href="#shell命令"></a> Shell命令</h3>
+<ul>
+<li>shell命令 完成PA1的内容之后, <code>nemu/</code>目录下的所有.c和.h和文件总共有多少行代码? 你是使用什么命令得到这个结果的? 和框架代码相比, 你在PA1中编写了多少行代码? (Hint: 目前<code>pa0</code>分支中记录的正好是做PA1之前的状态, 思考一下应该如何回到&quot;过去&quot;?) 你可以把这条命令写入<code>Makefile</code>中, 随着实验进度的推进, 你可以很方便地统计工程的代码行数, 例如敲入<code>make count</code>就会自动运行统计代码行数的命令. 再来个难一点的, 除去空行之外, <code>nemu/</code>目录下的所有<code>.c</code>和<code>.h</code>文件总共有多少行代码?</li>
+</ul>
+<details class="custom-callout note" open><summary class="callout-title"><div class="callout-icon"></div><div>回答</div>
+<div class="callout-fold"></div></summary><div class="callout-body">
+<p>统计nemu目录下所有的.c和.h文件有多少行：<br />
+<code>find . -name &quot;*.[ch]&quot; | xargs cat | wc -l </code> 先用find找出所有的点h和点c文件，然后送入cat读取内容，最后使用wc统计行数<br />
+得到的结果是<strong>267636</strong><br />
+使用checkout回到PA0分支，同样运行上诉命令，得到的是<strong>266809</strong>，所以我写了827行？？？才做到PA1就已经对自己的屎山逻辑无能为力了<img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/20251007171120.png" alt="image.png" /><br />
+把命令加入Makefile中加入</p>
+<figure class="highlight plaintext"><figcaption><span>.PHONY: count</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">count:</span><br><span class="line"> @find . -name &quot;*.[ch]&quot; | xargs cat | wc -l</span><br></pre></td></tr></table></figure>
+</div>
+</details><p>从而实现make count命令.<br />
+如何去掉空行呢？在中间加上grep用正则来匹配至少有一个字符的行<code>find . -name &quot;*.[ch]&quot; | xargs cat |grep .| wc -l</code></p>
+<p></p>
+<h3 id="rtfm-2"><a class="markdownIt-Anchor" href="#rtfm-2"></a> RTFM</h3>
+<p>打开<code>nemu/scripters/build.mk</code>文件, 你会在<code>CFLAGS</code>变量中看到gcc的一些编译选项. 请解释gcc中的<code>-Wall</code>和<code>-Werror</code>有什么作用? 为什么要使用<code>-Wall</code>和<code>-Werror</code>?</p>
+<p></p>
+<details class="custom-callout note" open><summary class="callout-title"><div class="callout-icon"></div><div>回答</div>
+<div class="callout-fold"></div></summary><div class="callout-body">
+<p>在手册里面已经提到了<img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/20251007171931.png" alt="image.png" /></p>
+</div>
+</details><p>加上-Wall参数可以要求代码开启常见警告，帮助发现潜在错误。-Werror把所有警告视为错误，阻止编译通过。  用来避免低级错误</p>
+<p></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://yama-lei.top">Yama-lei</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://yama-lei.top/posts/08aa99581d6a/">https://yama-lei.top/posts/08aa99581d6a/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://yama-lei.top" target="_blank">YamaBlog</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/e28a9744cd3e/" title="计算机系统基础：第一课"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">计算机系统基础：第一课</div></div><div class="info-2"><div class="info-item-1">授课老师：唐杰、刘杰 计算机系统基础：清楚理解计算机是如何生成和运行可执行文件的！ 考试：高级代码+汇编代码 Pa（30%）+期末（50%）+Lab实验和习题、小测试（各10%）  三个主题：  Representation:  不同数据类型在寄存器和存储器之间如何表示和存储 指令如何表示和白拿 存储地址如何表示，如何生成复杂数据结构中的数据元素的地址   Translation&amp;Link  高级语言程序对应的机器级代码是怎样的，如何合并成可执行文件   Control Flow  计算机所能理解的程序是如何组织和控制的 如何在计算机中组织多个程序的并发执行？ 逻辑控制流中的异常时间及其处理    平台：IA-32+linux+gcc </div></div></div></a><a class="pagination-related" href="/posts/b71f75214aac/" title="NEMU PA0"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">NEMU PA0</div></div><div class="info-2"><div class="info-item-1"> PA0  Report  实验进度 我完成了所有的任务，包括：  前置学习：  vim makefile git   按照手册要求编译项目   遇见的问题 zsh错误 我使用的shell是zsh而非bash，而代码中是默认只会给~/.bashrc的末尾加上环境变量 12export NEMU_HOME=/home/yama/ics2024/nemuexport AM_HOME=/home/yama/ics2024/abstract-machine 所以需要手动使用vim修改~/.zshrc make出错 123456789101112131415~/ics2024/nemu pa0 ?1 ❯ make                                           22:02:40make -C tools/capstonemake[1]: Entering directory &#x27;/home/yama/ics2024/nemu/tools/capstone&#x27;Cloning into &#x27;repo&#x27;...Connectio...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Yama-lei</div><div class="author-info-description">记录一个NJUCSer的学习</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">114</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yama-lei"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/yama-lei" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:your@email.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color: #FFA500;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">博客正在建设中...能看就行...😋😋😋</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%AA%8C%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%9A%84%E6%80%9D%E8%80%83%E8%AE%B0%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text"> 实验过程中的思考记录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%8Fmacro"><span class="toc-number">1.1.</span> <span class="toc-text"> 宏Macro</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#init_monitor%E5%87%BD%E6%95%B0"><span class="toc-number">1.2.</span> <span class="toc-text"> init_monitor函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#parse_args%E7%9A%84%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90%E4%BB%A5%E5%8F%8A%E5%8F%82%E6%95%B0%E4%BB%8E%E5%93%AA%E9%87%8C%E6%9D%A5"><span class="toc-number">1.3.</span> <span class="toc-text"> parse_args()的参数解析，以及参数从哪里来</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%B6%E7%AB%9F%E8%A6%81%E6%89%A7%E8%A1%8C%E5%A4%9A%E4%B9%85"><span class="toc-number">1.4.</span> <span class="toc-text"> 究竟要执行多久?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E7%BE%8E%E5%9C%B0%E9%80%80%E5%87%BA"><span class="toc-number">1.5.</span> <span class="toc-text"> 优美地退出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC"><span class="toc-number">1.6.</span> <span class="toc-text"> 表达式求值</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E7%AE%97%E6%9C%AF%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90"><span class="toc-number">1.6.1.</span> <span class="toc-text"> 实现算术表达式的词法分析</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88printf%E7%9A%84%E8%BE%93%E5%87%BA%E8%A6%81%E6%8D%A2%E8%A1%8C"><span class="toc-number">1.6.1.1.</span> <span class="toc-text"> 为什么printf()的输出要换行?</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8A%9F%E8%83%BD"><span class="toc-number">1.6.2.</span> <span class="toc-text"> 测试表达式功能</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BD%A0%E4%BC%9A%E5%A6%82%E4%BD%95%E6%B5%8B%E8%AF%95%E4%BD%A0%E7%9A%84%E7%9B%91%E8%A7%86%E7%82%B9%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.6.2.1.</span> <span class="toc-text"> 你会如何测试你的监视点实现?</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%85%E7%AD%94%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text"> 必答题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E6%98%AF%E4%B8%AA%E7%8A%B6%E6%80%81%E6%9C%BA"><span class="toc-number">2.1.</span> <span class="toc-text"> 程序是个状态机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%90%86%E8%A7%A3%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD"><span class="toc-number">2.2.</span> <span class="toc-text"> 理解基础设施</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rtfm"><span class="toc-number">2.3.</span> <span class="toc-text"> RTFM</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#shell%E5%91%BD%E4%BB%A4"><span class="toc-number">2.4.</span> <span class="toc-text"> Shell命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#rtfm-2"><span class="toc-number">2.5.</span> <span class="toc-text"> RTFM</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/3dc95fb1962b/" title="无标题">无标题</a><time datetime="2025-10-08T01:26:39.612Z" title="发表于 2025-10-08 09:26:39">2025-10-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/b2ca8723ed1a/" title="网络安全实战作业_lab02">网络安全实战作业_lab02</a><time datetime="2025-10-08T01:21:13.000Z" title="发表于 2025-10-08 09:21:13">2025-10-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/a7076f1747c9/" title="无标题">无标题</a><time datetime="2025-10-07T15:10:25.867Z" title="发表于 2025-10-07 23:10:25">2025-10-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="ft"><div class="ft-item-1"><div class="t-top"><div class="t-t-l"><p class="ft-t t-l-t">格言🧬</p><div class="bg-ad"><div>记录一个NJUCSer的学习历程 · 代码改变世界，技术创造未来</div><div class="btn-xz-box"><a class="btn-xz" href="/about/">了解更多</a></div></div></div></div></div><div class="ft-item-2"><p class="ft-t">推荐友链⌛</p><div class="ft-img-group"><div class="img-group-item"><a href="/links/" title="广告位招租"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/zhaozu.jpg" alt="广告位招租"/></a></div><div class="img-group-item"><a href="/links/" title="更多友联"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/zhaozu.jpg" alt="友链"/></a></div></div></div></div><div class="copyright"><span><b>&copy;2025</b></span><span><b>&nbsp;&nbsp;By Yama-lei</b></span></div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Less is more · © YamaBlog</div><div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat-square" alt="Hexo"/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat-square" alt="Butterfly"/></a><a class="github-badge" target="_blank" href="https://github.com/yama-lei" style="margin-inline:5px" title="源码托管于GitHub"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat-square" alt="GitHub"/></a></p></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><script src="/js/custom.js"></script><script src="/js/footer-enhance.js"></script><script src="/js/homepage-enhance.js"></script><script defer src="/js/runtime.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

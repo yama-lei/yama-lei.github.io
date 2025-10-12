@@ -1,5 +1,17 @@
 [
   {
+    "title": "哎，好像忘记加上md渲染了",
+    "date": "2025-10-02 14:30:00",
+    "content": "这个是qsort的代码\n```cpp\nint partition(int arr[], int start, int end){\n\n    int pivot=arr[start];\n\n    int idx=0;\n\n    while(start<end){\n\n        while(start<end&&arr[end]>=pivot){\n\n            end--;\n\n        }\n\n        arr[start]=arr[end];\n\n        while(start<end&&arr[start]<=pivot){\n\n            start++;\n\n        }\n\n        arr[end]=arr[start];\n\n    }\n\n    arr[start]=pivot;\n\n    return start;\n\n}\n\n  \n\nvoid QuickSort(int arr[], int start,int end){\n\n    if(start>=end){\n\n        return;\n\n    }else{\n\n        int pivot=partition(arr,  start, end);\n\n        QuickSort(arr,start,pivot-1);\n\n        QuickSort(arr,pivot+1,end);\n\n    }\n\n}\n```\n\n核心思想是：\n1. 将某一个数作为分区，把所有比其高的数字都放在后面，所有比起低的数字都放在前面\n2. 在分区函数中，永远有一个没用的位置，先从后开始找，找到一个比pivot小的数，就填在前面空出来的位置，此时空位到了后面；再从前开始找，找第一个比pivot大的数字，交换后pivot到了后面",
+    "tags": [
+      "算法",
+      "md",
+      "talk"
+    ],
+    "image": "https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/20250524194821.png",
+    "link": ""
+  },
+  {
     "title": "第二条测试说说",
     "date": "2025-10-01 14:30:00",
     "content": "这是第二条测试说说，带有图片！\n\n测试一下多条说说的显示效果，看看排序是否正确。",

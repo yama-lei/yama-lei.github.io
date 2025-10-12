@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="b2b956a8-b706-48bb-a4e0-d6052ede6799" name="Lab">
+        <fileTransfer rootFolder="/project/vqa/cv" accessType="SFTP" host="114.212.10.193" port="22" sshConfigId="954b46d1-4636-4319-8297-b0e5d308ddcd" sshConfig="vqa@114.212.10.193:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
