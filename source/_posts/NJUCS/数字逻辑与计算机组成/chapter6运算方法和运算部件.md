@@ -3,6 +3,8 @@ title: chapter6 | 运算方法和运算部件
 categories:
   - NJUCS
   - 数字逻辑与计算机组成
+created: 2025-09-28T21:20
+updated: 2025-09-28T21:41
 ---
 
 [TOC]

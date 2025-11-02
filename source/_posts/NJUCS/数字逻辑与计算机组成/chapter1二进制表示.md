@@ -3,6 +3,8 @@ title: chapter1 二进制表示
 categories:
   - NJUCS
   - 数字逻辑与计算机组成
+created: 2025-09-28T21:20
+updated: 2025-09-30T21:19
 ---
 
 # 二进制表示

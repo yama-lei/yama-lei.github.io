@@ -1,0 +1,376 @@
+/* ============================================
+   朋友圈订阅页面样式
+   ============================================ */
+
+#rss-feed-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.rss-container {
+  position: relative;
+}
+
+/* Header */
+.rss-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.rss-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.rss-title i {
+  color: #f97316;
+  font-size: 1.8rem;
+}
+
+.rss-description {
+  color: #6b7280;
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Controls */
+.rss-controls {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-feed-section {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+}
+
+.add-feed-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.add-feed-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.add-feed-btn i {
+  font-size: 1.1rem;
+}
+
+.add-feed-form {
+  margin-top: 1rem;
+  padding: 1.5rem;
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.feed-url-input,
+.feed-name-input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.feed-url-input:focus,
+.feed-name-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.feed-form-buttons {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.feed-submit-btn,
+.feed-cancel-btn {
+  flex: 1;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.feed-submit-btn {
+  background: #667eea;
+  color: white;
+}
+
+.feed-submit-btn:hover {
+  background: #5568d3;
+  transform: translateY(-1px);
+}
+
+.feed-cancel-btn {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.feed-cancel-btn:hover {
+  background: #e5e7eb;
+}
+
+/* Loading */
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  gap: 1rem;
+  color: #6b7280;
+}
+
+.loading-spinner i {
+  font-size: 2rem;
+  color: #667eea;
+}
+
+/* Feeds List */
+.feeds-list {
+  display: grid;
+  gap: 2rem;
+}
+
+/* RSS Feed Card */
+.rss-feed {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.rss-feed:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.feed-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.feed-info {
+  flex: 1;
+}
+
+.feed-name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 0.5rem 0;
+}
+
+.feed-desc {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.feed-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #667eea;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.feed-link:hover {
+  color: #5568d3;
+}
+
+.feed-remove-btn {
+  padding: 0.5rem;
+  background: transparent;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+}
+
+.feed-remove-btn:hover {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+/* Feed Posts */
+.feed-posts {
+  display: grid;
+  gap: 1rem;
+}
+
+.feed-post-item {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1.25rem;
+  transition: all 0.3s ease;
+}
+
+.feed-post-item:hover {
+  background: #f3f4f6;
+  border-color: #667eea;
+  transform: translateX(4px);
+}
+
+.post-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.post-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 0.75rem 0;
+  line-height: 1.5;
+  transition: color 0.3s ease;
+}
+
+.feed-post-item:hover .post-title {
+  color: #667eea;
+}
+
+.post-excerpt {
+  color: #6b7280;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0 0 0.75rem 0;
+}
+
+.post-meta {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+.post-date,
+.post-author {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.post-date i,
+.post-author i {
+  font-size: 0.8rem;
+}
+
+/* Error State */
+.rss-error {
+  border-color: #fecaca;
+  background: #fef2f2;
+}
+
+.error-message {
+  color: #dc2626;
+  font-size: 0.9rem;
+  margin: 0.5rem 0 0 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #9ca3af;
+}
+
+.empty-state i {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.empty-state p {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+}
+
+.empty-hint {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #rss-feed-page {
+    padding: 1rem 0.5rem;
+  }
+  
+  .rss-title {
+    font-size: 1.6rem;
+  }
+  
+  .rss-description {
+    font-size: 0.9rem;
+  }
+  
+  .feed-name {
+    font-size: 1.2rem;
+  }
+  
+  .feed-post-item {
+    padding: 1rem;
+  }
+  
+  .post-title {
+    font-size: 1rem;
+  }
+  
+  .post-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+

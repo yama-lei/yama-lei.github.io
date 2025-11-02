@@ -12,7 +12,6 @@
       { name: '归档', url: '/archives/', icon: 'fas fa-archive' },
       { name: '分类', url: '/categories/', icon: 'fas fa-list' },
       { name: '标签', url: '/tags/', icon: 'fas fa-tags' },
-      { name: '说说', url: '/essay/', icon: 'fas fa-comment-dots' },
       { name: '友链', url: '/links/', icon: 'fas fa-user-friends' },
       { name: 'Playground', url: '/playground/', icon: 'fas fa-flask' }
     ];

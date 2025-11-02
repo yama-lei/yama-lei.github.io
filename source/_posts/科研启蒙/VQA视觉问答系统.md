@@ -3,6 +3,8 @@ title: VQA视觉问答系统学习笔记
 categories:
   - 科研启蒙
 date: 2025-02-14 00:00:00
+created: 2025-09-28T21:20
+updated: 2025-09-30T21:09
 ---
 
 # VQA 综述阅读：

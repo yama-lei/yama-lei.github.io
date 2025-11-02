@@ -4,6 +4,8 @@ categories:
   - 科研启蒙
   - Reports
 date: 2025-05-24 00:00:00
+created: 2025-09-28T21:20
+updated: 2025-09-28T21:41
 ---
 
 两周之前，我分享了近期读的论文[1511.02274](https://arxiv.org/pdf/1511.02274) Stacked Attendtion of Image Question Answering. 论文讲的是SAN（堆叠注意力）的应用。

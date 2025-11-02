@@ -8,6 +8,9 @@ zhihu-link: https://zhuanlan.zhihu.com/p/1954220510616486296/edit
 categories:
   - NOVA
 date: 2025-09-24 00:00:00
+created: 2025-09-28T21:20
+updated: 2025-11-02T16:27
+cover: https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/1d1cdb7e0f604e8cbb08fa15350f4817preview.jpeg~tplv-a9rns2rl98-downsize_watermark_1_6.png
 ---
 
 

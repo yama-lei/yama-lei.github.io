@@ -1,0 +1,202 @@
+/* ============================================
+   Code Block Redesign
+   全新的代码块与行号排版
+   ============================================ */
+
+:root {
+  --code-line-height: 1.6;
+  --code-font-size: 0.95rem;
+  --code-border-radius: 14px;
+  --code-background: rgba(17, 24, 39, 0.04);
+  --code-border: rgba(148, 163, 184, 0.35);
+  --code-gutter-bg: rgba(15, 23, 42, 0.08);
+  --code-gutter-color: rgba(71, 85, 105, 0.9);
+  --code-gutter-active: rgba(37, 99, 235, 0.45);
+}
+
+.container figure.highlight,
+.table-wrap figure.highlight {
+  margin: 1.75rem 0;
+  border-radius: var(--code-border-radius);
+  border: 1px solid var(--code-border);
+  background: var(--code-background);
+  box-shadow: 0 20px 35px -25px rgba(15, 23, 42, 0.4);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container figure.highlight:hover,
+.table-wrap figure.highlight:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 45px -25px rgba(15, 23, 42, 0.55);
+}
+
+/* Highlight 工具条保留原有风格，只微调内边距 */
+.container figure.highlight .highlight-tools,
+.table-wrap figure.highlight .highlight-tools {
+  padding: 0.65rem 1.2rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+/* 重置 table-wrap 结构，使用 flex 布局使行号与代码对齐 */
+.container figure.highlight table,
+.container figure.highlight tbody,
+.container figure.highlight tr,
+.table-wrap figure.highlight table,
+.table-wrap figure.highlight tbody,
+.table-wrap figure.highlight tr {
+  display: flex;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.container figure.highlight td,
+.table-wrap figure.highlight td {
+  display: block;
+  padding: 0;
+  border: none;
+}
+
+/* 行号栏 */
+.container figure.highlight td.gutter,
+.table-wrap figure.highlight td.gutter {
+  flex: 0 0 3.6rem;
+  background: var(--code-gutter-bg);
+  color: var(--code-gutter-color);
+  font-family: var(--font-mono, "Cascadia Code", "Fira Code", monospace);
+  font-size: var(--code-font-size);
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-end;
+}
+
+.container figure.highlight td.gutter pre,
+.table-wrap figure.highlight td.gutter pre {
+  margin: 0;
+  padding: 1.1rem 0.75rem 1.1rem 0.65rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.container figure.highlight td.gutter pre .line,
+.table-wrap figure.highlight td.gutter pre .line {
+  display: block;
+  min-height: calc(var(--code-line-height) * 1em);
+  line-height: var(--code-line-height);
+  letter-spacing: 0.02em;
+  opacity: 0.6;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+/* 当前行号 hover 效果 */
+.container figure.highlight td.code pre .line:hover ~ span,
+.table-wrap figure.highlight td.code pre .line:hover ~ span {
+  opacity: 0.45;
+}
+
+.container figure.highlight td.gutter pre .line:hover,
+.table-wrap figure.highlight td.gutter pre .line:hover {
+  opacity: 1;
+  color: var(--code-gutter-active);
+}
+
+/* 主体代码区域 */
+.container figure.highlight td.code,
+.table-wrap figure.highlight td.code {
+  flex: 1;
+  padding: 0;
+  background: transparent;
+  font-family: var(--font-mono, "Cascadia Code", "Fira Code", monospace);
+  font-size: var(--code-font-size);
+}
+
+.container figure.highlight td.code pre,
+.table-wrap figure.highlight td.code pre {
+  margin: 0;
+  padding: 1.1rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  white-space: pre;
+}
+
+.container figure.highlight td.code pre .line,
+.table-wrap figure.highlight td.code pre .line {
+  display: block;
+  min-height: calc(var(--code-line-height) * 1em);
+  line-height: var(--code-line-height);
+  white-space: pre;
+  word-break: normal;
+  word-wrap: normal;
+}
+
+/* 空行也需要占据一行的高度，以保持行号同步 */
+.container figure.highlight td.code pre .line:empty::after,
+.table-wrap figure.highlight td.code pre .line:empty::after {
+  content: ' ';
+  white-space: pre;
+}
+
+/* 移除 highlight.js 自动插入的 <br>，避免破坏布局 */
+.container figure.highlight pre br,
+.table-wrap figure.highlight pre br {
+  display: none !important;
+}
+
+/* 深色模式适配 */
+[data-theme='dark'] .container figure.highlight,
+[data-theme='dark'] .table-wrap figure.highlight {
+  background: rgba(148, 163, 184, 0.05);
+  border-color: rgba(148, 163, 184, 0.3);
+  box-shadow: 0 25px 40px -25px rgba(15, 23, 42, 0.7);
+}
+
+[data-theme='dark'] .container figure.highlight td.gutter,
+[data-theme='dark'] .table-wrap figure.highlight td.gutter {
+  background: rgba(30, 41, 59, 0.75);
+  color: rgba(203, 213, 225, 0.75);
+}
+
+[data-theme='dark'] .container figure.highlight td.gutter pre .line:hover,
+[data-theme='dark'] .table-wrap figure.highlight td.gutter pre .line:hover {
+  color: rgba(129, 211, 248, 0.85);
+}
+
+/* 代码块底部工具栏（如复制按钮）与主体保持一致 */
+.container figure.highlight .copy-btn,
+.table-wrap figure.highlight .copy-btn {
+  top: 0.9rem;
+  right: 1rem;
+}
+
+/* Tabs 组件中的代码块适配 */
+.container .tabs .tab-contents .highlight,
+.table-wrap .tabs .tab-contents .highlight {
+  margin: 1rem 0;
+  border-radius: calc(var(--code-border-radius) - 6px);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --code-font-size: 0.88rem;
+    --code-line-height: 1.55;
+  }
+
+  .container figure.highlight td.gutter,
+  .table-wrap figure.highlight td.gutter {
+    flex: 0 0 3.2rem;
+  }
+
+  .container figure.highlight td.gutter pre,
+  .table-wrap figure.highlight td.gutter pre {
+    padding: 0.9rem 0.6rem 0.9rem 0.5rem;
+  }
+
+  .container figure.highlight td.code pre,
+  .table-wrap figure.highlight td.code pre {
+    padding: 0.9rem 1rem;
+  }
+}

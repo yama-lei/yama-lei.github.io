@@ -10,3 +10,5 @@ source/_posts/.obsidian
 source\_posts\copilot-custom-prompts
 /source/_posts/copilot-custom-prompts/
 *.pdf
+*.md
+!README.md

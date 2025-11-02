@@ -3,6 +3,8 @@ categories:
   - NJUCS
   - 数据结构
 title: 数据结构：队列
+created: 2025-09-28T21:20
+updated: 2025-10-15T21:25
 ---
 
 队列（queue）是一种具有「先进入队列的元素一定先出队列」性质的表。由于该性质，队列通常也被称为先进先出（first in first out）表，简称 FIFO 表。
@@ -54,5 +56,22 @@ arr[cur+1]=last;// put the last item in back of the first element that priorer t
 ```
 
 
+
+**使用STL中的有限级队列：**
+```cpp
+priority_queue<int, vector<int>, greater<int>> q1; // 最小堆
+priority_queue<int> q2;                           // 最大堆
+template<typename T>
+struct CMP {
+    bool operator()(const T& t1, const T& t2) const {
+        // 自定义比较逻辑
+        return t1 > t2; // 例如：实现最小堆，需返回 t1 > t2
+    }
+};
+
+priority_queue<Type, vector<Type>, CMP<Type>> q3;
+```
+
+`priority_queue` 默认是最大堆。若需最小堆，可使用 `greater<int>` 作为第三个模板参数。对于自定义类型，需提供一个仿函数（如 `CMP`）来定义元素之间的优先级关系。该仿函数必须重载 `operator()`，并返回 `true` 表示第一个参数应排在第二个之后。
 ## 双端队列
 

@@ -7,7 +7,6 @@ title: <%- title %>
 date: <% tp.date.now("YYYY-MM-DD HH:mm:ss") %>
 categories:
 <%*
- // 根据文件路径生成分类
  let filePath = tp.file.path(true);
  let relativeFolder = filePath.split("/").slice(0, -1).join("/");
  if (relativeFolder) {
@@ -15,5 +14,8 @@ categories:
    for (let category of pathArray) {
 -%>  - <%- category %>
 <%* } } %>
-article: false
+toc: true
+comments: true
+copyright: true
+cover: 
 ---

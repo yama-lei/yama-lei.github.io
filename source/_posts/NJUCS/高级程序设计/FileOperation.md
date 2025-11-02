@@ -1,9 +1,11 @@
 ---
-title: 'String, buffer and file operation'
+title: String, buffer and file operation
 categories:
   - NJUCS
   - 高级程序设计
 date: 2025-04-02 00:00:00
+created: 2025-09-28T21:20
+updated: 2025-09-28T21:41
 ---
 
 # I/O Stream

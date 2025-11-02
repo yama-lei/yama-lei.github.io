@@ -1,0 +1,500 @@
+/* ============================================
+   Dark Mode Styles
+   Applies CSS variables to page elements
+   ============================================ */
+
+/* Smooth transition when switching themes */
+* {
+  transition: background-color var(--transition-base), 
+              border-color var(--transition-base), 
+              color var(--transition-base);
+}
+
+/* Base styles using CSS variables */
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Links */
+a {
+  color: var(--text-link);
+  transition: color var(--transition-fast), opacity var(--transition-fast);
+}
+
+a:hover {
+  color: var(--text-link-hover);
+}
+
+/* Text Selection */
+::selection {
+  background: var(--selection-bg);
+  color: var(--selection-text);
+}
+
+::-moz-selection {
+  background: var(--selection-bg);
+  color: var(--selection-text);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* Navbar */
+#page-header.nav-fixed {
+  background: var(--navbar-bg);
+  backdrop-filter: saturate(160%) blur(8px);
+  border-bottom: 1px solid var(--border-primary);
+}
+
+#nav a,
+#nav .site-name,
+.menus_items a {
+  color: var(--navbar-text) !important;
+}
+
+/* Sidebar & Cards */
+#sidebar,
+.aside-content {
+  background: var(--sidebar-bg);
+}
+
+.card-widget {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+  border-radius: var(--radius-lg);
+}
+
+.card-widget:hover {
+  background: var(--card-bg-hover);
+  box-shadow: var(--card-shadow-hover);
+}
+
+/* Card Content */
+.card-info-social-icons .social-icon,
+.author-info__name,
+.author-info__description {
+  color: var(--text-primary) !important;
+}
+
+.card-tag-cloud a {
+  color: var(--text-secondary) !important;
+}
+
+.card-tag-cloud a:hover {
+  color: var(--text-link) !important;
+}
+
+/* Post Cards */
+.recent-post-item,
+#recent-posts > .recent-post-item {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+}
+
+.recent-post-item:hover {
+  background: var(--card-bg-hover);
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-4px);
+}
+
+.recent-post-info {
+  color: var(--text-secondary);
+}
+
+.recent-post-info > a {
+  color: var(--text-primary) !important;
+}
+
+.recent-post-info > .article-title {
+  color: var(--text-primary) !important;
+}
+
+.recent-post-info > .article-title:hover {
+  color: var(--text-link) !important;
+}
+
+/* Post Content */
+#post,
+#page {
+  background: var(--card-bg);
+  color: var(--text-primary);
+}
+
+#post-info,
+.post-meta {
+  color: var(--text-secondary) !important;
+}
+
+#post h1,
+#post h2,
+#post h3,
+#post h4,
+#post h5,
+#post h6,
+#page h1,
+#page h2,
+#page h3,
+#page h4,
+#page h5,
+#page h6 {
+  color: var(--text-primary) !important;
+}
+
+#post p,
+#page p {
+  color: var(--text-primary);
+}
+
+/* Code Blocks */
+figure.highlight,
+.highlight {
+  background: var(--code-bg) !important;
+  border: 1px solid var(--code-border);
+  color: var(--code-text);
+}
+
+figure.highlight pre,
+.highlight pre,
+code {
+  background: var(--code-bg) !important;
+  color: var(--code-text);
+}
+
+/* Inline code */
+:not(pre) > code {
+  background: var(--code-bg) !important;
+  color: var(--brand-primary);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--code-border);
+}
+
+/* Blockquotes */
+blockquote {
+  border-left: 4px solid var(--brand-primary);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  padding: var(--space-4);
+  margin: var(--space-4) 0;
+  border-radius: var(--radius-md);
+}
+
+/* Tables */
+table {
+  background: var(--card-bg);
+  border: 1px solid var(--border-primary);
+}
+
+thead {
+  background: var(--bg-secondary);
+}
+
+th,
+td {
+  border: 1px solid var(--border-primary);
+  color: var(--text-primary);
+}
+
+tr:hover {
+  background: var(--bg-secondary);
+}
+
+/* TOC */
+#card-toc {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+}
+
+.toc-content {
+  color: var(--text-secondary);
+}
+
+.toc-content .toc-link {
+  color: var(--text-secondary) !important;
+}
+
+.toc-content .toc-link:hover,
+.toc-content .active {
+  color: var(--brand-primary) !important;
+}
+
+/* Footer */
+#footer,
+#footer-wrap {
+  background: var(--footer-bg);
+  color: var(--footer-text) !important;
+  border-top: 1px solid var(--footer-border);
+}
+
+#footer a,
+#footer .copyright,
+#footer .framework-info,
+#footer .footer_custom_text {
+  color: var(--footer-text) !important;
+}
+
+#footer a:hover {
+  color: var(--text-link) !important;
+}
+
+/* Pagination */
+#pagination {
+  color: var(--text-primary);
+}
+
+#pagination .page-number,
+#pagination .extend.prev,
+#pagination .extend.next {
+  background: var(--card-bg);
+  border: 1px solid var(--border-primary);
+  color: var(--text-primary);
+}
+
+#pagination .page-number:hover,
+#pagination .extend.prev:hover,
+#pagination .extend.next:hover {
+  background: var(--brand-primary);
+  color: var(--text-inverse);
+  border-color: var(--brand-primary);
+}
+
+#pagination .page-number.current {
+  background: var(--brand-primary);
+  color: var(--text-inverse);
+  border-color: var(--brand-primary);
+}
+
+/* Search */
+#local-search .search-dialog {
+  background: var(--card-bg);
+  border: 1px solid var(--border-primary);
+  box-shadow: var(--card-shadow-lg);
+}
+
+#local-search-input input {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-primary);
+}
+
+#local-search-input input:focus {
+  border-color: var(--brand-primary);
+}
+
+.search-result-list {
+  color: var(--text-primary);
+}
+
+.search-result-list .local-search-hit-item {
+  border-bottom: 1px solid var(--border-primary);
+}
+
+.search-result-list .local-search-hit-item:hover {
+  background: var(--bg-secondary);
+}
+
+/* Tags & Categories */
+.tag-cloud-tags a,
+.category-lists a {
+  background: var(--bg-secondary);
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-primary);
+}
+
+.tag-cloud-tags a:hover,
+.category-lists a:hover {
+  background: var(--brand-primary);
+  color: var(--text-inverse) !important;
+  border-color: var(--brand-primary);
+}
+
+/* Archive */
+#archive {
+  color: var(--text-primary);
+}
+
+.archive-item-link {
+  color: var(--text-primary) !important;
+}
+
+.archive-item-link:hover {
+  color: var(--brand-primary) !important;
+}
+
+.archive-item-date {
+  color: var(--text-secondary) !important;
+}
+
+/* Comments Section */
+#post-comment {
+  background: var(--card-bg);
+  border-top: 1px solid var(--border-primary);
+}
+
+/* Buttons */
+button,
+.button,
+.btn {
+  background: var(--brand-primary);
+  color: var(--text-inverse);
+  border: none;
+  transition: all var(--transition-fast);
+}
+
+button:hover,
+.button:hover,
+.btn:hover {
+  background: var(--brand-secondary);
+  transform: translateY(-2px);
+  box-shadow: var(--card-shadow-hover);
+}
+
+/* Forms */
+input,
+textarea,
+select {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-md);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--brand-primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Right side buttons */
+#rightside {
+  background: transparent;
+}
+
+.rightside-item {
+  background: var(--card-bg);
+  border: 1px solid var(--border-primary);
+  box-shadow: var(--card-shadow);
+}
+
+.rightside-item:hover {
+  background: var(--brand-primary);
+  border-color: var(--brand-primary);
+}
+
+.rightside-item:hover i {
+  color: var(--text-inverse) !important;
+}
+
+/* Mobile Menu */
+#toggle-menu {
+  background: var(--card-bg);
+  color: var(--text-primary);
+}
+
+#sidebar-menus {
+  background: var(--sidebar-bg);
+}
+
+/* Loading Animation */
+#loading-box {
+  background: var(--bg-primary);
+}
+
+.loading-bg {
+  background: var(--brand-gradient);
+}
+
+/* Note/Callout blocks (for Obsidian-style callouts) */
+.callout {
+  background: var(--bg-secondary);
+  border-left: 4px solid var(--brand-primary);
+  border-radius: var(--radius-md);
+}
+
+.callout.note {
+  border-left-color: var(--color-info);
+}
+
+.callout.warning {
+  border-left-color: var(--color-warning);
+}
+
+.callout.danger {
+  border-left-color: var(--color-error);
+}
+
+.callout.success {
+  border-left-color: var(--color-success);
+}
+
+/* Ensure images don't get inverted */
+img {
+  filter: none !important;
+}
+
+/* Special handling for homepage header */
+#page-header.full_page {
+  color: var(--text-inverse);
+}
+
+#page-header.full_page #site-title,
+#page-header.full_page #site-subtitle {
+  color: var(--text-inverse) !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Ensure proper contrast in dark mode for specific elements */
+[data-theme='dark'] #footer,
+[data-theme='dark'] #footer a,
+[data-theme='dark'] #footer .copyright,
+[data-theme='dark'] #footer .framework-info,
+[data-theme='dark'] #footer .footer_custom_text {
+  color: var(--text-primary) !important;
+}
+
+/* Dark mode toggle button styling */
+#darkmode-button {
+  background: var(--card-bg);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-full);
+  transition: all var(--transition-base);
+}
+
+#darkmode-button:hover {
+  background: var(--brand-primary);
+  border-color: var(--brand-primary);
+  transform: scale(1.1);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .card-widget {
+    margin-bottom: var(--space-4);
+  }
+  
+  #recent-posts > .recent-post-item {
+    margin-bottom: var(--space-4);
+  }
+}
+

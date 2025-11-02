@@ -1,0 +1,360 @@
+/* ============================================
+   Archive Page Timeline Enhancement
+   Vertical timeline with modern design
+   ============================================ */
+
+/* Archive container */
+#archive {
+  position: relative;
+  padding: var(--space-8) 0;
+}
+
+/* Timeline vertical line - Hidden */
+#archive::before {
+  display: none;
+}
+
+/* Year header */
+.archive-year {
+  position: relative;
+  text-align: center;
+  margin: var(--space-12) 0 var(--space-8);
+  z-index: 2;
+}
+
+/* Year style - Only for .archive-year context, not .article-sort-item.year */
+.archive-year .year {
+  display: inline-block;
+  padding: var(--space-3) var(--space-8);
+  font-size: var(--font-size-3xl);
+  font-weight: 900;
+  background: var(--brand-gradient);
+  color: var(--text-inverse);
+  border-radius: var(--radius-full);
+  box-shadow: var(--card-shadow-lg);
+  transition: all var(--transition-base);
+}
+
+.archive-year .year:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 40px rgba(102, 126, 234, 0.4);
+}
+
+/* Archive month group */
+.archive-month {
+  position: relative;
+  margin-bottom: var(--space-10);
+}
+
+.month {
+  position: relative;
+  display: inline-block;
+  padding: var(--space-2) var(--space-5);
+  margin-left: calc(50% - 60px);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--brand-primary);
+  background: var(--card-bg);
+  border: 2px solid var(--brand-primary);
+  border-radius: var(--radius-lg);
+  z-index: 2;
+  box-shadow: var(--card-shadow);
+}
+
+/* Post list */
+.archive-post-list {
+  position: relative;
+  list-style: none;
+  padding: 0;
+  margin: var(--space-6) 0;
+}
+
+/* Individual post item - Exclude title and year items */
+.archive-post-item,
+.archive-item {
+  position: relative;
+  margin-bottom: var(--space-6);
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+/* Ensure article-sort-title doesn't get timeline styles */
+.article-sort-title {
+  position: relative;
+  z-index: 2;
+}
+
+/* Exclude year items from timeline layout */
+.article-sort-item.year {
+  position: relative;
+  z-index: 2;
+}
+
+/* Alternate left/right layout */
+.archive-post-item:nth-child(odd),
+.archive-item:nth-child(odd) {
+  justify-content: flex-start;
+  padding-left: calc(50% + var(--space-8));
+}
+
+.archive-post-item:nth-child(even),
+.archive-item:nth-child(even) {
+  justify-content: flex-end;
+  padding-right: calc(50% + var(--space-8));
+  flex-direction: row-reverse;
+}
+
+/* Timeline dot - Exclude article-sort-title and year items */
+.archive-post-item::before,
+.archive-item::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  background: var(--brand-primary);
+  border: 3px solid var(--bg-primary);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px var(--brand-gradient-light);
+  z-index: 3;
+  transition: all var(--transition-base);
+}
+
+/* Hide dots for article-sort-title and all article-sort-item elements */
+.article-sort-title::before,
+.article-sort-item.year::before {
+  display: none !important;
+}
+
+.archive-post-item:hover::before,
+.archive-item:hover::before {
+  width: 24px;
+  height: 24px;
+  background: var(--brand-gradient);
+  box-shadow: 0 0 0 6px var(--brand-gradient-light),
+              0 0 20px rgba(102, 126, 234, 0.5);
+}
+
+/* Post card */
+.archive-item-link-wrap,
+.archive-post-card {
+  flex: 1;
+  max-width: 45%;
+  padding: var(--space-5);
+  background: var(--card-bg);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--card-shadow);
+  transition: all var(--transition-base);
+  position: relative;
+}
+
+.archive-post-item:nth-child(odd) .archive-item-link-wrap,
+.archive-item:nth-child(odd) .archive-post-card {
+  margin-left: var(--space-4);
+}
+
+.archive-post-item:nth-child(even) .archive-item-link-wrap,
+.archive-item:nth-child(even) .archive-post-card {
+  margin-right: var(--space-4);
+}
+
+.archive-item-link-wrap:hover,
+.archive-post-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: var(--card-shadow-hover);
+  border-color: var(--brand-primary);
+}
+
+/* Connector line from dot to card */
+.archive-post-item .archive-item-link-wrap::before,
+.archive-item .archive-post-card::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: var(--space-4);
+  height: 2px;
+  background: var(--brand-primary);
+  transform: translateY(-50%);
+}
+
+.archive-post-item:nth-child(odd) .archive-item-link-wrap::before,
+.archive-item:nth-child(odd) .archive-post-card::before {
+  left: calc(-1 * var(--space-4));
+}
+
+.archive-post-item:nth-child(even) .archive-item-link-wrap::before,
+.archive-item:nth-child(even) .archive-post-card::before {
+  right: calc(-1 * var(--space-4));
+}
+
+/* Post title */
+.archive-item-link,
+.archive-post-title {
+  display: block;
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+  text-decoration: none;
+  margin-bottom: var(--space-2);
+  transition: color var(--transition-fast);
+}
+
+.archive-item-link:hover,
+.archive-post-title:hover {
+  color: var(--brand-primary);
+}
+
+/* Post date */
+.archive-item-date,
+.archive-post-date {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.archive-item-date i,
+.archive-post-date i {
+  color: var(--brand-primary);
+}
+
+/* Post meta (categories, tags) */
+.archive-post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.archive-post-meta .category,
+.archive-post-meta .tag {
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--font-size-xs);
+  background: var(--brand-gradient-light);
+  color: var(--brand-primary);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--brand-primary);
+}
+
+/* Post count badge */
+.post-count {
+  display: inline-block;
+  padding: var(--space-1) var(--space-3);
+  margin-left: var(--space-2);
+  font-size: var(--font-size-sm);
+  background: var(--brand-gradient-light);
+  color: var(--brand-primary);
+  border-radius: var(--radius-full);
+  font-weight: 600;
+}
+
+/* Collapse/Expand functionality */
+.archive-toggle {
+  text-align: center;
+  margin: var(--space-6) 0;
+}
+
+.archive-toggle-btn {
+  padding: var(--space-2) var(--space-6);
+  background: var(--card-bg);
+  color: var(--text-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-size: var(--font-size-sm);
+}
+
+.archive-toggle-btn:hover {
+  background: var(--brand-primary);
+  color: var(--text-inverse);
+  border-color: var(--brand-primary);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  #archive::before {
+    left: var(--space-6);
+  }
+  
+  .archive-post-item:nth-child(odd),
+  .archive-post-item:nth-child(even),
+  .archive-item:nth-child(odd),
+  .archive-item:nth-child(even) {
+    justify-content: flex-start;
+    padding-left: calc(var(--space-6) * 2 + var(--space-4));
+    padding-right: 0;
+    flex-direction: row;
+  }
+  
+  .archive-post-item::before,
+  .archive-item::before {
+    left: var(--space-6);
+  }
+  
+  .archive-item-link-wrap,
+  .archive-post-card {
+    max-width: 100%;
+  }
+  
+  .archive-post-item:nth-child(even) .archive-item-link-wrap,
+  .archive-item:nth-child(even) .archive-post-card {
+    margin-right: 0;
+    margin-left: var(--space-4);
+  }
+  
+  .archive-post-item .archive-item-link-wrap::before,
+  .archive-post-item:nth-child(even) .archive-item-link-wrap::before,
+  .archive-item .archive-post-card::before,
+  .archive-item:nth-child(even) .archive-post-card::before {
+    left: calc(-1 * var(--space-4));
+    right: auto;
+  }
+  
+  .month {
+    margin-left: var(--space-6);
+  }
+}
+
+@media (max-width: 768px) {
+  .archive-item-link-wrap,
+  .archive-post-card {
+    padding: var(--space-4);
+  }
+  
+  .archive-item-link,
+  .archive-post-title {
+    font-size: var(--font-size-base);
+  }
+  
+  .year {
+    font-size: var(--font-size-2xl);
+    padding: var(--space-2) var(--space-5);
+  }
+  
+  .month {
+    font-size: var(--font-size-base);
+  }
+}
+
+/* Print styles */
+@media print {
+  #archive::before,
+  .archive-post-item::before,
+  .archive-item::before,
+  .archive-item-link-wrap::before,
+  .archive-post-card::before {
+    display: none;
+  }
+  
+  .archive-post-item,
+  .archive-item {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
+

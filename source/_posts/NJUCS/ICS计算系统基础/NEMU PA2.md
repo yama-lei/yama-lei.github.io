@@ -6,11 +6,14 @@ categories:
   - ICS计算系统基础
 article: false
 "":
+created: 2025-10-10T08:39
+updated: 2025-10-29T22:00
 ---
 
 
 
-
+## 实验过程记录
+### RTFC（riscv指令实现）
 在实现了基本的整数指令之后，尝试运行dummy测试，但是出现了bug
 ```text
 riscv32-nemu-interpreter: src/utils/disasm.c:65: disassemble: Assertion `count == 1' failed.
@@ -42,7 +45,7 @@ halt_ret: -2147483592
 [src/cpu/cpu-exec.c:124 cpu_exec] nemu: HIT BAD TRAP at pc = 0x80000030
 ```
 进一步地调试发现，jalr指令多跳转了一步，查看代码发现，我在跳转的时候，把s->dnpc+=imm,但是dnpc本身在前面取操作数的时候就已经+=4了，因此这里不应该额外加这个4，改为
-s->dnpc=s->pc+4;
+s->dnpc=s->pc+imm;
 再次执行指令，成功实现Good Trap！
 ![image.png](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/20251012083305.png)
 
@@ -80,6 +83,224 @@ INSTPAT("??????? ????? ????? 000 ????? 11000 11", beq    , S, if(src1==src2){s
 80000024:       0d8000ef                jal     800000fc <halt>
 ```
 
+查看add.c的源代码，原来是我的指令实现错误，导致执行的结果不一致。
+于是我做了一个add的小规模测试，把循环改为了1次，只计算0+0，此时正确，当我把代码
+，但是在计算0+1的时候就出错了，于是重写了一个测试加法的程序，不使用for 循环：
+```cpp
+    check(add(test_data[0], test_data[0]) == ans[ans_idx++]);
+    check(add(test_data[0], test_data[1]) == ans[ans_idx++]);
+    check(add(test_data[0], test_data[2]) == ans[ans_idx++]);
+    check(add(test_data[0], test_data[3]) == ans[ans_idx++]);
+    check(add(test_data[0], test_data[4]) == ans[ans_idx++]);
+    check(add(test_data[0], test_data[5]) == ans[ans_idx++]);
+    check(add(test_data[0], test_data[6]) == ans[ans_idx++]);
+    check(add(test_data[0], test_data[7]) == ans[ans_idx++]);
+```
+发现**NEMU_PASS**,说明问题在for循环！
+再写一个空的for循环发现也没有任何的问题。
+怀疑是数组访问的问题，写了一个数组检测的测试代码，没有任何问题。
+
+---
+后来反复尝试发现，使用test_data为01的时候是正确的，但是使用test_data为012的时候错误？
+
+
+查看汇编代码，发现在循环只有2* 2次的时候汇编代码是：
+```ass
+
+80000060:       fb1ff0ef                jal     80000010 <check>
+......
+80000078:       f99ff0ef                jal     80000010 <check>
+......
+80000088:       f89ff0ef                jal     80000010 <check>
+......
+8000009c:       f75ff0ef                jal     80000010 <check>
+
+```
+但是当循环为3* 3次的时候得到的汇编代码风格不太一样，出现了bne指令，因此我的指令还是有问题。
+
+接着排查出现的错误：
+- lui指令重复左移（取imm的时候已经左移了）
+- 在jalr指令中，没有清理低位，需要添加“& ~1”的操作
+- 在slt等指令里面没有吧src1改为signed形。**因为src是word_t类型的！**
+- slli等指令没有吧shift取低5位！
+- ......
+
+
+此外，有一个指令我卡了半个多月，期间请教了GPT老师也没有解决，最后的方法是
+
+---
+> Bug 真多，记不下来。。。。
+---
+
+
+**补充：在后面才发现。。原来有一个叫做riscv-test-am的东西可以直接检查指令实现的正确与否**
+### 程序, 运行时环境与AM
+
+#####  实现字符串处理函数
+根据需要实现`abstract-machine/klib/src/string.c`中列出的字符串处理函数, 让`cpu-tests`中的测试用例`string`可以成功运行. 关于这些库函数的具体行为, 请务必RTFM.
+
+这一部分在写的时候没有过多地记录，只记得有很多我没想到的corner case。
+
+第一次实现之后发现测试样例还是死活通过不了，通过把string.c的检查点拆开之后，发现strcat，strcpy，strcmp组合的一个check点没有通过。看手册也没有找到错误，最后让GPT老师帮我看了一下缺了什么，比如XX地方的return value有误，etc。
+#####  实现sprintf
+
+实现`abstract-machine/klib/src/stdio.c`中的`sprintf()`, 具体行为可以参考`man 3 printf`. 目前你只需要实现`%s`和`%d`就能通过`hello-str`的测试了, 其它功能(包括位宽, 精度等)可以在将来需要的时候再自行实现.
+
+使用stdarg获取到参数，在读取fmt字符串的时候，如果读取到%时，需要考虑是否为格式化字符串，目前只要求实现%s和%d，难度不大，实现完成之后，成功通过hello-str的测试。
+> 可以复用vsprintf, vnsprintf等函数，实际上只需要实现vnsprintf一个就行，需要注意截断操作。比如考虑如下程序
+> ```c
+> snprintf(dst,10,"Hello, %s","Alice")
+> ```
+> 会发生截断，按照man 3 snprintf的说法，应该只写入n-1个visible char，最后一个char是`\0`
+
+
+
+#####  stdarg是如何实现的?
+
+`stdarg.h`中包含一些获取函数调用参数的宏, 它们可以看做是调用约定中关于参数传递方式的抽象. 不同ISA的ABI规范会定义不同的函数参数传递方式, 如果让你来实现这些宏, 你会如何实现?
+
+查看stdarg.h，发现之前的va_start, va_arg等等都是用宏来实现的。
+比如`#define va_start(v, ...)   __builtin_va_start(v, 0)`
+va_start调用了c内置函数，其中`void __builtin_va_start(va_list ap, last_param);`
+原来问的是怎么实现ISA的ABI宏是吗？用一个valist变量来传递？规定好每一个ISA的参数类型，然后在框架代码里面传递valist即可。（我猜）
+
+###  基础设施(2)
+
+#####  实现iringbuf
+
+根据上述内容, 在NEMU中实现iringbuf. 你可以按照自己的喜好来设计输出的格式, 如果你想输出指令的反汇编, 可以参考itrace的相关代码; 如果你不知道应该在什么地方添加什么样的代码, 你就需要RTFSC了.
+
+
+在cpu-exec.c中实现iringbuf，期间出现多次的buffer overflow现象，检查后发现是这里出现了错误 `strncpy(iringbuf[(cur_iringbuf_idx++)],s->logbuf,128);`
+cur_iringbuf_idx用于指示当前的节点，但是忘记取余了，导致缓冲区溢出。
+然后再在程序失败的时候执行show_iringbuf即可，我放在了之前程序失败打印寄存器状态的位置
+#####  实现mtrace
+
+这个功能非常简单, 你已经想好如何实现了: 只需要在`paddr_read()`和`paddr_write()`中进行记录即可. 你可以自行定义mtrace输出的格式.
+
+
+先在nemu/Kconfig里面添加有关配置选项（顺便把ftrace也给加上）。
+但是我犯了一个错误：我以为Kconfig里面生成的就是直接的宏，于是我在代码里面写的是
+```c
+#ifdef MTRACE
+#endif
+```
+实际上应该写`CONFIG_MTRACE`.
+
+#####  消失的符号
+
+我们在`am-kernels/tests/cpu-tests/tests/add.c`中定义了宏`NR_DATA`, 同时也在`add()`函数中定义了局部变量`c`和形参`a`, `b`, 但你会发现在符号表中找不到和它们对应的表项, 为什么会这样? 思考一下, 什么才算是一个符号(symbol)?
+
+> 刚好理论课学到链接这😂
+
+只有全局变量和函数才是符号（需要分配一个固定的、全局内存），函数的局部变量以及参数，以栈或者寄存器的方式存储，不是符号。而NR_DATA是一个宏，在预处理的时候就被展开了，自然不是符号。
+#####  寻找"Hello World!"
+
+在Linux下编写一个Hello World程序, 编译后通过上述方法找到ELF文件的字符串表, 你发现"Hello World!"字符串在字符串表中的什么位置? 为什么会这样?
+
+>~~幸亏我PA写得慢~~
+
+![image.png](https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/20251029215935.png)
+如图，在.rodata段，因为字符串是只读的，因此存储在.rodata段。
+#####  实现ftrace
+
+根据上述内容, 在NEMU中实现ftrace. 你可以自行决定输出的格式. 你需要注意以下内容:
+
+- 你需要为NEMU传入一个ELF文件, 你可以通过在`parse_args()`中添加相关代码来实现这一功能
+- 你可能需要在初始化ftrace时从ELF文件中读出符号表和字符串表, 供你后续使用
+- 关于如何解析ELF文件, 可以参考`man 5 elf`
+- 如果你选择的是riscv32, 你还需要考虑如何从`jal`和`jalr`指令中正确识别出函数调用指令和函数返回指令
+
+注意, 你不应该通过`readelf`等工具直接解析ELF文件. 在真实的项目中, 这个方案确实可以解决问题; 但作为一道学习性质的题目, 其目标是让你了解ELF文件的组织结构, 使得将来你在必要的时候(例如在裸机环境中)可以自己从中解析出所需的信息. 如果你通过`readelf`等工具直接解析ELF文件, 相当于自动放弃训练的机会, 与我们设置这道题目的目的背道而驰.
+
+
+#####  不匹配的函数调用和返回
+
+如果你仔细观察上文`recursion`的示例输出, 你会发现一些有趣的现象. 具体地, 注释(1)处的`ret`的函数是和对应的`call`匹配的, 也就是说, `call`调用了`f2`, 而与之对应的`ret`也是从`f2`返回; 但注释(2)所指示的一组`call`和`ret`的情况却有所不同, `call`调用了`f1`, 但却从`f0`返回; 注释(3)所指示的一组`call`和`ret`也出现了类似的现象, `call`调用了`f1`, 但却从`f3`返回.
+
+尝试结合反汇编结果, 分析为什么会出现这一现象.
+
+
+#####  冗余的符号表
+
+在Linux下编写一个Hello World程序, 然后使用`strip`命令丢弃可执行文件中的符号表:
+
+```
+gcc -o hello hello.c
+strip -s hello
+```
+
+用`readelf`查看hello的信息, 你会发现符号表被丢弃了, 此时的hello程序能成功运行吗?
+
+目标文件中也有符号表, 我们同样可以丢弃它:
+
+```
+gcc -c hello.c
+strip -s hello.o
+```
+
+用`readelf`查看hello.o的信息, 你会发现符号表被丢弃了. 尝试对hello.o进行链接:
+
+```
+gcc -o hello hello.o
+```
+
+你发现了什么问题? 尝试对比上述两种情况, 并分析其中的原因.
+
+
+#####  如何生成native的可执行文件
+
+阅读相关Makefile, 尝试理解`abstract-machine`是如何生成`native`的可执行文件的.
+
+#####  奇怪的错误码
+
+为什么错误码是`1`呢? 你知道`make`程序是如何得到这个错误码的吗?
+
+
+
+
+不过和最后只输出一次的iringbuf不同, 程序一般会执行很多访存指令, 这意味着开启mtrace将会产生大量的输出, 因此最好可以在不需要的时候关闭mtrace. 噢, 那就参考一下itrace的相关实现吧: 尝试在Kconfig和相关文件中添加相应的代码, 使得我们可以通过menuconfig来打开或者关闭mtrace. 另外也可以实现mtrace输出的条件, 例如你可能只会关心某一段内存区间的访问, 有了相关的条件控制功能, mtrace使用起来就更加灵活了.
+#### difftest
+在difftest_step函数中有一个局部变量ref_r，之后调用ref_difftest_regcpy来给这个cpu state进行赋值(把ref的pc值和寄存器值保存在ref_r中)。
+之后调用  `checkregs(&ref_r, pc);`来实现最后一步，检查寄存器和pc是否相同。
+为了确定我的cppu实现是否和框架代码是一致的（也就是在copy的时候会不会出现错误），尝试查找源代码。
+上诉中复制cpu state的函数通过dlsym进行加载`  ref_difftest_regcpy = dlsym(handle, "difftest_regcpy");`
+函数是在运行时动态链接形成的，对应的源代码在tools/difftest下面，发现其中核心的函数是
+```c
+void sim_t::diff_get_regs(void* diff_context) {
+
+  struct diff_context_t* ctx = (struct diff_context_t*)diff_context;
+
+  for (int i = 0; i < NR_GPR; i++) {
+
+    ctx->gpr[i] = state->XPR[i];
+
+  }
+
+  ctx->pc = state->pc;
+
+}
+```
+因此只需要比较XPR和gpr的定义是否相同就行。
+发现XPR是一个  `regfile_t`类（在decode.h)：regfile_t<reg_t, NXPR, true> XPR;
+而在这个类中的operator[]操作中
+```c
+  const T& operator [] (size_t i) const
+  {
+    return data[i];
+  }
+```
+数据来自data，data就是一个数组，在XPR中类型诶uint64_t，
+
+> 偶然间发现spike的源文件里面有一些之前实现过的内容
+
+
+框架代码已经基本实现了difftest的功能，我们需要做的就是实现`isa_difftest_checkregs()`函数。
+
+
+在实现这个函数的时候犯了一个错误，在比较pc的时候，应该是比较ref_r->pc和cpu.pc，而不是将cpu.pc和pc进行比较。
+## 必答题
+下面是PA实验报告的必答题。
 ### 立即数背后的故事
 
 **大端和小端**

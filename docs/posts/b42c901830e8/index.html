@@ -1,0 +1,551 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>第四章 程序的机器级表示 | YamaBlog</title><meta name="author" content="Yama-lei"><meta name="copyright" content="Yama-lei"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Note  老师说这一章很重要，特别是函数调用部分，要能够读懂函数调用的过程。考试的重点是4567+3 本章主要讲的是函数的栈帧，怎么看出XX变量的地址是是XX等等。  听到了代码，栈，三个寄存器（EBP，ESP，EIP）来完成整个函数的调用之类的东西 将来会叫我们画函数的栈帧，里面会有eax ebx之类的东西，会有局部变量，会有函数的参数等等 在函数的执行过程中，ebp不变，一直指向栈帧基址">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第四章 程序的机器级表示">
+<meta property="og:url" content="https://yama-lei.top/posts/b42c901830e8/index.html">
+<meta property="og:site_name" content="YamaBlog">
+<meta property="og:description" content="Note  老师说这一章很重要，特别是函数调用部分，要能够读懂函数调用的过程。考试的重点是4567+3 本章主要讲的是函数的栈帧，怎么看出XX变量的地址是是XX等等。  听到了代码，栈，三个寄存器（EBP，ESP，EIP）来完成整个函数的调用之类的东西 将来会叫我们画函数的栈帧，里面会有eax ebx之类的东西，会有局部变量，会有函数的参数等等 在函数的执行过程中，ebp不变，一直指向栈帧基址">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp">
+<meta property="article:published_time" content="2025-09-28T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-10-20T02:49:42.096Z">
+<meta property="article:author" content="Yama-lei">
+<meta property="article:tag" content="class-notes">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "第四章 程序的机器级表示",
+  "url": "https://yama-lei.top/posts/b42c901830e8/",
+  "image": "https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp",
+  "datePublished": "2025-09-28T16:00:00.000Z",
+  "dateModified": "2025-10-20T02:49:42.096Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Yama-lei",
+      "url": "https://yama-lei.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yama-lei.top/posts/b42c901830e8/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)')
+          const mediaQueryLight = window.matchMedia('(prefers-color-scheme: light)')
+
+          if (theme === undefined) {
+            if (mediaQueryLight.matches) activateLightMode()
+            else if (mediaQueryDark.matches) activateDarkMode()
+            else {
+              const hour = new Date().getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            mediaQueryDark.addEventListener('change', () => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else {
+            theme === 'light' ? activateLightMode() : activateDarkMode()
+          }
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":true,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'medium_zoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '第四章 程序的机器级表示',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/var.css"><link rel="stylesheet" href="/css/dark-mode.css"><link rel="stylesheet" href="/css/callout_blocks.css"><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/homepage-hero.css"><link rel="stylesheet" href="/css/navbar-enhance.css"><link rel="stylesheet" href="/css/page-headers.css"><link rel="stylesheet" href="/css/post-enhance.css"><link rel="stylesheet" href="/css/reading-enhance.css"><link rel="stylesheet" href="/css/code-enhance.css"><link rel="stylesheet" href="/css/code-block-redesign.css"><link rel="stylesheet" href="/css/card-enhance.css"><link rel="stylesheet" href="/css/sidebar-enhance.css"><link rel="stylesheet" href="/css/category-tag-page.css"><link rel="stylesheet" href="/css/archive-timeline.css"><link rel="stylesheet" href="/css/footer-redesign.css"><meta name="generator" content="Hexo 8.0.0"><link rel="alternate" href="/atom.xml" title="YamaBlog" type="application/atom+xml">
+</head><body><div id="web_bg" style="background-color: #ffffff;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">131</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-list"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/playground/"><i class="fa-fw fas fa-flask"></i><span> Playground</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-user-friends"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/rss/"><i class="fa-fw fas fa-rss-square"></i><span> 朋友圈</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">YamaBlog</span></a><a class="nav-page-title" href="/"><span class="site-name">第四章 程序的机器级表示</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-list"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/playground/"><i class="fa-fw fas fa-flask"></i><span> Playground</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-user-friends"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/rss/"><i class="fa-fw fas fa-rss-square"></i><span> 朋友圈</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">第四章 程序的机器级表示</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-09-28T16:00:00.000Z" title="发表于 2025-09-29 00:00:00">2025-09-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-10-20T02:49:42.096Z" title="更新于 2025-10-20 10:49:42">2025-10-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/NJUCS/">NJUCS</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/NJUCS/ICS%E8%AE%A1%E7%AE%97%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/">ICS计算系统基础</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">3.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>11分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><hr />
+<details class="custom-callout note" open><summary class="callout-title"><div class="callout-icon"></div><div>Note</div>
+<div class="callout-fold"></div></summary><div class="callout-body">
+<p>老师说这一章很重要，特别是函数调用部分，要能够读懂函数调用的过程。考试的重点是4567+3
+本章主要讲的是函数的栈帧，怎么看出XX变量的地址是是XX等等。</p>
+</div>
+</details><p>听到了代码，栈，三个寄存器（EBP，ESP，EIP）来完成整个函数的调用之类的东西</p>
+<p>将来会叫我们画函数的栈帧，里面会有eax ebx之类的东西，会有局部变量，会有函数的参数等等</p>
+<p>在函数的执行过程中，ebp不变，一直指向栈帧基址</p>
+<details class="custom-callout note" open><summary class="callout-title"><div class="callout-icon"></div><div>栈帧形状</div>
+<div class="callout-fold"></div></summary><div class="callout-body">
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">参数 (caller传的)</span><br><span class="line">返回地址 (call压入)</span><br><span class="line">旧 ebp (push ebp 保存的)</span><br><span class="line">------------------ ← ebp 指向这里 (栈帧基址)</span><br><span class="line">局部变量区 (向低地址扩展)</span><br><span class="line">临时保存的寄存器</span><br><span class="line">------------------ ← esp 指向这里 (栈顶)</span><br><span class="line">[低地址]</span><br><span class="line"></span><br><span class="line">所以参数的访问都是用 ebp + 偏移量来访问，返回值一般都在 eax 寄存器中，如果是浮点数，那么就是压入 XX（这个不考）</span><br></pre></td></tr></table></figure>
+</div>
+</details><p><strong>栈帧必须要会画</strong></p>
+<p>以这个代码为</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">add</span> <span class="params">( <span class="type">int</span> x, <span class="type">int</span> y )</span> &#123;</span><br><span class="line">	 <span class="keyword">return</span> x+y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span>	 <span class="title function_">caller</span> <span class="params">( )</span> &#123;	</span><br><span class="line">	 <span class="type">int</span>	t1 = <span class="number">125</span>;</span><br><span class="line">      <span class="type">int</span> 	t2 = <span class="number">80</span>;</span><br><span class="line">	 <span class="type">int</span>	sum = add (t1, t2);</span><br><span class="line">	 <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>leave的作用是 mov ebp esp; pop ebp，也就是把esp的值改为ebp的值，然后把栈顶的值（现在栈顶就是ebp所指的位置，也就是</p>
+<p>ebp+8是第一个参数，ebp+c是第二个参数
+在这里的esp没有改变，因此无需调用</p>
+<p>在分析汇编代码的时候，需要注意eax通常是result，因为eax</p>
+<p>call指令做两件事情：</p>
+<ul>
+<li>把eip的地址存入栈中</li>
+<li>把epi跳转到调用函数的地址
+leave：</li>
+<li>mov ebp esp</li>
+<li>pop ebp（把原先的ebp的值还原）ebp被修改了，esp也被修改了
+ret：</li>
+<li>pop eip 把原先call指令存入的eip重新进行弹出</li>
+</ul>
+<p>函数调用流程：</p>
+<ul>
+<li>push ebp： 只修改esp的内容（esp-4）</li>
+<li>mov esp ebp ： 修改ebp的值</li>
+<li>sub $0x10 %esp (示例)：在ebp和修改之后的esp之间会存储函数的局部变量。<strong>生成栈帧</strong></li>
+<li>保存ebx esi ebi等被调用者的寄存器在使用之前需要先保存下来（callee负责保存）</li>
+<li>如果访问8(%ebp)，相当于是访问第一个变量。</li>
+<li>在eax或者fpu的st(0)准备返回参数</li>
+<li>leave pop ret指令（根据情况决定）</li>
+</ul>
+<blockquote>
+<p>ebp需要改变的原因是需要保存局部变量，但是在64位里面可以直接把变量存在寄存器里面，在64位里常常使用相对于pc的位置来存储变量，因此有时候不需要修改ebp（rbp）</p>
+</blockquote>
+<p></p>
+<blockquote>
+<p>IA32中不支持两个操作数都是内存地址想</p>
+</blockquote>
+<p>在大多语言中：</p>
+<ul>
+<li>参数位置越在前面，在栈中分配的地址越低</li>
+<li>函数中局部变量的地址比参数的地址更低</li>
+</ul>
+<p>可执行文件：</p>
+<ul>
+<li>只读区（代码，格式串，浮点数的初始值，const变量）（.init .text .tatada）</li>
+<li>读写区（.data .bss)</li>
+<li>只读区和读写区是分页的，隔页相差4kb（8048XXXX和8049XXXX是在不同的区，因为4kb为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>11</mn></msup></mrow><annotation encoding="application/x-tex">2^{11}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span>）
+存储映像：</li>
+<li>内核虚拟区</li>
+<li>用户栈（栈帧是在运行的过程中逐步建立和释放的，函数栈帧的建立和释放靠的是ebp和esp的修改）</li>
+<li>共享库存储</li>
+<li>堆（heap）由malloc申请
+<img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/20251013100435.png" alt="image.png" /></li>
+</ul>
+<p></p>
+<details class="custom-callout note" open><summary class="callout-title"><div class="callout-icon"></div><div>代码执行过程的分析</div>
+<div class="callout-fold"></div></summary><div class="callout-body">
+<p>执行如下代码：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> x=<span class="number">100</span>;</span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line"><span class="type">int</span> x; <span class="comment">//what if int x=10, and what if static int x;?</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%x= %d\n&quot;</span>,x);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</div>
+</details><p>static的作用：文件作用域</p>
+<p></p>
+<p>栈帧地址：bfffXXXX
+读写区：8048XXXX
+只读代码区：8049XXXX（或者804aXXXX，取决于代码长度）</p>
+<p>因此在汇编代码中看到了8049/804a开头的一定是全局变量，看到是bfff开头的是局部变量</p>
+<p></p>
+<hr />
+<h2 id="第一讲c语言程序的机器级表示"><a class="markdownIt-Anchor" href="#第一讲c语言程序的机器级表示"></a> 第一讲：C语言程序的机器级表示</h2>
+<h2 id="x86_64-的过程调用"><a class="markdownIt-Anchor" href="#x86_64-的过程调用"></a> x86_64 的过程调用</h2>
+<p>过程调用的参数传递（Linux/GCC）:</p>
+<ul>
+<li>通过寄存器传送参数</li>
+<li>最多可有6个整型或指针型参数通过寄存器传递</li>
+<li>超过6个入口参数时，后面的通过栈来传递</li>
+<li>在栈中传递的参数若是基本类型，则都被分配8个字节</li>
+<li>call（或callq）将64位返址保存在栈中之前，执行<code>R[rsp]←R[rsp]-8</code></li>
+<li>ret从栈中取出64位返回地址后，执行<code>R[rsp]←R[rsp]+8 </code>
+<img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/20251013103439.png" alt="image.png" /></li>
+</ul>
+<p>在64位寄存器中浮点数使用的寄存器和32位的不一样！
+整数使用通用寄存器，如果涉及到浮点数，那么浮点数使用XMM来传递
+x86-64过程的浮点参数传递
+最多可有8个浮点型参数通过XMM0~XMM7传递
+超过8个浮点入口参数时，后面的通过栈来传递，各占8B
+使用XMM0存放浮点数返回值
+所有XMM都是调用者保存寄存器，被调用过程无须保存任何XMM寄存器即可直接使用
+当入口参数列表中同时包含整型、浮点型和指针型参数时，整型和指针型参数通过通用寄存器传递，浮点型参数通过XMM寄存器传递。
+每个入口参数与寄存器之间的映射关系取决于参数类型和排列顺序
+如：函数原型为
+double funct(int i,double x,long j,double y,double *yptr)时，<br />
+参数 i、j 和 yptr 分别存放在通用寄存器EDI、RSI和RDX中
+参数 x 和 y 分别存放在XMM0和XMM1中
+返回结果存放在XMM0中</p>
+<p></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span>&#123;</span><br><span class="line">	<span class="type">int</span> a=<span class="number">1</span>;</span><br><span class="line">	<span class="type">double</span> b=<span class="number">1.0</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在pirnt(\%d\n&quot;,a);的时候，第一个参数是FMT，第二个参数本来是a（是一个浮点数），应该要从XMM里面读取，但是写的是%d，所以从通用寄存器读取，而非XMM里面读取。</p>
+<p><strong>选择结构的机器级表示</strong></p>
+<ul>
+<li>If-else语句举例 (记住：“不满足就跳走”的逻辑！)</li>
+<li>switch-case,跳转表。如果分支相同，那么在跳转表里面是一个地址（如果case没有break，那么最后是没有一个jmp指令的）</li>
+</ul>
+<blockquote>
+<p>给出汇编代码，要求复原</p>
+</blockquote>
+<p><strong>循环结构的机器级表示</strong></p>
+<p></p>
+<p></p>
+<p></p>
+<details class="custom-callout note" open><summary class="callout-title"><div class="callout-icon"></div><div> </div>
+<div class="callout-fold"></div></summary><div class="callout-body">
+<p><strong>变量声明的位置不同 → 存储位置也不同。</strong></p>
+</div>
+</details><p></p>
+<p>全局变量（Global / Static 变量）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="type">float</span> b = <span class="number">10.0</span>;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">项目</th>
+<th style="text-align:left">存储区域</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>a = 10</code></td>
+<td style="text-align:left"><code>.data</code> 段（可读可写数据区）</td>
+<td style="text-align:left">初始化的全局变量存放在 <code>.data</code> 段中。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>b = 10.0</code></td>
+<td style="text-align:left"><code>.data</code> 段</td>
+<td style="text-align:left">同样属于已初始化的全局变量。浮点数常量本身会以 IEEE754 形式存放在 <code>.data</code> 段中。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>const int a = 10;</code></td>
+<td style="text-align:left"><code>.rodata</code> 段（只读区）</td>
+<td style="text-align:left">若声明为 <code>const</code>，编译器会放在只读区（<code>.rodata</code>）中，防止修改。</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>初始化的全局/静态变量 → <code>.data</code> 段</li>
+<li>未初始化的全局/静态变量 → <code>.bss</code> 段</li>
+<li>const 常量 → <code>.rodata</code> 段（只读常量区）</li>
+<li>全局变量在程序整个运行期间都存在。
+局部变量（Local 变量）</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">func</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="type">int</span> a = <span class="number">0</span>;</span><br><span class="line">    <span class="type">float</span> b = <span class="number">10.0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">项目</th>
+<th style="text-align:left">存储位置</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>a</code></td>
+<td style="text-align:left">栈（Stack）</td>
+<td style="text-align:left">局部整型变量在函数调用时从栈上分配空间。</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>b</code></td>
+<td style="text-align:left">栈（Stack） + <code>.rodata</code> 常量区</td>
+<td style="text-align:left"><code>b</code> 的值 <code>10.0</code> 是一个<strong>立即数常量</strong>，存放在只读常量区；函数执行时，从 <code>.rodata</code> 读取常量并存入栈上的 <code>b</code>。</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>局部变量本身存在于栈帧中。</li>
+<li>若是初始化的立即数（如 <code>b = 10.0</code>），<strong>指令会从 <code>.rodata</code> 读取常量再写入栈中</strong>。</li>
+</ul>
+<h2 id="第二讲复杂数据类型的分配和访问"><a class="markdownIt-Anchor" href="#第二讲复杂数据类型的分配和访问"></a> 第二讲：复杂数据类型的分配和访问</h2>
+<h4 id="一-数组-arrays"><a class="markdownIt-Anchor" href="#一-数组-arrays"></a> <strong>一、 数组 (Arrays)</strong></h4>
+<p><strong>1. 内存分配</strong></p>
+<ul>
+<li><strong>全局/静态数组</strong> (如 <code>int global_arr[10];</code>):
+<ul>
+<li><strong>位置</strong>: 编译时确定地址，存放在 <strong>数据段</strong> (<code>.data</code> 或 <code>.bss</code> 区)。</li>
+<li><strong>生命周期</strong>: 整个程序运行期间。</li>
+</ul>
+</li>
+<li><strong>局部数组</strong> (如函数内的 <code>int local_arr[10];</code>):
+<ul>
+<li><strong>位置</strong>: 函数调用时在 <strong>栈 (Stack)</strong> 上分配。</li>
+<li><strong>分配方式</strong>: 通过移动栈顶指针实现，如 <code>subl $40, %esp</code>。</li>
+<li><strong>基地址</strong>: 通过栈帧指针 <code>%ebp</code> 的负偏移量来定位，如 <code>-40(%ebp)</code>。</li>
+</ul>
+</li>
+</ul>
+<p><strong>2. 访问方式：基址 + 变址</strong></p>
+<p>数组访问的核心公式是：<code>地址(arr[i]) = 数组基地址 + i * sizeof(元素类型)</code>。</p>
+<p>IA32汇编使用 <strong>变址寻址 (Scaled Indexed Addressing)</strong> 模式 <code>D(Rb, Ri, S)</code> 来高效实现这一操作，其计算地址为 <code>Rb + Ri * S + D</code>。</p>
+<ul>
+<li><strong>示例 (访问 <code>int arr[i]</code>)</strong>:
+<ul>
+<li>
+<p>假设索引 <code>i</code> 存放在 <code>%eax</code> 寄存器。</p>
+</li>
+<li>
+<p><code>sizeof(int)</code> 为 4，所以比例因子是 <code>4</code>。</p>
+</li>
+<li>
+<p><strong>访问全局数组</strong>:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">movl global_arr(,%eax,4), %edx  # edx = global_arr[i]</span><br><span class="line"># 基地址(Rb): global_arr, 变址(Ri): %eax, 比例因子(S): 4</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>访问局部数组</strong> (假设基地址为 <code>-40(%ebp)</code>)：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">movl -40(%ebp,%eax,4), %edx   # edx = local_arr[i]</span><br><span class="line"># 基地址(Rb): %ebp, 位移(D): -40, 变址(Ri): %eax, 比例因子(S): 4</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h4 id="二-结构体-structs"><a class="markdownIt-Anchor" href="#二-结构体-structs"></a> <strong>二、结构体 (Structs)</strong></h4>
+<p><strong>1. 内存分配</strong><br />
+与数组类似，全局或静态结构体分配在数据段，局部结构体分配在栈上。</p>
+<p><strong>2. 数据对齐（Data Alignment）</strong></p>
+<ul>
+<li><strong>原因</strong>：为提升 CPU 访存效率，编译器会确保每个成员的起始地址是其自身大小的整数倍。</li>
+<li><strong>行为</strong>：在成员之间自动插入<strong>填充字节（padding）</strong>。</li>
+<li><strong>结果</strong>：<code>sizeof(struct)</code> <strong>不一定</strong>等于各成员大小之和。</li>
+<li><strong>示例</strong>：<code>struct { char c; int i; };</code>
+<ul>
+<li><code>c</code> 位于偏移量 0（占 1 字节）；</li>
+<li>编译器填充 3 字节，使 <code>i</code> 的地址为 4 的倍数；</li>
+<li><code>i</code> 位于偏移量 4（占 4 字节）；</li>
+<li>总大小为 8 字节，而非 5 字节。</li>
+</ul>
+</li>
+</ul>
+<p><strong>3. 访问方式：基址 + 偏移量</strong><br />
+结构体成员的地址计算公式为：<br />
+<code>地址(st.member) = 结构体基地址 + member 的偏移量(offset)</code>。<br />
+其中，<code>offset</code> 在编译时确定。</p>
+<ul>
+<li><strong>示例（<code>struct Point { int x; int y; }</code>）</strong>：
+<ul>
+<li><code>x</code> 的偏移量为 0，<code>y</code> 的偏移量为 4；</li>
+<li>假设局部变量 <code>p</code> 的基地址为 <code>-8(%ebp)</code>；</li>
+<li>访问 <code>p.x</code>：<code>movl $10, -8(%ebp)</code>（基地址 + 偏移量 0）；</li>
+<li>访问 <code>p.y</code>：<code>movl $20, -4(%ebp)</code>（基地址 + 偏移量 4）。</li>
+</ul>
+</li>
+</ul>
+<p><strong>4. 作为函数参数</strong></p>
+<ul>
+<li>
+<p><strong>按值传递（不推荐）</strong>：</p>
+<ul>
+<li><strong>过程</strong>：整个结构体被<strong>复制</strong>到栈上作为参数；</li>
+<li><strong>缺点</strong>：
+<ol>
+<li><strong>开销大</strong>：结构体越大，复制所需时间和栈空间越多；</li>
+<li><strong>无法修改</strong>：函数内修改的是副本，不影响原始数据。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>按地址/指针传递（强烈推荐）</strong>：</p>
+<ul>
+<li>
+<p><strong>过程</strong>：仅将指向结构体的<strong>指针</strong>（IA32 下为 4 字节）压入栈；</p>
+</li>
+<li>
+<p><strong>优点</strong>：</p>
+<ol>
+<li><strong>开销小</strong>：无论结构体多大，传递的只是一个指针；</li>
+<li><strong>可修改</strong>：函数通过指针可直接修改原始数据。</li>
+</ol>
+</li>
+<li>
+<p><strong>汇编对比</strong>：</p>
+<ul>
+<li>调用 <code>func(p)</code>：需将 <code>p</code> 的所有成员逐个 <code>push</code> 到栈；</li>
+<li>调用 <code>func_ptr(&amp;p)</code>：只需计算 <code>p</code> 的地址并压栈：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">  leal -8(%ebp), %eax   # 计算 p 的有效地址</span><br><span class="line">  pushl %eax            # 压入地址</span><br><span class="line">  call func_ptr</span><br><span class="line">  ```  </span><br><span class="line">- 在 `func_ptr` 内访问 `p_ptr-&gt;x`：  </span><br><span class="line">```s</span><br><span class="line">  movl 8(%ebp), %eax    # eax = p_ptr（获取结构体地址）</span><br><span class="line">  movl $100, (%eax)     # p_ptr-&gt;x = 100</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>联合体的分配与访问</strong><br />
+联合体的所有成员共享同一块存储空间，其总大小等于所需空间最大的成员的大小。</p>
+<p><strong>数据对齐</strong>
+<strong>1. 为什么需要对齐？ (The Why)</strong></p>
+<ul>
+<li><strong>硬件限制</strong>: 内存控制器通常按固定大小的块（如2, 4, 8, 16字节）读取数据。这个大小由内存总线宽度决定。</li>
+<li><strong>性能考量</strong>: 如果一个数据（如4字节的int）被存放在一个内存块的内部（如地址8-11），那么一次内存访问就能读完。如果它跨越了两个块（如地址6-9），就需要两次内存访问和额外的拼接操作，效率极低。数据对齐就是为了避免这种情况。
+<strong>2. 默认的结构体对齐规则</strong>
+编译器为了保证性能，会遵循一套默认的对齐规则。这套规则可以总结为三条黄金法则：
+<strong>法则1：成员对齐</strong><br />
+结构体中的每个成员，其<strong>起始地址</strong>相对于结构体<strong>起始地址的偏移量 (offset)</strong>，必须是该成员<strong>自身大小</strong>的整数倍。如果不是，编译器会在前一个成员后面填充字节（Padding）来凑齐。
+<strong>法则2：整体对齐</strong><br />
+结构体作为一个整体，它的<strong>对齐字节数</strong>等于其所有成员中<strong>最大那个成员的大小</strong>。这个也叫作结构体的 alignment。
+<strong>法则3：末尾对齐</strong><br />
+结构体的<strong>总大小</strong>必须是其<strong>整体对齐字节数（由法则2得出）的整数倍</strong>。如果不是，编译器会在最后一
+例子：</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">N</span>&#123;</span></span><br><span class="line">	<span class="type">int</span> a;<span class="type">short</span> b;<span class="type">double</span> c;<span class="type">char</span> d;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="string">&quot;&quot;</span><span class="string">&quot;对应的地址</span></span><br><span class="line"><span class="string">| a a a a | b b PAD PAD | c c c c c c c c | d PAD PAD PAD PAD PAD PAD PAD |</span></span><br><span class="line"><span class="string">|---------|-------------|-----------------|-------------------------------|</span></span><br><span class="line"><span class="string">0         4             8                 16                              24</span></span><br><span class="line"><span class="string">&quot;</span><span class="string">&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+<p><strong>3.手动控制对齐</strong>
+<code>#pragma</code> pack(n): 数据紧缩
+作用: 设置成员的最大对齐字节数。成员实际对齐按 min(自身大小, n) 计算。
+常见用法: <code>#pragma pack(1)</code>，表示所有成员都按1字节对齐，即取消所有对齐填充。
+<strong>attribute</strong>((aligned(n))): 提升对齐 (GCC/Clang)
+作用: 强制一个变量或结构体类型的起始地址至少按 n 字节对齐。n 必须是2的幂。</p>
+<p></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://yama-lei.top">Yama-lei</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://yama-lei.top/posts/b42c901830e8/">https://yama-lei.top/posts/b42c901830e8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://yama-lei.top" target="_blank">YamaBlog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/class-notes/">class-notes</a></div><div class="post-share"><div class="social-share" data-image="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/f8852f3c7884/" title="第三章： 程序的转换与指令系统"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">第三章： 程序的转换与指令系统</div></div><div class="info-2"><div class="info-item-1"> 程序的转换以及机器数表示 RTL表示 RTL：Register Transfer Language。在本书中规定为：R[r]寄存器r里面存储的内容，M[addr]地址addr里面存储的内容，PC程序计数器 目的寄存器在左，源操作数在  重点掌握32位的知识，这个是考试的核心的内容，但是64位是现在用的比较多的。。 考试形式：给高级语言和汇编语言，分析程序执行过程中的各种内容的分析  汇编语言格式  以mov指令为例，这里选取了一个基址+变址*倍数 +偏移量的方式  Intel格式： mov [bx+di-6], cl AT&amp;T格式：  课程采取AT&amp;T的格式  我们需要学习的是，如何写RTL语言 一条指令必须包含的信息 操作码：指定操作类型 操作数：一个或多个源操作数所在的地址 x86_64和IA32的区别 x86_64添加了8个64位的通用寄存器，所有的GPRs都由原先的32位扩充到64位。字长变为64位，过程调用的时候通常用通用寄存器而不是栈来传递参数  3.2 IA-32  寻址方式  寄存器的顺序是： eax ecx edx ebx 分别代表了0 1 2...</div></div></div></a><a class="pagination-related" href="/posts/d6566df8e19d/" title="241220106_lab03"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">241220106_lab03</div></div><div class="info-2"><div class="info-item-1">          A4 图片展示        html, body {       height: 100%;       margin: 0;       background: #eee;       -webkit-print-color-adjust: exact;     } /* A4 纸张盒子：210mm x 297mm */ .sheet {   width: 210mm;   height: 297mm;   margin: 20px auto;   background: #fff;   box-shadow: 0 0 12px rgba(0,0,0,0.18);   display: flex;   align-items: center;   justify-content: center;   overflow: hidden; }  /* 图片自适应 A4，保持纵横比，居中显示 */ .sheet img {   max-width: 100%;   max-height: 100%;   object-fit: contain;   displa...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/posts/a7a0c9086189/" title="高程复习"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-06-10</div><div class="info-item-2">高程复习</div></div><div class="info-2"><div class="info-item-1"> 老师最后一节课画的重点  面相对象： 代码、背后的逻辑（在编程题和程序分析题） 操作符重载：不会单独考，会和oop一起考（和编程题中加入，手写代码） 面向对象IO（输入流输出流不作为重点，）不是重点，可能在编程里需要处理输入输出 Exception 不会多于5分，考程序分析题 不会考时间驱动的 泛型不会单独出题 并行程序设计 10分左右，OJ、课后作业、课上例子的难度 内存安全程序设计： 程序分析题等，会和面向程序等知识结合 函数式和程序 只有程序分析题和编程题（全是代码，不需要注意ppt里面有哪些概念，而是把编程熟悉） STL 不考，如果考的话，会告诉所有api，甚至可以在考试的时候问。 智能指针会考，因为属于内存安全问题（时间和空间，unique_ptr,shared_ptr,weak_ptr） 题量比较大，可能是2h刚好写完，题量大 IO和事件驱动不用看   核心必考内容  1. 面向对象编程  1.1 对象的创建方式（必考）  直接创建：A a; 内存在stack区，作用域结束后内存自动释放 间接方式创建动态变量：A* p=new A; 需要手动释放内存 delete ...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Yama-lei</div><div class="author-info-description">记录一个NJUCSer的学习</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">131</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yama-lei"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/yama-lei" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:your@email.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color: #FFA500;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">博客正在建设中...能看就行...😋😋😋</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E8%AE%B2c%E8%AF%AD%E8%A8%80%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%9C%BA%E5%99%A8%E7%BA%A7%E8%A1%A8%E7%A4%BA"><span class="toc-number">1.</span> <span class="toc-text"> 第一讲：C语言程序的机器级表示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#x86_64-%E7%9A%84%E8%BF%87%E7%A8%8B%E8%B0%83%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text"> x86_64 的过程调用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E8%AE%B2%E5%A4%8D%E6%9D%82%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%88%86%E9%85%8D%E5%92%8C%E8%AE%BF%E9%97%AE"><span class="toc-number">3.</span> <span class="toc-text"> 第二讲：复杂数据类型的分配和访问</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80-%E6%95%B0%E7%BB%84-arrays"><span class="toc-number">3.0.1.</span> <span class="toc-text"> 一、 数组 (Arrays)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C-%E7%BB%93%E6%9E%84%E4%BD%93-structs"><span class="toc-number">3.0.2.</span> <span class="toc-text"> 二、结构体 (Structs)</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/c24064ce84fa/" title="测试文章">测试文章</a><time datetime="2025-11-02T05:54:14.000Z" title="发表于 2025-11-02 13:54:14">2025-11-02</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="ft"><div class="ft-item-1"><div class="t-top"><div class="t-t-l"><p class="ft-t t-l-t">格言🧬</p><div class="bg-ad"><div>记录一个NJUCSer的学习历程 · 代码改变世界，技术创造未来</div><div class="btn-xz-box"><a class="btn-xz" href="/about/">了解更多</a></div></div></div></div></div><div class="ft-item-2"><p class="ft-t">推荐友链⌛</p><div class="ft-img-group"><div class="img-group-item"><a href="/links/" title="广告位招租"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/zhaozu.jpg" alt="广告位招租"/></a></div><div class="img-group-item"><a href="/links/" title="更多友联"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/zhaozu.jpg" alt="友链"/></a></div></div></div></div><div class="copyright"><span><b>&copy;2025</b></span><span><b>&nbsp;&nbsp;By Yama-lei</b></span></div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Less is more · © YamaBlog</div><div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat-square" alt="Hexo"/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat-square" alt="Butterfly"/></a><a class="github-badge" target="_blank" href="https://github.com/yama-lei" style="margin-inline:5px" title="源码托管于GitHub"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat-square" alt="GitHub"/></a></p></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (true) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script src="/js/custom.js"></script><script src="/js/navbar-enhance.js"></script><script src="/js/footer-enhance.js"></script><script src="/js/homepage-enhance.js"></script><script src="/js/page-headers-enhance.js"></script><script src="/js/reading-enhance.js"></script><script defer src="/js/runtime.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

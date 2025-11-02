@@ -1,0 +1,13 @@
+# RSS订阅源配置
+# 格式：
+# - name: 订阅源名称
+#   url: RSS URL
+#   description: 订阅源描述（可选）
+
+feeds:
+  - name: NJU-LUG Blogroll
+    url: https://blogroll.njulug.org/rss.xml
+    description: NJU-LUG的博客集合，朋友圈动态
+  - name: 阮一峰
+    url: https://www.ruanyifeng.com/blog/atom.xml
+    description: 阮一峰的博客，朋友圈动态

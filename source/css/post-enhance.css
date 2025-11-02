@@ -1,0 +1,392 @@
+/* ============================================
+   Enhanced Post Cards with Glassmorphism
+   Modern, clean post display
+   ============================================ */
+
+/* Post Cards Container */
+#recent-posts {
+  padding: var(--space-8) 0;
+}
+
+/* Individual Post Card - Glassmorphism Effect */
+.recent-post-item,
+#recent-posts > .recent-post-item {
+  background: var(--card-bg);
+  backdrop-filter: blur(20px) saturate(150%);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  transition: all var(--transition-base);
+  box-shadow: var(--card-shadow);
+  margin-bottom: var(--space-8);
+  position: relative;
+}
+
+/* Removed the top border line on hover - cleaner look */
+
+.recent-post-item:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: var(--card-shadow-hover);
+  /* Removed border-color change - no bold line on hover */
+}
+
+/* Post Cover Image */
+.recent-post-item .post_cover {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: var(--bg-secondary);
+}
+
+.recent-post-item .post_cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+  will-change: transform;
+}
+
+.recent-post-item:hover .post_cover img {
+  transform: scale(1.08);
+}
+
+/* Overlay gradient on cover image */
+.recent-post-item .post_cover::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.6) 0%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.recent-post-item:hover .post_cover::after {
+  opacity: 1;
+}
+
+/* Post Info Section */
+.recent-post-info {
+  padding: var(--space-6);
+}
+
+/* Post Title */
+.recent-post-info > .article-title,
+.recent-post-info .article-title {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--space-3);
+  color: var(--text-primary);
+  transition: color var(--transition-fast);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.recent-post-item:hover .article-title {
+  color: var(--brand-primary);
+}
+
+/* Post Meta (Date, Categories) */
+.recent-post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+.recent-post-meta .post-meta-date,
+.recent-post-meta .post-meta-categories {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.recent-post-meta i {
+  color: var(--brand-primary);
+  font-size: 0.9em;
+}
+
+/* Post Content/Excerpt */
+.recent-post-info .content,
+.recent-post-info .article-content {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-4);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Category & Tag Badges */
+.article-meta-wrap,
+.recent-post-info .article-meta-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.article-meta-wrap .article-meta__categories,
+.article-meta-wrap .article-meta__tags {
+  display: inline-flex;
+  gap: var(--space-2);
+}
+
+.article-meta__categories a,
+.article-meta__tags a,
+.category-badge,
+.tag-badge {
+  display: inline-block;
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  line-height: 1.5;
+}
+
+/* Category Badge */
+.article-meta__categories a,
+.category-badge {
+  background: var(--brand-gradient-light);
+  color: var(--brand-primary);
+  border: 1px solid var(--brand-primary);
+}
+
+.article-meta__categories a:hover,
+.category-badge:hover {
+  background: var(--brand-gradient);
+  color: var(--text-inverse);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+/* Tag Badge */
+.article-meta__tags a,
+.tag-badge {
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-primary);
+}
+
+.article-meta__tags a:hover,
+.tag-badge:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border-color: var(--brand-primary);
+  transform: translateY(-2px);
+}
+
+/* Read More Link */
+.recent-post-info .article-read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--brand-primary);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  margin-top: var(--space-4);
+}
+
+.recent-post-info .article-read-more:hover {
+  background: var(--brand-gradient-light);
+  transform: translateX(5px);
+}
+
+.recent-post-info .article-read-more i {
+  transition: transform var(--transition-fast);
+}
+
+.recent-post-info .article-read-more:hover i {
+  transform: translateX(3px);
+}
+
+/* Post Footer (Additional Meta) */
+.recent-post-info .article-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border-primary);
+  margin-top: var(--space-4);
+  font-size: var(--font-size-sm);
+  color: var(--text-tertiary);
+}
+
+.article-footer .article-meta {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+}
+
+.article-footer .article-meta i {
+  margin-right: var(--space-1);
+  color: var(--brand-primary);
+}
+
+/* Sticky/Pinned Post Indicator */
+.recent-post-item.sticky,
+.recent-post-item[data-sticky="true"] {
+  background: linear-gradient(
+    135deg,
+    var(--card-bg) 0%,
+    rgba(102, 126, 234, 0.05) 100%
+  );
+  border-color: var(--brand-primary);
+}
+
+.recent-post-item.sticky::before,
+.recent-post-item[data-sticky="true"]::before {
+  opacity: 1;
+}
+
+.recent-post-item.sticky .recent-post-info::before,
+.recent-post-item[data-sticky="true"] .recent-post-info::before {
+  content: '📌 置顶';
+  display: inline-block;
+  padding: var(--space-1) var(--space-3);
+  background: var(--brand-gradient);
+  color: var(--text-inverse);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  margin-bottom: var(--space-3);
+}
+
+/* List Layout (Alternative View) */
+.recent-posts-layout-list .recent-post-item {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.recent-posts-layout-list .post_cover {
+  width: 300px;
+  flex-shrink: 0;
+  aspect-ratio: auto;
+}
+
+.recent-posts-layout-list .recent-post-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Masonry Layout Support */
+.waterfall {
+  column-gap: var(--space-8);
+}
+
+.waterfall .recent-post-item {
+  break-inside: avoid;
+  page-break-inside: avoid;
+  margin-bottom: var(--space-8);
+}
+
+/* Loading Skeleton (Optional) */
+.post-skeleton {
+  animation: skeleton-loading 1.5s infinite;
+  background: linear-gradient(
+    90deg,
+    var(--bg-secondary) 25%,
+    var(--bg-tertiary) 50%,
+    var(--bg-secondary) 75%
+  );
+  background-size: 200% 100%;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .recent-posts-layout-list .recent-post-item {
+    flex-direction: column;
+  }
+  
+  .recent-posts-layout-list .post_cover {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 768px) {
+  .recent-post-item {
+    margin-bottom: var(--space-6);
+  }
+  
+  .recent-post-info {
+    padding: var(--space-4);
+  }
+  
+  .recent-post-info > .article-title {
+    font-size: var(--font-size-lg);
+  }
+  
+  .article-footer {
+    flex-direction: column;
+    gap: var(--space-3);
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  #recent-posts {
+    padding: var(--space-4) 0;
+  }
+  
+  .recent-post-item:hover {
+    transform: translateY(-4px);
+  }
+  
+  .article-meta-wrap {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Accessibility */
+.recent-post-item:focus-within {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 4px;
+}
+
+/* Print Styles */
+@media print {
+  .recent-post-item {
+    box-shadow: none;
+    border: 1px solid #000;
+    page-break-inside: avoid;
+  }
+  
+  .recent-post-item:hover {
+    transform: none;
+  }
+}
+

@@ -1,0 +1,274 @@
+/* ============================================
+   Modern Minimal Footer Design
+   Clean, Simple, Beautiful
+   ============================================ */
+
+/* Footer Container */
+#footer {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-primary);
+  padding: 0;
+  margin-top: var(--space-16);
+}
+
+#footer-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-12) var(--space-6) var(--space-8);
+  background: transparent;
+}
+
+/* Main Footer Content Grid */
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-8);
+  margin-bottom: var(--space-8);
+}
+
+/* Footer Section */
+.footer-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.footer-section-title {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+  position: relative;
+  padding-bottom: var(--space-2);
+}
+
+.footer-section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: var(--brand-primary);
+}
+
+/* Footer Links */
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin: 0;
+}
+
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  transition: all var(--transition-fast);
+  padding: var(--space-1) 0;
+}
+
+.footer-links a:hover {
+  color: var(--brand-primary);
+  transform: translateX(4px);
+}
+
+.footer-links a i {
+  font-size: 0.9em;
+  width: 16px;
+}
+
+/* Social Links */
+.footer-social {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all var(--transition-base);
+  font-size: var(--font-size-lg);
+}
+
+.footer-social a:hover {
+  background: var(--brand-primary);
+  color: var(--text-inverse);
+  border-color: var(--brand-primary);
+  transform: translateY(-3px);
+  box-shadow: var(--card-shadow);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--border-primary);
+  text-align: center;
+}
+
+.footer-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  align-items: center;
+  color: var(--text-tertiary);
+  font-size: var(--font-size-sm);
+}
+
+.footer-info p {
+  margin: 0;
+  line-height: var(--line-height-normal);
+}
+
+.footer-info a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer-info a:hover {
+  color: var(--brand-primary);
+}
+
+/* Copyright & Framework Info */
+.copyright,
+.framework-info,
+.footer_custom_text {
+  display: inline-block;
+  color: var(--text-tertiary) !important;
+  font-size: var(--font-size-sm);
+  margin: var(--space-1) var(--space-2);
+}
+
+/* Heart beat animation */
+#heartbeat {
+  display: inline-block;
+  color: #e74c3c;
+  animation: heartbeat 1.2s ease-in-out infinite;
+  margin: 0 var(--space-1);
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  10%, 30% { transform: scale(0.9); }
+  20%, 40%, 60%, 80% { transform: scale(1.1); }
+  50%, 70% { transform: scale(1.05); }
+}
+
+/* Runtime Display */
+#workboard {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary) !important;
+  margin: var(--space-3) 0;
+}
+
+#workboard i {
+  color: var(--brand-primary);
+}
+
+/* Site Tags/Badges */
+.footer-badges {
+  display: flex;
+  gap: var(--space-2);
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: var(--space-4);
+}
+
+.footer-badges a {
+  padding: var(--space-1) var(--space-3);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  font-weight: 500;
+}
+
+.footer-badges a:hover {
+  background: var(--brand-primary);
+  color: var(--text-inverse);
+  border-color: var(--brand-primary);
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #footer-wrap {
+    padding: var(--space-8) var(--space-4) var(--space-6);
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+  
+  .footer-social {
+    justify-content: center;
+  }
+  
+  .footer-info {
+    font-size: var(--font-size-xs);
+  }
+  
+  .footer-section-title {
+    font-size: var(--font-size-base);
+  }
+}
+
+/* Hide old footer styles */
+.custom-footer-nav,
+.footer-nav-links,
+.footer-nav-link,
+#ft,
+.ft-item-1,
+.ft-item-2 {
+  display: none !important;
+}
+
+/* Clean footer appearance */
+#footer * {
+  color: var(--text-secondary);
+}
+
+#footer a {
+  color: var(--text-secondary);
+}
+
+#footer a:hover {
+  color: var(--brand-primary);
+}
+
+/* Ensure proper text color inheritance */
+#footer-wrap,
+#footer-wrap * {
+  color: inherit;
+}
+

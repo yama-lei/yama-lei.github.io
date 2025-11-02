@@ -6,7 +6,7 @@
   <link href="https://yama-lei.top/atom.xml" rel="self"/>
   
   <link href="https://yama-lei.top/"/>
-  <updated>2025-10-12T01:11:22.773Z</updated>
+  <updated>2025-11-02T06:34:00.000Z</updated>
   <id>https://yama-lei.top/</id>
   
   <author>
@@ -17,44 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>NEMU PA0</title>
-    <link href="https://yama-lei.top/posts/936548a5c265/"/>
-    <id>https://yama-lei.top/posts/936548a5c265/</id>
-    <published>2025-10-10T00:39:27.000Z</published>
-    <updated>2025-10-12T01:11:22.773Z</updated>
+    <title>测试文章</title>
+    <link href="https://yama-lei.top/posts/c24064ce84fa/"/>
+    <id>https://yama-lei.top/posts/c24064ce84fa/</id>
+    <published>2025-11-02T05:54:14.000Z</published>
+    <updated>2025-11-02T06:34:00.000Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;在实现了基本的整数指令之后，尝试运行dummy测试，但是出现了bug&lt;/p&gt;
-&lt;figure class=&quot;highlight text&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span</summary>
-        
-      
+    <summary type="html">No description</summary>
     
     
     
     <category term="NJUCS" scheme="https://yama-lei.top/categories/NJUCS/"/>
     
-    <category term="ICS计算系统基础" scheme="https://yama-lei.top/categories/NJUCS/ICS%E8%AE%A1%E7%AE%97%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/"/>
     
+    <category term="shit" scheme="https://yama-lei.top/tags/shit/"/>
     
   </entry>
   
   <entry>
-    <title>数据结构：广义表</title>
-    <link href="https://yama-lei.top/posts/1fec526a9c9f/"/>
-    <id>https://yama-lei.top/posts/1fec526a9c9f/</id>
-    <published>2025-10-09T01:22:25.000Z</published>
-    <updated>2025-10-09T01:22:41.330Z</updated>
+    <title>数据结构：集合和字典</title>
+    <link href="https://yama-lei.top/posts/60da804344d1/"/>
+    <id>https://yama-lei.top/posts/60da804344d1/</id>
+    <published>2025-10-30T03:15:45.000Z</published>
+    <updated>2025-11-01T13:30:47.440Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;广义表（Generalized</summary>
+    <summary type="html">&lt;h2 id=&quot;等价类和并查集&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#等价类和并查集&quot;&gt;&lt;/a&gt; 等价类和并查集&lt;/h2&gt;
+&lt;h3 id=&quot;等价类&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#等价类&quot;&gt;&lt;/a&gt;</summary>
         
       
     
@@ -68,31 +62,47 @@
   </entry>
   
   <entry>
-    <title></title>
-    <link href="https://yama-lei.top/posts/3dc95fb1962b/"/>
-    <id>https://yama-lei.top/posts/3dc95fb1962b/</id>
-    <published>2025-10-08T01:26:39.612Z</published>
-    <updated>2025-10-08T01:26:39.612Z</updated>
+    <title>对NJUCS“网络安全实验”课程的抨击</title>
+    <link href="https://yama-lei.top/posts/40d3ddc66770/"/>
+    <id>https://yama-lei.top/posts/40d3ddc66770/</id>
+    <published>2025-10-29T12:03:00.000Z</published>
+    <updated>2025-10-29T13:23:58.941Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;你看到了标题应该就知道我对这门课的评价是什么了，说实话，我也想不明白为什么自己不退课。
+后来想明白了，因为我是个傻逼。&lt;/p&gt;
+&lt;p&gt;以&lt;code&gt;缓冲区溢出漏洞分析-副本2022&lt;/code&gt;为例，
+&lt;img</summary>
+        
+      
     
     
     
+    <category term="NJUCS" scheme="https://yama-lei.top/categories/NJUCS/"/>
+    
+    <category term="网络安全实验" scheme="https://yama-lei.top/categories/NJUCS/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E5%AE%9E%E9%AA%8C/"/>
     
     
   </entry>
   
   <entry>
-    <title>网络安全实战作业_lab02</title>
-    <link href="https://yama-lei.top/posts/b2ca8723ed1a/"/>
-    <id>https://yama-lei.top/posts/b2ca8723ed1a/</id>
-    <published>2025-10-08T01:21:13.000Z</published>
-    <updated>2025-10-12T07:13:54.989Z</updated>
+    <title>靶机五</title>
+    <link href="https://yama-lei.top/posts/35d30b0cf601/"/>
+    <id>https://yama-lei.top/posts/35d30b0cf601/</id>
+    <published>2025-10-28T09:15:20.000Z</published>
+    <updated>2025-11-01T13:52:18.871Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 style=&quot;color: #2c3e50; font-weight: bold; font-family: &#39;Arial&#39;, sans-serif; text-shadow: 1px 1px 2px</summary>
+    <summary type="html">&lt;p&gt;发现存在22 80和8000的服务，分别对齐进行扫描
+在8000端口存在http-server&lt;img src=&quot;https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/20251028171830.png&quot;</summary>
         
       
     
@@ -106,57 +116,24 @@
   </entry>
   
   <entry>
-    <title></title>
-    <link href="https://yama-lei.top/posts/a7076f1747c9/"/>
-    <id>https://yama-lei.top/posts/a7076f1747c9/</id>
-    <published>2025-10-07T15:10:25.867Z</published>
-    <updated>2025-10-07T15:10:25.867Z</updated>
-    
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>网络攻防实战训练</title>
-    <link href="https://yama-lei.top/posts/1934e448c1ce/"/>
-    <id>https://yama-lei.top/posts/1934e448c1ce/</id>
-    <published>2025-10-07T10:59:24.000Z</published>
-    <updated>2025-10-08T01:48:55.033Z</updated>
+    <title>大纲</title>
+    <link href="https://yama-lei.top/posts/dba2aa3fda67/"/>
+    <id>https://yama-lei.top/posts/dba2aa3fda67/</id>
+    <published>2025-10-26T00:36:44.000Z</published>
+    <updated>2025-10-26T02:33:18.418Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;一、  实验目的 取得目标靶机的root权限。 我们将使用到以下攻击手段：主机发现、端口扫描、… 二、  实验内容 描述实验思路和实现方法 三、  实验结果 给出本次实验完成的内容，如有必要，给出截图。 四、  实验中遇到的问题及解决方案 没有解决的问题也可以写在这里。</summary>
-        
-      
-    
-    
-    
-    <category term="NJUCS" scheme="https://yama-lei.top/categories/NJUCS/"/>
-    
-    <category term="网络攻防实战" scheme="https://yama-lei.top/categories/NJUCS/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>记录一次恼火的环境配置问题</title>
-    <link href="https://yama-lei.top/posts/33e8b17447fe/"/>
-    <id>https://yama-lei.top/posts/33e8b17447fe/</id>
-    <published>2025-10-05T08:08:29.000Z</published>
-    <updated>2025-10-05T09:17:52.236Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;之前一直使用的是venv环境，但是python版本很旧（3.6.8），我想要使用更新的python版本（服务器只装了python2和python3.6.8），于是打算使用conda。&lt;/p&gt;
-&lt;h3 id=&quot;网络问题&quot;&gt;&lt;a</summary>
+    <summary type="html">&lt;h2 id=&quot;项目背景&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#项目背景&quot;&gt;&lt;/a&gt; 项目背景&lt;/h2&gt;
+&lt;p&gt;（2页PPT）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;VQA的前景和应用&lt;/li&gt;
+&lt;li&gt;前沿研究&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2</summary>
         
       
     
@@ -168,52 +145,25 @@
   </entry>
   
   <entry>
-    <title></title>
-    <link href="https://yama-lei.top/posts/ec6689cdf6a5/"/>
-    <id>https://yama-lei.top/posts/ec6689cdf6a5/</id>
-    <published>2025-10-05T08:08:09.405Z</published>
-    <updated>2025-10-05T08:08:09.405Z</updated>
-    
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>ICS开发指南</title>
-    <link href="https://yama-lei.top/posts/bbc94d1cce91/"/>
-    <id>https://yama-lei.top/posts/bbc94d1cce91/</id>
-    <published>2025-10-04T07:21:40.000Z</published>
-    <updated>2025-10-06T07:45:32.058Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;南大的NEMU在网上已经有了很多的教程，并且也有了官方的答疑ai，但无论是直接从网上搜索答案还是让ai直接生成给出solution，解决的都是&lt;strong&gt;答案是什么的问题&lt;/strong&gt;。至于怎么&lt;strong&gt;自己解决问题&lt;/strong&gt;，依赖的更多是教学网站上的tutorial。但值得一提的是，有的时候，官方的tutorial不一定100%适合所有的学生。在本文中，我会尽可能地把我在完成ICS PA过程中遇见的困难和学到的一些技巧记录下来，希望能帮助到你！&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="NJUCS" scheme="https://yama-lei.top/categories/NJUCS/"/>
-    
-    <category term="ICS计算系统基础" scheme="https://yama-lei.top/categories/NJUCS/ICS%E8%AE%A1%E7%AE%97%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>数据结构：栈</title>
-    <link href="https://yama-lei.top/posts/96fe3d172343/"/>
-    <id>https://yama-lei.top/posts/96fe3d172343/</id>
-    <published>2025-10-01T16:00:00.000Z</published>
-    <updated>2025-10-03T02:38:33.343Z</updated>
+    <title>期中考试复习</title>
+    <link href="https://yama-lei.top/posts/aaa2efc80965/"/>
+    <id>https://yama-lei.top/posts/aaa2efc80965/</id>
+    <published>2025-10-23T02:11:29.000Z</published>
+    <updated>2025-10-23T02:13:10.098Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;栈的基本实现&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#栈的基本实现&quot;&gt;&lt;/a&gt; 栈的基本实现&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;顺序栈&lt;/strong&gt;&lt;br /&gt;
-用顺序表实现栈（比如数组实现）SeqStack&lt;br</summary>
+    <summary type="html">&lt;p&gt;除了算法题，其他的都是ppt上面有的，算法题需要提前训练，测试的时间是11月18号&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;选择题&lt;/li&gt;
+&lt;li&gt;填空&lt;/li&gt;
+&lt;li&gt;解答（6）&lt;/li&gt;
+&lt;li&gt;算法题（算法填空+手写代码，手写代码类似平时的实验&lt;/li&gt;
+&lt;/ol&gt;
+</summary>
         
       
     
@@ -227,20 +177,290 @@
   </entry>
   
   <entry>
-    <title>数据结构：矩阵，数组</title>
-    <link href="https://yama-lei.top/posts/b71ce372da62/"/>
-    <id>https://yama-lei.top/posts/b71ce372da62/</id>
-    <published>2025-09-30T16:00:00.000Z</published>
-    <updated>2025-10-08T06:16:38.576Z</updated>
+    <title>网络攻防实战：靶机三</title>
+    <link href="https://yama-lei.top/posts/7595a3352e3e/"/>
+    <id>https://yama-lei.top/posts/7595a3352e3e/</id>
+    <published>2025-10-22T02:11:06.000Z</published>
+    <updated>2025-10-22T05:56:44.524Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;&lt;strong&gt;二维数组&lt;/strong&gt;&lt;/p&gt;
+    <summary type="html">&lt;div style=&quot;font-family: Georgia, serif; text-align: center; max-width: 600px; margin: 0 auto; padding: 40px 20px; line-height: 1.6; color:</summary>
+        
+      
+    
+    
+    
+    <category term="NJUCS" scheme="https://yama-lei.top/categories/NJUCS/"/>
+    
+    <category term="网络攻防实战" scheme="https://yama-lei.top/categories/NJUCS/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>NVDP</title>
+    <link href="https://yama-lei.top/posts/7e22ff306a18/"/>
+    <id>https://yama-lei.top/posts/7e22ff306a18/</id>
+    <published>2025-10-21T11:48:37.000Z</published>
+    <updated>2025-10-26T11:12:02.816Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;我们做了哪些工作&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#我们做了哪些工作&quot;&gt;&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="NJUCS" scheme="https://yama-lei.top/categories/NJUCS/"/>
+    
+    <category term="学术阅读和写作" scheme="https://yama-lei.top/categories/NJUCS/%E5%AD%A6%E6%9C%AF%E9%98%85%E8%AF%BB%E5%92%8C%E5%86%99%E4%BD%9C/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>靶机四</title>
+    <link href="https://yama-lei.top/posts/56fb69ba176c/"/>
+    <id>https://yama-lei.top/posts/56fb69ba176c/</id>
+    <published>2025-10-21T08:36:21.000Z</published>
+    <updated>2025-10-28T08:37:09.902Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;arp-scan -l&lt;/li&gt;
+&lt;li&gt;namp …
+发现80和22端口是open的&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;在web页面尝试进行
+尝试使用常见的方法对其进行sql注入，但是失败了&lt;/p&gt;
+&lt;p&gt;(使用</summary>
+        
+      
+    
+    
+    
+    <category term="NJUCS" scheme="https://yama-lei.top/categories/NJUCS/"/>
+    
+    <category term="网络攻防实战" scheme="https://yama-lei.top/categories/NJUCS/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>靶机三</title>
+    <link href="https://yama-lei.top/posts/d5b382a07551/"/>
+    <id>https://yama-lei.top/posts/d5b382a07551/</id>
+    <published>2025-10-21T08:01:01.000Z</published>
+    <updated>2025-10-22T02:00:28.808Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;这个是我之前参考的实验做法：&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;code&gt;typedef T a[m][n]&lt;/code&gt; 等价于 &lt;code&gt;typedef T b[m]&lt;/code&gt; + &lt;code&gt;typedef b</summary>
+&lt;li&gt;使用nmap进行搜索22和8080端口都是开放的&lt;/li&gt;
+&lt;li&gt;访问8080端口，使用burpsuite进行拦截，发现&amp;quot; or</summary>
+        
+      
+    
+    
+    
+    <category term="NJUCS" scheme="https://yama-lei.top/categories/NJUCS/"/>
+    
+    <category term="网络攻防实战" scheme="https://yama-lei.top/categories/NJUCS/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>第五章：程序的链接与加载执行</title>
+    <link href="https://yama-lei.top/posts/7f09604a025f/"/>
+    <id>https://yama-lei.top/posts/7f09604a025f/</id>
+    <published>2025-10-20T02:51:20.000Z</published>
+    <updated>2025-10-29T14:23:34.332Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;内容大纲&lt;/strong&gt;
+第一讲：目标文件格式
+程序的链接概述、链接的意义与过程
+ELF目标文件、重定位目标文件格式、可执行目标文件格式
+第二讲：符号解析与重定位
+符号和符号表、符号解析、与静态库的链接
+重定位信息、重定位过程
+第三讲：动态链接和库打桩机制</summary>
+        
+      
+    
+    
+    
+    <category term="NJUCS" scheme="https://yama-lei.top/categories/NJUCS/"/>
+    
+    <category term="ICS计算系统基础" scheme="https://yama-lei.top/categories/NJUCS/ICS%E8%AE%A1%E7%AE%97%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>241220106_lab03</title>
+    <link href="https://yama-lei.top/posts/d6566df8e19d/"/>
+    <id>https://yama-lei.top/posts/d6566df8e19d/</id>
+    <published>2025-10-19T13:24:38.000Z</published>
+    <updated>2025-10-19T13:48:32.551Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;html lang=&quot;zh-CN&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot; /&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,initial-scale=1&quot; /&gt;
+  &lt;title&gt;A4</summary>
+        
+      
+    
+    
+    
+    <category term="NJUCS" scheme="https://yama-lei.top/categories/NJUCS/"/>
+    
+    <category term="网络攻防实战" scheme="https://yama-lei.top/categories/NJUCS/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>文献阅读：A Comprehensive Review on Text Detection and Recognition in Scene Images</title>
+    <link href="https://yama-lei.top/posts/69c9d52d98b9/"/>
+    <id>https://yama-lei.top/posts/69c9d52d98b9/</id>
+    <published>2025-10-19T02:36:27.000Z</published>
+    <updated>2025-10-19T07:28:10.093Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;To capture a clear picture of the review, our plan is to divide the methods of text detection into regression [13], segmentation</summary>
+        
+      
+    
+    
+    
+    <category term="科研启蒙" scheme="https://yama-lei.top/categories/%E7%A7%91%E7%A0%94%E5%90%AF%E8%92%99/"/>
+    
+    <category term="CVLearning" scheme="https://yama-lei.top/categories/%E7%A7%91%E7%A0%94%E5%90%AF%E8%92%99/CVLearning/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>知乎：15 岁妹妹说“真爱比考上 985 重要”，该支持她还是骂醒她？</title>
+    <link href="https://yama-lei.top/posts/1c849b0b8946/"/>
+    <id>https://yama-lei.top/posts/1c849b0b8946/</id>
+    <published>2025-10-15T13:07:18.000Z</published>
+    <updated>2025-10-15T13:13:58.753Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;声明：&lt;/p&gt;
+&lt;p&gt;本文不建议非墨苍离长期读者阅读，如果执意阅读，产生的不良心理状态，笔者概不负责。&lt;/p&gt;
+&lt;p&gt;以及，&lt;/p&gt;
+&lt;p&gt;如果有被冒犯感，请自行消化，不要留言，谢谢。&lt;/p&gt;
+&lt;hr</summary>
+        
+      
+    
+    
+    
+    <category term="zhihu" scheme="https://yama-lei.top/categories/zhihu/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>知乎：如何看待何意为这个词语？</title>
+    <link href="https://yama-lei.top/posts/763a6e3859db/"/>
+    <id>https://yama-lei.top/posts/763a6e3859db/</id>
+    <published>2025-10-15T12:59:18.000Z</published>
+    <updated>2025-10-15T12:59:33.475Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;作者：莫比乌斯之蛇&lt;br /&gt;
+链接：&lt;a href=&quot;https://www.zhihu.com/question/1932958329321292838/answer/1959616967011963047&quot;&gt;https://www.zhihu.com/question/1932958329321292838/answer/1959616967011963047&lt;/a&gt;&lt;br /&gt;
+来源：知乎&lt;br /&gt;
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="zhihu" scheme="https://yama-lei.top/categories/zhihu/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Kioptrix Level 2</title>
+    <link href="https://yama-lei.top/posts/f43e9ddb9701/"/>
+    <id>https://yama-lei.top/posts/f43e9ddb9701/</id>
+    <published>2025-10-14T08:36:26.000Z</published>
+    <updated>2025-10-19T13:21:50.466Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;主机发现和端口扫描&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#主机发现和端口扫描&quot;&gt;&lt;/a&gt; 主机发现和端口扫描：&lt;/h3&gt;
+&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
+        
+      
+    
+    
+    
+    <category term="NJUCS" scheme="https://yama-lei.top/categories/NJUCS/"/>
+    
+    <category term="网络攻防实战" scheme="https://yama-lei.top/categories/NJUCS/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>数据结构：树，森林，堆</title>
+    <link href="https://yama-lei.top/posts/f87995e55afe/"/>
+    <id>https://yama-lei.top/posts/f87995e55afe/</id>
+    <published>2025-10-14T03:19:10.000Z</published>
+    <updated>2025-10-30T03:05:38.192Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&amp;lt;selected_text&amp;gt;&lt;/p&gt;
+&lt;h1 id=&quot;树&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#树&quot;&gt;&lt;/a&gt; 树&lt;/h1&gt;
+&lt;p&gt;树的概念&lt;/p&gt;
+&lt;h2 id=&quot;二叉树&quot;&gt;&lt;a</summary>
         
       
     
@@ -254,220 +474,82 @@
   </entry>
   
   <entry>
-    <title>多模态综述</title>
-    <link href="https://yama-lei.top/posts/66c438509deb/"/>
-    <id>https://yama-lei.top/posts/66c438509deb/</id>
-    <published>2025-09-30T13:14:40.000Z</published>
-    <updated>2025-09-30T13:15:17.978Z</updated>
+    <title></title>
+    <link href="https://yama-lei.top/posts/3d05ab5f2dfa/"/>
+    <id>https://yama-lei.top/posts/3d05ab5f2dfa/</id>
+    <published>2025-10-13T13:46:38.711Z</published>
+    <updated>2025-10-18T14:33:22.937Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;精读(perhaps)了《A Survey on Multimodal Large Language Models》（IEEE2024）这篇文章有关MLLM的发展历程概括，论文中还给了一个github链接&lt;a</summary>
+    <summary type="html">&lt;p&gt;一开始我以为家长太敏感，一看照片，血压都上来了！这是教游泳？？？这个姿势是在干嘛？？？游泳我从小玩到大，俩个儿子也请过游泳教练，哪里有这种行为？？？&lt;/p&gt;
+&lt;p&gt;不要放过他，猥亵幼女罪，起诉他，是非曲直，相信法院！！&lt;/p&gt;
+</summary>
         
       
     
     
     
-    <category term="NOVA" scheme="https://yama-lei.top/categories/NOVA/"/>
+    <category term="zhihu" scheme="https://yama-lei.top/categories/zhihu/"/>
     
     
-  </entry>
-  
-  <entry>
-    <title>实用网站</title>
-    <link href="https://yama-lei.top/posts/d1739767f4d2/"/>
-    <id>https://yama-lei.top/posts/d1739767f4d2/</id>
-    <published>2025-09-29T16:00:00.000Z</published>
-    <updated>2025-09-30T13:22:51.306Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;南大网站&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#南大网站&quot;&gt;&lt;/a&gt; 南大网站&lt;/h2&gt;
-&lt;ol&gt;
-    &lt;li&gt;&lt;a target=&quot;_blank&quot; rel=&quot;noopener&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Mics" scheme="https://yama-lei.top/categories/Mics/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Riscv介绍</title>
-    <link href="https://yama-lei.top/posts/0ac3e125560f/"/>
-    <id>https://yama-lei.top/posts/0ac3e125560f/</id>
-    <published>2025-09-29T16:00:00.000Z</published>
-    <updated>2025-09-30T07:47:16.643Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;RISCV：开源，Load/Store形式&lt;br /&gt;
-指令有R-type，I-type，S-type，U-type，B-type，J-type等类型&lt;br /&gt;
-&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="NJUCS" scheme="https://yama-lei.top/categories/NJUCS/"/>
-    
-    <category term="ICS计算系统基础" scheme="https://yama-lei.top/categories/NJUCS/ICS%E8%AE%A1%E7%AE%97%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>ICS-chatcode抓包分析</title>
-    <link href="https://yama-lei.top/posts/030bc1b005d0/"/>
-    <id>https://yama-lei.top/posts/030bc1b005d0/</id>
-    <published>2025-09-28T16:00:00.000Z</published>
-    <updated>2025-10-03T02:49:58.195Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;使用BurpSuite对即将发布的ics-chatbot的抓包分析&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h3 id=&quot;ics-chat-bot接口&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#ics-chat-bot接口&quot;&gt;&lt;/a&gt; ICS</summary>
-        
-      
-    
-    
-    
-    <category term="NJUCS" scheme="https://yama-lei.top/categories/NJUCS/"/>
-    
-    <category term="ICS计算系统基础" scheme="https://yama-lei.top/categories/NJUCS/ICS%E8%AE%A1%E7%AE%97%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>第四章：程序的链接</title>
-    <link href="https://yama-lei.top/posts/6d799cb58280/"/>
-    <id>https://yama-lei.top/posts/6d799cb58280/</id>
-    <published>2025-09-28T16:00:00.000Z</published>
-    <updated>2025-09-29T03:51:25.082Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;hr /&gt;
-&lt;details class=&quot;custom-callout note&quot; open&gt;&lt;summary class=&quot;callout-title&quot;&gt;&lt;div class=&quot;callout-icon&quot;&gt;&lt;/div&gt;&lt;div&gt;Note&lt;/div&gt;
-&lt;div</summary>
-        
-      
-    
-    
-    
-    <category term="NJUCS" scheme="https://yama-lei.top/categories/NJUCS/"/>
-    
-    <category term="ICS计算系统基础" scheme="https://yama-lei.top/categories/NJUCS/ICS%E8%AE%A1%E7%AE%97%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/"/>
-    
-    
-    <category term="class-notes" scheme="https://yama-lei.top/tags/class-notes/"/>
+    <category term="zhihu-answer" scheme="https://yama-lei.top/tags/zhihu-answer/"/>
     
   </entry>
   
   <entry>
     <title></title>
-    <link href="https://yama-lei.top/posts/800444f268fd/"/>
-    <id>https://yama-lei.top/posts/800444f268fd/</id>
-    <published>2025-09-28T13:20:28.804Z</published>
-    <updated>2025-09-28T13:41:20.030Z</updated>
+    <link href="https://yama-lei.top/posts/fa351dcf96c7/"/>
+    <id>https://yama-lei.top/posts/fa351dcf96c7/</id>
+    <published>2025-10-13T13:40:13.849Z</published>
+    <updated>2025-10-18T14:33:22.937Z</updated>
     
     
-    <summary type="html">&lt;h1 id=&quot;一位很优秀的老师说的话&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#一位很优秀的老师说的话&quot;&gt;&lt;/a&gt; 一位很优秀的老师说的话&lt;/h1&gt;
-&lt;br&gt;
-&lt;p&gt;这里说的老师是，李越老师。&lt;/p&gt;</summary>
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;我想帮督工补充三点：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;第一点：“文化融合”不是缺共识，而是缺“文化主体性”&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;督工说中国“说不清自己的主流文化是什么”，我觉得他太客气了。&lt;/p&gt;
+&lt;p&gt;真相是：我们不是没有主流文化，而是主流文化太“工具化”了，没</summary>
+        
+      
     
     
     
-    <category term="一些碎碎念" scheme="https://yama-lei.top/categories/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    <category term="zhihu" scheme="https://yama-lei.top/categories/zhihu/"/>
     
+    
+    <category term="zhihu-answer" scheme="https://yama-lei.top/tags/zhihu-answer/"/>
     
   </entry>
   
   <entry>
-    <title> 如何看待人民日报官方微信公众号转载的文章《孩子，我宁愿欠你一个快乐的少年，也不愿看到你卑微的成年》</title>
-    <link href="https://yama-lei.top/posts/0a58f97eba42/"/>
-    <id>https://yama-lei.top/posts/0a58f97eba42/</id>
-    <published>2025-09-28T13:20:28.802Z</published>
-    <updated>2025-09-30T13:06:43.981Z</updated>
+    <title>NEMU PA2指令的实现中遇见的很神奇的bug</title>
+    <link href="https://yama-lei.top/posts/bdc0ae82d234/"/>
+    <id>https://yama-lei.top/posts/bdc0ae82d234/</id>
+    <published>2025-10-12T08:27:12.000Z</published>
+    <updated>2025-10-12T09:06:15.553Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;如何看待人民日报官方微信公众号转载的文章孩子我宁愿欠你一个快乐的少年也不愿看到你卑微的成年&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot;</summary>
+    <summary type="html">&lt;p&gt;我在实现nemu的指令的时候出现了这个问题，对于测试代码：&lt;/p&gt;
+&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span</summary>
         
       
     
     
     
-    <category term="一些碎碎念" scheme="https://yama-lei.top/categories/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    <category term="NJUCS" scheme="https://yama-lei.top/categories/NJUCS/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>锐评高考作文</title>
-    <link href="https://yama-lei.top/posts/8344ebe68b71/"/>
-    <id>https://yama-lei.top/posts/8344ebe68b71/</id>
-    <published>2025-09-28T13:20:28.800Z</published>
-    <updated>2025-09-28T13:41:20.028Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://www.zhihu.com/people/yi-dian-yi-dian-33-80&quot;&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="一些碎碎念" scheme="https://yama-lei.top/categories/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>互联网圣地一览</title>
-    <link href="https://yama-lei.top/posts/1f6f93e44946/"/>
-    <id>https://yama-lei.top/posts/1f6f93e44946/</id>
-    <published>2025-09-28T13:20:28.797Z</published>
-    <updated>2025-09-28T13:41:20.028Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;如何评价小红书&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#如何评价小红书&quot;&gt;&lt;/a&gt; &lt;a href=&quot;https://www.zhihu.com/question/305033283/answer/3588581182&quot;&gt;如何评价小红书？&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.zhihu.com/people/xie-yu-tang-55&quot;&gt;&lt;img src=&quot;https://picx.zhimg.com/50/v2-c5b80a6bc246e479fa74f132b244162b_l.jpg?source=b6762063&quot; alt=&quot;谢於飞Official&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://www.zhihu.com/people/xie-yu-tang-55&quot;&gt;谢於飞Official&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;写小说的电子宠物狐狸，合作/标明出处转载欢迎&lt;/p&gt;
-&lt;p&gt;1443 人赞同了该回答&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://picx.zhimg.com/v2-6b1c11cae5c7be45ce6b85bcaf41b581_1440w.jpg&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
-&lt;p&gt;欢迎观看赛博厕所争霸记 叠甲环节在评论区 已完结&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="一些碎碎念" scheme="https://yama-lei.top/categories/%E4%B8%80%E4%BA%9B%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    <category term="ICS计算系统基础" scheme="https://yama-lei.top/categories/NJUCS/ICS%E8%AE%A1%E7%AE%97%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/"/>
     
     
   </entry>

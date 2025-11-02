@@ -1,0 +1,93 @@
+/* ============================================
+   导航栏增强样式
+   Navbar Enhancement Styles
+   ============================================ */
+
+/* 默认状态：导航栏文字为白色 */
+#page-header:not(.nav-fixed) #nav,
+#page-header:not(.nav-fixed) #nav a,
+#page-header:not(.nav-fixed) #nav .site-name,
+#page-header:not(.nav-fixed) #nav span.site-page,
+#page-header:not(.nav-fixed) #nav #blog-info,
+#page-header:not(.nav-fixed) #nav #menus .site-page,
+#page-header:not(.nav-fixed) #nav #toggle-menu,
+#page-header:not(.nav-fixed) #nav #search-button .site-page {
+  color: #ffffff !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* 滚动后（nav-fixed）：导航栏文字为黑色 */
+#page-header.nav-fixed #nav,
+#page-header.nav-fixed #nav a,
+#page-header.nav-fixed #nav .site-name,
+#page-header.nav-fixed #nav span.site-page,
+#page-header.nav-fixed #nav #blog-info,
+#page-header.nav-fixed #nav #menus .site-page,
+#page-header.nav-fixed #nav #toggle-menu,
+#page-header.nav-fixed #nav #search-button .site-page {
+  color: #222 !important;
+  text-shadow: none;
+}
+
+/* 当滚动时立即显示模糊背景，文字颜色延迟切换 */
+#page-header.nav-fixed #nav {
+  backdrop-filter: saturate(160%) blur(8px);
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 5px 6px -5px rgba(133, 133, 133, 0.6);
+  transition: backdrop-filter 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 延迟文字颜色切换 - 使用nav-text-dark类 */
+#page-header.nav-fixed:not(.nav-text-dark) #nav,
+#page-header.nav-fixed:not(.nav-text-dark) #nav a,
+#page-header.nav-fixed:not(.nav-text-dark) #nav .site-name,
+#page-header.nav-fixed:not(.nav-text-dark) #nav span.site-page,
+#page-header.nav-fixed:not(.nav-text-dark) #nav #blog-info,
+#page-header.nav-fixed:not(.nav-text-dark) #nav #menus .site-page,
+#page-header.nav-fixed:not(.nav-text-dark) #nav #toggle-menu,
+#page-header.nav-fixed:not(.nav-text-dark) #nav #search-button .site-page {
+  color: #ffffff !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  transition: color 0.3s ease;
+}
+
+/* 延迟后切换到黑色文字 */
+#page-header.nav-fixed.nav-text-dark #nav,
+#page-header.nav-fixed.nav-text-dark #nav a,
+#page-header.nav-fixed.nav-text-dark #nav .site-name,
+#page-header.nav-fixed.nav-text-dark #nav span.site-page,
+#page-header.nav-fixed.nav-text-dark #nav #blog-info,
+#page-header.nav-fixed.nav-text-dark #nav #menus .site-page,
+#page-header.nav-fixed.nav-text-dark #nav #toggle-menu,
+#page-header.nav-fixed.nav-text-dark #nav #search-button .site-page {
+  color: #222 !important;
+  text-shadow: none;
+  transition: color 0.3s ease;
+}
+
+/* 确保hover状态正确 */
+#page-header:not(.nav-fixed) #nav a:hover,
+#page-header:not(.nav-fixed) #nav .site-name:hover {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+#page-header.nav-fixed #nav a:hover,
+#page-header.nav-fixed #nav .site-name:hover {
+  color: #667eea !important;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  #page-header:not(.nav-fixed) #nav,
+  #page-header:not(.nav-fixed) #nav a,
+  #page-header:not(.nav-fixed) #nav .site-name {
+    color: #ffffff !important;
+  }
+  
+  #page-header.nav-fixed #nav,
+  #page-header.nav-fixed #nav a,
+  #page-header.nav-fixed #nav .site-name {
+    color: #222 !important;
+  }
+}
+

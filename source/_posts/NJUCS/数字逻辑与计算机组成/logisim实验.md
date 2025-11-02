@@ -3,6 +3,8 @@ title: 数字逻辑与计算机组成实验
 categories:
   - NJUCS
   - 数字逻辑与计算机组成
+created: 2025-09-28T21:20
+updated: 2025-09-28T21:41
 ---
 
 >   [ 电路元件库手册](https://www.baillifard.com/logisim/zh/html/libs/) This is a very good website designed for starters to learn logisim

@@ -1,0 +1,259 @@
+/* ============================================
+   简洁的归档（Archive）样式
+   Simple Archive Style
+   ============================================ */
+
+/* Page header for archive, category, tag, etc. */
+#page-header.not-home-page,
+#page-header:not(.full_page):not(.post-bg) {
+  position: relative;
+  min-height: 200px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: #f9f9f9;
+  padding: 32px 0 16px 0;
+  box-shadow: none;
+  text-align: center;
+}
+
+#page-header.not-home-page #page-site-info,
+#page-header:not(.full_page):not(.post-bg) #page-site-info {
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+}
+
+#page-header.not-home-page #page-site-info #site-title,
+#page-header:not(.full_page):not(.post-bg) #page-site-info #site-title {
+  color: #ffffff !important;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0 0 0.2em 0;
+  padding: 0;
+  background: none;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0;
+}
+
+#page-header:not(.full_page) #page-header-title {
+  color: #222;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0 0 0.2em 0;
+  padding: 0;
+  background: none;
+  text-shadow: none;
+  letter-spacing: 0;
+}
+
+#page-header:not(.full_page) .page-description {
+  color: #666;
+  font-size: 1em;
+  margin-top: 0;
+  background: none;
+  text-shadow: none;
+}
+
+#archive {
+  padding: 32px 0;
+}
+
+.article-sort-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #2268a5;
+  text-align: center;
+  padding: 12px 0 12px 0;
+  margin: 40px auto 18px auto;
+  position: relative;
+  background: linear-gradient(90deg, #e3f1ff 0%, #fafbfc 100%);
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px -4px #aad2ef30;
+  width: 70%;
+  max-width: 600px;
+  letter-spacing: 0.5px;
+}
+
+.article-sort-title::after {
+  content: "";
+  display: block;
+  margin: 12px auto 0 auto;
+  width: 48px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #66bfff 20%, #c8e6ff 80%);
+  opacity: 0.7;
+}
+
+.article-sort-title.year {
+  font-size: 1.08rem;
+  font-weight: normal;
+  color: #888;
+  background: #e8f2fa;
+  margin: 28px auto 10px auto;
+  padding: 6px 0;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 1px 6px -3px #aad2ef22;
+  display: block;
+  width: 38%;
+  max-width: 200px;
+  letter-spacing: 0.2em;
+  transition: background 0.15s;
+}
+
+.article-sort-title.year:hover {
+  background: #d6eaff;
+  transform: scale(1.03);
+  box-shadow: 0 2px 8px -2px #aad2ef22;
+}
+
+
+/* Archive article list items - minimalist */
+.article-sort-item {
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0.3em 0 0.3em 0;
+  margin-bottom: 0.2em;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: none;
+}
+
+.article-sort-item:hover {
+  background: none;
+  border-color: inherit;
+  transform: none;
+  box-shadow: none;
+}
+
+.article-sort-item-time {
+  color: #aaa;
+  font-weight: normal;
+  font-size: 0.95em;
+  padding: 0;
+  background: none;
+  border-radius: 0;
+}
+
+.article-sort-item-title {
+  font-size: 1em;
+  font-weight: normal;
+  color: #222;
+  flex: 1;
+  padding: 0;
+  background: none;
+  transition: none;
+}
+
+.article-sort-item:hover .article-sort-item-title {
+  color: #2274a5;
+}
+
+.page-count-badge {
+  display: none;
+}
+
+/* 兼容小屏幕的基础适配 */
+@media (max-width: 768px) {
+  #page-header:not(.full_page) {
+    min-height: 120px;
+    padding-top: 16px;
+    padding-bottom: 8px;
+  }
+  #page-header:not(.full_page) #page-header-title {
+    font-size: 1.18rem;
+    padding: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  #page-header:not(.full_page) {
+    min-height: 80px;
+    padding-top: 8px;
+    padding-bottom: 4px;
+  }
+  #page-header:not(.full_page) #page-header-title {
+    font-size: 1rem;
+  }
+}
+
+/* 不需要的复杂装饰隐藏 */
+#page-header.not-home-page::before,
+#page-header:not(.full_page):not(.post-bg)::before,
+#page-header.not-home-page .bing-copyright,
+#page-header:not(.full_page):not(.post-bg) .bing-copyright {
+  display: none !important;
+}
+
+.tags-container,
+.categories-container,
+.tag-list,
+.category-list,
+#tag-page-tags,
+#page .tag-cloud-list,
+#page .category-lists {
+  padding: 0;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  margin: 0;
+}
+
+/* 分类/标签云、标签等显示风格简化，保持简朴 */
+.tag-cloud-item,
+.category-cloud-item,
+a.article-sort-item-title {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 10px 4px 0;
+  padding: 2px 8px;
+  background: none;
+  border: 1px solid #e0e0e0;
+  border-radius: 16px;
+  color: #444;
+  text-decoration: none;
+  box-shadow: none;
+  font-size: 0.96em;
+  font-weight: 400;
+  position: relative;
+  overflow: visible;
+  transition: background 0.12s, color 0.12s;
+}
+
+.tag-cloud-item:hover,
+.category-cloud-item:hover {
+  color: #2274a5;
+  background: #f2f2f2;
+  border-color: #bdd7ee;
+  transform: none;
+}
+
+.tag-cloud-item .tag-count,
+.category-cloud-item .category-count {
+  margin-left: 4px;
+  padding: 0 4px;
+  background: #eee;
+  color: #888;
+  border-radius: 10px;
+  font-size: 0.85em;
+  font-weight: 400;
+  min-width: 16px;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.tag-cloud-item:hover .tag-count,
+.category-cloud-item:hover .category-count {
+  background: #ddefff;
+  color: #2274a5;
+}
+
+/* 隐藏动画相关，保持静态 */
+@keyframes fadeInDown {}
+@keyframes fadeInUp {}

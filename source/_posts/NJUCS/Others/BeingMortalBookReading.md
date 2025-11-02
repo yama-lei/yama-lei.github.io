@@ -3,6 +3,8 @@ categories:
   - NJUCS
   - Others
 title: BeingMortalBookReading
+created: 2025-09-28T21:20
+updated: 2025-09-30T21:33
 ---
 
 # Being Mortal 最好的告别：关于衰老与死亡，你必须知道的常识

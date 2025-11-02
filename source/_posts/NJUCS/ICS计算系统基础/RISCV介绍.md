@@ -4,6 +4,8 @@ title: Riscv介绍
 categories:
   - NJUCS
   - ICS计算系统基础
+created: 2025-09-30T14:07
+updated: 2025-09-30T15:47
 ---
 RISCV：开源，Load/Store形式
 指令有R-type，I-type，S-type，U-type，B-type，J-type等类型

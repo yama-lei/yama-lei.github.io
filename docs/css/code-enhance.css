@@ -1,0 +1,418 @@
+/* ============================================
+   Enhanced Code Block Styles
+   Modern syntax highlighting and features
+   ============================================ */
+
+/* Code block container improvements */
+figure.highlight,
+.highlight,
+.code-block {
+  position: relative;
+  margin: var(--space-6) 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--code-bg);
+  border: 1px solid var(--code-border);
+  box-shadow: var(--card-shadow);
+  transition: all var(--transition-base);
+}
+
+figure.highlight:hover,
+.highlight:hover {
+  box-shadow: var(--card-shadow-hover);
+  border-color: var(--brand-primary);
+}
+
+/* Code block with filename */
+figure.highlight[data-lang]::before,
+.highlight[data-lang]::before {
+  content: attr(data-lang);
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: var(--space-2) var(--space-4);
+  background: var(--brand-gradient);
+  color: var(--text-inverse);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom-left-radius: var(--radius-md);
+  z-index: 5;
+}
+
+/* Pre and code styling */
+figure.highlight pre,
+.highlight pre,
+pre {
+  margin: 0;
+  padding: var(--space-5);
+  overflow-x: auto;
+  background: transparent !important;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+  color: var(--code-text);
+  tab-size: 4;
+  text-align: left !important; /* Fix centering issue */
+  white-space: pre !important; /* Prevent wrapping */
+}
+
+figure.highlight code,
+.highlight code,
+pre code {
+  display: block;
+  background: transparent !important;
+  padding: 0;
+  margin: 0;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  text-align: left !important;
+}
+
+/* Remove extra spacing before code blocks */
+figure.highlight,
+.highlight {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+figure.highlight::before,
+.highlight::before {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Inline code - already defined in custom.css but ensuring consistency */
+:not(pre) > code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  padding: 0.2em 0.4em;
+  background: var(--code-bg);
+  color: var(--brand-primary);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--code-border);
+  font-weight: 500;
+}
+
+/* Line numbers */
+.gutter,
+.line-numbers {
+  float: left;
+  color: var(--text-tertiary);
+  font-size: var(--font-size-xs);
+  text-align: right;
+  padding-right: var(--space-3);
+  margin-right: var(--space-3);
+  border-right: 1px solid var(--code-border);
+  user-select: none;
+  min-width: 2em;
+}
+
+.gutter .line,
+.line-numbers .line-number {
+  display: block;
+  padding: 0 var(--space-2);
+}
+
+.code {
+  float: left;
+  width: calc(100% - 3em);
+}
+
+/* Highlighted lines */
+.highlight-line,
+.marked {
+  display: block;
+  background: rgba(102, 126, 234, 0.1);
+  margin-left: -1em;
+  margin-right: -1em;
+  padding-left: 1em;
+  padding-right: 1em;
+  border-left: 3px solid var(--brand-primary);
+}
+
+/* Line number highlighting on hover */
+figure.highlight .gutter .line:hover,
+.line-numbers .line-number:hover {
+  background: var(--bg-secondary);
+}
+
+/* Syntax Highlighting Colors - Custom Theme */
+
+/* Comments */
+.comment,
+.meta {
+  color: var(--code-comment);
+  font-style: italic;
+}
+
+/* Keywords */
+.keyword,
+.selector-tag,
+.literal,
+.section,
+.link {
+  color: var(--code-keyword);
+  font-weight: 600;
+}
+
+/* Strings */
+.string,
+.title,
+.name,
+.type,
+.attribute,
+.symbol,
+.bullet,
+.addition,
+.variable,
+.template-tag,
+.template-variable {
+  color: var(--code-string);
+}
+
+/* Functions */
+.function,
+.class,
+.title.class_,
+.title.class.inherited__,
+.title.function_,
+.title.function.invoke__ {
+  color: var(--code-function);
+}
+
+/* Numbers */
+.number,
+.meta-string {
+  color: var(--code-number);
+}
+
+/* Operators */
+.operator,
+.tag,
+.selector-id,
+.selector-class,
+.selector-attr,
+.selector-pseudo {
+  color: var(--text-primary);
+}
+
+/* Built-ins */
+.built_in,
+.builtin-name,
+.params,
+.attr {
+  color: #22d3ee;
+}
+
+/* Regexp */
+.regexp {
+  color: #f97316;
+}
+
+/* Deletions (for diffs) */
+.deletion {
+  color: var(--color-error);
+  background: rgba(239, 68, 68, 0.1);
+}
+
+/* Additions (for diffs) */
+.addition {
+  color: var(--color-success);
+  background: rgba(74, 222, 128, 0.1);
+}
+
+/* Terminal/Shell command styling */
+.language-bash .command,
+.language-shell .command,
+.language-sh .command {
+  color: var(--color-success);
+  font-weight: 600;
+}
+
+.language-bash .comment::before,
+.language-shell .comment::before,
+.language-sh .comment::before {
+  content: '$ ';
+  color: var(--brand-primary);
+}
+
+/* Code filename header */
+.code-filename {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--code-border);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.code-filename::before {
+  content: '📄';
+  margin-right: var(--space-2);
+}
+
+/* When filename exists, adjust code padding */
+figure.highlight.has-filename pre,
+.highlight.has-filename pre {
+  padding-top: calc(var(--space-5) + 2.5em);
+}
+
+/* Mac-style window controls */
+.code-window-controls {
+  display: flex;
+  gap: var(--space-2);
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-4);
+  z-index: 10;
+}
+
+.code-window-controls span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.code-window-controls .close { background: #ff5f56; }
+.code-window-controls .minimize { background: #ffbd2e; }
+.code-window-controls .maximize { background: #27c93f; }
+
+/* Add controls padding when they exist */
+.has-controls pre {
+  padding-top: calc(var(--space-5) + 1.5em);
+}
+
+/* Collapsible code blocks */
+.code-expand-btn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-2);
+  background: linear-gradient(to top, var(--code-bg), transparent);
+  text-align: center;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  transition: all var(--transition-fast);
+  z-index: 10;
+}
+
+.code-expand-btn:hover {
+  color: var(--brand-primary);
+  background: linear-gradient(to top, var(--code-bg), var(--bg-secondary));
+}
+
+.code-expand-btn i {
+  margin-left: var(--space-2);
+}
+
+/* Collapsed state */
+figure.highlight.collapsed pre,
+.highlight.collapsed pre {
+  max-height: 300px;
+  overflow: hidden;
+}
+
+/* Special language indicators */
+.language-badge {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  padding: var(--space-1) var(--space-3);
+  background: var(--brand-gradient);
+  color: var(--text-inverse);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: var(--radius-md);
+  letter-spacing: 0.05em;
+  z-index: 5;
+}
+
+/* Scrollbar for code blocks */
+figure.highlight pre::-webkit-scrollbar,
+.highlight pre::-webkit-scrollbar,
+pre::-webkit-scrollbar {
+  height: 8px;
+}
+
+figure.highlight pre::-webkit-scrollbar-track,
+.highlight pre::-webkit-scrollbar-track,
+pre::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+figure.highlight pre::-webkit-scrollbar-thumb,
+.highlight pre::-webkit-scrollbar-thumb,
+pre::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: var(--radius-full);
+}
+
+figure.highlight pre::-webkit-scrollbar-thumb:hover,
+.highlight pre::-webkit-scrollbar-thumb:hover,
+pre::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* Dark mode specific adjustments */
+[data-theme='dark'] figure.highlight,
+[data-theme='dark'] .highlight {
+  background: #1a1f2e;
+  border-color: #2d3748;
+}
+
+[data-theme='dark'] .code-filename,
+[data-theme='dark'] figure.highlight[data-lang]::before,
+[data-theme='dark'] .highlight[data-lang]::before {
+  background: rgba(102, 126, 234, 0.2);
+  color: #818cf8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  figure.highlight pre,
+  .highlight pre,
+  pre {
+    font-size: var(--font-size-xs);
+    padding: var(--space-3);
+  }
+  
+  .gutter,
+  .line-numbers {
+    display: none; /* Hide line numbers on mobile */
+  }
+  
+  .code {
+    width: 100%;
+  }
+}
+
+/* Print styles */
+@media print {
+  figure.highlight,
+  .highlight {
+    border: 1px solid #000;
+    box-shadow: none;
+  }
+  
+  .code-copy-btn,
+  .code-expand-btn {
+    display: none;
+  }
+}
+

@@ -4,6 +4,8 @@ categories:
   - ICS计算系统基础
 title: ICS-chatcode抓包分析
 date: 2025-09-29
+created: 2025-09-30T09:58
+updated: 2025-10-03T10:49
 ---
 
 使用BurpSuite对即将发布的ics-chatbot的抓包分析
