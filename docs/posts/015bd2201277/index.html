@@ -1,0 +1,1565 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>期末复习（SE DS） | YamaBlog</title><meta name="author" content="Yama-lei"><meta name="copyright" content="Yama-lei"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="原文来源：NJUSE-20-DataStructure&#x2F;FinalReview.md at main · YDJSIR-NJU&#x2F;NJUSE-20-DataStructure  20-秋-数据结构与算法   Ver. 南京大学软件学院  Powered by YDJSIR   基本要求  代码相关  大题Java&#x2F;C++  小题里面他给的是什么就是什么（Java优先）  要读得懂代码  期末占比 非">
+<meta property="og:type" content="article">
+<meta property="og:title" content="期末复习（SE DS）">
+<meta property="og:url" content="https://yama-lei.top/posts/015bd2201277/index.html">
+<meta property="og:site_name" content="YamaBlog">
+<meta property="og:description" content="原文来源：NJUSE-20-DataStructure&#x2F;FinalReview.md at main · YDJSIR-NJU&#x2F;NJUSE-20-DataStructure  20-秋-数据结构与算法   Ver. 南京大学软件学院  Powered by YDJSIR   基本要求  代码相关  大题Java&#x2F;C++  小题里面他给的是什么就是什么（Java优先）  要读得懂代码  期末占比 非">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp">
+<meta property="article:published_time" content="2025-11-19T15:07:16.000Z">
+<meta property="article:modified_time" content="2025-11-20T02:34:00.000Z">
+<meta property="article:author" content="Yama-lei">
+<meta property="article:tag" content="博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "期末复习（SE DS）",
+  "url": "https://yama-lei.top/posts/015bd2201277/",
+  "image": "https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp",
+  "datePublished": "2025-11-19T15:07:16.000Z",
+  "dateModified": "2025-11-20T02:34:00.000Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Yama-lei",
+      "url": "https://yama-lei.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yama-lei.top/posts/015bd2201277/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)')
+          const mediaQueryLight = window.matchMedia('(prefers-color-scheme: light)')
+
+          if (theme === undefined) {
+            if (mediaQueryLight.matches) activateLightMode()
+            else if (mediaQueryDark.matches) activateDarkMode()
+            else {
+              const hour = new Date().getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            mediaQueryDark.addEventListener('change', () => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else {
+            theme === 'light' ? activateLightMode() : activateDarkMode()
+          }
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":true,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'medium_zoom',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '期末复习（SE DS）',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/var.css"><link rel="stylesheet" href="/css/dark-mode.css"><link rel="stylesheet" href="/css/callout_blocks.css"><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/homepage-hero.css"><link rel="stylesheet" href="/css/navbar-enhance.css"><link rel="stylesheet" href="/css/page-headers.css"><link rel="stylesheet" href="/css/post-enhance.css"><link rel="stylesheet" href="/css/reading-enhance.css"><link rel="stylesheet" href="/css/code-enhance.css"><link rel="stylesheet" href="/css/code-block-redesign.css"><link rel="stylesheet" href="/css/card-enhance.css"><link rel="stylesheet" href="/css/sidebar-enhance.css"><link rel="stylesheet" href="/css/category-tag-page.css"><link rel="stylesheet" href="/css/archive-timeline.css"><link rel="stylesheet" href="/css/footer-redesign.css"><meta name="generator" content="Hexo 8.0.0"><link rel="alternate" href="/atom.xml" title="YamaBlog" type="application/atom+xml">
+</head><body><div id="web_bg" style="background-color: #ffffff;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">146</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-list"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/playground/"><i class="fa-fw fas fa-flask"></i><span> Playground</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-user-friends"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/rss/"><i class="fa-fw fas fa-rss-square"></i><span> 朋友圈</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">YamaBlog</span></a><a class="nav-page-title" href="/"><span class="site-name">期末复习（SE DS）</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-list"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/playground/"><i class="fa-fw fas fa-flask"></i><span> Playground</span></a></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fas fa-user-friends"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/rss/"><i class="fa-fw fas fa-rss-square"></i><span> 朋友圈</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">期末复习（SE DS）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-11-19T15:07:16.000Z" title="发表于 2025-11-19 23:07:16">2025-11-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-11-20T02:34:00.000Z" title="更新于 2025-11-20 10:34:00">2025-11-20</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/NJUCS/">NJUCS</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/NJUCS/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">9.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>36分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>原文来源：<a target="_blank" rel="noopener" href="https://github.com/YDJSIR-NJU/NJUSE-20-DataStructure/blob/main/FinalReview.md">NJUSE-20-DataStructure/FinalReview.md at main · YDJSIR-NJU/NJUSE-20-DataStructure</a></p>
+<h1 id="20-秋-数据结构与算法"><a class="markdownIt-Anchor" href="#20-秋-数据结构与算法"></a> 20-秋-数据结构与算法</h1>
+<blockquote>
+<h3 id="ver-南京大学软件学院"><a class="markdownIt-Anchor" href="#ver-南京大学软件学院"></a> Ver. 南京大学软件学院</h3>
+<h3 id="powered-by-ydjsir"><a class="markdownIt-Anchor" href="#powered-by-ydjsir"></a> Powered by YDJSIR</h3>
+</blockquote>
+<h1 id="基本要求"><a class="markdownIt-Anchor" href="#基本要求"></a> 基本要求</h1>
+<h2 id="代码相关"><a class="markdownIt-Anchor" href="#代码相关"></a> 代码相关</h2>
+<h3 id="大题javac"><a class="markdownIt-Anchor" href="#大题javac"></a> 大题Java/C++</h3>
+<h3 id="小题里面他给的是什么就是什么java优先"><a class="markdownIt-Anchor" href="#小题里面他给的是什么就是什么java优先"></a> 小题里面他给的是什么就是什么（Java优先）</h3>
+<h3 id="要读得懂代码"><a class="markdownIt-Anchor" href="#要读得懂代码"></a> 要读得懂代码</h3>
+<h2 id="期末占比"><a class="markdownIt-Anchor" href="#期末占比"></a> 期末占比</h2>
+<p>非常高，请各位同学耗子尾汁，好好复习，不要翻车</p>
+<h1 id="基本算法思想"><a class="markdownIt-Anchor" href="#基本算法思想"></a> 基本算法思想</h1>
+<h2 id="递归"><a class="markdownIt-Anchor" href="#递归"></a> 递归</h2>
+<p>通过重复将问题分解为同类的子问题而解决问题。</p>
+<h4 id="出现场景"><a class="markdownIt-Anchor" href="#出现场景"></a> 出现场景</h4>
+<p>渗透全课程</p>
+<h2 id="贪心注意和动态规划的区别"><a class="markdownIt-Anchor" href="#贪心注意和动态规划的区别"></a> 贪心（注意和动态规划的区别）</h2>
+<p>在每一步选择中都采取在当前状态下最好或最优（即最有利）的选择。</p>
+<h4 id="出现场景-2"><a class="markdownIt-Anchor" href="#出现场景-2"></a> 出现场景</h4>
+<p>Prim、Kruskal、Dijkstra</p>
+<h2 id="动态规划注意和贪心的区别"><a class="markdownIt-Anchor" href="#动态规划注意和贪心的区别"></a> 动态规划（注意和贪心的区别）</h2>
+<p>通过把原问题分解为相对简单的子问题的方式求解复杂问题的方法。</p>
+<p>动态规划法试图仅仅解决每个子问题一次，从而减少计算量：一旦某个给定子问题的解已经算出，则将其<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%AE%B0%E5%BF%86%E5%8C%96">记忆化</a>存储，以便下次需要同一个子问题解之时直接查表。</p>
+<blockquote>
+<h3 id="动态规划中不应该有回溯那样就类似于打表了"><a class="markdownIt-Anchor" href="#动态规划中不应该有回溯那样就类似于打表了"></a> 动态规划中不应该有“回溯”，那样就类似于打表了</h3>
+</blockquote>
+<h4 id="出现场景-3"><a class="markdownIt-Anchor" href="#出现场景-3"></a> 出现场景</h4>
+<p>Bellman-Ford</p>
+<h2 id="分治"><a class="markdownIt-Anchor" href="#分治"></a> 分治</h2>
+<h4 id="出现场景-4"><a class="markdownIt-Anchor" href="#出现场景-4"></a> 出现场景</h4>
+<p>归并排序</p>
+<h1 id="本文档说明"><a class="markdownIt-Anchor" href="#本文档说明"></a> 本文档说明</h1>
+<blockquote>
+<p><mark>高亮</mark> 表示这是一个算法的名字。</p>
+</blockquote>
+<p>本文档基本上整理自课件，结合了部分在线资源，参考资料将被尽量详细地列出。如果这其中的内容侵犯了您的知识产权，请及时与YDJSIR联系，YDJSIR会尽量及时响应。</p>
+<h1 id="第一章-概论"><a class="markdownIt-Anchor" href="#第一章-概论"></a> 第一章 概论</h1>
+<p>略掉，要求理解，重点在选择题。</p>
+<h3 id="data_structuredr-d-data-object-r-relationship"><a class="markdownIt-Anchor" href="#data_structuredr-d-data-object-r-relationship"></a> Data_Structure={D,R}; D: Data Object; R: Relationship</h3>
+<h2 id="三个方面"><a class="markdownIt-Anchor" href="#三个方面"></a> 三个方面</h2>
+<h4 id="数据的逻辑结构"><a class="markdownIt-Anchor" href="#数据的逻辑结构"></a> 数据的逻辑结构</h4>
+<p>从用户视图看，是面向问题的。</p>
+<h4 id="数据的物理结构"><a class="markdownIt-Anchor" href="#数据的物理结构"></a> 数据的物理结构</h4>
+<p>从具体实现视图看，是面向计算机的。</p>
+<h4 id="数据结构相关的操作及其实现"><a class="markdownIt-Anchor" href="#数据结构相关的操作及其实现"></a> 数据结构相关的操作及其实现</h4>
+<h4 id="adtabstract-data-type封装"><a class="markdownIt-Anchor" href="#adtabstract-data-type封装"></a> ADT：Abstract data type——封装</h4>
+<h4 id="java-c-basics"><a class="markdownIt-Anchor" href="#java-c-basics"></a> Java &amp; C++ Basics</h4>
+<h4 id="oo"><a class="markdownIt-Anchor" href="#oo"></a> OO</h4>
+<h1 id="第二章-算法分析"><a class="markdownIt-Anchor" href="#第二章-算法分析"></a> 第二章 算法分析</h1>
+<h2 id="复杂度计算空间-时间"><a class="markdownIt-Anchor" href="#复杂度计算空间-时间"></a> 复杂度计算！（空间 &amp; 时间）</h2>
+<blockquote>
+<h3 id="运行时细节栈空间-堆空间不考"><a class="markdownIt-Anchor" href="#运行时细节栈空间-堆空间不考"></a> 运行时细节（栈空间、堆空间）不考</h3>
+</blockquote>
+<p>一般是计算运行次数和给出算法的量级这样的形式。</p>
+<h3 id="最好情况-最坏情况-平均情况"><a class="markdownIt-Anchor" href="#最好情况-最坏情况-平均情况"></a> 最好情况、最坏情况、平均情况</h3>
+<p>算法旁边标注的都是最大复杂度。</p>
+<h4 id="o-上限"><a class="markdownIt-Anchor" href="#o-上限"></a> O - 上限</h4>
+<h4 id="ω-下限"><a class="markdownIt-Anchor" href="#ω-下限"></a> Ω - 下限</h4>
+<h4 id="θ-上下限同一个量级"><a class="markdownIt-Anchor" href="#θ-上下限同一个量级"></a> θ - 上下限同一个量级</h4>
+<h3 id="顺序查找-on"><a class="markdownIt-Anchor" href="#顺序查找-on"></a> <mark>顺序查找</mark> - O(n)</h3>
+<blockquote>
+<p>就硬遍历</p>
+</blockquote>
+<h3 id="秩排序-on2"><a class="markdownIt-Anchor" href="#秩排序-on2"></a> <mark>秩排序</mark> - O(n²)</h3>
+<p>public static void Rank(int[] a, int n, int[] r) {<br />
+// Rank the n elements a[0:n-1]<br />
+for (int i = 0; i &lt; n; i++)<br />
+r[i] = 0;<br />
+       // 这个比较还是很意思的<br />
+for (int i = 1; i &lt; n; i++) {<br />
+for (int j = 0; j &lt; i; j++) {<br />
+if (a[j] &lt;= a[i])<br />
+r[i]<ins>;<br />
+else<br />
+r[j]</ins>;<br />
+}<br />
+}<br />
+}<br />
+​<br />
+public static void Rearrange(int[] a, int n, int[] r) {<br />
+// In-place rearrangement into sorted order<br />
+for (int i = 0; i &lt; n; i++) {<br />
+while (r[i] != i) {<br />
+int t = r[i];<br />
+swap(a[i], a[t]);<br />
+swap(r[i], r[t]);<br />
+               // 这个替换的思想还是很有意思的<br />
+}<br />
+}<br />
+}</p>
+<blockquote>
+<p>先把每个元素排第几算出来，然后再把每个元素放到该放的位置</p>
+</blockquote>
+<h3 id="选择排序-on2"><a class="markdownIt-Anchor" href="#选择排序-on2"></a> <mark>选择排序</mark> - O(n²)</h3>
+<h4 id="直接选择排序"><a class="markdownIt-Anchor" href="#直接选择排序"></a> 直接选择排序</h4>
+<h6 id="不稳定数组稳定链表"><a class="markdownIt-Anchor" href="#不稳定数组稳定链表"></a> 不稳定（数组）稳定（链表）</h6>
+<p>public static void SelectionSort(Comparable[] a){<br />
+   int n = a.length;<br />
+//sort the n number in a[0:n-1].<br />
+for(int size=n; size&gt;1; size–){<br />
+       int j=Max(a,size); //找前面size个数里面最大那个<br />
+swap(a[j],a[size-1]);<br />
+   // put the largest number from the start to the end<br />
+}<br />
+}</p>
+<blockquote>
+<p>每次都选出最大/最小的元素，然后把它放到前面来</p>
+</blockquote>
+<h4 id="树形选择排序锦标赛排序"><a class="markdownIt-Anchor" href="#树形选择排序锦标赛排序"></a> 树形选择排序（锦标赛排序）</h4>
+<h6 id="稳定"><a class="markdownIt-Anchor" href="#稳定"></a> 稳定</h6>
+<h4 id="堆排序"><a class="markdownIt-Anchor" href="#堆排序"></a> 堆排序</h4>
+<h6 id="不稳定"><a class="markdownIt-Anchor" href="#不稳定"></a> 不稳定</h6>
+<p>在优先队列章节中有解释</p>
+<h3 id="冒泡排序-on2"><a class="markdownIt-Anchor" href="#冒泡排序-on2"></a> <mark>冒泡排序</mark> - O(n²)</h3>
+<h6 id="稳定-2"><a class="markdownIt-Anchor" href="#稳定-2"></a> 稳定</h6>
+<p>// 这个就不列了</p>
+<blockquote>
+<p>不解释</p>
+</blockquote>
+<h3 id="插入排序-on2"><a class="markdownIt-Anchor" href="#插入排序-on2"></a> <mark>插入排序</mark> - O(n²)</h3>
+<h6 id="稳定-3"><a class="markdownIt-Anchor" href="#稳定-3"></a> 稳定</h6>
+<p>public static void insertionSort( Comparable [ ] a ){<br />
+   int j;<br />
+   for ( int p = 1; p &lt; a.length; p++ ){<br />
+       Comparable tmp = a[ p ];<br />
+       for ( j = p; j &gt; 0 &amp;&amp; tmp.compareTo( a[ j –1 ] ) &lt; 0; j–)<br />
+           a[ j ] = a[ j –1 ];<br />
+a[ j ] = tmp;<br />
+}<br />
+}</p>
+<blockquote>
+<p>不解释</p>
+</blockquote>
+<p>他有一个改进，希尔排序，会在最后一章节提到。</p>
+<h3 id="折半查找-olog-n"><a class="markdownIt-Anchor" href="#折半查找-olog-n"></a> <mark>折半查找</mark> - O(log n)</h3>
+<p>public static int binarySearch(Comparable[] a, Comparable x) {<br />
+int low = 0, high = a.length - 1;<br />
+while (low &lt;= high) {<br />
+int mid = (low + high) / 2;<br />
+if (a[mid].compareTo(x) &lt; 0)<br />
+low = mid + 1;<br />
+else if (a[mid].compareTo(x) &gt; 0)<br />
+high = mid - 1;<br />
+else<br />
+return mid;<br />
+}<br />
+return -1;<br />
+}<br />
+​</p>
+<blockquote>
+<p>不解释</p>
+</blockquote>
+<h3 id="辗转相除法-olog-n"><a class="markdownIt-Anchor" href="#辗转相除法-olog-n"></a> <mark>辗转相除法</mark> - O(log n)</h3>
+<p>public static long gcd( long m, long n ){<br />
+   while( n != 0 ){<br />
+       long rem = m % n;<br />
+       m = n;<br />
+       n = rem;<br />
+   }<br />
+return m;<br />
+}</p>
+<blockquote>
+<p>它的复杂度的计算不做要求</p>
+</blockquote>
+<h1 id="第三和第五章-表-线性数据结构"><a class="markdownIt-Anchor" href="#第三和第五章-表-线性数据结构"></a> 第三和第五章 表 - 线性数据结构</h1>
+<h2 id="️-线性表"><a class="markdownIt-Anchor" href="#️-线性表"></a> ⭐️ 线性表</h2>
+<blockquote>
+<p>各种线性表的实现细节与各种操作的复杂度</p>
+</blockquote>
+<h3 id="单双循环非循环链表"><a class="markdownIt-Anchor" href="#单双循环非循环链表"></a> （单/双）（循环/非循环）链表</h3>
+<blockquote>
+<p>下面的讨论都是基于索引式的链表，但还有一种用数组实现的静态链表值得注意。</p>
+<p>大意就是数组里放的值对应于他的下一个元素的位置。</p>
+</blockquote>
+<h4 id="节点"><a class="markdownIt-Anchor" href="#节点"></a> 节点</h4>
+<ul>
+<li>
+<p>数据</p>
+</li>
+<li>
+<p>后指针</p>
+</li>
+<li>
+<p>前指针（仅双链表）</p>
+</li>
+</ul>
+<h4 id="链表"><a class="markdownIt-Anchor" href="#链表"></a> 链表</h4>
+<h5 id="成员变量"><a class="markdownIt-Anchor" href="#成员变量"></a> 成员变量</h5>
+<ul>
+<li>头</li>
+</ul>
+<blockquote>
+<p>注意Dummy Head的存在，而且这还一般在题目中是默认的。</p>
+</blockquote>
+<ul>
+<li>*头、 *尾</li>
+</ul>
+<p><strong>迭代器</strong></p>
+<p>注意链表的一些小技巧，课后习题中便有体现（隐含了归并排序的思想）</p>
+<blockquote>
+<p>双链表不是重点</p>
+</blockquote>
+<h6 id="trick-多指针法ydjsir自己取的名字"><a class="markdownIt-Anchor" href="#trick-多指针法ydjsir自己取的名字"></a> Trick: 多指针法（YDJSIR自己取的名字）</h6>
+<p>比如说我要得到一个长为n的序列的第n-p个元素，那么我就在从头开始遍历的时候，在头部指针走过p个元素后再放一个指针进去遍历，当第一个指针走到第n个元素的时候，第二个指针自然走到了第n-p个元素。</p>
+<p><strong>关键词：只遍历一次等</strong></p>
+<h3 id="约瑟夫环问题"><a class="markdownIt-Anchor" href="#约瑟夫环问题"></a> 约瑟夫环问题</h3>
+<ul>
+<li>
+<p>循环链表实现</p>
+</li>
+<li>
+<p>数组实现</p>
+</li>
+</ul>
+<h2 id="栈和队列"><a class="markdownIt-Anchor" href="#栈和队列"></a> 栈和队列</h2>
+<p>他们都是特殊的线性表。它们在功能上受到了更多的限制，以适应于特殊用途。</p>
+<p>进去一个元素和出去一个元素都是O(1)</p>
+<h2 id="栈-lifo"><a class="markdownIt-Anchor" href="#栈-lifo"></a> 栈 - <code>LIFO</code></h2>
+<p><code>push</code> <code>pop</code> <code>peek</code>等方法，此处不展开。</p>
+<p>内部实现可以是数组和链表，但是都被抽象起来了。</p>
+<p>栈可以设定容量，所以可能会满。</p>
+<h2 id="队列-fifo"><a class="markdownIt-Anchor" href="#队列-fifo"></a> 队列 - <code>FIFO</code></h2>
+<blockquote>
+<p>显然，这玩意和优先队列的实现是根本不一样的！</p>
+</blockquote>
+<p><code>inqueue</code> <code>enqueue</code></p>
+<p>队列可以设定容量，所以可能会满。</p>
+<p>可以搞循环队列来节约资源。</p>
+<h4 id="栈和队列是后面很多算法的基础"><a class="markdownIt-Anchor" href="#栈和队列是后面很多算法的基础"></a> 栈和队列是后面很多算法的基础</h4>
+<h3 id="基数排序-odisplaystyle-log-_bleftnrightcdot-n"><a class="markdownIt-Anchor" href="#基数排序-odisplaystyle-log-_bleftnrightcdot-n"></a> <mark>基数排序</mark> - O({\displaystyle \log _{B}\left(N\right)\cdot n})</h3>
+<blockquote>
+<p>PPT说是O(d(n + radix)) d是次数，n是元素数量，radix是桶个数</p>
+</blockquote>
+<p>这里的桶实际上是一个FIFO的队列，所以放在这个位置上。</p>
+<h6 id="补充"><a class="markdownIt-Anchor" href="#补充"></a> 补充</h6>
+<ul>
+<li>
+<p>基数排序：根据键值的每位数字来分配桶；</p>
+</li>
+<li>
+<p>计数排序：每个桶只存储单一键值；</p>
+</li>
+<li>
+<p>桶排序：每个桶存储一定范围的数值；</p>
+</li>
+</ul>
+<p>比如说对一个十进制数，可以按照这样的顺序来：先按照个位数进桶，然后十位，以此类推，到最后就排好了。</p>
+<blockquote>
+<p>注意是从低位开始排</p>
+</blockquote>
+<h2 id="哈希表"><a class="markdownIt-Anchor" href="#哈希表"></a> 哈希表</h2>
+<blockquote>
+<p>建表后，可以实现<code>O(1)</code>的对数据的快速查找</p>
+</blockquote>
+<p>重点是取模算法，其他的反而没那么重要。</p>
+<h3 id="散列方法"><a class="markdownIt-Anchor" href="#散列方法"></a> 散列方法</h3>
+<h3 id="负载因子与再散列"><a class="markdownIt-Anchor" href="#负载因子与再散列"></a> 负载因子与再散列</h3>
+<p>为了减少冲突处理的次数，哈希表一般都是稀疏的。我们记整个哈希表容量为n，负载因子为\alpha，则一旦哈希表内数据量达到n\alpha，我们就需要扩充表容量了，这叫再散列。</p>
+<h3 id="冲突处理"><a class="markdownIt-Anchor" href="#冲突处理"></a> 冲突处理</h3>
+<blockquote>
+<p>但最好的方法还是根本就不要产生冲突，当然考试题显然要制造冲突考验你</p>
+</blockquote>
+<h4 id="开放地址法"><a class="markdownIt-Anchor" href="#开放地址法"></a> 开放地址法</h4>
+<h5 id="线性探查"><a class="markdownIt-Anchor" href="#线性探查"></a> 线性探查</h5>
+<blockquote>
+<p>隐患：堆积问题导致其他本身没有冲突的<code>相邻</code>项目也会受到牵连影响</p>
+</blockquote>
+<h5 id="二次探查"><a class="markdownIt-Anchor" href="#二次探查"></a> 二次探查</h5>
+<blockquote>
+<p>隐患：堆积问题导致其他本身没有冲突的<code>相邻</code>项目也会受到牵连影响</p>
+</blockquote>
+<h5 id="双重哈希"><a class="markdownIt-Anchor" href="#双重哈希"></a> 双重哈希</h5>
+<p>几乎是最完美的办法。</p>
+<p>如果双重哈希还是冲突，那么还是回到线性探查/二次探查/链地址法上</p>
+<h4 id="链地址法"><a class="markdownIt-Anchor" href="#链地址法"></a> 链地址法</h4>
+<p>冲突了拖个链表就是了，查找的时候需要遍历对应链表</p>
+<blockquote>
+<p>隐患：链表如果拖得太长，效率就会极大降低</p>
+</blockquote>
+<h1 id="第四-第六和第七章-树-非线性数据结构"><a class="markdownIt-Anchor" href="#第四-第六和第七章-树-非线性数据结构"></a> 第四、第六和第七章 🎄 树 - 非线性数据结构</h1>
+<h2 id="基本概念与术语"><a class="markdownIt-Anchor" href="#基本概念与术语"></a> 基本概念与术语</h2>
+<p>节点、根等</p>
+<p>树的高度默认算根节点的和叶节点的，除非题目特别说明。</p>
+<p>树里面的度只算出度，所以叶的度为0。</p>
+<h2 id="二叉树"><a class="markdownIt-Anchor" href="#二叉树"></a> 二叉树</h2>
+<p>满二叉树、完全二叉树等</p>
+<h3 id="边和点的关系式"><a class="markdownIt-Anchor" href="#边和点的关系式"></a> 边和点的关系式</h3>
+<p>对m阶树而言</p>
+<ul>
+<li>
+<p>e = n - 1</p>
+</li>
+<li>
+<p>第i层最多有 m^i个元素</p>
+</li>
+<li>
+<p>树中最少有 h+1个元素，最多有m^h - 1个元素</p>
+</li>
+<li>
+<p>n_0=n_2 + 1，下标指的是度数</p>
+</li>
+<li>
+<p>n - 1 \ge h \ge \lceil log2(n+1) \rceil-1</p>
+</li>
+</ul>
+<h3 id="各种表示二叉树的方式"><a class="markdownIt-Anchor" href="#各种表示二叉树的方式"></a> 各种表示二叉树的方式</h3>
+<h4 id="数组访问效率高但是不大灵活"><a class="markdownIt-Anchor" href="#数组访问效率高但是不大灵活"></a> 数组（访问效率高但是不大灵活）</h4>
+<p>根据索引来定位，这也是堆中的完全二叉树的组织方式</p>
+<h4 id="索引"><a class="markdownIt-Anchor" href="#索引"></a> 索引</h4>
+<p>类似链表，较为常用</p>
+<h4 id="广义表"><a class="markdownIt-Anchor" href="#广义表"></a> 广义表</h4>
+<p>不讲</p>
+<h3 id="各种遍历的方式"><a class="markdownIt-Anchor" href="#各种遍历的方式"></a> 各种遍历的方式</h3>
+<h4 id="递归-2"><a class="markdownIt-Anchor" href="#递归-2"></a> 递归</h4>
+<blockquote>
+<p>public void inOrderRec(Node root) {<br />
+    if (root == null ) {<br />
+        return;<br />
+    }<br />
+    inOrderTraverse(root.left);<br />
+    System.out.print(root.value+&quot; &quot;);<br />
+    inOrderTraverse(root.right);<br />
+}</p>
+<p>按这种方式写就对了，前中后都一样</p>
+</blockquote>
+<h4 id="栈"><a class="markdownIt-Anchor" href="#栈"></a> 栈</h4>
+<h5 id="先序"><a class="markdownIt-Anchor" href="#先序"></a> 先序</h5>
+<p>public static void preOrder(Node root){<br />
+       if(root == null)return;<br />
+       Stack<Node> s = new Stack<Node>();<br />
+       while(root != null||!s.isEmpty()){<br />
+           while(root != null){<br />
+               System.out.print(root.value + &quot; &quot;);<br />
+               s.push(root);//先访问再入栈<br />
+               root = root.left;<br />
+           }<br />
+           root = s.pop();<br />
+           root = root.right;//如果是null，出栈并处理右子树<br />
+       }<br />
+   }</p>
+<h5 id="中序"><a class="markdownIt-Anchor" href="#中序"></a> 中序</h5>
+<p>public static void inOrder(Node root){<br />
+       if(root == null)return;<br />
+       Stack<Node> s = new Stack<Node>();<br />
+       while(root != null || !s.isEmpty()){<br />
+           while(root != null){<br />
+               s.push(root);<br />
+               root = root.left;<br />
+           }<br />
+           root = s.pop();<br />
+           System.out.print(root.value + &quot; &quot;);<br />
+           root = root.right;//如果是null，出栈并处理右子树<br />
+       }<br />
+   }</p>
+<h5 id="后序"><a class="markdownIt-Anchor" href="#后序"></a> 后序</h5>
+<p>public void postOrderRec(Node root) {<br />
+       Node pre = null;<br />
+       Stack<Node> stack = new Stack&lt;&gt;();<br />
+       stack.push(root);<br />
+       while (!stack.isEmpty()) {<br />
+           root = stack.peek();<br />
+           if ((root.left == null &amp;&amp; root.right == null) || ((pre != null)&amp;&amp;(root.left == pre || root.right == pre))) {<br />
+               System.out.print(root.value+&quot; &quot;);<br />
+               pre = stack.pop();<br />
+           }else {<br />
+               if (root.right != null) {<br />
+                   stack.push(root.right);<br />
+               }<br />
+               if (root.left != null) {<br />
+                   stack.push(root.left);<br />
+               }<br />
+           }<br />
+       }<br />
+   }</p>
+<h4 id="按层次遍历-栈"><a class="markdownIt-Anchor" href="#按层次遍历-栈"></a> 按层次遍历-栈</h4>
+<p>public static void levelTravel(Node root){<br />
+       if (root == null) return;<br />
+       Queue<Node> q=new LinkedList<Node>();<br />
+       q.add(root);<br />
+       while(!q.isEmpty()){<br />
+           Node temp = q.poll();<br />
+           System.out.println(temp.value);<br />
+           if(temp.left!=null) q.add(temp.left);<br />
+           if(temp.right!=null) q.add(temp.right);<br />
+       }<br />
+   }</p>
+<blockquote>
+<p>以上内容的重点在递归算法，非递归算法（基于栈）重在理解。</p>
+</blockquote>
+<h3 id="各种建树的方式"><a class="markdownIt-Anchor" href="#各种建树的方式"></a> 各种建树的方式</h3>
+<h4 id="maketree"><a class="markdownIt-Anchor" href="#maketree"></a> MakeTree</h4>
+<h4 id="先序-中序-后序-中序"><a class="markdownIt-Anchor" href="#先序-中序-后序-中序"></a> 先序 + 中序 / 后序 + 中序</h4>
+<p>基本思想：用中序找出左子树和右子树，然后分割，递归</p>
+<p><strong>先序</strong> X_1X_2X_3X_4X_5<code>中</code>Y_1Y_2Y_3Y_4Y_5</p>
+<p><strong>中序</strong> <code>中</code>X_{i1}X_{i2}X_{i3}X_{i4}X_{i5}Y_{i1}Y_{i2}Y_{i3}Y_{i4}Y_{i5}</p>
+<p>上面的X和Y的顺序虽然不一定一样，但是我们每一步只是切分，直到结果显而易见</p>
+<blockquote>
+<p>先序+后序只在某些特定情况下可以建树</p>
+</blockquote>
+<h4 id="广义表-2"><a class="markdownIt-Anchor" href="#广义表-2"></a> * 广义表</h4>
+<blockquote>
+<p>A(B(D), C(E(^ ,G), F(H,I)))</p>
+</blockquote>
+<h4 id="后缀表达式"><a class="markdownIt-Anchor" href="#后缀表达式"></a> 后缀表达式</h4>
+<blockquote>
+<p>(a+b)<em>c → ab+c</em> →</p>
+<p>递归 + 栈</p>
+</blockquote>
+<h2 id="树和森林"><a class="markdownIt-Anchor" href="#树和森林"></a> 树和森林</h2>
+<h3 id="表示法"><a class="markdownIt-Anchor" href="#表示法"></a> 表示法</h3>
+<h4 id="广义表-3"><a class="markdownIt-Anchor" href="#广义表-3"></a> * 广义表</h4>
+<h4 id="双亲"><a class="markdownIt-Anchor" href="#双亲"></a> 双亲</h4>
+<p>这种表示方法适用于经常查找父节点的情况（应用：并查集）</p>
+<h4 id="️-左子女右兄弟"><a class="markdownIt-Anchor" href="#️-左子女右兄弟"></a> ⭐️ 左子女右兄弟</h4>
+<h5 id="将一棵任意的树转换为二叉树"><a class="markdownIt-Anchor" href="#将一棵任意的树转换为二叉树"></a> 将一棵任意的树转换为二叉树</h5>
+<p>左边放左子女，右边放其兄弟即可（右子女当作左子女的兄弟处理就可以了）</p>
+<h3 id="树的遍历"><a class="markdownIt-Anchor" href="#树的遍历"></a> 树的遍历</h3>
+<h3 id="dfs"><a class="markdownIt-Anchor" href="#dfs"></a> DFS</h3>
+<h4 id="先根"><a class="markdownIt-Anchor" href="#先根"></a> 先根</h4>
+<blockquote>
+<p>对应于对应左子女右兄弟二叉树的<code>先序</code></p>
+</blockquote>
+<p>访问树的根按先序遍历根的第一棵子树，第二棵子树，……等。</p>
+<h4 id="后根"><a class="markdownIt-Anchor" href="#后根"></a> 后根</h4>
+<blockquote>
+<p>对应于对应左子女右兄弟二叉树的<code>中序</code></p>
+</blockquote>
+<p>按后序遍历根的第一棵子树，第二棵子树，……等访问树的根。</p>
+<h3 id="bfs"><a class="markdownIt-Anchor" href="#bfs"></a> BFS</h3>
+<h4 id="按层次遍历"><a class="markdownIt-Anchor" href="#按层次遍历"></a> 按层次遍历</h4>
+<p>注意左子女右兄弟特性，对每一迭代都是先一路向右先将所有非空节点纳入一队列中，而后每次出队的时候都必把其所有非空子节点进队即可。</p>
+<h3 id="森林的遍历"><a class="markdownIt-Anchor" href="#森林的遍历"></a> 森林的遍历</h3>
+<h3 id="dfs-2"><a class="markdownIt-Anchor" href="#dfs-2"></a> DFS</h3>
+<h4 id="先根-2"><a class="markdownIt-Anchor" href="#先根-2"></a> 先根</h4>
+<blockquote>
+<p>对应于左子女右兄弟二叉树的<code>先序</code></p>
+</blockquote>
+<ul>
+<li>
+<p>访问F的第一棵树的根</p>
+</li>
+<li>
+<p>按先根遍历第一棵树的子树森林</p>
+</li>
+<li>
+<p>按先根遍历其它树组成的森林</p>
+</li>
+</ul>
+<h4 id="中根"><a class="markdownIt-Anchor" href="#中根"></a> 中根</h4>
+<blockquote>
+<p>对应于左子女右兄弟二叉树的<code>中序</code></p>
+</blockquote>
+<ul>
+<li>
+<p>按中根遍历第一棵树的子树森林</p>
+</li>
+<li>
+<p>访问F的第一棵树的根</p>
+</li>
+<li>
+<p>按中根遍历其它树组成的森林</p>
+</li>
+</ul>
+<h4 id="后根-2"><a class="markdownIt-Anchor" href="#后根-2"></a> 后根</h4>
+<blockquote>
+<p>对应于左子女右兄弟二叉树的<code>后序</code></p>
+</blockquote>
+<ul>
+<li>
+<p>按后根遍历第一棵树的子树森林</p>
+</li>
+<li>
+<p>按后根遍历其它树组成的森林</p>
+</li>
+<li>
+<p>访问F的第一棵树的根</p>
+</li>
+</ul>
+<h3 id="bfs-2"><a class="markdownIt-Anchor" href="#bfs-2"></a> BFS</h3>
+<h4 id="按层次遍历-2"><a class="markdownIt-Anchor" href="#按层次遍历-2"></a> 按层次遍历</h4>
+<p>和树的遍历是一样的。</p>
+<h3 id="线段树"><a class="markdownIt-Anchor" href="#线段树"></a> 线段树</h3>
+<h4 id="节点-2"><a class="markdownIt-Anchor" href="#节点-2"></a> 节点</h4>
+<table>
+<thead>
+<tr>
+<th>left</th>
+<th>left thread</th>
+<th>data</th>
+<th>right thread</th>
+<th>right</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>指针</td>
+<td>0 - 左子女 1 - 前驱</td>
+<td></td>
+<td>0 - 右子女 1 - 后继</td>
+<td>右指针</td>
+</tr>
+</tbody>
+</table>
+<h4 id="线索树"><a class="markdownIt-Anchor" href="#线索树"></a> 线索树</h4>
+<p>在建树的时候左右两个数据域都要填上，然后根据实际情况补充 <code>left thread</code> 和 <code>right thread</code> 的值。</p>
+<h4 id="中序线索二叉树"><a class="markdownIt-Anchor" href="#中序线索二叉树"></a> 中序线索二叉树</h4>
+<p>建树的过程与插入/删除后的再平衡过程略（PPT也没有给）</p>
+<h5 id="中序线索二叉树的正确食用方式"><a class="markdownIt-Anchor" href="#中序线索二叉树的正确食用方式"></a> 中序线索二叉树的正确食用方式</h5>
+<p>// 先找到中序遍历的起点，就是一路向左<br />
+template<class Type><br />
+ThreadNode<Type>* ThreadInorderIterator<Type>::First( ){<br />
+while (current-&gt;leftThread==0) current=current-&gt;leftchild;<br />
+return current;<br />
+}</p>
+<p>// 找后继<br />
+template<class Type><br />
+ThreadNode<Type>* ThreadInorderIterator<Type>::Next( ){<br />
+ThreadNode<Type>* p=current-&gt;rightchild;<br />
+if(current-&gt;rightThread<mark>0) // 如果该节点有右子女<br />
+while(p-&gt;leftThread</mark>0) p=p-&gt;leftchilld; // 一路向左找左子女<br />
+current=p;<br />
+}</p>
+<h4 id="增长树"><a class="markdownIt-Anchor" href="#增长树"></a> 增长树</h4>
+<ul>
+<li>
+<p>对原二叉树中度为1的结点，增加一个空树叶</p>
+</li>
+<li>
+<p>对原二叉树中的树叶，增加两个空树叶</p>
+</li>
+</ul>
+<p><strong>外通路长度（外路径）E</strong>：根到每个外结点（增长树的叶子）的路径长度的总和（边数）</p>
+<p><strong>内通路长度（内路径）I</strong>：根到每个内结点（非叶子）的路径长度的总和（边数）。</p>
+<p>**结点的带权路径长度：**一个结点的权值与结点的路径长度的乘积。</p>
+<p><strong>带权的外路径长度</strong>：各叶结点的带权路径长度之和。</p>
+<p><strong>带权的内路径长度</strong>：各非叶结点的带权路径长度之和。</p>
+<h4 id="霍夫曼树"><a class="markdownIt-Anchor" href="#霍夫曼树"></a> 霍夫曼树</h4>
+<p>是霍夫曼树在数据编码中一种应用。</p>
+<p><strong>目的</strong></p>
+<p>1）信息的总长度最短。</p>
+<p>2）为了译码，任一字符的编码不应是另一字符的编码的前缀</p>
+<p>算法：利用Huffman算法，把频率作为外部结点的权，构造具有最小带权外路径长度的扩充二叉树，把每个结点的左子女的边标上0，右子女标上1。这样从根到每个叶子的路径上的号码连接起来，就是外结点的字符编码。</p>
+<p>YDJSIR在看到代码之前也迷惑了很久，看了代码立马就明白细节了。</p>
+<p>public Huffman(int a[]) {<br />
+HuffmanNode parent = null;<br />
+MinHeap heap;</p>
+<pre><code>// 建立数组a对应的最小堆  
+heap = new MinHeap(a);  
+
+for(int i=0; i&lt;a.length-1; i++) {     
+    HuffmanNode left = heap.dumpFromMinimum();  // 最小节点是左孩子  
+    HuffmanNode right = heap.dumpFromMinimum(); // 其次才是右孩子  
+
+    // 新建parent节点，左右孩子分别是left和right；  
+    // parent的大小是左右孩子之和  
+    parent = new HuffmanNode(left.key+right.key, left, right, null);  
+    left.parent = parent;  
+    right.parent = parent;  
+
+    // 将parent节点数据拷贝到&quot;最小堆&quot;中  
+    heap.insert(parent);  
+}  
+mRoot = parent; // 整个树的节点  
+</code></pre>
+<p>}</p>
+<p>protected HuffmanNode(int key, HuffmanNode left, HuffmanNode right, HuffmanNode parent) {<br />
+this.key = key;<br />
+this.left = left;<br />
+this.right = right;<br />
+this.parent = parent;<br />
+}</p>
+<h3 id="字符串"><a class="markdownIt-Anchor" href="#字符串"></a> 字符串</h3>
+<blockquote>
+<p>这个想必大家都会了吧</p>
+<p>这里提及了怎么用先序和中序合成一棵树</p>
+</blockquote>
+<h3 id="广义表-4"><a class="markdownIt-Anchor" href="#广义表-4"></a> * 广义表</h3>
+<h2 id="搜索树"><a class="markdownIt-Anchor" href="#搜索树"></a> 🌟 搜索树！</h2>
+<blockquote>
+<p>各种操作</p>
+</blockquote>
+<h3 id="二叉搜索树"><a class="markdownIt-Anchor" href="#二叉搜索树"></a> 二叉搜索树</h3>
+<p>一般是左边的key值比根节点小，右边key值的比根节点大,，然后就可以在树型结构里面检索节点。</p>
+<h3 id="avl树"><a class="markdownIt-Anchor" href="#avl树"></a> 🎏 AVL树！</h3>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_25343557/article/details/89110319">https://blog.csdn.net/qq_25343557/article/details/89110319</a></p>
+</blockquote>
+<p>自平衡的二叉搜索树！</p>
+<p>任何时候，左右子树的高度差不超过1。</p>
+<p>搜索复杂度：O(log n) 树高度：O(log n)</p>
+<blockquote>
+<p>下面的左右是指从上往下看过高的树是左树还是右树</p>
+</blockquote>
+<h4 id="单旋转"><a class="markdownIt-Anchor" href="#单旋转"></a> 单旋转</h4>
+<h5 id="ll-右旋"><a class="markdownIt-Anchor" href="#ll-右旋"></a> LL-右旋</h5>
+<table>
+<thead>
+<tr>
+<th>初始状态</th>
+<th>操作过程与结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img-blog.csdnimg.cn/20190408210824197.png" alt="在这里插入图片描述" /></td>
+<td><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img-blog.csdnimg.cn/20190408211619425.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI1MzQzNTU3,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" /></td>
+</tr>
+</tbody>
+</table>
+<h5 id="rr-左旋"><a class="markdownIt-Anchor" href="#rr-左旋"></a> RR-左旋</h5>
+<blockquote>
+<p>和上面是一样的，只是中轴对称了一下</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>初始状态</th>
+<th>操作过程与结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img-blog.csdnimg.cn/20190408214321472.png" alt="img" /></td>
+<td><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img-blog.csdnimg.cn/20190408214353545.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzI1MzQzNTU3,size_16,color_FFFFFF,t_70" alt="img" /></td>
+</tr>
+</tbody>
+</table>
+<h4 id="双旋转"><a class="markdownIt-Anchor" href="#双旋转"></a> 双旋转</h4>
+<h5 id="lr-先左后右"><a class="markdownIt-Anchor" href="#lr-先左后右"></a> LR-先左后右</h5>
+<table>
+<thead>
+<tr>
+<th>初始状态</th>
+<th>操作过程与结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img-blog.csdnimg.cn/20190408220008127.png" alt="在这里插入图片描述" /></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="rl-先右后左"><a class="markdownIt-Anchor" href="#rl-先右后左"></a> RL-先右后左</h5>
+<table>
+<thead>
+<tr>
+<th>初始状态</th>
+<th>操作过程与结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img-blog.csdnimg.cn/20190408215326866.png" alt="img" /></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>注意到树的整理应该是由下而上递归进行的！</p>
+<p>插入/删除复杂度：O(log_2(n))</p>
+<p>证明可以简要看看，用斐波拉契数→斐波拉契树→去掉小量估算</p>
+</blockquote>
+<h3 id="m路搜索树"><a class="markdownIt-Anchor" href="#m路搜索树"></a> m路搜索树</h3>
+<p>类似二叉搜索树，但是每个节点里面可能有多个值。</p>
+<p><code>m</code>路搜索树每个节点里最多有<code>m-1</code>个值和<code>m</code>个索引。</p>
+<p>C_0k_1C_1k_2……k_pC_p</p>
+<h3 id="b树-b树平衡的m叉搜索树"><a class="markdownIt-Anchor" href="#b树-b树平衡的m叉搜索树"></a> B树、* B+树：平衡的m叉搜索树</h3>
+<p>重点：增/删节点时兄弟节点/父子节点之间的合并</p>
+<p>除根节点外，每一个节点里最少有 \lceil \frac{m}{2} \rceil - 1 个分隔值和 \lceil \frac{m}{2} \rceil 个子节点，但所有节点最多只能有 m - 1 个分隔值和 m 个子节点。</p>
+<p>最常见的B树应用：磁盘文件索引</p>
+<p>最常见的B树：2-3树（三路搜索树）</p>
+<h4 id="插入与删除"><a class="markdownIt-Anchor" href="#插入与删除"></a> 插入与删除</h4>
+<ul>
+<li>
+<p>B树所有叶节点必须在同一高度。</p>
+</li>
+<li>
+<p>为了维持每一个节点的键值数，按照常规搜索树插入方法插入后需要做调整；</p>
+</li>
+</ul>
+<h5 id="调整方法"><a class="markdownIt-Anchor" href="#调整方法"></a> 调整方法</h5>
+<p>自下而上，递归进行</p>
+<h6 id="插入"><a class="markdownIt-Anchor" href="#插入"></a> 插入</h6>
+<ol>
+<li>
+<p>如果节点拥有的元素数量小于最大值，那么有空间容纳新的元素。将新元素插入到这一节点，且保持节点中元素有序。</p>
+</li>
+<li>
+<p>否则的话这一节点已经满了，将它平均地分裂成两个节点：</p>
+<ol>
+<li>
+<p>从该节点的原有元素和新的元素中选择出中位数</p>
+</li>
+<li>
+<p>小于这一中位数的元素放入左边节点，大于这一中位数的元素放入右边节点，中位数作为分隔值。</p>
+</li>
+<li>
+<p>分隔值被插入到父节点中，这可能会造成父节点分裂，分裂父节点时可能又会使它的父节点分裂，以此类推。如果没有父节点（这一节点是根节点），就创建一个新的根节点（增加了树的高度）。</p>
+</li>
+</ol>
+</li>
+</ol>
+<p>如果分裂一直上升到根节点，那么一个新的根节点会被创建，它有一个分隔值和两个子节点。</p>
+<h6 id="删除"><a class="markdownIt-Anchor" href="#删除"></a> 删除</h6>
+<p>定位并删除元素，然后调整树使它满足约束条件；</p>
+<blockquote>
+<p><strong>或者</strong> 从上到下处理这棵树，在进入一个节点之前，调整树使得之后一旦遇到了要删除的键，它可以被直接删除而不需要再进行调整（没讲）</p>
+</blockquote>
+<h6 id="借"><a class="markdownIt-Anchor" href="#借"></a> 借</h6>
+<ul>
+<li>
+<p>如果缺少元素节点的右兄弟存在且拥有多余的元素，那么向左旋转</p>
+<ol>
+<li>
+<p>将父节点的分隔值复制到缺少元素节点的最后（分隔值被移下来；缺少元素的节点现在有最小数量的元素）</p>
+</li>
+<li>
+<p>将父节点的分隔值替换为右兄弟的第一个元素（右兄弟失去了一个节点但仍然拥有最小数量的元素）</p>
+</li>
+<li>
+<p>树又重新平衡</p>
+</li>
+</ol>
+</li>
+<li>
+<p>否则，如果缺少元素节点的左兄弟存在且拥有多余的元素，那么向右旋转</p>
+<ol>
+<li>
+<p>将父节点的分隔值复制到缺少元素节点的第一个节点（分隔值被移下来；缺少元素的节点现在有最小数量的元素）</p>
+</li>
+<li>
+<p>将父节点的分隔值替换为左兄弟的最后一个元素（左兄弟失去了一个节点但仍然拥有最小数量的元素）</p>
+</li>
+<li>
+<p>树又重新平衡</p>
+</li>
+</ol>
+</li>
+</ul>
+<h6 id="补"><a class="markdownIt-Anchor" href="#补"></a> 补</h6>
+<ul>
+<li>
+<p>如果它的两个直接兄弟节点都只有最小数量的元素，那么将它与一个直接兄弟节点以及父节点中它们的分隔值合并</p>
+<ol>
+<li>
+<p>将分隔值复制到左边的节点（左边的节点可以是缺少元素的节点或者拥有最小数量元素的兄弟节点）</p>
+</li>
+<li>
+<p>将右边节点中所有的元素移动到左边节点（左边节点现在拥有最大数量的元素，右边节点为空）</p>
+</li>
+<li>
+<p>将父节点中的分隔值和空的右子树移除（父节点失去了一个元素）</p>
+<ul>
+<li>
+<p>如果父节点是根节点并且没有元素了，那么释放它并且让合并之后的节点成为新的根节点（树的深度减小）</p>
+</li>
+<li>
+<p>否则，如果父节点的元素数量小于最小值，重新平衡父节点</p>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="优先队列-堆"><a class="markdownIt-Anchor" href="#优先队列-堆"></a> 优先队列 - 堆</h2>
+<p>只要求父节点key值大于/小于子节点key值的完全二叉树。</p>
+<p>最小堆是顶上是最小值，最大堆是顶上是最大值。</p>
+<h4 id="找父节点下标"><a class="markdownIt-Anchor" href="#找父节点下标"></a> 找父节点下标</h4>
+<table>
+<thead>
+<tr>
+<th>下标</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>父节点</td>
+<td>-1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>序数</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<h5 id="下标表示-lfloor-fraci-12-rfloor"><a class="markdownIt-Anchor" href="#下标表示-lfloor-fraci-12-rfloor"></a> 下标表示 - \lfloor \frac{i-1}{2} \rfloor</h5>
+<h3 id="建堆"><a class="markdownIt-Anchor" href="#建堆"></a> 建堆</h3>
+<blockquote>
+<p>下面以最大堆为例</p>
+</blockquote>
+<h4 id="自下而上元素是不断进来的不断插入并调整堆-on"><a class="markdownIt-Anchor" href="#自下而上元素是不断进来的不断插入并调整堆-on"></a> 自下而上：元素是不断进来的，不断插入并调整堆 - O(n)</h4>
+<h5 id="插入-olog_2-n"><a class="markdownIt-Anchor" href="#插入-olog_2-n"></a> 插入 - O(log_2 n)</h5>
+<p>template<class T>MaxHeap<T>&amp; MaxHeap<T>:: Insert(const T&amp; x){<br />
+if(CurrentSize= =MaxSize)throw NoMem();<br />
+int i=++CurrentSize;<br />
+while(i!=1&amp;&amp;x&gt;heap[i/2]){ // 如果这个元素比父节点大就往上<br />
+heap[i]=heap[i/2]; i/=2;<br />
+}<br />
+heap[i]=x;<br />
+return *this;<br />
+}</p>
+<h4 id="重复n次但是并不是简单乘起来因为事实上每次都可以节省很多工作量有证明过程"><a class="markdownIt-Anchor" href="#重复n次但是并不是简单乘起来因为事实上每次都可以节省很多工作量有证明过程"></a> 重复n次，但是并不是简单乘起来，因为事实上每次都可以节省很多工作量，有证明过程</h4>
+<h4 id="自上而下一开始就有所有的元素直接通过调整得到堆-olog_2-n"><a class="markdownIt-Anchor" href="#自上而下一开始就有所有的元素直接通过调整得到堆-olog_2-n"></a> 自上而下：一开始就有所有的元素，直接通过调整得到堆 - O(log_2 n)</h4>
+<p>template<class T> void MaxHeap<T>::Initialize (T a[],int size,int ArraySize){<br />
+delete[] heap;<br />
+heap=a;<br />
+CurrentSize=Size;<br />
+MaxSize=ArraySize;<br />
+for( int i=CurrentSize/2; i&gt;=1; i–){ // 注意一下是从最后开始<br />
+T y=heap[i];<br />
+int c=2<em>i;<br />
+while(c&lt;=CurrentSize){<br />
+if(c&lt;CurrentSize &amp;&amp; heap[c]&lt;heap[c+1]) c++;<br />
+if(y&gt;=heap[c]) break;<br />
+heap[c/2] = heap[c];<br />
+c</em>=2;<br />
+}<br />
+heap[c/2]=y;<br />
+}<br />
+}</p>
+<h3 id="优先队列"><a class="markdownIt-Anchor" href="#优先队列"></a> 优先队列</h3>
+<p>一个一直维护着的堆，按照优先级大小出队。</p>
+<h3 id="堆排序-2"><a class="markdownIt-Anchor" href="#堆排序-2"></a> 堆排序</h3>
+<p>先建好一个优先队列（堆），然后一个个出列，就这么简单。</p>
+<h3 id="并查集"><a class="markdownIt-Anchor" href="#并查集"></a> 并查集</h3>
+<blockquote>
+<p>重点在使用，一般不单独考察内部具体实现。</p>
+</blockquote>
+<h4 id="主要操作"><a class="markdownIt-Anchor" href="#主要操作"></a> 主要操作</h4>
+<h5 id="合并两个不相交集合并"><a class="markdownIt-Anchor" href="#合并两个不相交集合并"></a> 合并两个不相交集合(并)</h5>
+<h5 id="判断两个元素是否属于同一集合查"><a class="markdownIt-Anchor" href="#判断两个元素是否属于同一集合查"></a> 判断两个元素是否属于同一集合(查)</h5>
+<h4 id="并查集的优化"><a class="markdownIt-Anchor" href="#并查集的优化"></a> 并查集的优化</h4>
+<h5 id="路径压缩"><a class="markdownIt-Anchor" href="#路径压缩"></a> 路径压缩</h5>
+<h5 id="按秩合并"><a class="markdownIt-Anchor" href="#按秩合并"></a> 按秩合并</h5>
+<h4 id="时间及空间复杂度"><a class="markdownIt-Anchor" href="#时间及空间复杂度"></a> 时间及空间复杂度</h4>
+<p>时间复杂度：可以控制在O(1)</p>
+<p>空间复杂度：O(n)</p>
+<h1 id="第八章-图-非线性数据结构"><a class="markdownIt-Anchor" href="#第八章-图-非线性数据结构"></a> 第八章 🌟 图 - 非线性数据结构</h1>
+<h2 id="概念理解"><a class="markdownIt-Anchor" href="#概念理解"></a> 概念理解</h2>
+<p>各种图、完全图、简单图、子图、路径、简单通路等</p>
+<h4 id="有向图和无向图"><a class="markdownIt-Anchor" href="#有向图和无向图"></a> 有向图和无向图</h4>
+<blockquote>
+<p>很多时候会造成很多区别</p>
+</blockquote>
+<h4 id="度"><a class="markdownIt-Anchor" href="#度"></a> 度</h4>
+<h5 id="有向图"><a class="markdownIt-Anchor" href="#有向图"></a> 有向图</h5>
+<h6 id="入度-出度与度"><a class="markdownIt-Anchor" href="#入度-出度与度"></a> 入度、出度与度</h6>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>T</mi><mi>D</mi><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo><mo>=</mo><mi>I</mi><mi>D</mi><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo><mo>+</mo><mi>O</mi><mi>D</mi><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">TD(v)=ID(v)+OD(v)  
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mclose">)</span></span></span></span></span></p>
+<h5 id="无向图"><a class="markdownIt-Anchor" href="#无向图"></a> 无向图</h5>
+<h6 id="度就是与这一顶点相连的边的数量"><a class="markdownIt-Anchor" href="#度就是与这一顶点相连的边的数量"></a> 度就是与这一顶点相连的边的数量</h6>
+<h4 id="连通图连通分量"><a class="markdownIt-Anchor" href="#连通图连通分量"></a> 连通图/连通分量</h4>
+<h5 id="强连通与弱联通"><a class="markdownIt-Anchor" href="#强连通与弱联通"></a> 强连通与弱联通</h5>
+<ul>
+<li>
+<p>无向图只有强连通和非联通</p>
+</li>
+<li>
+<p>有向图中如果对任意两顶点i,j都有从i到j<code>与</code>从j到i的通路，那么他是强连通的；</p>
+</li>
+<li>
+<p>有向图中如果对任意两顶点i,j都有从i到j<code>或</code>从j到i的通路，那么他是弱连通的；</p>
+</li>
+</ul>
+<h2 id="图的表示"><a class="markdownIt-Anchor" href="#图的表示"></a> 图的表示</h2>
+<h3 id="邻接矩阵-适合高密度的矩阵节约空间-空间复杂度on2"><a class="markdownIt-Anchor" href="#邻接矩阵-适合高密度的矩阵节约空间-空间复杂度on2"></a> 邻接矩阵 - 适合高密度的矩阵（节约空间）- 空间复杂度O(n^2)</h3>
+<p>无向图下这是一个对称的矩阵。因此你可以只用考虑半边。</p>
+<h3 id="邻接表-适合稀疏矩阵使用链表"><a class="markdownIt-Anchor" href="#邻接表-适合稀疏矩阵使用链表"></a> 邻接表 - 适合稀疏矩阵（使用链表）</h3>
+<p>n个顶点e条边的无向图的邻接表表示中有n个顶点表结点和2e个边表结点。(换句话说，每条边(i,j)在邻接表 中出现两次：一次在关于<code>i</code>的邻接表中，另一次在关于<code>j</code>的邻接表中)</p>
+<p>注意<code>getFirstNeighbour</code>和<code>getNextNeighbour</code>方法。</p>
+<h5 id="逆连接表"><a class="markdownIt-Anchor" href="#逆连接表"></a> 逆连接表</h5>
+<p>从记出边到计入边</p>
+<h5 id="邻接多重表只是带过去没有细讲"><a class="markdownIt-Anchor" href="#邻接多重表只是带过去没有细讲"></a> 邻接多重表(只是带过去没有细讲)</h5>
+<p>在无向图中, 如果边数为m, 则在邻接表表示中需2m个单位来存储. 为了克服这一缺点, 采用邻接多重表, 每条边用一个结点表示。</p>
+<h2 id="图的相关算法"><a class="markdownIt-Anchor" href="#图的相关算法"></a> 图的相关算法</h2>
+<h3 id="图的遍历"><a class="markdownIt-Anchor" href="#图的遍历"></a> <mark>图的遍历</mark></h3>
+<h4 id="dfs-3"><a class="markdownIt-Anchor" href="#dfs-3"></a> DFS</h4>
+<h5 id="邻接矩阵"><a class="markdownIt-Anchor" href="#邻接矩阵"></a> 邻接矩阵</h5>
+<blockquote>
+<p>略</p>
+</blockquote>
+<h5 id="邻接表"><a class="markdownIt-Anchor" href="#邻接表"></a> 邻接表</h5>
+<p>template&lt;NameType,DistType&gt; void Graph&lt;NameType,DistType&gt; :: DFS( ){<br />
+int *visited=new int[NumVertices];<br />
+for ( int i=0; i&lt;NumVertices; i++) visited[i]=0;DFS(0,visited); //从顶点0开始深度优先搜索delete[] visited;<br />
+}</p>
+<p>template&lt;NameType,DistType&gt; void Graph&lt;NameType,DistType&gt; :: DFS(int v, visited[]){<br />
+cout&lt;&lt;GetValue(v)&lt;&lt;‗‘;<br />
+visited[v]=1;<br />
+int w=GetFirstNeighbor(v);<br />
+while (w!=-1){<br />
+if(!visited[w]) DFS(w,visited);<br />
+w=GetNextNeighbor(v,w);<br />
+}<br />
+}</p>
+<h4 id="bfs-3"><a class="markdownIt-Anchor" href="#bfs-3"></a> BFS</h4>
+<h5 id="邻接矩阵-2"><a class="markdownIt-Anchor" href="#邻接矩阵-2"></a> 邻接矩阵</h5>
+<blockquote>
+<p>略</p>
+</blockquote>
+<h5 id="邻接表-2"><a class="markdownIt-Anchor" href="#邻接表-2"></a> 邻接表</h5>
+<p>template&lt;NameType,DistType&gt; void Graph&lt;NameType,DistType&gt; :: BFS(int v){<br />
+int* visited=new int[NumVertices];<br />
+for (int i=0; i&lt;NumVertices; i++) visited[i]=0;<br />
+cout&lt;&lt;GetValue(v)&lt;&lt;‗‘;<br />
+visited[v]=1;queue<int> q;<br />
+q.EnQueue(v);<br />
+while(!q.IsEmpty()){<br />
+v=q.DeQueue();<br />
+int w=GetFirstNeighbor(v);<br />
+while (w!=-1){<br />
+if(!visited[w]){<br />
+cout&lt;&lt;GetValue(w)&lt;&lt;‗‘;<br />
+visited[w]=1;q.EnQueue(w);<br />
+}<br />
+w=GetNextNeighbor(v,w);<br />
+}<br />
+}<br />
+delete[] visited;<br />
+}</p>
+<h4 id="邻接表下bfs和dfs都是-one"><a class="markdownIt-Anchor" href="#邻接表下bfs和dfs都是-one"></a> 邻接表下BFS和DFS都是 O(n+e)</h4>
+<h4 id="邻接矩阵下bfs和dfs都是-on2"><a class="markdownIt-Anchor" href="#邻接矩阵下bfs和dfs都是-on2"></a> 邻接矩阵下BFS和DFS都是 O(n²)</h4>
+<h3 id="最小生成树"><a class="markdownIt-Anchor" href="#最小生成树"></a> 最小生成树</h3>
+<h4 id="设gve是一个连通的无向图或是强连通有向图"><a class="markdownIt-Anchor" href="#设gve是一个连通的无向图或是强连通有向图"></a> 设G=(V，E)是一个<strong>连通的无向图</strong>（或是<strong>强连通有向图</strong>）,</h4>
+<p>从图G中的任一顶点出发作遍历图的操作，把遍历走过的边的集合记为TE(G)，显然G’=(V，TE)是G之子图，G’被称为G的生成树（spanning tree）。</p>
+<p>生成树是不唯一的，但一定有n-1条边。</p>
+<h4 id="kruskal-基于边-oelogv"><a class="markdownIt-Anchor" href="#kruskal-基于边-oelogv"></a> <mark>Kruskal</mark> - 基于边 - O(|E|log⁡|V|)</h4>
+<blockquote>
+<p>PPT上面的示范代码的确是O(e log_2 n+n^2)，由于e最大可以取到\frac{n (n - 1)}{2} ，达到了O(n^2)量级，故e log_2 e 可以做到比n ^ 2 量级大，但也可能因为e比较小而导致它的量级更小。</p>
+</blockquote>
+<p>先把边按权值从小到大排（建堆），然后依次往结果边集里面加，每加一次都要检查是否成环（并查集），加到n - 1条边即可。</p>
+<p>void Graph&lt;string , float&gt;::Kruskal(MinSpanTree&amp;T){<br />
+MSTEdgeNode e;<br />
+MinHeap<MSTEdgeNode>H(currentEdges);<br />
+int NumVertices=VerticesList.Last , u , v;<br />
+Ufsets F(NumVertices); //建立n个单元素的连通分量for(u=0;u&lt;NumVertices;u++)<br />
+for (v=u+1;v&lt;NumVertices;v++)if(Edge[u][v]!=MAXINT){<br />
+e.tail=u;<br />
+e.head=v;<br />
+e.cost=Edge[u][v];<br />
+H.insert(e);}<br />
+int count=1; //生成树边计数<br />
+while(count&lt;NumVertices){<br />
+H.RemoveMin(e);u=F.Find(e.tail);// 防止成环<br />
+v=F.Find(e.head);<br />
+if(u!=v){<br />
+F.union(u,v);<br />
+T.Insert(e);<br />
+count++;<br />
+}<br />
+}<br />
+}</p>
+<h4 id="prim-基于点-on2"><a class="markdownIt-Anchor" href="#prim-基于点-on2"></a> <mark>Prim</mark> - 基于点 - O(n²)</h4>
+<p>任取一个边开始，每次都找已选点集 u 到未选点集 v 之间的最短边加入边集中，并将该边另一顶点加入已选点集中，直至已加入所有点集。</p>
+<p>复杂度用连接表不优化可能要O(n^3)复杂度。</p>
+<h3 id="最短路径"><a class="markdownIt-Anchor" href="#最短路径"></a> 最短路径</h3>
+<p>设G=(V,E)是一个带权图（有向，无向），如果从顶点v到顶点w的一条路径为(v,v1,v2,…,w)，其路径长度不大于从v到w的所有其它路径的长度，则该路径为从v到w的最短路径。</p>
+<h4 id="dijkstra-on2-无负权值单源最短路径"><a class="markdownIt-Anchor" href="#dijkstra-on2-无负权值单源最短路径"></a> <mark>Dijkstra</mark> - O(n²) - 无负权值单源最短路径</h4>
+<blockquote>
+<p>关键：贪心思想</p>
+</blockquote>
+<p>/**<br />
+path数组记录从源节点这一节点到目标结点路径上的倒数第二个节点，以此类推<br />
+dist数组记录到该点的当前已知最短路径长度<br />
+s记录该点是否已经加入已选点集中<br />
+图用邻接矩阵表示<br />
+**/<br />
+public int[] shortestpath(int v){<br />
+int n = this.numOfVertex;<br />
+// 初始化<br />
+for( int i=0; i&lt;n; i++){<br />
+dist[i]=Edge[v][i];<br />
+s[i]=0;<br />
+if( i!=v &amp;&amp; dist[i]&lt; MAXNUM ) path[i]=v;<br />
+else path[i]=-1;<br />
+}<br />
+s[v]=1;<br />
+dist[v]=0;<br />
+for( i=0; i&lt;n-1; i++){<br />
+float min=MAXNUM;<br />
+int u = v;<br />
+// 找出最近的点集<br />
+for( int j=0; j&lt;n; j++)<br />
+if( !s[j] &amp;&amp; dist[j]&lt;min ) {<br />
+u=j;<br />
+min=dist[j];<br />
+}<br />
+s[u]=1;// 把这个最近的点纳入已知点集中<br />
+// 更新距离<br />
+for ( int w=0; w&lt;n; w++)<br />
+if( !s[w] &amp;&amp; Edge[u][w] &lt; MAXNUM &amp;&amp; dist[u] + Edge[u][w] &lt; dist[w]){<br />
+// 只需要考虑未被加入点集中的点<br />
+dist[w]=dist[u]+Edge[u][w];<br />
+path[w]=u;<br />
+}<br />
+}<br />
+return path;<br />
+}</p>
+<p>按最短路径长度递增的次序产生最短路径。</p>
+<h4 id="bellman-ford-on3-无负环"><a class="markdownIt-Anchor" href="#bellman-ford-on3-无负环"></a> <mark>Bellman-Ford</mark> - O(n³) - 无负环</h4>
+<blockquote>
+<p>关键：动态规划</p>
+<p>递推公式（动态规划所需要的）</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>d</mi><mi>i</mi><mi>s</mi><msup><mi>t</mi><mn>1</mn></msup><mo stretchy="false">[</mo><mi>u</mi><mo stretchy="false">]</mo><mo>=</mo><mi>E</mi><mi>d</mi><mi>g</mi><mi>e</mi><mo stretchy="false">[</mo><mi>v</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>u</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dist^1[u]=Edge[v][u]  
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1141079999999999em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span></span></span></span></span><span class="mopen">[</span><span class="mord mathnormal">u</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal">d</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">e</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal">u</span><span class="mclose">]</span></span></span></span></span></p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>d</mi><mi>i</mi><mi>s</mi><msup><mi>t</mi><mi>k</mi></msup><mo stretchy="false">[</mo><mi>u</mi><mo stretchy="false">]</mo><mo>=</mo><mi>m</mi><mi>i</mi><mi>n</mi><mrow><mi>d</mi><mi>i</mi><mi>s</mi><mi>t</mi><mi>k</mi><mo>−</mo><mn>1</mn><mo stretchy="false">[</mo><mi>u</mi><mo stretchy="false">]</mo><mo separator="true">,</mo><mi>m</mi><mi>i</mi><mi>n</mi><mo stretchy="false">{</mo><mi>d</mi><mi>i</mi><mi>s</mi><msup><mi>t</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo><mo>+</mo><mi>E</mi><mi>d</mi><mi>g</mi><mi>e</mi><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo><mo stretchy="false">[</mo><mi>u</mi><mo stretchy="false">]</mo></mrow><mo stretchy="false">}</mo><mo separator="true">,</mo><mi>j</mi><mo>=</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo separator="true">,</mo><mn>2</mn><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">dist^k[u]=min{distk-1[u],min\{dist^{k-1}[j]+Edge[j][u]}\}, j=0,1,2,…,n-1  
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.149108em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8991079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span></span></span></span><span class="mopen">[</span><span class="mord mathnormal">u</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.149108em;vertical-align:-0.25em;"></span><span class="mord mathnormal">m</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mord"><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">1</span><span class="mopen">[</span><span class="mord mathnormal">u</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">m</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mopen">{</span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8991079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal">d</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">e</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mopen">[</span><span class="mord mathnormal">u</span><span class="mclose">]</span></span><span class="mclose">}</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></span></p>
+</blockquote>
+<p>public int[] BellmanFord(int v){<br />
+int n = this.numOfVertex;<br />
+for(int i=0;i&lt;n;i++){<br />
+dist[i]=Edge[v][i];<br />
+if(i!=v&amp;&amp;dist[i]&lt;MAXNUM)<br />
+path[i]=v;<br />
+else path[i]=-1;<br />
+}<br />
+for (int k=2;k&lt;n;k++) // 事实上可以不做满这么多次，当你发现距离数组已经不变化的时候就可以不做了<br />
+for(int u=0;u&lt;n;u++)<br />
+if(u!=v)<br />
+for(i=0;i&lt;n;i++)<br />
+if (Edge[i][u]&lt; &gt;0 &amp;&amp; Edge[i][u]&lt;MAXNUM &amp;&amp; dist[u]&gt;dist[i]+Edge[i][u]){<br />
+dist[u]=dist[i]+Edge[i][u];<br />
+path[u]=i;<br />
+}<br />
+return path;<br />
+}</p>
+<p>和Dijkstra的一个鲜明区别是它不用考虑什么加不加入点集，他直接就把所有的距离都更新一次，保留了更多的结果。也正因如此，它能够解决负权值问题。</p>
+<h4 id="floyd-on3-无负权值-所有点到所有点的最短路径"><a class="markdownIt-Anchor" href="#floyd-on3-无负权值-所有点到所有点的最短路径"></a> <mark>Floyd</mark> - O(n³) - 无负权值 - 所有点到所有点的最短路径</h4>
+<h5 id="所有顶点之间的最短路径floyed前提各边权值均大于0的带权有向图"><a class="markdownIt-Anchor" href="#所有顶点之间的最短路径floyed前提各边权值均大于0的带权有向图"></a> 所有顶点之间的最短路径（Floyed)前提：各边权值均大于0的带权有向图。</h5>
+<ol>
+<li>
+<p>把有向图的每一个顶点作为源点，重复执行Dijkstra算法n次，执行时间为O(n^3)</p>
+</li>
+<li>
+<p>Floyed方法，算法形式更简单些，但是时间仍然是O(n3)</p>
+</li>
+</ol>
+<blockquote>
+<p>回忆离散课的内容</p>
+</blockquote>
+<p>public int[][] Alllength(int n){<br />
+for(int i=0; i&lt;n; i++)<br />
+for(int j=0; j&lt;n; j++){<br />
+a[i][j]=Edge[i][j];<br />
+if(i==j) a[i][j]=0;<br />
+if(i&lt; &gt;j&amp;&amp;a[i][j]&lt;MAXNUM)<br />
+path[i][j]=i;<br />
+else path[i][j]=0;<br />
+}<br />
+for(int k=0; k&lt;n; k++)<br />
+for(int i=0; i&lt;n; i++)<br />
+for(int j=0; j&lt;n; j++)<br />
+if( a[i][k]+a[k][j]&lt;a[i][j] ){<br />
+a[i][j]=a[i][k]+a[k][j];<br />
+path[i][j]=path[k][j];<br />
+}<br />
+return path;<br />
+}</p>
+<h3 id="找出有向图中所有的环"><a class="markdownIt-Anchor" href="#找出有向图中所有的环"></a> 找出有向图中所有的环</h3>
+<p>public class GetAllCyclesForDirectedGraph{<br />
+static List<Integer> trace; // 当前搜索路径<br />
+static Set<Integer> searched = new HashSet&lt;&gt;(); // 已被搜索过的节点<br />
+static Set&lt;List<Integer>&gt; allCircles = new HashSet&lt;&gt;(); // 结果的收集列表</p>
+<pre><code>public static void main(String[] args) {  
+    int[][] e = { // 此处的图用邻接矩阵表示  
+             {0,1,1,0,0,0,0},  
+             {0,0,0,1,0,0,0},  
+             {0,0,0,0,0,1,0},  
+             {0,0,0,0,1,0,0},  
+             {0,0,1,0,0,0,0},  
+             {0,0,0,0,1,0,1},  
+             {1,0,1,0,0,0,0}};  
+    findCircles(e);  
+}  
+
+public static void findCircles(int[][] e){  
+    int n = e.length;  
+    for(int i = 0; i &lt; n; i++){  
+        // 如果一个节点已经被搜索过一次，那么即使他出现在另一个环中，它也必然在搜索另外那个环中其他节点的时候被提及，这一步事实上完成了去重  
+        if(searched.contains(i))  
+            continue;  
+        trace = new ArrayList&lt;&gt;();  
+        findCycle(i,e);  
+    }  
+
+    if(allCircles.size() == 0){  
+        System.out.println(&quot;There aren't any CIRCLES in the graph!&quot;);  
+    }  
+    int cnt = 1;  
+    for(List&lt;Integer&gt; list:allCircles) {  
+        System.out.println(&quot;CIRCLE&quot; + cnt + &quot;: &quot; + list);  
+        cnt++;  
+    }  
+}  
+
+/**  
+ * 利用DFS算法，从节点v开始寻路  
+  * @param v  
+ * @param e  
+ */  
+private static void findCycle(int v, int[][]e){  
+    int j = trace.indexOf(v);  
+    if( j != -1) {  
+        List&lt;Integer&gt; circle = new ArrayList&lt;&gt;();  
+        while(j &lt; trace.size()) {  
+            circle.add(trace.get(j));  
+            j++;  
+        }  
+        Collections.sort(circle); // 找出一条环路，对路径内节点进行排序  
+        allCircles.add(circle);  
+        return;  
+    }  
+
+    trace.add(v);  
+    for(int i = 0; i &lt; e.length; i++) {  
+         if(e[v][i] == 1){  
+             searched.add(i);  
+             findCycle(i,e); // 递归查找  
+             }  
+        }  
+    trace.remove(trace.size() - 1); // 回溯  
+    }  
+</code></pre>
+<p>}</p>
+<h3 id="找出无向图中所有的环"><a class="markdownIt-Anchor" href="#找出无向图中所有的环"></a> 找出无向图中所有的环</h3>
+<p>参考Kruskal中的代码。</p>
+<h2 id="图的应用"><a class="markdownIt-Anchor" href="#图的应用"></a> 图的应用</h2>
+<h3 id="拓扑排序-on-e"><a class="markdownIt-Anchor" href="#拓扑排序-on-e"></a> <mark>拓扑排序</mark> - O(n + e)</h3>
+<p>拓扑排序可以检测环路是否存在（但不能给出具体的环路）。拓扑排序不唯一。</p>
+<p>搞一个队列，每次都把图中入度为0的节点加入队列中而后在图中删去这些点的所有出边直到表中没有顶点为止。如果出现了图中还有顶点但是无入度为0的点的情况，说明图中有环路。算法用到了队列（栈也可以）可以复习下静态链表（数组实现的链表）</p>
+<p>public void topSort( ) throws CycleFound{<br />
+Queue q = new Queue();<br />
+int counter = 0;<br />
+Vertex v, w;<br />
+q = new Queue( );<br />
+for (Vertex v:NodeTable)<br />
+if( v.indegree == 0 )<br />
+q.enqueue( v );<br />
+while( !q.isEmpty( ) ){<br />
+v = q.dequeue( );<br />
+v.topNum = ++counter; //Assign next number<br />
+for(Edge e = v.adj; e != null; e = e.next){<br />
+w = e.dest;<br />
+if( --w.indegree = = 0 ) q.enqueue(w);<br />
+}<br />
+}<br />
+if( counter != NUM_VERTICES )<br />
+throw new CycleFound( );<br />
+}</p>
+<h3 id="aov-无环有向图-on2"><a class="markdownIt-Anchor" href="#aov-无环有向图-on2"></a> AOV - 无环有向图 - O(n^2)</h3>
+<p>用顶点表示事件，可用来表示事件发生顺序。一个拓扑排序的事情。</p>
+<h3 id="aoe-无环有向图-on-e"><a class="markdownIt-Anchor" href="#aoe-无环有向图-on-e"></a> AOE - 无环有向图 - O(n + e)</h3>
+<p>顶点表示事件，有向边表示活动，有向边的权值代表完成该项活动所需时间。</p>
+<ul>
+<li>
+<p>有唯一的“入度”为0的开始结点</p>
+</li>
+<li>
+<p>唯一的“出度：为0的完成结点</p>
+</li>
+</ul>
+<p>可以由此得出 <code>关键活动</code> <code>最早发生时间</code> <code>最迟发生时间</code>等。</p>
+<h4 id="关键路径"><a class="markdownIt-Anchor" href="#关键路径"></a> 关键路径</h4>
+<ol>
+<li>
+<p>目的: 利用事件顶点网络，研究完成整个工程需要多少时间加快那些活动的速度后，可使整个工程提前完成。</p>
+</li>
+<li>
+<p>关键路径：具有从开始顶点(源点）→完成顶点（汇点）的最长的路径</p>
+</li>
+</ol>
+<h4 id="对事件而言"><a class="markdownIt-Anchor" href="#对事件而言"></a> 对事件而言</h4>
+<p>Ve[i]－表示事件Vi的可能最早发生时间，定义为从源点V_0 → V_i的最长路径长度，（得满足前置条件）</p>
+<p>Vl[i]－表示事件Vi的允许的最晚发生时间。是在保证汇点Vn-1在Ve[n-1]完成的前提下，事件Vi允许发生的最晚时间，即Ve[n-1]－Vi → V_{n－1}的最长路径长度。（不能拖后腿）</p>
+<h4 id="对活动而言"><a class="markdownIt-Anchor" href="#对活动而言"></a> 对活动而言</h4>
+<p>e[k]－表示活动a_k=&lt;V_i,V_j&gt;的可能的最早开始时间。即等于事件V_i的可能最早发生时间。 e[k]=Ve[i]</p>
+<p>l[k]－表示活动ak= &lt;Vi,Vj&gt; 的允许的最迟开始时间</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>l</mi><mo stretchy="false">[</mo><mi>k</mi><mo stretchy="false">]</mo><mtext>＝</mtext><mi>V</mi><mi>l</mi><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo><mo>−</mo><mi>d</mi><mi>u</mi><mi>r</mi><mo stretchy="false">(</mo><mo>&lt;</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>&gt;</mo><mo stretchy="false">)</mo><mo separator="true">;</mo></mrow><annotation encoding="application/x-tex">l[k]＝Vl[j]-dur(&lt;i,j&gt;);  
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">]</span><span class="mord cjk_fallback">＝</span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mopen">(</span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mclose">)</span><span class="mpunct">;</span></span></span></span></span></p>
+<p>s[k]－表示活动a_k的最早可能开始时间和最迟</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>s</mi><mo stretchy="false">[</mo><mi>k</mi><mo stretchy="false">]</mo><mo>=</mo><mi>l</mi><mo stretchy="false">[</mo><mi>k</mi><mo stretchy="false">]</mo><mo>−</mo><mi>e</mi><mo stretchy="false">[</mo><mi>k</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">s[k] = l[k]-e[k]  
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">s</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">e</span><span class="mopen">[</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mclose">]</span></span></span></span></span></p>
+<p>s[k] = 0 表示这是一个关键活动。</p>
+<p>以上的计算必须在拓扑有序及逆拓扑有序的前提下进行。求Ve[i]必须使V_i的所有前驱结点的V_e都求得求Vl[i]必须使Vi的所有后继结点最晚发生时间都求得。</p>
+<h1 id="第九章-排序"><a class="markdownIt-Anchor" href="#第九章-排序"></a> 第九章 排序</h1>
+<p>排序：n个对象的序列R[0],R[1],R[2],…R[n-1]，按其<code>关键码</code>的大小，进行由小到大（非递减）或由大到小（非递增）的次序重新排列。</p>
+<blockquote>
+<p>Java的<code>Comparable</code>接口和C++的运算符重载</p>
+</blockquote>
+<p>内排序：对内存中的n个对象进行排序。</p>
+<p>外排序：内存放不下，还要使用外存的排序。</p>
+<h2 id="二分法插入排序-on2"><a class="markdownIt-Anchor" href="#二分法插入排序-on2"></a> <mark>二分法插入排序</mark> - O(n^2)</h2>
+<h6 id="稳定-4"><a class="markdownIt-Anchor" href="#稳定-4"></a> 稳定</h6>
+<blockquote>
+<p>略，但还是比直接插入排序快</p>
+</blockquote>
+<h2 id="希尔排序-不定"><a class="markdownIt-Anchor" href="#希尔排序-不定"></a> <mark>希尔排序</mark> - 不定</h2>
+<blockquote>
+<p>缩小增量排序（diminishing－increament sort）</p>
+</blockquote>
+<p>1）取一增量（间隔 gap &lt; n），按增量分组，对每组使用<strong>直接插入排序</strong>或<strong>其他方法</strong>进行排序。</p>
+<p>2）减少增量（分的组减少，但每组记录增多）。直至增量为1，即为一个组时。</p>
+<h3 id="关键增量的选取"><a class="markdownIt-Anchor" href="#关键增量的选取"></a> 关键：增量的选取</h3>
+<h6 id="不稳定-2"><a class="markdownIt-Anchor" href="#不稳定-2"></a> 不稳定</h6>
+<blockquote>
+<p>关键思想：分组排序</p>
+</blockquote>
+<p>这是极为困难的问题，因而希尔排序的复杂度有很大变数。目前也有一些较好的解决方案。</p>
+<p>Donald Shell最初建议步长选择为{\displaystyle {\frac {n}{2}}}并且对步长取半直到步长达到1。虽然这样取可以比\displaystyle {\mathcal {O}}(n^{2})类的算法（插入排序）更好，但这样仍然有减少平均时间和最差时间的余地。</p>
+<blockquote>
+<p>其他方案略，题目里应该会给你特定序列</p>
+</blockquote>
+<p>public static void shellsort( Comparable [ ] a ){<br />
+for ( int gap = a.length / 2; gap &gt; 0; gap /= 2 )<br />
+for ( int i = gap; i &lt; a.length; i++ ){<br />
+Comparable tmp = a[ i ];<br />
+int j = i;<br />
+for ( ; j &gt;= gap &amp;&amp; tmp.compareTo( a[ j-gap ] ) &lt; 0; j -= gap )<br />
+a[ j ] = a[ j –gap ];<br />
+a[ j ] = tmp;<br />
+}<br />
+}</p>
+<h2 id="表插入排序-on2"><a class="markdownIt-Anchor" href="#表插入排序-on2"></a> <mark>表插入排序</mark> - O(n^2)</h2>
+<p>把插入排序的载体改为链表即可，无需移动数据只用改动指针。</p>
+<h2 id="快速排序-on-log_2-n"><a class="markdownIt-Anchor" href="#快速排序-on-log_2-n"></a> <mark>快速排序</mark> - O(n log_2 n)</h2>
+<blockquote>
+<p>下面以从小到大排序为例</p>
+</blockquote>
+<p>1）在n个对象中，取一个对象（如第一个对象——基准pivot），按该对象的关键码把所有\le该关键码的对象分划在它的左边。\ge该关键码的对象分划在它的右边。</p>
+<p>2）对左边和右边（子序列）分别再用快排序。</p>
+<p>template <class Type> void QuickSort( datalist <Type>&amp; list, const int left, const int right ){<br />
+if (left&lt;right){<br />
+int pivotpos=partition (list, left, right);<br />
+QuickSort(list, left, pivotpos-1);<br />
+QuickSort(list, pivotpos+1, right);<br />
+}<br />
+}</p>
+<h3 id="关键对基准的选取"><a class="markdownIt-Anchor" href="#关键对基准的选取"></a> 关键：对基准的选取</h3>
+<h4 id="方法0选取第一个数效果不好"><a class="markdownIt-Anchor" href="#方法0选取第一个数效果不好"></a> 方法0：选取第一个数（效果不好）</h4>
+<h4 id="方法1随机选取pivot-但随机数的生成一般是昂贵的"><a class="markdownIt-Anchor" href="#方法1随机选取pivot-但随机数的生成一般是昂贵的"></a> 方法1：随机选取pivot, 但随机数的生成一般是昂贵的。</h4>
+<h4 id="方法2三数中值分割法median-of-three-partitioning"><a class="markdownIt-Anchor" href="#方法2三数中值分割法median-of-three-partitioning"></a> 方法2：三数中值分割法（Median-of-Three partitioning)</h4>
+<p>N个数，最好选第 \lceilN/2\rceil 个最大数，这是最好的中值，但这是很困难的。</p>
+<p>一般选左端、右端和中心位置上的三个元素的中值作为枢纽元。</p>
+<p>8, 1, 4, 9, 6, 3, 5, 2, 7, 0 <code>(8, 6, 0)</code></p>
+<p>具体实现时：将8，6，0 先排序，即<code>0</code>, 1, 4, 9, <code>6</code>, 3, 5, 2 , 7, <code>8</code> 得到中值pivot为<code>6</code> 。</p>
+<h4 id="分割策略"><a class="markdownIt-Anchor" href="#分割策略"></a> 分割策略</h4>
+<p>将pivot与最后倒数第二个元素交换，使得pivot离开要被分割的数据段。然后，i 指向第一个元素，j 指向倒数第二个元素。 <code>0</code>, 1, 4, 9, 7, 3, 5, 2, <code>6</code>, <code>8</code>然后进行分划。</p>
+<p>private static void quicksort( Comparable [ ] a, int left, int right ){<br />
+if( left + CUTOFF &lt;= right ){  // 如果数量太少用快速排序不划算，所以下面用的是插入排序<br />
+Comparable pivot = median3( a, left, right );<br />
+int i = left;<br />
+int j = right –1;<br />
+for( ; ; ){<br />
+while( a[ ++i ] . comparaTo( pivot ) &lt; 0 ) { }<br />
+while( a[ --j ] . compareTo( pivot ) &gt; 0 ) { }<br />
+if( i &lt; j ) swapReferences( a, i, j );<br />
+else break;<br />
+}<br />
+swapReferences( a, i, right –1 ); // 前面的方法会暂时把基准元素放到最后所以这一步要纠正<br />
+quicksort( a, left, i –1 );<br />
+quicksort( a, i + 1, right );<br />
+}<br />
+else<br />
+insertionSort( a, left, right );<br />
+}</p>
+<h2 id="归并排序-on-log_2-n"><a class="markdownIt-Anchor" href="#归并排序-on-log_2-n"></a> <mark>归并排序</mark> - O(n log_2 n)</h2>
+<blockquote>
+<p>关键思想：分组排序而后归并、<strong>分治</strong></p>
+</blockquote>
+<h4 id="归并两个多个有序的文件组合成一个有序文件"><a class="markdownIt-Anchor" href="#归并两个多个有序的文件组合成一个有序文件"></a> 归并：两个（多个）有序的文件组合成一个有序文件</h4>
+<p>以两个序列为例</p>
+<p>template<class Type> void merge(datalist<Type> &amp; initList, datalist<Type> &amp; mergedList, const int l, const int m, const int n){<br />
+int i=l, j=m+1, k=1;<br />
+while ( i&lt;=m &amp;&amp; j&lt;=n )<br />
+if (initList.Vector[i].getkey( )&lt;initList.Vector[j].getkey( )){<br />
+mergedList.Vector[k]=initList.Vector[i]; i++;k++;}</p>
+<pre><code>else {mergedList.Vector[k]=initList.Vector[j]; j++; k++;}  
+
+if ( i&lt;=m)  
+    for (int n1=k, n2=i; n1&lt;=n &amp;&amp; n2&lt;=m; n1++, n2++)  
+        mergedList.Vector[n1]=initList.Vector[n2];  
+else  
+    for (int n1=k, n2=j; n1&lt;=n &amp;&amp; n2&lt;=n; n1++, n2++)  
+        mergedList.Vector[n1]=initList.Vector[n2];  
+</code></pre>
+<p>}</p>
+<p>方法：每次取出两个序列中的小的元素输出之；当一序列完，则输出另一序列的剩余部分。</p>
+<h4 id="迭代的归并排序"><a class="markdownIt-Anchor" href="#迭代的归并排序"></a> 迭代的归并排序</h4>
+<h6 id="如果是对链表操作分割链表需要改为切断链表指针置为空然后合并的时候再连起来"><a class="markdownIt-Anchor" href="#如果是对链表操作分割链表需要改为切断链表指针置为空然后合并的时候再连起来"></a> 如果是对链表操作，分割链表需要改为切断链表（指针置为空），然后合并的时候再连起来</h6>
+<h2 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h2>
+<ul>
+<li>
+<p>注意到二分插入排序和直接选择排序的<strong>比较次数</strong>是固定的；</p>
+</li>
+<li>
+<p>快速排序在已经排好序的情况下反而需要 \frac{n * (n - 1)}{2} 次比较；</p>
+</li>
+<li>
+<p>直接选择排序的移动次数耶斯固定的；</p>
+</li>
+<li>
+<p>归并和表插入排序的辅助存储为O(n)量级，快排是O(log_2 n)量级</p>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://yama-lei.top">Yama-lei</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://yama-lei.top/posts/015bd2201277/">https://yama-lei.top/posts/015bd2201277/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://yama-lei.top" target="_blank">YamaBlog</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/aaa2efc80965/" title="期中考试复习"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">期中考试复习</div></div><div class="info-2"><div class="info-item-1">除了算法题，其他的都是ppt上面有的，算法题需要提前训练，测试的时间是11月18号  选择题 填空 解答（6） 算法题（算法填空+手写代码，手写代码类似平时的实验    第一章  数据：两张表，构成选课信息 数据对象：人员表，课程表 数据元素：每张表中的每一行（记录） 数据项：姓名，性别，身高，课程代号，课程名  物理结构：实际存储的结构（比如数组、链表） 逻辑结构：设计的结构（比如二叉树、并查集）  ADTs: Abstract  Data Types  算法时间复杂度的分析：  可以找一些算法分析题目来做   第二章  顺序表 链表  1．某线性表中最常用的操作是在最后一个元素之后插入一个元素和删除第一个元素，则采用（             ）存储方式最节省运算时间。 A．单链表           B．仅有头指针的单循环链表 C． 双向链表      D．仅有尾指针的单循环链表 2．设一个链表最常用的操作是在末尾插入结点和删除尾结点，则选用(                )最节省时间。 A. 单链表                                    ...</div></div></div></a><a class="pagination-related" href="/posts/27ccea6ad88a/" title="241220106_pwn"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">241220106_pwn</div></div><div class="info-2"><div class="info-item-1">   网络攻防实战实验报告   Pwn实验   学生: &nbsp;&nbsp;雷业成 (241220106)     南京大学计算机科学与技术系 邮箱: 241220106@smail.nju.edu.cn   2025 11 18   最得最终分情况：   Exp1 题目一 截图 flag为：flag{https://www.bilibili.com/video/BV1BAX6YmE6o?n=8064c8b8} 解题脚本 1234567891011121314from pwn import *context.arch = &#x27;amd64&#x27;# p = process(&quot;./chall1&quot;)p = remote(&quot;210.28.132.84&quot;, 9001) # 假设题目部署在独立端口shellcode = asm(    shellcraft.open(&#x27;/flag&#x27;) +    shellcraft.read(&#x27;rax&#x27;,&#x27;rsp&#x27;,128) +    shel...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/yama.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Yama-lei</div><div class="author-info-description">记录一个NJUCSer的学习</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">146</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">21</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yama-lei"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/yama-lei" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:your@email.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title="RSS"><i class="fas fa-rss" style="color: #FFA500;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">博客正在建设中...能看就行...😋😋😋</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#20-%E7%A7%8B-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text"> 20-秋-数据结构与算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ver-%E5%8D%97%E4%BA%AC%E5%A4%A7%E5%AD%A6%E8%BD%AF%E4%BB%B6%E5%AD%A6%E9%99%A2"><span class="toc-number">1.0.1.</span> <span class="toc-text"> Ver. 南京大学软件学院</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#powered-by-ydjsir"><span class="toc-number">1.0.2.</span> <span class="toc-text"> Powered by YDJSIR</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E8%A6%81%E6%B1%82"><span class="toc-number">2.</span> <span class="toc-text"> 基本要求</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3"><span class="toc-number">2.1.</span> <span class="toc-text"> 代码相关</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E9%A2%98javac"><span class="toc-number">2.1.1.</span> <span class="toc-text"> 大题Java&#x2F;C++</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8F%E9%A2%98%E9%87%8C%E9%9D%A2%E4%BB%96%E7%BB%99%E7%9A%84%E6%98%AF%E4%BB%80%E4%B9%88%E5%B0%B1%E6%98%AF%E4%BB%80%E4%B9%88java%E4%BC%98%E5%85%88"><span class="toc-number">2.1.2.</span> <span class="toc-text"> 小题里面他给的是什么就是什么（Java优先）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A6%81%E8%AF%BB%E5%BE%97%E6%87%82%E4%BB%A3%E7%A0%81"><span class="toc-number">2.1.3.</span> <span class="toc-text"> 要读得懂代码</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%9F%E6%9C%AB%E5%8D%A0%E6%AF%94"><span class="toc-number">2.2.</span> <span class="toc-text"> 期末占比</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3"><span class="toc-number">3.</span> <span class="toc-text"> 基本算法思想</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%92%E5%BD%92"><span class="toc-number">3.1.</span> <span class="toc-text"> 递归</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BA%E7%8E%B0%E5%9C%BA%E6%99%AF"><span class="toc-number">3.1.0.1.</span> <span class="toc-text"> 出现场景</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B4%AA%E5%BF%83%E6%B3%A8%E6%84%8F%E5%92%8C%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">3.2.</span> <span class="toc-text"> 贪心（注意和动态规划的区别）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BA%E7%8E%B0%E5%9C%BA%E6%99%AF-2"><span class="toc-number">3.2.0.1.</span> <span class="toc-text"> 出现场景</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%B3%A8%E6%84%8F%E5%92%8C%E8%B4%AA%E5%BF%83%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">3.3.</span> <span class="toc-text"> 动态规划（注意和贪心的区别）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E4%B8%AD%E4%B8%8D%E5%BA%94%E8%AF%A5%E6%9C%89%E5%9B%9E%E6%BA%AF%E9%82%A3%E6%A0%B7%E5%B0%B1%E7%B1%BB%E4%BC%BC%E4%BA%8E%E6%89%93%E8%A1%A8%E4%BA%86"><span class="toc-number">3.3.1.</span> <span class="toc-text"> 动态规划中不应该有“回溯”，那样就类似于打表了</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BA%E7%8E%B0%E5%9C%BA%E6%99%AF-3"><span class="toc-number">3.3.1.1.</span> <span class="toc-text"> 出现场景</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E6%B2%BB"><span class="toc-number">3.4.</span> <span class="toc-text"> 分治</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BA%E7%8E%B0%E5%9C%BA%E6%99%AF-4"><span class="toc-number">3.4.0.1.</span> <span class="toc-text"> 出现场景</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%AC%E6%96%87%E6%A1%A3%E8%AF%B4%E6%98%8E"><span class="toc-number">4.</span> <span class="toc-text"> 本文档说明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A6%82%E8%AE%BA"><span class="toc-number">5.</span> <span class="toc-text"> 第一章 概论</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#data_structuredr-d-data-object-r-relationship"><span class="toc-number">5.0.1.</span> <span class="toc-text"> Data_Structure&#x3D;{D,R}; D: Data Object; R: Relationship</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E4%B8%AA%E6%96%B9%E9%9D%A2"><span class="toc-number">5.1.</span> <span class="toc-text"> 三个方面</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84"><span class="toc-number">5.1.0.1.</span> <span class="toc-text"> 数据的逻辑结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%9A%84%E7%89%A9%E7%90%86%E7%BB%93%E6%9E%84"><span class="toc-number">5.1.0.2.</span> <span class="toc-text"> 数据的物理结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9B%B8%E5%85%B3%E7%9A%84%E6%93%8D%E4%BD%9C%E5%8F%8A%E5%85%B6%E5%AE%9E%E7%8E%B0"><span class="toc-number">5.1.0.3.</span> <span class="toc-text"> 数据结构相关的操作及其实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#adtabstract-data-type%E5%B0%81%E8%A3%85"><span class="toc-number">5.1.0.4.</span> <span class="toc-text"> ADT：Abstract data type——封装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#java-c-basics"><span class="toc-number">5.1.0.5.</span> <span class="toc-text"> Java &amp; C++ Basics</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#oo"><span class="toc-number">5.1.0.6.</span> <span class="toc-text"> OO</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90"><span class="toc-number">6.</span> <span class="toc-text"> 第二章 算法分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E8%AE%A1%E7%AE%97%E7%A9%BA%E9%97%B4-%E6%97%B6%E9%97%B4"><span class="toc-number">6.1.</span> <span class="toc-text"> 复杂度计算！（空间 &amp; 时间）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E7%BB%86%E8%8A%82%E6%A0%88%E7%A9%BA%E9%97%B4-%E5%A0%86%E7%A9%BA%E9%97%B4%E4%B8%8D%E8%80%83"><span class="toc-number">6.1.1.</span> <span class="toc-text"> 运行时细节（栈空间、堆空间）不考</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%A5%BD%E6%83%85%E5%86%B5-%E6%9C%80%E5%9D%8F%E6%83%85%E5%86%B5-%E5%B9%B3%E5%9D%87%E6%83%85%E5%86%B5"><span class="toc-number">6.1.2.</span> <span class="toc-text"> 最好情况、最坏情况、平均情况</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#o-%E4%B8%8A%E9%99%90"><span class="toc-number">6.1.2.1.</span> <span class="toc-text"> O - 上限</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%CF%89-%E4%B8%8B%E9%99%90"><span class="toc-number">6.1.2.2.</span> <span class="toc-text"> Ω - 下限</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%CE%B8-%E4%B8%8A%E4%B8%8B%E9%99%90%E5%90%8C%E4%B8%80%E4%B8%AA%E9%87%8F%E7%BA%A7"><span class="toc-number">6.1.2.3.</span> <span class="toc-text"> θ - 上下限同一个量级</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E6%9F%A5%E6%89%BE-on"><span class="toc-number">6.1.3.</span> <span class="toc-text"> 顺序查找 - O(n)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A7%A9%E6%8E%92%E5%BA%8F-on2"><span class="toc-number">6.1.4.</span> <span class="toc-text"> 秩排序 - O(n²)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F-on2"><span class="toc-number">6.1.5.</span> <span class="toc-text"> 选择排序 - O(n²)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F"><span class="toc-number">6.1.5.1.</span> <span class="toc-text"> 直接选择排序</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%B8%8D%E7%A8%B3%E5%AE%9A%E6%95%B0%E7%BB%84%E7%A8%B3%E5%AE%9A%E9%93%BE%E8%A1%A8"><span class="toc-number">6.1.5.1.0.1.</span> <span class="toc-text"> 不稳定（数组）稳定（链表）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%91%E5%BD%A2%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F%E9%94%A6%E6%A0%87%E8%B5%9B%E6%8E%92%E5%BA%8F"><span class="toc-number">6.1.5.2.</span> <span class="toc-text"> 树形选择排序（锦标赛排序）</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%A8%B3%E5%AE%9A"><span class="toc-number">6.1.5.2.0.1.</span> <span class="toc-text"> 稳定</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A0%86%E6%8E%92%E5%BA%8F"><span class="toc-number">6.1.5.3.</span> <span class="toc-text"> 堆排序</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%B8%8D%E7%A8%B3%E5%AE%9A"><span class="toc-number">6.1.5.3.0.1.</span> <span class="toc-text"> 不稳定</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F-on2"><span class="toc-number">6.1.6.</span> <span class="toc-text"> 冒泡排序 - O(n²)</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%A8%B3%E5%AE%9A-2"><span class="toc-number">6.1.6.0.0.1.</span> <span class="toc-text"> 稳定</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F-on2"><span class="toc-number">6.1.7.</span> <span class="toc-text"> 插入排序 - O(n²)</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%A8%B3%E5%AE%9A-3"><span class="toc-number">6.1.7.0.0.1.</span> <span class="toc-text"> 稳定</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%98%E5%8D%8A%E6%9F%A5%E6%89%BE-olog-n"><span class="toc-number">6.1.8.</span> <span class="toc-text"> 折半查找 - O(log n)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%97%E8%BD%AC%E7%9B%B8%E9%99%A4%E6%B3%95-olog-n"><span class="toc-number">6.1.9.</span> <span class="toc-text"> 辗转相除法 - O(log n)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E5%92%8C%E7%AC%AC%E4%BA%94%E7%AB%A0-%E8%A1%A8-%E7%BA%BF%E6%80%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">7.</span> <span class="toc-text"> 第三和第五章 表 - 线性数据结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%B8%8F-%E7%BA%BF%E6%80%A7%E8%A1%A8"><span class="toc-number">7.1.</span> <span class="toc-text"> ⭐️ 线性表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E5%8F%8C%E5%BE%AA%E7%8E%AF%E9%9D%9E%E5%BE%AA%E7%8E%AF%E9%93%BE%E8%A1%A8"><span class="toc-number">7.1.1.</span> <span class="toc-text"> （单&#x2F;双）（循环&#x2F;非循环）链表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8A%82%E7%82%B9"><span class="toc-number">7.1.1.1.</span> <span class="toc-text"> 节点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8"><span class="toc-number">7.1.1.2.</span> <span class="toc-text"> 链表</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F"><span class="toc-number">7.1.1.2.1.</span> <span class="toc-text"> 成员变量</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#trick-%E5%A4%9A%E6%8C%87%E9%92%88%E6%B3%95ydjsir%E8%87%AA%E5%B7%B1%E5%8F%96%E7%9A%84%E5%90%8D%E5%AD%97"><span class="toc-number">7.1.1.2.1.1.</span> <span class="toc-text"> Trick: 多指针法（YDJSIR自己取的名字）</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%A6%E7%91%9F%E5%A4%AB%E7%8E%AF%E9%97%AE%E9%A2%98"><span class="toc-number">7.1.2.</span> <span class="toc-text"> 约瑟夫环问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97"><span class="toc-number">7.2.</span> <span class="toc-text"> 栈和队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88-lifo"><span class="toc-number">7.3.</span> <span class="toc-text"> 栈 - LIFO</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%9F%E5%88%97-fifo"><span class="toc-number">7.4.</span> <span class="toc-text"> 队列 - FIFO</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97%E6%98%AF%E5%90%8E%E9%9D%A2%E5%BE%88%E5%A4%9A%E7%AE%97%E6%B3%95%E7%9A%84%E5%9F%BA%E7%A1%80"><span class="toc-number">7.4.0.1.</span> <span class="toc-text"> 栈和队列是后面很多算法的基础</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F-odisplaystyle-log-_bleftnrightcdot-n"><span class="toc-number">7.4.1.</span> <span class="toc-text"> 基数排序 - O({\displaystyle \log _{B}\left(N\right)\cdot n})</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%A1%A5%E5%85%85"><span class="toc-number">7.4.1.0.0.1.</span> <span class="toc-text"> 补充</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="toc-number">7.5.</span> <span class="toc-text"> 哈希表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%A3%E5%88%97%E6%96%B9%E6%B3%95"><span class="toc-number">7.5.1.</span> <span class="toc-text"> 散列方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B4%9F%E8%BD%BD%E5%9B%A0%E5%AD%90%E4%B8%8E%E5%86%8D%E6%95%A3%E5%88%97"><span class="toc-number">7.5.2.</span> <span class="toc-text"> 负载因子与再散列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%B2%E7%AA%81%E5%A4%84%E7%90%86"><span class="toc-number">7.5.3.</span> <span class="toc-text"> 冲突处理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%80%E6%94%BE%E5%9C%B0%E5%9D%80%E6%B3%95"><span class="toc-number">7.5.3.1.</span> <span class="toc-text"> 开放地址法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BA%BF%E6%80%A7%E6%8E%A2%E6%9F%A5"><span class="toc-number">7.5.3.1.1.</span> <span class="toc-text"> 线性探查</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BA%8C%E6%AC%A1%E6%8E%A2%E6%9F%A5"><span class="toc-number">7.5.3.1.2.</span> <span class="toc-text"> 二次探查</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%8C%E9%87%8D%E5%93%88%E5%B8%8C"><span class="toc-number">7.5.3.1.3.</span> <span class="toc-text"> 双重哈希</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%BE%E5%9C%B0%E5%9D%80%E6%B3%95"><span class="toc-number">7.5.3.2.</span> <span class="toc-text"> 链地址法</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B-%E7%AC%AC%E5%85%AD%E5%92%8C%E7%AC%AC%E4%B8%83%E7%AB%A0-%E6%A0%91-%E9%9D%9E%E7%BA%BF%E6%80%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">8.</span> <span class="toc-text"> 第四、第六和第七章 🎄 树 - 非线性数据结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E4%B8%8E%E6%9C%AF%E8%AF%AD"><span class="toc-number">8.1.</span> <span class="toc-text"> 基本概念与术语</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">8.2.</span> <span class="toc-text"> 二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%B9%E5%92%8C%E7%82%B9%E7%9A%84%E5%85%B3%E7%B3%BB%E5%BC%8F"><span class="toc-number">8.2.1.</span> <span class="toc-text"> 边和点的关系式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%84%E7%A7%8D%E8%A1%A8%E7%A4%BA%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-number">8.2.2.</span> <span class="toc-text"> 各种表示二叉树的方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E8%AE%BF%E9%97%AE%E6%95%88%E7%8E%87%E9%AB%98%E4%BD%86%E6%98%AF%E4%B8%8D%E5%A4%A7%E7%81%B5%E6%B4%BB"><span class="toc-number">8.2.2.1.</span> <span class="toc-text"> 数组（访问效率高但是不大灵活）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95"><span class="toc-number">8.2.2.2.</span> <span class="toc-text"> 索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%BF%E4%B9%89%E8%A1%A8"><span class="toc-number">8.2.2.3.</span> <span class="toc-text"> 广义表</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%84%E7%A7%8D%E9%81%8D%E5%8E%86%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-number">8.2.3.</span> <span class="toc-text"> 各种遍历的方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%92%E5%BD%92-2"><span class="toc-number">8.2.3.1.</span> <span class="toc-text"> 递归</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%88"><span class="toc-number">8.2.3.2.</span> <span class="toc-text"> 栈</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%85%88%E5%BA%8F"><span class="toc-number">8.2.3.2.1.</span> <span class="toc-text"> 先序</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%AD%E5%BA%8F"><span class="toc-number">8.2.3.2.2.</span> <span class="toc-text"> 中序</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%90%8E%E5%BA%8F"><span class="toc-number">8.2.3.2.3.</span> <span class="toc-text"> 后序</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%89%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86-%E6%A0%88"><span class="toc-number">8.2.3.3.</span> <span class="toc-text"> 按层次遍历-栈</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%84%E7%A7%8D%E5%BB%BA%E6%A0%91%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-number">8.2.4.</span> <span class="toc-text"> 各种建树的方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#maketree"><span class="toc-number">8.2.4.1.</span> <span class="toc-text"> MakeTree</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%88%E5%BA%8F-%E4%B8%AD%E5%BA%8F-%E5%90%8E%E5%BA%8F-%E4%B8%AD%E5%BA%8F"><span class="toc-number">8.2.4.2.</span> <span class="toc-text"> 先序 + 中序 &#x2F; 后序 + 中序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%BF%E4%B9%89%E8%A1%A8-2"><span class="toc-number">8.2.4.3.</span> <span class="toc-text"> * 广义表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8E%E7%BC%80%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">8.2.4.4.</span> <span class="toc-text"> 后缀表达式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%91%E5%92%8C%E6%A3%AE%E6%9E%97"><span class="toc-number">8.3.</span> <span class="toc-text"> 树和森林</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E7%A4%BA%E6%B3%95"><span class="toc-number">8.3.1.</span> <span class="toc-text"> 表示法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%BF%E4%B9%89%E8%A1%A8-3"><span class="toc-number">8.3.1.1.</span> <span class="toc-text"> * 广义表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8C%E4%BA%B2"><span class="toc-number">8.3.1.2.</span> <span class="toc-text"> 双亲</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%EF%B8%8F-%E5%B7%A6%E5%AD%90%E5%A5%B3%E5%8F%B3%E5%85%84%E5%BC%9F"><span class="toc-number">8.3.1.3.</span> <span class="toc-text"> ⭐️ 左子女右兄弟</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B0%86%E4%B8%80%E6%A3%B5%E4%BB%BB%E6%84%8F%E7%9A%84%E6%A0%91%E8%BD%AC%E6%8D%A2%E4%B8%BA%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">8.3.1.3.1.</span> <span class="toc-text"> 将一棵任意的树转换为二叉树</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-number">8.3.2.</span> <span class="toc-text"> 树的遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dfs"><span class="toc-number">8.3.3.</span> <span class="toc-text"> DFS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%88%E6%A0%B9"><span class="toc-number">8.3.3.1.</span> <span class="toc-text"> 先根</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8E%E6%A0%B9"><span class="toc-number">8.3.3.2.</span> <span class="toc-text"> 后根</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bfs"><span class="toc-number">8.3.4.</span> <span class="toc-text"> BFS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%89%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86"><span class="toc-number">8.3.4.1.</span> <span class="toc-text"> 按层次遍历</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%AE%E6%9E%97%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-number">8.3.5.</span> <span class="toc-text"> 森林的遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#dfs-2"><span class="toc-number">8.3.6.</span> <span class="toc-text"> DFS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%88%E6%A0%B9-2"><span class="toc-number">8.3.6.1.</span> <span class="toc-text"> 先根</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AD%E6%A0%B9"><span class="toc-number">8.3.6.2.</span> <span class="toc-text"> 中根</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8E%E6%A0%B9-2"><span class="toc-number">8.3.6.3.</span> <span class="toc-text"> 后根</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bfs-2"><span class="toc-number">8.3.7.</span> <span class="toc-text"> BFS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%89%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86-2"><span class="toc-number">8.3.7.1.</span> <span class="toc-text"> 按层次遍历</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E6%AE%B5%E6%A0%91"><span class="toc-number">8.3.8.</span> <span class="toc-text"> 线段树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8A%82%E7%82%B9-2"><span class="toc-number">8.3.8.1.</span> <span class="toc-text"> 节点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BA%BF%E7%B4%A2%E6%A0%91"><span class="toc-number">8.3.8.2.</span> <span class="toc-text"> 线索树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AD%E5%BA%8F%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">8.3.8.3.</span> <span class="toc-text"> 中序线索二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%AD%E5%BA%8F%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%AD%A3%E7%A1%AE%E9%A3%9F%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">8.3.8.3.1.</span> <span class="toc-text"> 中序线索二叉树的正确食用方式</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A2%9E%E9%95%BF%E6%A0%91"><span class="toc-number">8.3.8.4.</span> <span class="toc-text"> 增长树</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9C%8D%E5%A4%AB%E6%9B%BC%E6%A0%91"><span class="toc-number">8.3.8.5.</span> <span class="toc-text"> 霍夫曼树</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">8.3.9.</span> <span class="toc-text"> 字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%BF%E4%B9%89%E8%A1%A8-4"><span class="toc-number">8.3.10.</span> <span class="toc-text"> * 广义表</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="toc-number">8.4.</span> <span class="toc-text"> 🌟 搜索树！</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="toc-number">8.4.1.</span> <span class="toc-text"> 二叉搜索树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#avl%E6%A0%91"><span class="toc-number">8.4.2.</span> <span class="toc-text"> 🎏 AVL树！</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E6%97%8B%E8%BD%AC"><span class="toc-number">8.4.2.1.</span> <span class="toc-text"> 单旋转</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#ll-%E5%8F%B3%E6%97%8B"><span class="toc-number">8.4.2.1.1.</span> <span class="toc-text"> LL-右旋</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#rr-%E5%B7%A6%E6%97%8B"><span class="toc-number">8.4.2.1.2.</span> <span class="toc-text"> RR-左旋</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8C%E6%97%8B%E8%BD%AC"><span class="toc-number">8.4.2.2.</span> <span class="toc-text"> 双旋转</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#lr-%E5%85%88%E5%B7%A6%E5%90%8E%E5%8F%B3"><span class="toc-number">8.4.2.2.1.</span> <span class="toc-text"> LR-先左后右</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#rl-%E5%85%88%E5%8F%B3%E5%90%8E%E5%B7%A6"><span class="toc-number">8.4.2.2.2.</span> <span class="toc-text"> RL-先右后左</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#m%E8%B7%AF%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="toc-number">8.4.3.</span> <span class="toc-text"> m路搜索树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#b%E6%A0%91-b%E6%A0%91%E5%B9%B3%E8%A1%A1%E7%9A%84m%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="toc-number">8.4.4.</span> <span class="toc-text"> B树、* B+树：平衡的m叉搜索树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E4%B8%8E%E5%88%A0%E9%99%A4"><span class="toc-number">8.4.4.1.</span> <span class="toc-text"> 插入与删除</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%B0%83%E6%95%B4%E6%96%B9%E6%B3%95"><span class="toc-number">8.4.4.1.1.</span> <span class="toc-text"> 调整方法</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E6%8F%92%E5%85%A5"><span class="toc-number">8.4.4.1.1.1.</span> <span class="toc-text"> 插入</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%88%A0%E9%99%A4"><span class="toc-number">8.4.4.1.1.2.</span> <span class="toc-text"> 删除</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%80%9F"><span class="toc-number">8.4.4.1.1.3.</span> <span class="toc-text"> 借</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%A1%A5"><span class="toc-number">8.4.4.1.1.4.</span> <span class="toc-text"> 补</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97-%E5%A0%86"><span class="toc-number">8.5.</span> <span class="toc-text"> 优先队列 - 堆</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%BE%E7%88%B6%E8%8A%82%E7%82%B9%E4%B8%8B%E6%A0%87"><span class="toc-number">8.5.0.1.</span> <span class="toc-text"> 找父节点下标</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%8B%E6%A0%87%E8%A1%A8%E7%A4%BA-lfloor-fraci-12-rfloor"><span class="toc-number">8.5.0.1.1.</span> <span class="toc-text"> 下标表示 - \lfloor \frac{i-1}{2} \rfloor</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BB%BA%E5%A0%86"><span class="toc-number">8.5.1.</span> <span class="toc-text"> 建堆</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E4%B8%8B%E8%80%8C%E4%B8%8A%E5%85%83%E7%B4%A0%E6%98%AF%E4%B8%8D%E6%96%AD%E8%BF%9B%E6%9D%A5%E7%9A%84%E4%B8%8D%E6%96%AD%E6%8F%92%E5%85%A5%E5%B9%B6%E8%B0%83%E6%95%B4%E5%A0%86-on"><span class="toc-number">8.5.1.1.</span> <span class="toc-text"> 自下而上：元素是不断进来的，不断插入并调整堆 - O(n)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8F%92%E5%85%A5-olog_2-n"><span class="toc-number">8.5.1.1.1.</span> <span class="toc-text"> 插入 - O(log_2 n)</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E5%A4%8Dn%E6%AC%A1%E4%BD%86%E6%98%AF%E5%B9%B6%E4%B8%8D%E6%98%AF%E7%AE%80%E5%8D%95%E4%B9%98%E8%B5%B7%E6%9D%A5%E5%9B%A0%E4%B8%BA%E4%BA%8B%E5%AE%9E%E4%B8%8A%E6%AF%8F%E6%AC%A1%E9%83%BD%E5%8F%AF%E4%BB%A5%E8%8A%82%E7%9C%81%E5%BE%88%E5%A4%9A%E5%B7%A5%E4%BD%9C%E9%87%8F%E6%9C%89%E8%AF%81%E6%98%8E%E8%BF%87%E7%A8%8B"><span class="toc-number">8.5.1.2.</span> <span class="toc-text"> 重复n次，但是并不是简单乘起来，因为事实上每次都可以节省很多工作量，有证明过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E4%B8%8A%E8%80%8C%E4%B8%8B%E4%B8%80%E5%BC%80%E5%A7%8B%E5%B0%B1%E6%9C%89%E6%89%80%E6%9C%89%E7%9A%84%E5%85%83%E7%B4%A0%E7%9B%B4%E6%8E%A5%E9%80%9A%E8%BF%87%E8%B0%83%E6%95%B4%E5%BE%97%E5%88%B0%E5%A0%86-olog_2-n"><span class="toc-number">8.5.1.3.</span> <span class="toc-text"> 自上而下：一开始就有所有的元素，直接通过调整得到堆 - O(log_2 n)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97"><span class="toc-number">8.5.2.</span> <span class="toc-text"> 优先队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A0%86%E6%8E%92%E5%BA%8F-2"><span class="toc-number">8.5.3.</span> <span class="toc-text"> 堆排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%B6%E6%9F%A5%E9%9B%86"><span class="toc-number">8.5.4.</span> <span class="toc-text"> 并查集</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E6%93%8D%E4%BD%9C"><span class="toc-number">8.5.4.1.</span> <span class="toc-text"> 主要操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E4%B8%8D%E7%9B%B8%E4%BA%A4%E9%9B%86%E5%90%88%E5%B9%B6"><span class="toc-number">8.5.4.1.1.</span> <span class="toc-text"> 合并两个不相交集合(并)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E4%B8%A4%E4%B8%AA%E5%85%83%E7%B4%A0%E6%98%AF%E5%90%A6%E5%B1%9E%E4%BA%8E%E5%90%8C%E4%B8%80%E9%9B%86%E5%90%88%E6%9F%A5"><span class="toc-number">8.5.4.1.2.</span> <span class="toc-text"> 判断两个元素是否属于同一集合(查)</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%B6%E6%9F%A5%E9%9B%86%E7%9A%84%E4%BC%98%E5%8C%96"><span class="toc-number">8.5.4.2.</span> <span class="toc-text"> 并查集的优化</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%B7%AF%E5%BE%84%E5%8E%8B%E7%BC%A9"><span class="toc-number">8.5.4.2.1.</span> <span class="toc-text"> 路径压缩</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%8C%89%E7%A7%A9%E5%90%88%E5%B9%B6"><span class="toc-number">8.5.4.2.2.</span> <span class="toc-text"> 按秩合并</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%8F%8A%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">8.5.4.3.</span> <span class="toc-text"> 时间及空间复杂度</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E5%85%AB%E7%AB%A0-%E5%9B%BE-%E9%9D%9E%E7%BA%BF%E6%80%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">9.</span> <span class="toc-text"> 第八章 🌟 图 - 非线性数据结构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%E7%90%86%E8%A7%A3"><span class="toc-number">9.1.</span> <span class="toc-text"> 概念理解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%89%E5%90%91%E5%9B%BE%E5%92%8C%E6%97%A0%E5%90%91%E5%9B%BE"><span class="toc-number">9.1.0.1.</span> <span class="toc-text"> 有向图和无向图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%A6"><span class="toc-number">9.1.0.2.</span> <span class="toc-text"> 度</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9C%89%E5%90%91%E5%9B%BE"><span class="toc-number">9.1.0.2.1.</span> <span class="toc-text"> 有向图</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%85%A5%E5%BA%A6-%E5%87%BA%E5%BA%A6%E4%B8%8E%E5%BA%A6"><span class="toc-number">9.1.0.2.1.1.</span> <span class="toc-text"> 入度、出度与度</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%97%A0%E5%90%91%E5%9B%BE"><span class="toc-number">9.1.0.2.2.</span> <span class="toc-text"> 无向图</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%BA%A6%E5%B0%B1%E6%98%AF%E4%B8%8E%E8%BF%99%E4%B8%80%E9%A1%B6%E7%82%B9%E7%9B%B8%E8%BF%9E%E7%9A%84%E8%BE%B9%E7%9A%84%E6%95%B0%E9%87%8F"><span class="toc-number">9.1.0.2.2.1.</span> <span class="toc-text"> 度就是与这一顶点相连的边的数量</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9E%E9%80%9A%E5%9B%BE%E8%BF%9E%E9%80%9A%E5%88%86%E9%87%8F"><span class="toc-number">9.1.0.3.</span> <span class="toc-text"> 连通图&#x2F;连通分量</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%BC%BA%E8%BF%9E%E9%80%9A%E4%B8%8E%E5%BC%B1%E8%81%94%E9%80%9A"><span class="toc-number">9.1.0.3.1.</span> <span class="toc-text"> 强连通与弱联通</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E7%9A%84%E8%A1%A8%E7%A4%BA"><span class="toc-number">9.2.</span> <span class="toc-text"> 图的表示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5-%E9%80%82%E5%90%88%E9%AB%98%E5%AF%86%E5%BA%A6%E7%9A%84%E7%9F%A9%E9%98%B5%E8%8A%82%E7%BA%A6%E7%A9%BA%E9%97%B4-%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6on2"><span class="toc-number">9.2.1.</span> <span class="toc-text"> 邻接矩阵 - 适合高密度的矩阵（节约空间）- 空间复杂度O(n^2)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%82%BB%E6%8E%A5%E8%A1%A8-%E9%80%82%E5%90%88%E7%A8%80%E7%96%8F%E7%9F%A9%E9%98%B5%E4%BD%BF%E7%94%A8%E9%93%BE%E8%A1%A8"><span class="toc-number">9.2.2.</span> <span class="toc-text"> 邻接表 - 适合稀疏矩阵（使用链表）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%86%E8%BF%9E%E6%8E%A5%E8%A1%A8"><span class="toc-number">9.2.2.0.1.</span> <span class="toc-text"> 逆连接表</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%82%BB%E6%8E%A5%E5%A4%9A%E9%87%8D%E8%A1%A8%E5%8F%AA%E6%98%AF%E5%B8%A6%E8%BF%87%E5%8E%BB%E6%B2%A1%E6%9C%89%E7%BB%86%E8%AE%B2"><span class="toc-number">9.2.2.0.2.</span> <span class="toc-text"> 邻接多重表(只是带过去没有细讲)</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E7%9A%84%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95"><span class="toc-number">9.3.</span> <span class="toc-text"> 图的相关算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-number">9.3.1.</span> <span class="toc-text"> 图的遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#dfs-3"><span class="toc-number">9.3.1.1.</span> <span class="toc-text"> DFS</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5"><span class="toc-number">9.3.1.1.1.</span> <span class="toc-text"> 邻接矩阵</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%82%BB%E6%8E%A5%E8%A1%A8"><span class="toc-number">9.3.1.1.2.</span> <span class="toc-text"> 邻接表</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#bfs-3"><span class="toc-number">9.3.1.2.</span> <span class="toc-text"> BFS</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5-2"><span class="toc-number">9.3.1.2.1.</span> <span class="toc-text"> 邻接矩阵</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%82%BB%E6%8E%A5%E8%A1%A8-2"><span class="toc-number">9.3.1.2.2.</span> <span class="toc-text"> 邻接表</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%82%BB%E6%8E%A5%E8%A1%A8%E4%B8%8Bbfs%E5%92%8Cdfs%E9%83%BD%E6%98%AF-one"><span class="toc-number">9.3.1.3.</span> <span class="toc-text"> 邻接表下BFS和DFS都是 O(n+e)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5%E4%B8%8Bbfs%E5%92%8Cdfs%E9%83%BD%E6%98%AF-on2"><span class="toc-number">9.3.1.4.</span> <span class="toc-text"> 邻接矩阵下BFS和DFS都是 O(n²)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91"><span class="toc-number">9.3.2.</span> <span class="toc-text"> 最小生成树</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BEgve%E6%98%AF%E4%B8%80%E4%B8%AA%E8%BF%9E%E9%80%9A%E7%9A%84%E6%97%A0%E5%90%91%E5%9B%BE%E6%88%96%E6%98%AF%E5%BC%BA%E8%BF%9E%E9%80%9A%E6%9C%89%E5%90%91%E5%9B%BE"><span class="toc-number">9.3.2.1.</span> <span class="toc-text"> 设G&#x3D;(V，E)是一个连通的无向图（或是强连通有向图）,</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#kruskal-%E5%9F%BA%E4%BA%8E%E8%BE%B9-oelogv"><span class="toc-number">9.3.2.2.</span> <span class="toc-text"> Kruskal - 基于边 - O(|E|log⁡|V|)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#prim-%E5%9F%BA%E4%BA%8E%E7%82%B9-on2"><span class="toc-number">9.3.2.3.</span> <span class="toc-text"> Prim - 基于点 - O(n²)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84"><span class="toc-number">9.3.3.</span> <span class="toc-text"> 最短路径</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#dijkstra-on2-%E6%97%A0%E8%B4%9F%E6%9D%83%E5%80%BC%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84"><span class="toc-number">9.3.3.1.</span> <span class="toc-text"> Dijkstra - O(n²) - 无负权值单源最短路径</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#bellman-ford-on3-%E6%97%A0%E8%B4%9F%E7%8E%AF"><span class="toc-number">9.3.3.2.</span> <span class="toc-text"> Bellman-Ford - O(n³) - 无负环</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#floyd-on3-%E6%97%A0%E8%B4%9F%E6%9D%83%E5%80%BC-%E6%89%80%E6%9C%89%E7%82%B9%E5%88%B0%E6%89%80%E6%9C%89%E7%82%B9%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84"><span class="toc-number">9.3.3.3.</span> <span class="toc-text"> Floyd - O(n³) - 无负权值 - 所有点到所有点的最短路径</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%89%80%E6%9C%89%E9%A1%B6%E7%82%B9%E4%B9%8B%E9%97%B4%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84floyed%E5%89%8D%E6%8F%90%E5%90%84%E8%BE%B9%E6%9D%83%E5%80%BC%E5%9D%87%E5%A4%A7%E4%BA%8E0%E7%9A%84%E5%B8%A6%E6%9D%83%E6%9C%89%E5%90%91%E5%9B%BE"><span class="toc-number">9.3.3.3.1.</span> <span class="toc-text"> 所有顶点之间的最短路径（Floyed)前提：各边权值均大于0的带权有向图。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%BE%E5%87%BA%E6%9C%89%E5%90%91%E5%9B%BE%E4%B8%AD%E6%89%80%E6%9C%89%E7%9A%84%E7%8E%AF"><span class="toc-number">9.3.4.</span> <span class="toc-text"> 找出有向图中所有的环</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%BE%E5%87%BA%E6%97%A0%E5%90%91%E5%9B%BE%E4%B8%AD%E6%89%80%E6%9C%89%E7%9A%84%E7%8E%AF"><span class="toc-number">9.3.5.</span> <span class="toc-text"> 找出无向图中所有的环</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">9.4.</span> <span class="toc-text"> 图的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F-on-e"><span class="toc-number">9.4.1.</span> <span class="toc-text"> 拓扑排序 - O(n + e)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#aov-%E6%97%A0%E7%8E%AF%E6%9C%89%E5%90%91%E5%9B%BE-on2"><span class="toc-number">9.4.2.</span> <span class="toc-text"> AOV - 无环有向图 - O(n^2)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#aoe-%E6%97%A0%E7%8E%AF%E6%9C%89%E5%90%91%E5%9B%BE-on-e"><span class="toc-number">9.4.3.</span> <span class="toc-text"> AOE - 无环有向图 - O(n + e)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E8%B7%AF%E5%BE%84"><span class="toc-number">9.4.3.1.</span> <span class="toc-text"> 关键路径</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E4%BA%8B%E4%BB%B6%E8%80%8C%E8%A8%80"><span class="toc-number">9.4.3.2.</span> <span class="toc-text"> 对事件而言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E6%B4%BB%E5%8A%A8%E8%80%8C%E8%A8%80"><span class="toc-number">9.4.3.3.</span> <span class="toc-text"> 对活动而言</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%AC%E4%B9%9D%E7%AB%A0-%E6%8E%92%E5%BA%8F"><span class="toc-number">10.</span> <span class="toc-text"> 第九章 排序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%88%86%E6%B3%95%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F-on2"><span class="toc-number">10.1.</span> <span class="toc-text"> 二分法插入排序 - O(n^2)</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E7%A8%B3%E5%AE%9A-4"><span class="toc-number">10.1.0.0.0.1.</span> <span class="toc-text"> 稳定</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%8C%E5%B0%94%E6%8E%92%E5%BA%8F-%E4%B8%8D%E5%AE%9A"><span class="toc-number">10.2.</span> <span class="toc-text"> 希尔排序 - 不定</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E5%A2%9E%E9%87%8F%E7%9A%84%E9%80%89%E5%8F%96"><span class="toc-number">10.2.1.</span> <span class="toc-text"> 关键：增量的选取</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%B8%8D%E7%A8%B3%E5%AE%9A-2"><span class="toc-number">10.2.1.0.0.1.</span> <span class="toc-text"> 不稳定</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A8%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F-on2"><span class="toc-number">10.3.</span> <span class="toc-text"> 表插入排序 - O(n^2)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F-on-log_2-n"><span class="toc-number">10.4.</span> <span class="toc-text"> 快速排序 - O(n log_2 n)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E5%AF%B9%E5%9F%BA%E5%87%86%E7%9A%84%E9%80%89%E5%8F%96"><span class="toc-number">10.4.1.</span> <span class="toc-text"> 关键：对基准的选取</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%950%E9%80%89%E5%8F%96%E7%AC%AC%E4%B8%80%E4%B8%AA%E6%95%B0%E6%95%88%E6%9E%9C%E4%B8%8D%E5%A5%BD"><span class="toc-number">10.4.1.1.</span> <span class="toc-text"> 方法0：选取第一个数（效果不好）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%951%E9%9A%8F%E6%9C%BA%E9%80%89%E5%8F%96pivot-%E4%BD%86%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%9A%84%E7%94%9F%E6%88%90%E4%B8%80%E8%88%AC%E6%98%AF%E6%98%82%E8%B4%B5%E7%9A%84"><span class="toc-number">10.4.1.2.</span> <span class="toc-text"> 方法1：随机选取pivot, 但随机数的生成一般是昂贵的。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%952%E4%B8%89%E6%95%B0%E4%B8%AD%E5%80%BC%E5%88%86%E5%89%B2%E6%B3%95median-of-three-partitioning"><span class="toc-number">10.4.1.3.</span> <span class="toc-text"> 方法2：三数中值分割法（Median-of-Three partitioning)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E5%89%B2%E7%AD%96%E7%95%A5"><span class="toc-number">10.4.1.4.</span> <span class="toc-text"> 分割策略</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F-on-log_2-n"><span class="toc-number">10.5.</span> <span class="toc-text"> 归并排序 - O(n log_2 n)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BD%92%E5%B9%B6%E4%B8%A4%E4%B8%AA%E5%A4%9A%E4%B8%AA%E6%9C%89%E5%BA%8F%E7%9A%84%E6%96%87%E4%BB%B6%E7%BB%84%E5%90%88%E6%88%90%E4%B8%80%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%96%87%E4%BB%B6"><span class="toc-number">10.5.0.1.</span> <span class="toc-text"> 归并：两个（多个）有序的文件组合成一个有序文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%AD%E4%BB%A3%E7%9A%84%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F"><span class="toc-number">10.5.0.2.</span> <span class="toc-text"> 迭代的归并排序</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%A6%82%E6%9E%9C%E6%98%AF%E5%AF%B9%E9%93%BE%E8%A1%A8%E6%93%8D%E4%BD%9C%E5%88%86%E5%89%B2%E9%93%BE%E8%A1%A8%E9%9C%80%E8%A6%81%E6%94%B9%E4%B8%BA%E5%88%87%E6%96%AD%E9%93%BE%E8%A1%A8%E6%8C%87%E9%92%88%E7%BD%AE%E4%B8%BA%E7%A9%BA%E7%84%B6%E5%90%8E%E5%90%88%E5%B9%B6%E7%9A%84%E6%97%B6%E5%80%99%E5%86%8D%E8%BF%9E%E8%B5%B7%E6%9D%A5"><span class="toc-number">10.5.0.2.0.1.</span> <span class="toc-text"> 如果是对链表操作，分割链表需要改为切断链表（指针置为空），然后合并的时候再连起来</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">10.6.</span> <span class="toc-text"> 总结</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/4c76533e034e/" title="如何从0开始配置一个“好用”的服务器？">如何从0开始配置一个“好用”的服务器？</a><time datetime="2025-11-22T02:45:49.000Z" title="发表于 2025-11-22 10:45:49">2025-11-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/5a81ef49f5e4/" title="人生中第一次遇见挖矿">人生中第一次遇见挖矿</a><time datetime="2025-11-21T14:15:58.000Z" title="发表于 2025-11-21 22:15:58">2025-11-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/f6b69341f51b/" title="Scene Text Image Super Resolution and Recognition">Scene Text Image Super Resolution and Recognition</a><time datetime="2025-11-21T01:58:17.000Z" title="发表于 2025-11-21 09:58:17">2025-11-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/015bd2201277/" title="期末复习（SE DS）">期末复习（SE DS）</a><time datetime="2025-11-19T15:07:16.000Z" title="发表于 2025-11-19 23:07:16">2025-11-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/eb4181631f64/" title="数据结构：图">数据结构：图</a><time datetime="2025-11-13T03:22:09.000Z" title="发表于 2025-11-13 11:22:09">2025-11-13</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="ft"><div class="ft-item-1"><div class="t-top"><div class="t-t-l"><p class="ft-t t-l-t">格言🧬</p><div class="bg-ad"><div>记录一个NJUCSer的学习历程 · 代码改变世界，技术创造未来</div><div class="btn-xz-box"><a class="btn-xz" href="/about/">了解更多</a></div></div></div></div></div><div class="ft-item-2"><p class="ft-t">推荐友链⌛</p><div class="ft-img-group"><div class="img-group-item"><a href="/links/" title="广告位招租"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/zhaozu.jpg" alt="广告位招租"/></a></div><div class="img-group-item"><a href="/links/" title="更多友联"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/zhaozu.jpg" alt="友链"/></a></div></div></div></div><div class="copyright"><span><b>&copy;2025</b></span><span><b>&nbsp;&nbsp;By Yama-lei</b></span></div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Less is more · © YamaBlog</div><div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://hexo.io/" style="margin-inline:5px" title="博客框架为Hexo"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat-square" alt="Hexo"/></a><a class="github-badge" target="_blank" href="https://butterfly.js.org/" style="margin-inline:5px" title="主题版本Butterfly"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat-square" alt="Butterfly"/></a><a class="github-badge" target="_blank" href="https://github.com/yama-lei" style="margin-inline:5px" title="源码托管于GitHub"><img src="/%E5%9B%BE%E7%89%87%E6%AD%A3%E5%9C%A8%E5%8A%A0%E8%BD%BD%E4%B8%AD..." data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat-square" alt="GitHub"/></a></p></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (true) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script src="/js/custom.js"></script><script src="/js/navbar-enhance.js"></script><script src="/js/footer-enhance.js"></script><script src="/js/homepage-enhance.js"></script><script src="/js/page-headers-enhance.js"></script><script src="/js/reading-enhance.js"></script><script defer src="/js/runtime.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索..." type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
