@@ -5,7 +5,7 @@ categories:
   - 高级程序设计
 date: 2025-01-27 00:00:00
 created: 2025-09-28T21:20
-updated: 2025-09-30T21:29
+updated: 2025-11-15T20:50
 ---
 有关STL容器的内容
 
@@ -552,6 +552,22 @@ for (auto &[key, val] : mp)
 
 增删改查时间复杂度均为 $O(\log n)$
 
+> [!NOTE] 补充
+> 使用 `map` 时，若键类型为自定义结构体，需为其重载 `operator<`。例如：
+> ```c++
+> enum state { UNSET, LEFT, RIGHT };
+> 
+> struct Pair {
+>     int a, b;
+>     Pair(int _a = 0, int _b = 0) {
+>         a = (_a < _b) ? _a : _b;
+>         b = (_a < _b) ? _b : _a;
+>     }
+>     bool operator<(const Pair& other) const {
+>         return (a != other.a) ? a < other.a : b < other.b;
+>     }
+> };
+> ```
 ### 2.7.2 适用情形
 
 需要维护映射的场景可以使用：输入若干字符串，统计每种字符串的出现次数。(`map<string, int> mp`)

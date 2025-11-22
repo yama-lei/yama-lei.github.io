@@ -6,10 +6,9 @@ categories:
   - ICS计算系统基础
 title: NEMU PA0
 created: 2025-09-28T21:20
-updated: 2025-10-10T08:40
+updated: 2025-11-02T19:30
+cover: https://yamapicgo.oss-cn-nanjing.aliyuncs.com/picgoImage/20251102192930.png
 ---
-
-
 
 # PA0  Report
 

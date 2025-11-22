@@ -5,7 +5,7 @@ categories:
 title: ICS-chatcode抓包分析
 date: 2025-09-29
 created: 2025-09-30T09:58
-updated: 2025-10-03T10:49
+updated: 2025-11-06T22:05
 ---
 
 使用BurpSuite对即将发布的ics-chatbot的抓包分析
@@ -194,18 +194,11 @@ HTTP/1.1 200 OK
 **通信示例:**
 
 - **Client** -> **Server**: `"你好"`
-    
 - **Server** -> **Client**: `"S"`
-    
 - **Server** -> **Client**: `"T你"`
-    
 - **Server** -> **Client**: `"T好"`
-    
 - **Server** -> **Client**: `"！"`
-    
 - **Server** -> **Client**: `"E"`
-    
-
 ---
 
 #### 6. 对话总结
@@ -221,7 +214,6 @@ HTTP/1.1 200 OK
 ---
 
 #### 8. 自己搭建对话网页
-
 - 有了这些接口，可以自己搭建网页或脚本来弥补现有功能（如上下文保存、多对话管理）。
-    
 - 目前前端使用**Vue**，后端使用**Python**  网址：`http://172.26.8.119:4173/`。除了ICS对话，该网页还支持查询RISC-V的PA作业。（但是我不清楚其他的PA是怎么查询的，因此暂时还没分析）
+
